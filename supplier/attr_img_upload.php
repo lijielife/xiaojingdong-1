@@ -179,75 +179,157 @@ function handle_gallery_image_attr($goods_id, $goods_attr_id, $image_files)
 {
     /* 是否处理缩略图 */
     $proc_thumb = (isset($GLOBALS['shop_id']) && $GLOBALS['shop_id'] > 0)? false : true;
-        /* 是否成功上传 */
-        $flag = false;
+    /* 是否成功上传 */
+    $flag = false;
+    if (isset($image_files['error']))
+    {
+        if ($image_files['error'] == 0)
+        {
+            $flag = true;
+        }
+    }
+    else
+    {
+        if ($image_files['tmp_name'] != 'none')
+        {
+            $flag = true;
+        }
+    }
+
+    if ($flag)
+    {
+        // 生成缩略图
+        if ($proc_thumb)
+        {
+            $thumb_url = $GLOBALS['image']->make_thumb($image_files['tmp_name'], $GLOBALS['_CFG']['thumb_width'],  $GLOBALS['_CFG']['thumb_height']);
+            $thumb_url = is_string($thumb_url) ? $thumb_url : '';
+        }
+
+        //生成商品详情页图片
+        $img_url = $GLOBALS['image']->make_thumb($image_files['tmp_name'] , $GLOBALS['_CFG']['image_width'],  $GLOBALS['_CFG']['image_height']);
+        var_dump($img_url);
+
+
+        $upload = array(
+            'name' => $image_files['name'],
+            'type' => $image_files['type'],
+            'tmp_name' => $image_files['tmp_name'],
+            'size' => $image_files['size'],
+        );
         if (isset($image_files['error']))
         {
-            if ($image_files['error'] == 0)
-            {
-                $flag = true;
-            }
+            $upload['error'] = $image_files['error'];
         }
-        else
+        $img_original = $GLOBALS['image']->upload_image($upload);
+        if ($img_original === false)
         {
-            if ($image_files['tmp_name'] != 'none')
-            {
-                $flag = true;
-            }
+            sys_msg($GLOBALS['image']->error_msg(), 1, array(), false);
         }
 
-        if ($flag)
+
+        if (!$proc_thumb)
         {
-            // 生成缩略图
-            if ($proc_thumb)
-            {
-                $thumb_url = $GLOBALS['image']->make_thumb($image_files['tmp_name'], $GLOBALS['_CFG']['thumb_width'],  $GLOBALS['_CFG']['thumb_height']);
-                $thumb_url = is_string($thumb_url) ? $thumb_url : '';
-            }
-
-			//生成商品详情页图片
-           $img_url = $GLOBALS['image']->make_thumb($image_files['tmp_name'] , $GLOBALS['_CFG']['image_width'],  $GLOBALS['_CFG']['image_height']);
-
-
-            $upload = array(
-                'name' => $image_files['name'],
-                'type' => $image_files['type'],
-                'tmp_name' => $image_files['tmp_name'],
-                'size' => $image_files['size'],
-            );
-            if (isset($image_files['error']))
-            {
-                $upload['error'] = $image_files['error'];
-            }
-            $img_original = $GLOBALS['image']->upload_image($upload);
-            if ($img_original === false)
-            {
-                sys_msg($GLOBALS['image']->error_msg(), 1, array(), false);
-            }
-
-
-            if (!$proc_thumb)
-            {
-                $thumb_url = $img_original;
-            }
-
-
-            /* 重新格式化图片名称 */
-            $img_original = reformat_image_name('gallery', $goods_id, $img_original, 'source');
-            $img_url = reformat_image_name('gallery', $goods_id, $img_url, 'goods');
-            $thumb_url = reformat_image_name('gallery_thumb', $goods_id, $thumb_url, 'thumb');
-            $sql = "INSERT INTO " . $GLOBALS['ecs']->table('goods_gallery') . " (goods_id, img_url, img_desc, thumb_url, img_original, goods_attr_id) " .
-                    "VALUES ('$goods_id', '$img_url', '$img_desc', '$thumb_url', '$img_original', '$goods_attr_id')";
-            $GLOBALS['db']->query($sql);
-            /* 不保留商品原图的时候删除原图 */
-            if ($proc_thumb && !$GLOBALS['_CFG']['retain_original_img'] && !empty($img_original))
-            {
-                $GLOBALS['db']->query("UPDATE " . $GLOBALS['ecs']->table('goods_gallery') . " SET img_original='' WHERE `goods_id`='{$goods_id}'");
-                @unlink('../' . $img_original);
-            }
+            $thumb_url = $img_original;
         }
-		return array('error'=>0,'goods_id'=>$goods_id,'info'=>'succesful');
 
+
+        /* 重新格式化图片名称 */
+        $img_original = reformat_image_name('gallery', $goods_id, $img_original, 'source');
+        $img_url = reformat_image_name('gallery', $goods_id, $img_url, 'goods');
+        var_dump($img_url);
+        $thumb_url = reformat_image_name('gallery_thumb', $goods_id, $thumb_url, 'thumb');
+
+        echo $img_url . '<br>' . $thumb_url;
+        $sql = "INSERT INTO " . $GLOBALS['ecs']->table('goods_gallery') . " (goods_id, img_url, img_desc, thumb_url, img_original, goods_attr_id) " .
+            "VALUES ('$goods_id', '$img_url', '$img_desc', '$thumb_url', '$img_original', '$goods_attr_id')";
+        $GLOBALS['db']->query($sql);
+        /* 不保留商品原图的时候删除原图 */
+        if ($proc_thumb && !$GLOBALS['_CFG']['retain_original_img'] && !empty($img_original))
+        {
+            $GLOBALS['db']->query("UPDATE " . $GLOBALS['ecs']->table('goods_gallery') . " SET img_original='' WHERE `goods_id`='{$goods_id}'");
+            @unlink('../' . $img_original);
+        }
+    }
+    return array('error'=>0,'goods_id'=>$goods_id,'info'=>'succesful');
+
+}
+
+/**
+ * 保存某商品的相册图片
+ * @param   int     $goods_id  商品id
+ * @param   int     $goods_attr_id 商品属性id
+ * @param   array   $image_files  商品图片信息
+ * @return  void
+ */
+function handle_gallery_image_attr_old($goods_id, $goods_attr_id, $image_files)
+{
+    /* 是否处理缩略图 */
+    $proc_thumb = (isset($GLOBALS['shop_id']) && $GLOBALS['shop_id'] > 0)? false : true;
+    /* 是否成功上传 */
+    $flag = false;
+    if (isset($image_files['error']))
+    {
+        if ($image_files['error'] == 0)
+        {
+            $flag = true;
+        }
+    }
+    else
+    {
+        if ($image_files['tmp_name'] != 'none')
+        {
+            $flag = true;
+        }
+    }
+    if ($flag)
+    {
+        // 生成缩略图
+        if ($proc_thumb)
+        {
+            $thumb_url = $GLOBALS['image']->make_thumb($image_files['tmp_name'], $GLOBALS['_CFG']['thumb_width'],  $GLOBALS['_CFG']['thumb_height']);
+            $thumb_url = is_string($thumb_url) ? $thumb_url : '';
+        }
+
+        //生成商品详情页图片
+       $img_url = $GLOBALS['image']->make_thumb($image_files['tmp_name'] , $GLOBALS['_CFG']['image_width'],  $GLOBALS['_CFG']['image_height']);
+
+        $upload = array(
+            'name' => $image_files['name'],
+            'type' => $image_files['type'],
+            'tmp_name' => $image_files['tmp_name'],
+            'size' => $image_files['size'],
+        );
+        if (isset($image_files['error']))
+        {
+            $upload['error'] = $image_files['error'];
+        }
+        $img_original = $GLOBALS['image']->upload_image($upload);
+        if ($img_original === false)
+        {
+            sys_msg($GLOBALS['image']->error_msg(), 1, array(), false);
+        }
+
+
+        if (!$proc_thumb)
+        {
+            $thumb_url = $img_original;
+        }
+
+        /* 重新格式化图片名称 */
+        $img_original = reformat_image_name('gallery', $goods_id, $img_original, 'source');
+        $img_url = reformat_image_name('gallery', $goods_id, $img_url, 'goods');
+        $thumb_url = reformat_image_name('gallery_thumb', $goods_id, $thumb_url, 'thumb');
+        $sql = "INSERT INTO " . $GLOBALS['ecs']->table('goods_gallery') . " (goods_id, img_url, img_desc, thumb_url, img_original, goods_attr_id) " .
+                "VALUES ('$goods_id', '$img_url', '$img_desc', '$thumb_url', '$img_original', '$goods_attr_id')";
+        $GLOBALS['db']->query($sql);
+        /* 不保留商品原图的时候删除原图 */
+        if ($proc_thumb && !$GLOBALS['_CFG']['retain_original_img'] && !empty($img_original))
+        {
+            $GLOBALS['db']->query("UPDATE " . $GLOBALS['ecs']->table('goods_gallery') . " SET img_original='' WHERE `goods_id`='{$goods_id}'");
+            @unlink('../' . $img_original);
+        }
+    }
+    return array('error'=>0,'goods_id'=>$goods_id,'info'=>'succesful');
 }
 
 ?>

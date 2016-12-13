@@ -44,6 +44,7 @@ if ($_REQUEST['act'] == 'list')
         }
     }
     @closedir($template_dir);
+    //print_r($available_templates);exit;
 
     /* 获得可用的模版的可选风格数组 */
     $templates_style = array();
@@ -79,7 +80,6 @@ if ($_REQUEST['act'] == 'list')
     $db->query($sql);
 
     assign_query_info();
-
     $smarty->assign('ur_here',             $_LANG['template_manage']);
     $smarty->assign('curr_tpl_style', $curr_style);
     $smarty->assign('template_style', $templates_style);

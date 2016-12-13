@@ -195,10 +195,12 @@ class cls_template
                         {
                             mkdir($hash_dir);
                         }
+                        /*
                         if (file_put_contents($hash_dir . '/' . $cachename . '.php', '<?php exit;?>' . $data . $out, LOCK_EX) === false)
                         {
                             trigger_error('can\'t write:' . $hash_dir . '/' . $cachename . '.php');
                         }
+                        */
                         $this->template = array();
                     }
                 }
@@ -259,10 +261,12 @@ class cls_template
             $this->_current_file = $filename;
             $source = $this->fetch_str(file_get_contents($filename));
 
+            /*
             if (file_put_contents($name, $source, LOCK_EX) === false)
             {
                 trigger_error('can\'t write:' . $name);
             }
+            */
 
             $source = $this->_eval($source);
         }
@@ -284,8 +288,11 @@ class cls_template
         {
             $source = $this->smarty_prefilter_preCompile($source);
         }
+
         $source = preg_replace("/<\?[^><]+\?>|<\%[^><]+\%>|<script[^>]+language[^>]*=[^>]*php[^>]*>[^><]*<\/script\s*>/iU", "", $source);
-        return preg_replace("/{([^\}\{\n]*)}/e", "\$this->select('\\1');", $source);
+        //return preg_replace("/{([^\}\{\n]*)}/e", "\$this->select('\\1');", $source);
+
+        return preg_replace_callback("/{([^\}\{\n]*)}/", function($r){return $this->select($r[1]);}, $source);
     }
 
     /**
@@ -479,7 +486,8 @@ class cls_template
                 case 'insert' :
                     $t = $this->get_para(substr($tag, 7), false);
 
-                    $out = "<?php \n" . '$k = ' . preg_replace("/(\'\\$[^,]+)/e" , "stripslashes(trim('\\1','\''));", var_export($t, true)) . ";\n";
+                    //$out = "<?php \n" . '$k = ' . preg_replace("/(\'\\$[^,]+)/e" , "stripslashes(trim('\\1','\''));", var_export($t, true)) . ";\n";
+                    $out = "<?php \n" . '$k = ' . preg_replace_callback("/(\'\\$[^,]+)/" , function($r){return stripslashes(trim($r[1],'\''));}, var_export($t, true)) . ";\n";
                     $out .= 'echo $this->_echash . $k[\'name\'] . \'|\' . serialize($k) . $this->_echash;' . "\n?>";
 
                     return $out;
@@ -1055,9 +1063,12 @@ class cls_template
         if ($file_type == '.dwt')
         {
             /* 将模板中所有library替换为链接 */
-            $pattern     = '/<!--\s#BeginLibraryItem\s\"\/(.*?)\"\s-->.*?<!--\s#EndLibraryItem\s-->/se';
-            $replacement = "'{include file='.strtolower('\\1'). '}'";
-            $source      = preg_replace($pattern, $replacement, $source);
+            $pattern     = '/<!--\s#BeginLibraryItem\s\"\/(.*?)\"\s-->.*?<!--\s#EndLibraryItem\s-->/';
+            //$replacement = "'{include file='.strtolower('\\1'). '}'";
+            //$source      = preg_replace($pattern, $replacement, $source);
+            $source = preg_replace_callback($pattern,
+                function ($matches) { return '{include file='.strtolower($matches[1]). '}';},
+                $source);
 
             /* 检查有无动态库文件，如果有为其赋值 */
             $dyna_libs = get_dyna_libs($GLOBALS['_CFG']['template'], $this->_current_file);

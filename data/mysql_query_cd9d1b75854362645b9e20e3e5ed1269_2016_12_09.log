@@ -1,0 +1,980 @@
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('c3500c4c25f2067f98fcd889928c4ec8', '1481268472', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268472', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = 'c3500c4c25f2067f98fcd889928c4ec8' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481266672
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('90581a811abeadbcb9d81233a82a3a60', '1481268478', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268478', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '90581a811abeadbcb9d81233a82a3a60' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481266678
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('5c93c4ede6a7901767d66254a97c3c1a', '1481268478', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268478', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '5c93c4ede6a7901767d66254a97c3c1a' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions_data` WHERE expiry < 1481266678
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481266678
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('dec1d406ab27e7aa374947872873479c', '1481268479', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268479', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = 'dec1d406ab27e7aa374947872873479c' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions_data` WHERE expiry < 1481266679
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('f6d2bb2173ba626bf02e37210bc3f62b', '1481268483', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268483', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = 'f6d2bb2173ba626bf02e37210bc3f62b' LIMIT 1
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('985f4cd10bdc9b76085f68a81b9a8d23', '1481268520', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268520', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '985f4cd10bdc9b76085f68a81b9a8d23' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481266720
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('1c08619e5e129bb35f732c15a6f9a7c2', '1481268578', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268578', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '1c08619e5e129bb35f732c15a6f9a7c2' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions_data` WHERE expiry < 1481266778
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481266778
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('19585c03998ca83ac13a081bc1368097', '1481268587', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268587', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '19585c03998ca83ac13a081bc1368097' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions_data` WHERE expiry < 1481266787
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('fa7e9c4da7f66b8140f15ac07ce53b78', '1481268588', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268588', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = 'fa7e9c4da7f66b8140f15ac07ce53b78' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions_data` WHERE expiry < 1481266788
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481266788
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('356cb97cb19cb5ed3d1a4b5c89d7cd30', '1481268601', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268601', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '356cb97cb19cb5ed3d1a4b5c89d7cd30' LIMIT 1
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('8f16d04f52912cefbdf1530062fc272d', '1481268601', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268601', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '8f16d04f52912cefbdf1530062fc272d' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions_data` WHERE expiry < 1481266801
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('1c20355fab9631f4b87f7a71b4fa8b62', '1481268621', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268621', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '1c20355fab9631f4b87f7a71b4fa8b62' LIMIT 1
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('b84fc9d8f7a3cb7b88831acb6f05d85e', '1481268687', '0.0.0.0', 'a:0:{}')
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268687', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = 'b84fc9d8f7a3cb7b88831acb6f05d85e' LIMIT 1
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('762e95980b257a629ebc042bd31c0442', '1481268692', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268692', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '762e95980b257a629ebc042bd31c0442' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions_data` WHERE expiry < 1481266892
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481266892
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('fe6c6970a2d32e634e453c5e4c8fa4c1', '1481268699', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268699', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = 'fe6c6970a2d32e634e453c5e4c8fa4c1' LIMIT 1
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('52d33bfe05dfebf7bef970b87217bfeb', '1481268708', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268708', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '52d33bfe05dfebf7bef970b87217bfeb' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481266908
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('a665ebb361f495940f1290d9b612964c', '1481268709', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268709', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = 'a665ebb361f495940f1290d9b612964c' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions_data` WHERE expiry < 1481266909
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('3fc304876b9388482e77cd4247a2c59b', '1481268718', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268718', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '3fc304876b9388482e77cd4247a2c59b' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481266918
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('2bc1162fdbc7fb57cf228db3abdae634', '1481268748', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268748', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '2bc1162fdbc7fb57cf228db3abdae634' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481266948
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('855143fc70a0e72d9d3676a86b8f9500', '1481268754', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268754', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '855143fc70a0e72d9d3676a86b8f9500' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions_data` WHERE expiry < 1481266954
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481266954
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('6be586a67be31d01c5f9c744fed2e81a', '1481268759', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268759', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '6be586a67be31d01c5f9c744fed2e81a' LIMIT 1
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('79b535bfe58057c63bc13b9baef868a0', '1481268767', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268767', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '79b535bfe58057c63bc13b9baef868a0' LIMIT 1
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('9fe2ac4adf9b704df33eaddf0e83b1f9', '1481268785', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268785', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '9fe2ac4adf9b704df33eaddf0e83b1f9' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions_data` WHERE expiry < 1481266985
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('24e5078db1fff44c7fbefd926f6c91f0', '1481268797', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268797', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '24e5078db1fff44c7fbefd926f6c91f0' LIMIT 1
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('f147e44968fa125a244bf63a4477195e', '1481268809', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268809', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = 'f147e44968fa125a244bf63a4477195e' LIMIT 1
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('17e1b1364cc792724e3e61b2c06aa720', '1481268820', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268820', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '17e1b1364cc792724e3e61b2c06aa720' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions_data` WHERE expiry < 1481267020
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481267020
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('255ffcb963c87326ffd7f4f05359721d', '1481268822', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268822', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '255ffcb963c87326ffd7f4f05359721d' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions_data` WHERE expiry < 1481267022
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481267022
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('1d752338329ae2d2a208ae14b2ed6ed0', '1481268833', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268833', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '1d752338329ae2d2a208ae14b2ed6ed0' LIMIT 1
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('34bc3c9914e14aa49da4b18d45f3579d', '1481268851', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268851', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '34bc3c9914e14aa49da4b18d45f3579d' LIMIT 1
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('7a9ccc1fbaf36f4bfd711559bcdc8233', '1481268852', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268852', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '7a9ccc1fbaf36f4bfd711559bcdc8233' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions_data` WHERE expiry < 1481267052
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481267052
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('6c82d32a49fce16ff7ba5c105be1adf7', '1481268852', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268852', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '6c82d32a49fce16ff7ba5c105be1adf7' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions_data` WHERE expiry < 1481267052
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481267052
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('21195bdc2d042dab289db63060e68edd', '1481268874', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268874', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '21195bdc2d042dab289db63060e68edd' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481267074
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('1e3899e0809cd1c85fae88b83a996e99', '1481268875', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268875', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '1e3899e0809cd1c85fae88b83a996e99' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions_data` WHERE expiry < 1481267075
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('995fbd5c481524b2c9fff6ec8d66250a', '1481268875', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268875', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '995fbd5c481524b2c9fff6ec8d66250a' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions_data` WHERE expiry < 1481267075
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('1d8efbf463ba1cb8301738570bb1627e', '1481268885', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268885', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '1d8efbf463ba1cb8301738570bb1627e' LIMIT 1
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('bf97bf3bd27dcd594e8bfb4c995a7243', '1481268894', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268894', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = 'bf97bf3bd27dcd594e8bfb4c995a7243' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions_data` WHERE expiry < 1481267094
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481267094
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('8c8ac54fa25b01c6c58d4d552cbdfbce', '1481268894', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268894', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '8c8ac54fa25b01c6c58d4d552cbdfbce' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481267094
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('386bbe3318ba354965501aeba03969f6', '1481268895', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268895', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '386bbe3318ba354965501aeba03969f6' LIMIT 1
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('f1240567ea61c659435d26c0a460192f', '1481268895', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268895', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = 'f1240567ea61c659435d26c0a460192f' LIMIT 1
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('573ee8fd81cf408eaa127473ae25fcc5', '1481268895', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268895', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '573ee8fd81cf408eaa127473ae25fcc5' LIMIT 1
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('c3c6eade75dcbbda57f785bf9e8bf7bf', '1481268895', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268895', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = 'c3c6eade75dcbbda57f785bf9e8bf7bf' LIMIT 1
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('fea89e91b095f3f992b53c90164e1826', '1481268895', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268895', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = 'fea89e91b095f3f992b53c90164e1826' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions_data` WHERE expiry < 1481267095
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('f6d2b0d3e7d101896a880daee83c77be', '1481268903', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268903', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = 'f6d2b0d3e7d101896a880daee83c77be' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions_data` WHERE expiry < 1481267103
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('52fe9e7e240c1f94b8cd69c457b4df94', '1481268903', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268903', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '52fe9e7e240c1f94b8cd69c457b4df94' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions_data` WHERE expiry < 1481267103
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('99c1086c21a9cffb13c57f07b969e1a5', '1481268904', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268904', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '99c1086c21a9cffb13c57f07b969e1a5' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481267104
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('26801588f151a13842176ffea36cee7d', '1481268904', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268904', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '26801588f151a13842176ffea36cee7d' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481267104
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('6af325a9a3febeacd88bd18d73faab92', '1481268915', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268915', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '6af325a9a3febeacd88bd18d73faab92' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions_data` WHERE expiry < 1481267115
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('f0c683bc5d20b82b0424836197ab51aa', '1481268916', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268916', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = 'f0c683bc5d20b82b0424836197ab51aa' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481267116
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('9945e5e306a0611a53c96738cc16a54c', '1481268916', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481268916', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '9945e5e306a0611a53c96738cc16a54c' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481267116
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('ae802a5f25926b2fb22160015ce85ede', '1481269051', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481269051', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = 'ae802a5f25926b2fb22160015ce85ede' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions_data` WHERE expiry < 1481267251
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('bc1b61ed51fbff96c2abccc6dc5a9e79', '1481269074', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481269074', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = 'bc1b61ed51fbff96c2abccc6dc5a9e79' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481267274
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('a7f7e1b65f8f2b7bc9a16bc72fa8ba03', '1481269103', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481269103', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = 'a7f7e1b65f8f2b7bc9a16bc72fa8ba03' LIMIT 1
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('c67e63f0be93abb946549f132090055a', '1481269113', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481269113', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = 'c67e63f0be93abb946549f132090055a' LIMIT 1
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('48040ba39112978c1bcaba8187f04824', '1481269154', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481269154', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '48040ba39112978c1bcaba8187f04824' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481267354
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('c06b45587b47762eec2e0f8719d02e3f', '1481269156', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481269156', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = 'c06b45587b47762eec2e0f8719d02e3f' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481267356
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('1d308fd3e5e7856ac573fe9a3a9c819b', '1481269156', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481269156', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '1d308fd3e5e7856ac573fe9a3a9c819b' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481267356
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('eb4f03dd3852c797ff2d8aaae1dd9875', '1481269190', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481269190', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = 'eb4f03dd3852c797ff2d8aaae1dd9875' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions_data` WHERE expiry < 1481267390
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481267390
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('b86253ce4ff36df7bcf22c42bb64551e', '1481269237', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481269237', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = 'b86253ce4ff36df7bcf22c42bb64551e' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions_data` WHERE expiry < 1481267437
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481267437
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('8af5f188c06ea33e43129090fb2c8eb2', '1481269254', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481269254', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '8af5f188c06ea33e43129090fb2c8eb2' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481267454
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('34ee6374f2ed01599186cb9cedc0060c', '1481269273', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481269273', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '34ee6374f2ed01599186cb9cedc0060c' LIMIT 1
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('b61925ef47ee07f584cd33f06c1b2fe5', '1481269326', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481269326', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = 'b61925ef47ee07f584cd33f06c1b2fe5' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481267526
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('d60f198a5adaa38b992849e0302ac366', '1481269396', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481269396', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = 'd60f198a5adaa38b992849e0302ac366' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481267596
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('6b13e0c6e6ad5a1de7de03be7cfad25e', '1481269445', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481269445', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '6b13e0c6e6ad5a1de7de03be7cfad25e' LIMIT 1
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('fd7dc858225648b775f8c0188294060e', '1481269572', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481269572', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = 'fd7dc858225648b775f8c0188294060e' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions_data` WHERE expiry < 1481267772
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481267772
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('a68ae694c665753adad42bc1a80ef61a', '1481269575', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481269575', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = 'a68ae694c665753adad42bc1a80ef61a' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions_data` WHERE expiry < 1481267775
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('8fff112b34fbe2bc47686fa9fa2a622d', '1481269576', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481269576', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '8fff112b34fbe2bc47686fa9fa2a622d' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481267776
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('8801ed092339a87a41330e71ade30735', '1481269602', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481269602', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '8801ed092339a87a41330e71ade30735' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481267802
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('a16f5459134d71b2f16eeb93c8567ef6', '1481269607', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481269607', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = 'a16f5459134d71b2f16eeb93c8567ef6' LIMIT 1
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('0e2c374a30c8fb029c87f1af9c872b01', '1481269654', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481269654', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '0e2c374a30c8fb029c87f1af9c872b01' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481267854
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('ef96fc4a0afab960fc68416ba4579a47', '1481269657', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481269657', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = 'ef96fc4a0afab960fc68416ba4579a47' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions_data` WHERE expiry < 1481267857
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('3d28f2dea363a39bfee956f648edb67c', '1481269809', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481269809', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '3d28f2dea363a39bfee956f648edb67c' LIMIT 1
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('cf8c58a095b07822177f65bc88ac6d86', '1481269809', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481269809', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = 'cf8c58a095b07822177f65bc88ac6d86' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions_data` WHERE expiry < 1481268009
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+
+INSERT INTO `haoid`.`ecs_sessions` (sesskey, expiry, ip, data) VALUES ('82457921b7fd5d74db1ee88d408fa3d5', '1481269834', '0.0.0.0', 'a:0:{}')
+
+SELECT code, value FROM `haoid`.`ecs_shop_config` WHERE parent_id > 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 0 AND supplier_id = 0
+
+SELECT cus_no FROM `haoid`.`ecs_chat_third_customer` WHERE is_master = 1 AND cus_type = 1 AND supplier_id = 0
+
+UPDATE `haoid`.`ecs_sessions` SET expiry = '1481269834', ip = '0.0.0.0', userid = '0', adminid = '0', user_name='0', user_rank='0', discount='0', email='0', data = 'a:0:{}' WHERE sesskey = '82457921b7fd5d74db1ee88d408fa3d5' LIMIT 1
+
+DELETE FROM `haoid`.`ecs_sessions` WHERE expiry < 1481268034
+
+OPTIMIZE TABLE `haoid`.`ecs_sessions`
+

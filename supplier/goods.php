@@ -15,11 +15,13 @@
 
 define('IN_ECS', true);
 
+
 require(dirname(__FILE__) . '/includes/init.php');
 require_once(ROOT_PATH . '/' . ADMIN_PATH . '/includes/lib_goods.php');
 include_once(ROOT_PATH . '/includes/cls_image.php');
 $image = new cls_image($_CFG['bgcolor']);
 $exc = new exchange($ecs->table('goods'), $db, 'goods_id', 'goods_name');
+
 
 /*优化了分类，去掉了之前开发的分类
 if ($_REQUEST['act'] == 'get_catsel_68ecshop')
@@ -133,7 +135,6 @@ if ($_REQUEST['act'] == 'list' || $_REQUEST['act'] == 'trash')
     $suppliers_list = suppliers_list_info(' is_check = 1 ');
     $suppliers_list_count = count($suppliers_list);
     $smarty->assign('suppliers_list', ($suppliers_list_count == 0 ? 0 : $suppliers_list)); // 取供货商列表
-
     $goods_list = goods_list($_REQUEST['act'] == 'list' ? 0 : 1, ($_REQUEST['act'] == 'list') ? (($code == '') ? 1 : 0) : -1);
     $smarty->assign('goods_list',   $goods_list['goods']);
     $smarty->assign('filter',       $goods_list['filter']);
