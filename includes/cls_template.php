@@ -195,10 +195,12 @@ class cls_template
                         {
                             mkdir($hash_dir);
                         }
+                        /*
                         if (file_put_contents($hash_dir . '/' . $cachename . '.php', '<?php exit;?>' . $data . $out, LOCK_EX) === false)
                         {
                             trigger_error('can\'t write:' . $hash_dir . '/' . $cachename . '.php');
                         }
+                        */
                         $this->template = array();
                     }
                 }
@@ -259,10 +261,12 @@ class cls_template
             $this->_current_file = $filename;
             $source = $this->fetch_str(file_get_contents($filename));
 
+            /*
             if (file_put_contents($name, $source, LOCK_EX) === false)
             {
                 trigger_error('can\'t write:' . $name);
             }
+            */
 
             $source = $this->_eval($source);
         }
@@ -284,8 +288,11 @@ class cls_template
         {
             $source = $this->smarty_prefilter_preCompile($source);
         }
+
         $source = preg_replace("/<\?[^><]+\?>|<\%[^><]+\%>|<script[^>]+language[^>]*=[^>]*php[^>]*>[^><]*<\/script\s*>/iU", "", $source);
-        return preg_replace("/{([^\}\{\n]*)}/e", "\$this->select('\\1');", $source);
+        //return preg_replace("/{([^\}\{\n]*)}/e", "\$this->select('\\1');", $source);
+
+        return preg_replace_callback("/{([^\}\{\n]*)}/", function($r){return $this->select($r[1]);}, $source);
     }
 
     /**
@@ -403,11 +410,11 @@ class cls_template
         }
         else
         {
-			/* 代码修改_start  By  www.68ecshop.com */
+            /* 代码修改_start  By  www.68ecshop.com */
             //$tag_sel = array_shift(explode(' ', $tag));
-			$tag_arr_www_ecshop68_com = explode(' ', $tag);
-			$tag_sel = array_shift($tag_arr_www_ecshop68_com);
-			/* 代码修改_end  By  www.68ecshop.com */
+            $tag_arr_www_ecshop68_com = explode(' ', $tag);
+            $tag_sel = array_shift($tag_arr_www_ecshop68_com);
+            /* 代码修改_end  By  www.68ecshop.com */
 
             switch ($tag_sel)
             {
@@ -479,7 +486,8 @@ class cls_template
                 case 'insert' :
                     $t = $this->get_para(substr($tag, 7), false);
 
-                    $out = "<?php \n" . '$k = ' . preg_replace("/(\'\\$[^,]+)/e" , "stripslashes(trim('\\1','\''));", var_export($t, true)) . ";\n";
+                    //$out = "<?php \n" . '$k = ' . preg_replace("/(\'\\$[^,]+)/e" , "stripslashes(trim('\\1','\''));", var_export($t, true)) . ";\n";
+                    $out = "<?php \n" . '$k = ' . preg_replace_callback("/(\'\\$[^,]+)/" , function($r){return stripslashes(trim($r[1],'\''));}, var_export($t, true)) . ";\n";
                     $out .= 'echo $this->_echash . $k[\'name\'] . \'|\' . serialize($k) . $this->_echash;' . "\n?>";
 
                     return $out;
@@ -664,7 +672,7 @@ class cls_template
             }
             if ($_var_name == 'smarty')
             {
-                 $p = $this->_compile_smarty_ref($t);
+                $p = $this->_compile_smarty_ref($t);
             }
             else
             {
@@ -1055,9 +1063,12 @@ class cls_template
         if ($file_type == '.dwt')
         {
             /* 将模板中所有library替换为链接 */
-            $pattern     = '/<!--\s#BeginLibraryItem\s\"\/(.*?)\"\s-->.*?<!--\s#EndLibraryItem\s-->/se';
-            $replacement = "'{include file='.strtolower('\\1'). '}'";
-            $source      = preg_replace($pattern, $replacement, $source);
+            $pattern     = '/<!--\s#BeginLibraryItem\s\"\/(.*?)\"\s-->.*?<!--\s#EndLibraryItem\s-->/';
+            //$replacement = "'{include file='.strtolower('\\1'). '}'";
+            //$source      = preg_replace($pattern, $replacement, $source);
+            $source = preg_replace_callback($pattern,
+                function ($matches) { return '{include file='.strtolower($matches[1]). '}';},
+                $source);
 
             /* 检查有无动态库文件，如果有为其赋值 */
             $dyna_libs = get_dyna_libs($GLOBALS['_CFG']['template'], $this->_current_file);
@@ -1088,11 +1099,12 @@ class cls_template
                 }
             }
 
-       
-			/* By www.68ecshop.com 代码增加_start */
-			$source = preg_replace('/<head>/i', "<head>\r\n<base href=\"". $GLOBALS['ecs']->url() ."\" />",  $source);
-			/* By www.68ecshop.com 代码增加_end */
-			
+            /* 在头部加入版本信息 */
+            $source = preg_replace('/<head>/i', "<head>\r\n<meta name=\"Generator\" content=\"" . APPNAME .' ' . VERSION . "\" />",  $source);
+            /* By www.68ecshop.com 代码增加_start */
+            $source = preg_replace('/<head>/i', "<head>\r\n<base href=\"". $GLOBALS['ecs']->url() ."\" />",  $source);
+            /* By www.68ecshop.com 代码增加_end */
+
             /* 修正css路径 */
             $source = preg_replace('/(<link\shref=["|\'])(?:\.\/|\.\.\/)?(css\/)?([a-z0-9A-Z_]+\.css["|\']\srel=["|\']stylesheet["|\']\stype=["|\']text\/css["|\'])/i','\1' . $tmp_dir . '\2\3', $source);
 
@@ -1107,11 +1119,11 @@ class cls_template
         /**
          * 处理库文件
          */
-         elseif ($file_type == '.lbi')
-         {
+        elseif ($file_type == '.lbi')
+        {
             /* 去除meta */
             $source = preg_replace('/<meta\shttp-equiv=["|\']Content-Type["|\']\scontent=["|\']text\/html;\scharset=(?:.*?)["|\']>\r?\n?/i', '', $source);
-         }
+        }
 
         /* 替换文件编码头部 */
         if (strpos($source, "\xEF\xBB\xBF") !== FALSE)
@@ -1126,7 +1138,7 @@ class cls_template
             '/((?:background|src)\s*=\s*["|\'])(?:\.\/|\.\.\/)?(images\/.*?["|\'])/is', // 在images前加上 $tmp_dir
             '/((?:background|background-image):\s*?url\()(?:\.\/|\.\.\/)?(images\/)/is', // 在images前加上 $tmp_dir
             '/([\'|"])\.\.\//is', // 以../开头的路径全部修正为空
-            );
+        );
         $replace = array(
             '\1',
             '',
@@ -1134,7 +1146,7 @@ class cls_template
             '\1' . $tmp_dir . '\2',
             '\1' . $tmp_dir . '\2',
             '\1'
-            );
+        );
         return preg_replace($pattern, $replace, $source);
     }
 
