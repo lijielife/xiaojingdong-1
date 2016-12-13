@@ -18,7 +18,7 @@
 {insert_scripts files='jquery.json.js,transport.js'}
 {insert_scripts files='common.js'}
 </head>
-<body>
+<body>{insert name='add_url_uid'}
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
 <div class="first-show clearfix"> <!-- #BeginLibraryItem "/library/ad.lbi" --><!-- #EndLibraryItem -->
   <div class="w1210 clearfix">

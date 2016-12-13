@@ -99,8 +99,11 @@ function addToCartResponse(result)
        {
             location.href = 'user.php';
 	}
-    }else if (result.error == 888 || result.error == 777){
+    }else if (result.error == 888){
          alert(result.message);
+	}else if (result.error == 777){
+         alert(result.message);
+		 location.href = result.uri;
     }else{
       alert(result.message);
     }

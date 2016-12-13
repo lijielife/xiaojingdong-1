@@ -80,7 +80,7 @@ $_LANG['allot_priv'] = '分派权限';
 
 //促销管理
 $_LANG['bonus_manage'] = '红包管理';
-$_LANG['group_by'] = '团购活动管理';
+$_LANG['group_by'] = '拼团活动管理';
 $_LANG['auction'] = '拍卖活动';
 $_LANG['favourable'] = '优惠活动管理';
 $_LANG['pre_sale'] = '预售活动管理';

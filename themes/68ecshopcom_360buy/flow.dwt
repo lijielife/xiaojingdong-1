@@ -988,6 +988,20 @@ data-widget="tab-item">
       <tr>
         <td align="center" style="padding-bottom:30px;"> {if $pay_online}
           {$pay_online}
+          {if $order.pay_id eq $weixin_pay}
+			<script>
+                run();
+                function run(){
+                    $.get("waiting_weixin_pay.php?step=waiting_weixin_pay&order_id="+{$order.order_id},function(data){
+                        if(data=="1"){
+                           window.location="user.php?act=order_detail&order_id="+{$order.order_id};
+                        }else{
+                            run();
+                        }
+                    });
+                }
+            </script>
+          {/if}
           {else} <a href="user.php?act=order_list" class="enter-order-center">进入我的订单中心</a>{/if} </td>
       </tr>
     </table>

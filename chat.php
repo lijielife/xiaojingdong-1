@@ -434,10 +434,9 @@ function action_chat ()
 		else
 		{
 			$xmpp_domain = get_xmpp_domain();
-			
 			$_SESSION['OF_FROM'] = $user_id . '@' . $xmpp_domain;
 			$_SESSION['OF_TO'] = $to['of_username'] . '@' . $xmpp_domain;
-			
+
 			$smarty->assign('from', $_SESSION['OF_FROM']);
 			$smarty->assign('password', $password);
 			// $smarty->assign('password', "123456");
@@ -459,6 +458,7 @@ function action_chat ()
 	}
 	
 	// 打开聊天页面
+	//print_r($customers);
 	$smarty->display('chat.dwt');
 }
 

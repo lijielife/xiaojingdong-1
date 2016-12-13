@@ -14,6 +14,7 @@
 <script type="application/javascript" src="themesmobile/68ecshopcom_mobile/js/jquery.more.js"></script>
 </head>
 <body class="body_bj">
+{insert name='share'}{insert name='add_url_uid'}
 <section class="_pre" >
 <header id="head_search_box" style="position: fixed; top: 0px; width: 100%; z-index:9999;">
 

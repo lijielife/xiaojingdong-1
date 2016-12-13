@@ -149,13 +149,13 @@
   {if $user.parent_id}
   <tr>
     <td class="label">{$lang.parent_user}:</td>
-    <td><a href="users.php?act=edit&id={$user.parent_id}">{$user.parent_username}</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="users.php?act=remove_parent&id={$user.user_id}">{$lang.parent_remove}</a></td>
+    <td><a href="distributor.php?act=edit&id={$user.parent_id}">{$user.parent_username}</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="distributor.php?act=remove_parent&id={$user.user_id}">{$lang.parent_remove}</a></td>
   </tr>
   {/if}
   {if $affiliate.on eq 1 && $affdb}
   <tr>
     <td class="label">{$lang.affiliate_user}:</td>
-    <td>[<a href="users.php?act=aff_list&auid={$user.user_id}">{$lang.show_affiliate_users}</a>][<a href="affiliate_ck.php?act=list&auid={$user.user_id}">{$lang.show_affiliate_orders}</a>]</td>
+    <td>[<a href="distributor.php?act=aff_list&auid={$user.user_id}">{$lang.show_affiliate_users}</a>][<a href="affiliate_ck.php?act=list&auid={$user.user_id}">{$lang.show_affiliate_orders}</a>]</td>
   </tr>
   <tr>
     <td></td>

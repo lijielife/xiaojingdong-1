@@ -183,6 +183,16 @@ function checkEmailExist(email, callback) {
 	}, 'text');
 }
 
+function checkMobile(sMobile){ 
+	if(!(/^1[3|4|5|7|8][0-9]\d{4,8}$/.test(sMobile))){ 
+		return false; 
+	}
+	else
+	{
+		return true;
+	}
+}
+
 function checkMobilePhone(mobile, callback) {
 	var submit_disabled = false;
 
@@ -203,6 +213,14 @@ function checkMobilePhone(mobile, callback) {
 		}
 
 	} else if (!Utils.isMobile(mobile)) {
+		document.getElementById('mobile_phone_notice').innerHTML = msg_mobile_phone_format;
+		document.getElementById('mobile_phone_notice').style.color = '#E31939';
+		submit_disabled = true;
+
+		if (mobileObj != null) {
+			mobileObj.focus();
+		}
+	} else if(!checkMobile(mobile)){
 		document.getElementById('mobile_phone_notice').innerHTML = msg_mobile_phone_format;
 		document.getElementById('mobile_phone_notice').style.color = '#E31939';
 		submit_disabled = true;

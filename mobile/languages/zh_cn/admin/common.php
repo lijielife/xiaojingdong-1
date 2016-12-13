@@ -188,7 +188,7 @@ $_LANG['06_pack_list'] = '商品包装';
 $_LANG['07_card_list'] = '祝福贺卡';
 $_LANG['pack_add'] = '添加新包装';
 $_LANG['card_add'] = '添加新贺卡';
-$_LANG['08_group_buy'] = '团购活动';
+$_LANG['08_group_buy'] = '拼团活动';
 $_LANG['09_topic'] = '专题管理';
 $_LANG['topic_add'] = '添加专题';
 $_LANG['topic_list'] = '专题列表';
@@ -257,7 +257,7 @@ $_LANG['suppliers_list'] = '供货商列表';
 
 /* 系统设置 */
 $_LANG['01_shop_config'] = '商店设置';
-$_LANG['shop_authorized'] = '授权证书';
+
 $_LANG['shp_webcollect'] = '网罗天下';
 $_LANG['02_payment_list'] = '支付方式';
 $_LANG['03_shipping_list'] = '配送方式';
@@ -286,7 +286,7 @@ $_LANG['02_db_manage'] = '数据备份';
 $_LANG['03_db_optimize'] = '数据表优化';
 $_LANG['04_sql_query'] = 'SQL查询';
 $_LANG['05_synchronous'] = '同步数据';
-$_LANG['convert'] = '转换数据';
+
 
 /* 短信管理 */
 $_LANG['02_sms_my_info'] = '账号信息';

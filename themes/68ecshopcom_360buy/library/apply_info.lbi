@@ -4,9 +4,9 @@
     <dl>
       <dt>欢迎来到 B2B2C 商城</dt>
       <dd> 若您还没有填写入驻申请资料<br>
-        请点击“<a href="{if !$smarty.session.user_id >0}javascript:;{else}apply.php{/if}" target="_blank">我要入驻</a>”进行入驻资料填写</dd>
+        请点击“<a href="{if !$smarty.session.user_id >0}javascript:;{else}apply.php{/if}">我要入驻</a>”进行入驻资料填写</dd>
       <dd>若您的店铺还未开通<br>
-        请通过“<a href="{if !$smarty.session.user_id >0}javascript:;{else}apply.php{/if}" target="_blank">查看入驻进度</a>”了解店铺开通的最新状况 </dd>
+        请通过“<a href="{if !$smarty.session.user_id >0}javascript:;{else}apply.php{/if}">查看入驻进度</a>”了解店铺开通的最新状况 </dd>
     </dl>
     <div class="bottom"><a href="{if !$smarty.session.user_id >0}javascript:;{else}apply.php{/if}" target="_blank">我要入驻</a><a href="{if !$smarty.session.user_id >0}javascript:;{else}apply.php{/if}" target="_blank">查看入驻进度</a></div>
   </div>

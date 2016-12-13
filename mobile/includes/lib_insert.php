@@ -706,7 +706,10 @@ function insert_get_shop_shipping($arr){
 		}
 		$i=0;
 		$sql_where = $_SESSION['user_id']>0 ? "user_id='". $_SESSION['user_id'] ."' " : "session_id = '" . SESS_ID . "' AND user_id=0 ";
-		$sql = 'SELECT count(*) FROM ' . $ecs->table('cart') . " WHERE $sql_where AND `extension_code` != 'package_buy' AND `is_shipping` = 0 AND rec_id in (".$_SESSION['sel_cartgoods'].")"; //jx
+        if($_SESSION['sel_cartgoods']){
+            $sql_plus = " AND rec_id in (".$_SESSION['sel_cartgoods'].") ";
+        }
+		$sql = 'SELECT count(*) FROM ' . $ecs->table('cart') . " WHERE $sql_where AND `extension_code` != 'package_buy' AND `is_shipping` = 0 ".$sql_plus; //jx
 		$shipping_count = $db->getOne($sql);
         $order['shipping_pay'][$suppid] = 0;
 		foreach($shipping_list as $key=>$val){
@@ -848,6 +851,7 @@ function insert_add_url_uid(){
     if($user_id)
     {
         $url = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+        $url = str_replace('//', '/', $url);
         $stru = strstr($url, 'u=');
         if(empty($stru))
         {
@@ -862,6 +866,54 @@ function insert_add_url_uid(){
             exit();
         }
     }
+}
+
+/*
+ * 微信分享 朋友、朋友圈 基础配置
+ *
+ */
+function insert_share(){
+    $weixin_info = $GLOBALS['db']->getRow("SELECT * FROM ".$GLOBALS['ecs']->table('weixin_config'));
+    if($weixin_info['title'] && $weixin_info['appid'] && $weixin_info['appsecret']){
+        require_once "wxjs/jssdk.php";
+
+        $jssdk = new JSSDK($weixin_info['appid'], $weixin_info['appsecret']);
+        $signPackage = $jssdk->GetSignPackage();
+        if($signPackage){
+        	//判断是否登陆
+        	if(!empty($_SESSION['user_id'])){
+        		$GLOBALS['smarty']->assign('is_login', '1');
+        	}
+        	// //判断是否微信
+        	$is_weixin = is_weixin();
+        	if($is_weixin){
+        		$GLOBALS['smarty']->assign('is_weixin', '1');
+        	}
+
+            $need_cache = $GLOBALS['smarty']->caching;
+            $GLOBALS['smarty']->caching = false;
+
+            $GLOBALS['smarty']->assign('weixin_info', $weixin_info);
+            $GLOBALS['smarty']->assign('signPackage', $signPackage);
+            $output = $GLOBALS['smarty']->fetch('library/share.lbi');
+
+            $GLOBALS['smarty']->caching = $need_cache;
+            return $output;
+        }
+
+    }
+}
+function is_weixin()
+{
+	$useragent = addslashes($_SERVER['HTTP_USER_AGENT']);
+	if(strpos($useragent, 'MicroMessenger') === false && strpos($useragent, 'Windows Phone') === false )
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
 }
 
 ?>

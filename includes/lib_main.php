@@ -169,7 +169,7 @@ function assign_ur_here($cat = 0, $str = '')
     }
 
     /* 初始化“页面标题”和“当前位置” */
-    $page_title = $GLOBALS['_CFG']['shop_title'] . '  ' . '';
+    $page_title = $GLOBALS['_CFG']['shop_title'];
     $ur_here    = '<a href="." class="index">' . $GLOBALS['_LANG']['home'] . '</a>';
 
     /* 根据文件名分别处理中间的部分 */

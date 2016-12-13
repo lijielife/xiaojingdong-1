@@ -396,7 +396,8 @@ function get_where_sql($filter)
     $time = date('Y-m-d');
 
     $where  = isset($filter->is_delete) && $filter->is_delete == '1' ?
-        ' WHERE supplier_id=0 AND is_delete = 1 ' : ' WHERE supplier_id=0 AND is_delete = 0 ';
+        // ' WHERE supplier_id=0 AND is_delete = 1 ' : ' WHERE supplier_id=0 AND is_delete = 0 '; //入驻商商品不能加入专题BUG
+        ' WHERE is_delete = 1 ' : ' WHERE is_delete = 0 ';
     $where .= (isset($filter->real_goods) && ($filter->real_goods > -1)) ? ' AND is_real = ' . intval($filter->real_goods) : '';
     $where .= isset($filter->cat_id) && $filter->cat_id > 0 ? ' AND ' . get_children($filter->cat_id) : '';
     $where .= isset($filter->brand_id) && $filter->brand_id > 0 ? " AND brand_id = '" . $filter->brand_id . "'" : '';

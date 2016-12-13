@@ -491,6 +491,7 @@ function get_user_orders_ajax($user_id, $limit,$where='')
 		$arr[$row['order_id']] = array('order_id'       => $row['order_id'],
 						'order_sn'       => $row['order_sn'],
 						'shopname'       => $row['shopname'],
+                        'extension_code' => $row['extension_code'],
 						'order_time'     => local_date($GLOBALS['_CFG']['time_format'], $row['add_time']),
 						'order_status'   => str_replace(',',' ',$row['order_status']),
 						'order_status1'  => $row['order_status1'],

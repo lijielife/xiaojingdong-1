@@ -42,7 +42,7 @@ $_LANG['integral_not_enough'] = '您使用的积分不能超过您现有的积�
 $_LANG['integral_too_much'] = "您使用的积分不能超过%d";
 $_LANG['invalid_bonus'] = "您选择的红包并不存在。";
 $_LANG['no_goods_in_cart'] = '您的购物车中没有商品！';
-$_LANG['not_submit_order'] = '您参与本次团购商品的订单已提交，请勿重复操作！';
+$_LANG['not_submit_order'] = '您参与本次拼团商品的订单已提交，请勿重复操作！';
 $_LANG['pay_success'] = '本次支付已经成功，我们将尽快为您发货。';
 $_LANG['pay_fail'] = '本次支付失败，请及时和我们取得联系。';
 $_LANG['pay_disabled'] = '您选用的支付方式已经被停用。';
@@ -165,7 +165,7 @@ $_LANG['order_submit_back'] = '您可以 %s 或去 %s';
 $_LANG['order_placed_sms'] = "您有新订单.收货人:%s 电话:%s";
 $_LANG['sms_paid'] = '已付款';
 
-$_LANG['notice_gb_order_amount'] = '（备注：团购如果有保证金，第一次只需支付保证金和相应的支付费用）';
+$_LANG['notice_gb_order_amount'] = '（备注：拼团如果有保证金，第一次只需支付保证金和相应的支付费用）';
 
 $_LANG['pay_order'] = '支付订单 %s';
 $_LANG['validate_bonus'] = '验证红包';

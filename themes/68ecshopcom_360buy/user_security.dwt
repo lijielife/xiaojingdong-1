@@ -42,7 +42,7 @@ function countdown(obj, msg) {
 </script>
 </head>
 <body>
-<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/page_header_normal.lbi" --><!-- #EndLibraryItem -->
 <div class="margin-w1210 clearfix"> <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
   <div class="user-left"> 
   	<!-- #BeginLibraryItem "/library/user_info.lbi" --><!-- #EndLibraryItem --> 

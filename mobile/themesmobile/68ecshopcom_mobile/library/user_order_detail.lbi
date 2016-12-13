@@ -4,7 +4,7 @@
 <div class="order_up">
 <div class="lan">
 <dl>
-<dd>
+<dd>{if $order.extension_code eq 'pre_sale'}<span>[预售活动]</span>{/if}
 {if $order.order_status eq '已取消'}
 <span style=" line-height:50px;">订单已取消</span>
 {else}

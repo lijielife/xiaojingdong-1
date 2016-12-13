@@ -1843,7 +1843,9 @@ elseif ($_REQUEST['step'] == 'done')
     	
     	$cart_goods = $cart_goods_new[$ok]['goodlist']; 
     	
-    	$id_ext_new = " AND rec_id in (". implode(',',array_keys($cart_goods)) .") ";
+        if($cart_goods){
+        	$id_ext_new = " AND rec_id in (". implode(',',array_keys($cart_goods)) .") ";
+        }
     	
     	//获取佣金id
     	$order['rebate_id'] = get_order_rebate($ok);
@@ -2360,9 +2362,12 @@ function flow_drop_cart_goods($id)
             $_del_str = trim($_del_str, ',');
 
 			/* 代码修改_start  By  www.68ecshop.com  将这块替换掉*/
+            if($_del_str){
+                $sql_plus = " rec_id IN ($_del_str) OR ";
+            }
             $sql = "DELETE FROM " . $GLOBALS['ecs']->table('cart') .
                     " WHERE $sql_where " .
-                    "AND (rec_id IN ($_del_str) OR parent_id = '$row[goods_id]' OR is_gift <> 0)";
+                    "AND ('$sql_plus' parent_id = '$row[goods_id]' OR is_gift <> 0)";
 			/* 代码修改_end  By  www.68ecshop.com  */
         }
 
@@ -2459,9 +2464,12 @@ $sql_where = $_SESSION['user_id']>0 ? "user_id='". $_SESSION['user_id'] ."' " : 
 
     /* 删除 */
 	/* 代码修改_start  By  www.68ecshop.com  将这块替换掉*/
+    if($del_rec_id){
+        $sql_plus = " AND rec_id IN ($del_rec_id) ";
+    }
     $sql = "DELETE FROM " . $GLOBALS['ecs']->table('cart') ."
             WHERE $sql_where 
-            AND rec_id IN ($del_rec_id)";
+            ".$sql_plus;
 	/* 代码修改_end  By  www.68ecshop.com  */
     $GLOBALS['db']->query($sql);
 }

@@ -778,7 +778,10 @@ function insert_get_shop_shipping($arr){
 		}
 		$i=0;
 		$sql_where = $_SESSION['user_id']>0 ? "user_id='". $_SESSION['user_id'] ."' " : "session_id = '" . SESS_ID . "' AND user_id=0 ";
-		$sql = 'SELECT count(*) FROM ' . $ecs->table('cart') . " WHERE $sql_where AND `extension_code` != 'package_buy' AND `is_shipping` = 0 AND rec_id in (".$_SESSION['sel_cartgoods'].")"; //jx
+        if($_SESSION['sel_cartgoods']){
+            $sql_plus = " AND rec_id in (".$_SESSION['sel_cartgoods'].") ";
+        }
+		$sql = 'SELECT count(*) FROM ' . $ecs->table('cart') . " WHERE $sql_where AND `extension_code` != 'package_buy' AND `is_shipping` = 0 ".$sql_plus; //jx
 		$shipping_count = $db->getOne($sql);
 
 		$order['shipping_pay'][$suppid] = 0;
@@ -850,6 +853,7 @@ function insert_add_url_uid(){
     if($user_id)
     {
         $url = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+        $url = str_replace('//', '/', $url);
         $stru = strstr($url, 'u=');
         if(empty($stru))
         {

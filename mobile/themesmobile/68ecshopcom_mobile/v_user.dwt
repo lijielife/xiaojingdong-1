@@ -23,7 +23,7 @@
 {/if}
 </dt>
 <dd><span>{if $user_info.nickname}{$user_info.nickname}{else}{$info.username}{/if}</span>
-<em>您是由{if $user_info.parent_id}ID{$user_info.parent_id}{else}平台方{/if}推荐</em></dd>
+<em>您是由{if $user_info.parent_id}{$user_info.parent_name}{else}平台方{/if}推荐</em></dd>
 </dl>
 <ul>
 <li style=" border-right:1px solid #191c27; margin-left:-1px;"><span class="v_1">小店订单：{$total_order_count}</span></li>

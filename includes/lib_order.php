@@ -850,13 +850,19 @@ function order_fee($order, $goods, $consignee)
 
 			// 查看购物车中是否全为免运费商品，若是则把运费赋为零
 		   $sql_where = $_SESSION['user_id']>0 ? "c.user_id='". $_SESSION['user_id'] ."' " : "c.session_id = '" . SESS_ID . "' AND c.user_id=0 ";
-		   if ($val['extension_code'] == 'package_buy')
+		   //zhouhui
+           if($_SESSION['sel_cartgoods'])
+           {
+                $sql_plus = " AND c.rec_id in (".$_SESSION['sel_cartgoods'].")";
+           }
+
+           if ($val['extension_code'] == 'package_buy')
 		   {
-			   $sql = 'SELECT count(*) FROM ' . $GLOBALS['ecs']->table('cart') . " AS c left join ". $GLOBALS['ecs']->table('goods_activity') ." AS g on c.goods_id=g.act_id WHERE g.supplier_id = '". $row_supp['supplier_id'] ."' AND $sql_where AND c.extension_code != 'package_buy' AND c.is_shipping = 0 AND c.rec_id in (".$_SESSION['sel_cartgoods'].")";  //jx
+			   $sql = 'SELECT count(*) FROM ' . $GLOBALS['ecs']->table('cart') . " AS c left join ". $GLOBALS['ecs']->table('goods_activity') ." AS g on c.goods_id=g.act_id WHERE g.supplier_id = '". $row_supp['supplier_id'] ."' AND $sql_where AND c.extension_code != 'package_buy' AND c.is_shipping = 0 ".$sql_plus;  //jx
 		   }
 		   else
 		   {
-			   $sql = 'SELECT count(*) FROM ' . $GLOBALS['ecs']->table('cart') . " AS c left join ". $GLOBALS['ecs']->table('goods') ." AS g on c.goods_id=g.goods_id WHERE g.supplier_id = '". $row_supp['supplier_id'] ."' AND $sql_where AND c.extension_code != 'package_buy' AND c.is_shipping = 0 AND c.rec_id in (".$_SESSION['sel_cartgoods'].")";  //jx
+			   $sql = 'SELECT count(*) FROM ' . $GLOBALS['ecs']->table('cart') . " AS c left join ". $GLOBALS['ecs']->table('goods') ." AS g on c.goods_id=g.goods_id WHERE g.supplier_id = '". $row_supp['supplier_id'] ."' AND $sql_where AND c.extension_code != 'package_buy' AND c.is_shipping = 0 ".$sql_plus;  //jx
 		   }
 		   
 		   $shipping_count_supp = $GLOBALS['db']->getOne($sql);
@@ -1198,7 +1204,9 @@ function cart_amount_new($cartids='', $include_gift = true, $type = CART_GENERAL
             "AND rec_type = '$type' ";
     if (is_array($cartids)){
     	$idinfo = array_filter($cartids);
-    	$sql .= ' AND rec_id in('.implode(',',$idinfo).')';
+        if($idinfo){
+        	$sql .= ' AND rec_id in('.implode(',',$idinfo).')';
+        }
     }
     if (!$include_gift)
     {
@@ -2251,6 +2259,9 @@ function get_total_bonus($supplier_money_info)
     /* 取得购物车中非赠品总金额 */
 	if(!is_array($supplier_money_info)){
 		/* 按商品发的红包 */
+        if($_SESSION['sel_cartgoods']){
+            $sql_plus = " AND c.rec_id in (".$_SESSION['sel_cartgoods'].") ";
+        }
 		$sql = "SELECT SUM(c.goods_number * t.type_money)" .
 				"FROM " . $GLOBALS['ecs']->table('cart') . " AS c, "
 						. $GLOBALS['ecs']->table('bonus_type') . " AS t, "
@@ -2262,15 +2273,18 @@ function get_total_bonus($supplier_money_info)
 				"AND t.send_type = '" . SEND_BY_GOODS . "' " .
 				"AND t.send_start_date <= '$today' " .
 				"AND t.send_end_date >= '$today' " .
-				"AND c.rec_id in (".$_SESSION['sel_cartgoods'].") ".
-				"AND c.rec_type = '" . CART_GENERAL_GOODS . "'";
+				$sql_plus .
+				" AND c.rec_type = '" . CART_GENERAL_GOODS . "'";
 		$goods_total = floatval($GLOBALS['db']->getOne($sql));
 
-		$sql = "SELECT SUM(goods_price * goods_number) " .
+		if($_SESSION['sel_cartgoods']){
+            $sql_plus = " AND rec_id in (".$_SESSION['sel_cartgoods'].") ";
+        }
+        $sql = "SELECT SUM(goods_price * goods_number) " .
 				"FROM " . $GLOBALS['ecs']->table('cart') .
 				" WHERE $sql_where1 " .
 				" AND is_gift = 0 " .
-				" AND rec_id in (".$_SESSION['sel_cartgoods'].") ".
+				$sql_plus.
 				" AND rec_type = '" . CART_GENERAL_GOODS . "'";
 		$amount = floatval($GLOBALS['db']->getOne($sql));
 
@@ -2284,6 +2298,9 @@ function get_total_bonus($supplier_money_info)
 		$order_total = floatval($GLOBALS['db']->getOne($sql));
 	}else{
 		$order_total = $goods_total = 0;
+        if($_SESSION['sel_cartgoods']){
+            $sql_plus = " AND c.rec_id in (".$_SESSION['sel_cartgoods'].") ";
+        }
 		foreach($supplier_money_info as $key => $val){
 
 			/* 按商品发的红包 */
@@ -2300,8 +2317,8 @@ function get_total_bonus($supplier_money_info)
 					"AND t.send_start_date <= '$today' " .
 					"AND t.send_end_date >= '$today' " .
 					"AND g.supplier_id = ".$key.
-					" AND c.rec_id in (".$_SESSION['sel_cartgoods'].") ".
-					"AND c.rec_type = '" . CART_GENERAL_GOODS . "'";
+					$sql_plus.
+					" AND c.rec_type = '" . CART_GENERAL_GOODS . "'";
 			$goods_total += $GLOBALS['db']->getOne($sql);
 
 			$sql = "SELECT FLOOR('$val' / min_amount) * type_money " .
@@ -3053,6 +3070,9 @@ function compute_discount($supplierid=-1)
 function get_give_integral()
 {
 	$sql_where = $_SESSION['user_id']>0 ? "c.user_id='". $_SESSION['user_id'] ."' " : "c.session_id = '" . SESS_ID . "' AND c.user_id=0 ";
+    if($_SESSION['sel_cartgoods']){
+        $sql_plus = " AND c.rec_id in (".$_SESSION['sel_cartgoods'].")" ;
+    }
     $sql = "SELECT " .
 		" SUM(IF(c.extension_code = 'package_buy', 0, c.goods_number * IF(g.give_integral > -1, g.give_integral, c.goods_price))) " .
 		" FROM " . $GLOBALS['ecs']->table('cart') . " AS c " .
@@ -3061,7 +3081,7 @@ function get_give_integral()
         " LEFT JOIN " . $GLOBALS['ecs']->table('goods_activity') . " AS ga " .
 		" ON c.goods_id = ga.goods_id " .
 		" WHERE " . $sql_where .
-		" AND c.rec_id in (".$_SESSION['sel_cartgoods'].")" .
+		$sql_plus.
 		" AND c.goods_id > 0 " .
 		" AND c.parent_id = 0 " .
 		" AND c.rec_type = 0 " .
@@ -3589,7 +3609,10 @@ function cart_weight_price2($type = CART_GENERAL_GOODS, $supplier_id)
 	$sql_where = $_SESSION['user_id']>0 ? "user_id='". $_SESSION['user_id'] ."' " : "session_id = '" . SESS_ID . "' AND user_id=0 ";
 
     /* 计算超值礼包内商品的相关配送参数 */
-	$sql = 'SELECT goods_id, goods_number, goods_price FROM ' . $GLOBALS['ecs']->table('cart') . " WHERE extension_code = 'package_buy' AND ".$sql_where." AND rec_id in (".$_SESSION['sel_cartgoods'].")";
+    if($_SESSION['sel_cartgoods']){
+        $sql_plus = "AND rec_id in (".$_SESSION['sel_cartgoods'].")";
+    }
+	$sql = 'SELECT goods_id, goods_number, goods_price FROM ' . $GLOBALS['ecs']->table('cart') . " WHERE extension_code = 'package_buy' AND ".$sql_where." ".$sql_plus;
     $row = $GLOBALS['db']->getAll($sql);
 
     if ($row)

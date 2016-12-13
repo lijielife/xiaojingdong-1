@@ -244,7 +244,14 @@
      * @param array $post
      */
     function API_UserLogin($post)
-    {
+    {   
+
+        /* SQL注入过滤 */
+         if (get_magic_quotes_gpc()) {     
+            $post['UserId']=$post['UserId']     
+        } else {     
+            $post['UserId']=addslashes($post['UserId']);     
+        }
         $post['username'] = isset($post['UserId']) ? trim($post['UserId']) : '';
         $post['password'] = isset($post['Password']) ? strtolower(trim($post['Password'])) : '';
 

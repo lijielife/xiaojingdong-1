@@ -865,7 +865,7 @@ function set_flash_data($tplname, &$msg)
         $flashdata[] = array(
                                 'src' => 'data/afficheimg/20081027angsif.jpg',
                                 'text' => 'ECShop',
-                                'url' =>'http://www.ecshop.com'
+                                'url' =>'http://www.xxxxxxx.com'
                             );
         $flashdata[] = array(
                                 'src' => 'data/afficheimg/20081027xuorxj.jpg',

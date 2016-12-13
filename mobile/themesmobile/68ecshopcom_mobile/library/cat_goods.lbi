@@ -19,7 +19,7 @@
                       {if $goods.promote_price}
                 <span> {$goods.promote_price}</span><em>{$goods.shop_price}</em>
                {else}
-                <span> {$goods.market_price}</span><em>{$goods.shop_price}</em>
+                <span>{$goods.shop_price}</span><em>{$goods.market_price}</em>
                {/if}
                     </div>
                     </div>

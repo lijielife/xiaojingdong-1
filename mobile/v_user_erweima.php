@@ -6,7 +6,6 @@ define('IN_ECS', true);
 require(dirname(__FILE__) . '/includes/init.php');
 require(dirname(__FILE__) . '/includes/lib_v_user.php');
 require(dirname(__FILE__) . '/weixin/wechat.class.php');
-
 if ((DEBUG_MODE & 2) != 2)
 {
     $smarty->caching = true;
@@ -81,27 +80,19 @@ if($_SESSION['user_id'] != $user_id && $user_id > 0)
 	{
 		$url = $GLOBALS['ecs']->url()."/v_user_erweima.php?user_id=" . $user_id;
 		$url = $weixin->getOauthRedirect($url,1,'snsapi_userinfo');
-		header("Location:$url");exit;
+		// header("Location:$url");exit;
 	}
 }
 
 //是否生成过二维码
 if(is_erweima($_SESSION['user_id']) == 0)
 {
-	file_put_contents('666.txt','aaa');
-	file_put_contents('666.txt','bbb');
 	$config = $GLOBALS['db']->getRow ( "SELECT * FROM " . $GLOBALS['ecs']->table('weixin_config') . " WHERE `id` = 1" );
-	file_put_contents('666.txt','ccc');
 	$weixin = new core_lib_wechat($config);
-	file_put_contents('666.txt','ddd');
 	$scene_id = $db->getOne("select id from " . $GLOBALS['ecs']->table('weixin_qcode') . " order by id desc");
-	file_put_contents('666.txt','eee');
 	$scene_id = $scene_id ? $scene_id+1 : 1;
-	file_put_contents('666.txt','fff');
 	$qcode = $weixin->getQRCode($scene_id,1,$_SESSION['user_id']);
-	file_put_contents('666.txt','ggg');
 	$GLOBALS['db']->query("insert into " . $GLOBALS['ecs']->table('weixin_qcode') . " (`id`,`type`,`content`,`qcode`) value ($scene_id,4,'" . $_SESSION['user_id'] . "','{$qcode['ticket']}')");
-	file_put_contents('666.txt','hhh');
 }
 
 
@@ -116,9 +107,18 @@ if (!$smarty->is_cached('v_user_erweima.dwt', $cache_id))
     /* meta information */
     $smarty->assign('keywords',        htmlspecialchars($_CFG['shop_keywords']));
     $smarty->assign('description',     htmlspecialchars($_CFG['shop_desc']));
-	$smarty->assign('user_info',get_user_info_by_user_id($_SESSION['user_id'])); 
-	$smarty->assign('erweima',get_erweima_by_user_id($_SESSION['user_id']));
-	$smarty->assign('user_id',$_SESSION['user_id']);
+    //zhouhui 如果是获取的uid 则读取它.
+    if($user_id){
+    	$smarty->assign('user_info',	   get_user_info_by_user_id($user_id)); 
+    	$smarty->assign('erweima',get_erweima_by_user_id($user_id));
+		$smarty->assign('user_id',$user_id);
+    }else
+    {
+		$smarty->assign('user_info',	   get_user_info_by_user_id($_SESSION['user_id'])); 
+		$smarty->assign('erweima',get_erweima_by_user_id($_SESSION['user_id']));
+		$smarty->assign('user_id',$_SESSION['user_id']);
+	}
+	
 	
     /* 页面中的动态内容 */
     assign_dynamic('v_user_erweima');

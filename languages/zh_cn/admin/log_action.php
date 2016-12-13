@@ -69,7 +69,7 @@ $_LANG['log_action']['ads_position'] = '广告位置';
 $_LANG['log_action']['ads'] = '广告';
 $_LANG['log_action']['area'] = '地区';
 
-$_LANG['log_action']['group_buy'] = '团购商品';
+$_LANG['log_action']['group_buy'] = '拼团商品';
 $_LANG['log_action']['goods_type'] = '商品类型';
 $_LANG['log_action']['booking'] = '缺货登记管理';
 $_LANG['log_action']['tag_manage'] = '标签管理';

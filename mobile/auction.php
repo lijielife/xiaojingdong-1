@@ -1,5 +1,5 @@
 <?php
-
+//decode by QQ:270656184 http://www.yunlu99.com/
 /**
  * ECSHOP 拍卖前台文件
  * ============================================================================
@@ -62,6 +62,7 @@ if ($_REQUEST['act'] == 'list')
         {
             /* 取得当前页的拍卖活动 */
             $auction_list = auction_list($size, $page);
+
             $smarty->assign('auction_list',  $auction_list);
 
             /* 设置分页链接 */
@@ -184,6 +185,10 @@ elseif ($_REQUEST['act'] == 'view')
     $sql = 'UPDATE ' . $ecs->table('goods') . ' SET click_count = click_count + 1 '.
            "WHERE goods_id = '" . $auction['goods_id'] . "'";
     $db->query($sql);
+
+    $sql = "SELECT count(*) FROM ".$ecs->table('auction_log')." WHERE act_id=".$id;
+    $auction_log_count = $db->getOne($sql);
+    $smarty->assign('auction_log_count',  $auction_log_count); 
 
     $smarty->assign('now_time',  gmtime());           // 当前系统时间
     $smarty->display('auction.dwt', $cache_id);
@@ -411,8 +416,8 @@ elseif ($_REQUEST['act'] == 'buy')
         'goods_sn'       => addslashes($goods['goods_sn']),
         'goods_name'     => addslashes($goods['goods_name']),
         'market_price'   => $goods['market_price'],
-    	'cost_price'     => $goods['cost_price'],
-    	'promote_price'  => $goods['promote_price'],
+        'cost_price'     => $goods['cost_price'],
+        'promote_price'  => $goods['promote_price'],
         'goods_price'    => $auction['last_bid']['bid_price'],
         'goods_number'   => 1,
         'goods_attr'     => $goods_attr,
@@ -466,13 +471,27 @@ function auction_list($size, $page)
             "FROM " . $GLOBALS['ecs']->table('goods_activity') . " AS a " .
                 "LEFT JOIN " . $GLOBALS['ecs']->table('goods') . " AS g ON a.goods_id = g.goods_id " .
             "WHERE a.act_type = '" . GAT_AUCTION . "' " .
-            "AND a.start_time <= '$now' AND a.end_time >= '$now' AND a.is_finished < 2 ORDER BY a.act_id DESC";
+            " ORDER BY a.act_id DESC";
     $res = $GLOBALS['db']->selectLimit($sql, $size, ($page - 1) * $size);
     while ($row = $GLOBALS['db']->fetchRow($res))
     {
         $ext_info = unserialize($row['ext_info']);
         $auction = array_merge($row, $ext_info);
-        $auction['status_no'] = auction_status($auction);
+        // $auction['status_no'] = auction_status($auction);
+        // 未开始
+        if($row['start_time'] > $now){
+            $auction['status_no'] = '0';
+        }
+
+        //正在进行
+        if($row['start_time'] < $now && $row['end_time'] > $now){
+            $auction['status_no'] = '1';
+        }
+
+        //已结束
+        if($row['end_time'] < $now){
+            $auction['status_no'] = '2';
+        }
 
         $auction['start_time'] = local_date($GLOBALS['_CFG']['time_format'], $auction['start_time']);
         $auction['end_time']   = local_date($GLOBALS['_CFG']['time_format'], $auction['end_time']);
@@ -481,6 +500,9 @@ function auction_list($size, $page)
         $auction['formated_deposit'] = price_format($auction['deposit']);
         $auction['goods_thumb'] = get_image_path($row['goods_id'], $row['goods_thumb'], true);
         $auction['url'] = build_uri('auction', array('auid'=>$auction['act_id']));
+
+        $sql = "SELECT count(*) FROM ".$GLOBALS['ecs']->table('auction_log')." WHERE act_id=".$auction['act_id'];
+        $auction['act_count'] = $GLOBALS['db']->getOne($sql);
 
         if($auction['status_no'] < 2)
         {
@@ -496,5 +518,3 @@ function auction_list($size, $page)
 
     return $auction_list;
 }
-
-?>

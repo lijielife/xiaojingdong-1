@@ -22,6 +22,10 @@ require_once (ROOT_PATH . 'languages/' . $_CFG['lang'] . '/user.php');
 /*新版微信改动*/
 if(isset($_GET['wxid']) && !isset($_GET['is_update']))
 {
+	if(inject_check($_GET['wxid'])){
+		show_message("参数错误", '返回主页', 'index.php', 'info');
+	}
+
 	$sql = "SELECT ecuid FROM " . 
 			$GLOBALS['ecs']->table('weixin_user') . 
 			" WHERE fake_id  = '" . $_GET['wxid'] . "'"; 
@@ -4690,8 +4694,11 @@ function action_affiliate()
 		$page = ! empty($_REQUEST['page']) && intval($_REQUEST['page']) > 0 ? intval($_REQUEST['page']) : 1;
 		$size = ! empty($_CFG['page_size']) && intval($_CFG['page_size']) > 0 ? intval($_CFG['page_size']) : 10;
 		
-		empty($affiliate) && $affiliate = array();
+		// empty($affiliate) && $affiliate = array();
 		
+		$sql = "SELECT value FROM ".$ecs->table('shop_config')." WHERE code='affiliate'";
+		$affiliate = $db->getOne($sql);
+		$affiliate = unserialize($affiliate);
 		if(empty($affiliate['config']['separate_by']))
 		{
 			// 推荐注册分成
@@ -6199,5 +6206,10 @@ function get_array($num = 0){
         }
     }
     return $res;
+}
+
+function inject_check($str) {
+	$check = preg_match('/select|insert|update|delete|\'|\/\*|\*|\.\.\/|\.\/|union|into|load_file|outfile/i', $str);	
+	Return $check;
 }
 ?>

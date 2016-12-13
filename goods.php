@@ -1121,22 +1121,37 @@ function get_dianpu_baseinfo($suppid=0,$suppinfo){
    	$smarty->assign('region', get_province_city($_goods_attr['shop_province'],$_goods_attr['shop_city']));
 	$smarty->assign('address', $_goods_attr['shop_address']);
     /* 代码修改 By  www.68ecshop.com Start */
-    //	$smarty->assign('serviceqq', $_goods_attr['qq']);
-    //	$smarty->assign('serviceww', $_goods_attr['ww']);
-    $qq = $GLOBALS['db']->getAll("SELECT cus_no FROM " . $GLOBALS['ecs']->table('chat_third_customer') . " WHERE is_master = 1 AND cus_type = 0 AND supplier_id = $suppid");
-    $ww = $GLOBALS['db']->getAll("SELECT cus_no FROM " . $GLOBALS['ecs']->table('chat_third_customer') . " WHERE is_master = 1 AND cus_type = 1 AND supplier_id = $suppid");
-    $arr_qq[] = array();
-    $arr_ww = array();
-    foreach ($qq as $v)
-    {
-        $arr_qq[] = $v['cus_no'];
-    }
-    foreach ($ww as $v)
-    {
-        $arr_ww[] = $v['cus_no'];
-    }
-    $smarty->assign('serviceqq', $arr_qq);
-    $smarty->assign('serviceww', $arr_ww);
+    $_goods_attr['qq'] = explode(',', $_goods_attr['qq']);
+    $_goods_attr['ww'] = explode(',', $_goods_attr['ww']);
+    
+    //zhouhui 判断是否入住商品再分析显示联系QQ
+    if($suppinfo['supplier_name']){
+	    $smarty->assign('serviceqq', $_goods_attr['qq']);
+	}
+	else
+	{
+		$qq = $GLOBALS['db']->getAll("SELECT cus_no FROM " . $GLOBALS['ecs']->table('chat_third_customer') . " WHERE is_master = 1 AND cus_type = 0 AND supplier_id = $suppid");
+	    $arr_qq = array();
+	    foreach ($qq as $v)
+	    {
+	        $arr_qq[] = $v['cus_no'];
+	    }
+		$smarty->assign('serviceqq', $arr_qq);
+	}
+	//zhouhui 判断是否入住商品再分析显示联系旺旺
+	if($suppinfo['supplier_name']){
+	    $smarty->assign('serviceww', $_goods_attr['ww']);
+	}
+	else
+	{
+		$ww = $GLOBALS['db']->getAll("SELECT cus_no FROM " . $GLOBALS['ecs']->table('chat_third_customer') . " WHERE is_master = 1 AND cus_type = 1 AND supplier_id = $suppid");
+	    $arr_ww = array();
+	    foreach ($ww as $v)
+	    {
+	        $arr_ww[] = $v['cus_no'];
+	    }
+		$smarty->assign('serviceww', $arr_ww);
+	}
     /* 代码修改 By  www.68ecshop.com End */
 	$smarty->assign('serviceemail', $_goods_attr['service_email']);
 	$smarty->assign('servicephone', $_goods_attr['service_phone']);

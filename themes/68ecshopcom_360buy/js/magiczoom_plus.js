@@ -197,8 +197,12 @@ function show_attr_status(theid, goods_id, attr_id_www_ecshop68_com)
 			else
 			{
 				s1_list[jjj].className = 'wuxiao';
+				$('#shows_number').html('0');
 				//s1_list[jjj].onclick=function(){}				
 			}
+			$('#'+theid.id).siblings().removeClass('cattsel');
+			$('#'+theid.id).addClass('cattsel');
+				
 			document.getElementById('spec_value_' + s1_a_id).checked = false;
 		}
 		document.getElementById('spec_value_' + selid_www_ecshop68_com).checked = "checked";

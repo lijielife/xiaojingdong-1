@@ -231,16 +231,48 @@ switch ($act){
 		break;
 	case "notice":
 		if($_POST){
-			$buynotice = intval($_POST ['buynotice']);
-			$sendnotice = intval($_POST ['sendnotice']);
+			require_once(ROOT_PATH . 'includes/cls_image.php');
+			$file_url = '';
+			$file_plus = '';
+		    if ((isset($_FILES['weixin_logo']['error']) && $_FILES['weixin_logo']['error'] == 0) || (!isset($_FILES['weixin_logo']['error']) && isset($_FILES['weixin_logo']['tmp_name']) && $_FILES['weixin_logo']['tmp_name'] != 'none'))
+		    {
+		        if (!check_file_type($_FILES['weixin_logo']['tmp_name'], $_FILES['weixin_logo']['name'], $allow_file_types))
+		        {
+		            sys_msg($_LANG['invalid_file']);
+		        }
+
+		        $res = upload_article_file($_FILES['weixin_logo']);
+		        if ($res != false)
+		        {
+		            $file_url = $res;
+		            $file_plus = " `weixin_logo`	='$file_url', ";
+		        }
+		    }
+
+			$buynotice 		= intval($_POST ['buynotice']);
+			$is_everyday 	= intval($_POST ['is_everyday']);
+			$is_pengyou 	= intval($_POST ['is_pengyou']);
+			$is_pengyouquan = intval($_POST ['is_pengyouquan']);
+			$sendnotice 	= intval($_POST ['sendnotice']);
+			$pengyou_times 		= intval($_POST ['pengyou_times']);
+			$pengyouquan_times 	= intval($_POST ['pengyouquan_times']);
 			$buymsg = getstr($_POST['buymsg']);
 			$sendmsg = getstr($_POST['sendmsg']);
 			$ret = $db->query (
 					"UPDATE " . $GLOBALS['ecs']->table('weixin_config') . " SET
-					`buymsg`='$buymsg',
-					`sendmsg`='$sendmsg',
-					`buynotice`='$buynotice',
-					`sendnotice`='$sendnotice'
+					`buymsg`		='$buymsg',
+					`sendmsg`		='$sendmsg',
+					`is_everyday`	='$is_everyday',
+					`is_pengyou`	='$is_pengyou',
+					`is_pengyouquan`	='$is_pengyouquan',
+					`pengyou_times`		='$pengyou_times',
+					`pengyouquan_times`	='$pengyouquan_times',
+					`pengyou_money`		='$_POST[pengyou_money]',
+					`pengyou_point`		='$_POST[pengyou_point]',
+					`pengyouquan_money`	='$_POST[pengyouquan_money]',
+					`pengyouquan_point`	='$_POST[pengyouquan_point]',
+					`buynotice`			='$buynotice',".$file_plus."
+					`sendnotice`		='$sendnotice'
 					WHERE `id`=1;" );
 					$link [] = array ('href' => 'weixin.php?act=notice','text' => '提醒设置');
 			if ($ret) {
@@ -255,6 +287,18 @@ switch ($act){
 			$smarty->assign ( 'sendmsg', $ret ['sendmsg'] );
 			$smarty->assign ( 'buynotice', $ret ['buynotice'] );
 			$smarty->assign ( 'sendnotice', $ret ['sendnotice'] );
+
+			$smarty->assign ( 'is_everyday', $ret ['is_everyday'] );
+			$smarty->assign ( 'is_pengyou', $ret ['is_pengyou'] );
+			$smarty->assign ( 'is_pengyouquan', $ret ['is_pengyouquan'] );
+			$smarty->assign ( 'weixin_logo', $ret ['weixin_logo'] );
+			$smarty->assign ( 'pengyou_times', $ret ['pengyou_times'] );
+			$smarty->assign ( 'pengyouquan_times', $ret ['pengyouquan_times'] );
+			$smarty->assign ( 'pengyou_money', $ret ['pengyou_money'] );
+			$smarty->assign ( 'pengyou_point', $ret ['pengyou_point'] );
+			$smarty->assign ( 'pengyouquan_money', $ret ['pengyouquan_money'] );
+			$smarty->assign ( 'pengyouquan_point', $ret ['pengyouquan_point'] );
+
 			$smarty->display ( 'weixin/wx_notice.html' );
 		}
 		break;
@@ -358,7 +402,7 @@ switch ($act){
 					$sql = "SELECT COUNT(*) FROM " . 
 							$GLOBALS['ecs']->table('weixin_qcode') . 
 							" WHERE `type` = '$type' AND `content` = '$content'";
-					$count = $GLOABLS['db']->getOne($sql);
+					$count = $GLOBALS['db']->getOne($sql);
 					if($count == 0)
 					{
 						require('../weixin/wechat.class.php');

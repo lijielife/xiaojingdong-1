@@ -580,7 +580,7 @@ function order_fee($order, $goods, $consignee)
     }
     
     /* 预售活动 */
-    if ($order['extension_code'] == PRE_SALE_CODE)
+    if ($order['extension_code'] == 6)
     {
     	$pre_sale = pre_sale_info($order['extension_id']);
     }
@@ -623,7 +623,7 @@ function order_fee($order, $goods, $consignee)
     $total['saving_formated']       = price_format($total['saving'], false);
 
     /* 折扣 */
-    if ($order['extension_code'] != GROUP_BUY_CODE && $order['extension_code'] != PRE_SALE_CODE)
+    if ($order['extension_code'] != GROUP_BUY_CODE && $order['extension_code'] != 6)
     {
         $discount = compute_discount(isset($order['supplier_id']) ? $order['supplier_id'] : -1);
         $total['discount'] = $discount['discount'];
@@ -709,7 +709,7 @@ function order_fee($order, $goods, $consignee)
             {
                 $weight_price = cart_weight_price(CART_GROUP_BUY_GOODS);
             }
-            else if ($order['extension_code'] == PRE_SALE_CODE)
+            else if ($order['extension_code'] == 6)
             {
                 $weight_price = cart_weight_price(CART_PRE_SALE_GOODS);
             }
@@ -780,7 +780,10 @@ function order_fee($order, $goods, $consignee)
 
 			// 查看购物车中是否全为免运费商品，若是则把运费赋为零
 		   $sql_where = $_SESSION['user_id']>0 ? "c.user_id='". $_SESSION['user_id'] ."' " : "c.session_id = '" . SESS_ID . "' AND c.user_id=0 ";
-		   $sql = 'SELECT count(*) FROM ' . $GLOBALS['ecs']->table('cart') . " AS c left join ". $GLOBALS['ecs']->table('goods') ." AS g on c.goods_id=g.goods_id WHERE g.supplier_id = '". $row_supp['supplier_id'] ."' AND $sql_where AND c.extension_code != 'package_buy' AND c.is_shipping = 0 AND c.rec_id in (".$_SESSION['sel_cartgoods'].")";  //jx
+		   if($_SESSION['sel_cartgoods']){
+            $sql_plus = " AND c.rec_id in (".$_SESSION['sel_cartgoods'].") ";
+           }
+           $sql = 'SELECT count(*) FROM ' . $GLOBALS['ecs']->table('cart') . " AS c left join ". $GLOBALS['ecs']->table('goods') ." AS g on c.goods_id=g.goods_id WHERE g.supplier_id = '". $row_supp['supplier_id'] ."' AND $sql_where AND c.extension_code != 'package_buy' AND c.is_shipping = 0 ".$sql_plus;  //jx
 		   $shipping_count_supp = $GLOBALS['db']->getOne($sql);
 
 		   $total['supplier_shipping'][$row_supp['supplier_id']]['shipping_fee'] = ($shipping_count_supp == 0 AND $weight_price2['free_shipping'] == 1) ?0 :  shipping_fee($shipping_info['shipping_code'],$shipping_info['configure'], $weight_price2['weight'], $total['goods_price_supplier'][$row_supp['supplier_id']], $weight_price2['number']);
@@ -810,7 +813,7 @@ function order_fee($order, $goods, $consignee)
     {
         $total['amount'] = $total['goods_price'];
     }
-    else if($order['extension_code'] == PRE_SALE_CODE && $pre_sale['deposit'] > 0)
+    else if($order['extension_code'] == 6 && $pre_sale['deposit'] > 0)
     {
         $total['amount'] = $total['goods_price'];
     }
@@ -899,7 +902,7 @@ function order_fee($order, $goods, $consignee)
     {
     	$total['will_get_integral'] = $group_buy['gift_integral'];
     }
-    else if($order['extension_code'] == PRE_SALE_CODE)
+    else if($order['extension_code'] == 6)
     {
     	$total['will_get_integral'] = $pre_sale['gift_integral'];
     }
@@ -1114,7 +1117,9 @@ function cart_amount_new($cartids='', $include_gift = true, $type = CART_GENERAL
             "AND rec_type = '$type' ";
     if (is_array($cartids)){
     	$idinfo = array_filter($cartids);
-    	$sql .= ' AND rec_id in('.implode(',',$idinfo).')';
+        if($idinfo){
+        	$sql .= ' AND rec_id in('.implode(',',$idinfo).')';
+        }
     }
     if (!$include_gift)
     {
@@ -2083,6 +2088,9 @@ function get_total_bonus($supplier_money_info)
     /* 取得购物车中非赠品总金额 */
 	if(!is_array($supplier_money_info)){
 		/* 按商品发的红包 */
+        if($_SESSION['sel_cartgoods']){
+            $sql_plus = "AND c.rec_id in (".$_SESSION['sel_cartgoods'].") ";
+        }
 		$sql = "SELECT SUM(c.goods_number * t.type_money)" .
 				"FROM " . $GLOBALS['ecs']->table('cart') . " AS c, "
 						. $GLOBALS['ecs']->table('bonus_type') . " AS t, "
@@ -2094,15 +2102,18 @@ function get_total_bonus($supplier_money_info)
 				"AND t.send_type = '" . SEND_BY_GOODS . "' " .
 				"AND t.send_start_date <= '$today' " .
 				"AND t.send_end_date >= '$today' " .
-				"AND c.rec_id in (".$_SESSION['sel_cartgoods'].") ".
-				"AND c.rec_type = '" . CART_GENERAL_GOODS . "'";
+				$sql_plus.
+				" AND c.rec_type = '" . CART_GENERAL_GOODS . "'";
 		$goods_total = floatval($GLOBALS['db']->getOne($sql));
 
+        if($_SESSION['sel_cartgoods']){
+            $sql_plus = " AND rec_id in (".$_SESSION['sel_cartgoods'].") ";
+        }
 		$sql = "SELECT SUM(goods_price * goods_number) " .
 				"FROM " . $GLOBALS['ecs']->table('cart') .
 				" WHERE $sql_where1 " .
 				" AND is_gift = 0 " .
-				" AND rec_id in (".$_SESSION['sel_cartgoods'].") ".
+				$sql_plus .
 				" AND rec_type = '" . CART_GENERAL_GOODS . "'";
 		$amount = floatval($GLOBALS['db']->getOne($sql));
 
@@ -2116,6 +2127,9 @@ function get_total_bonus($supplier_money_info)
 		$order_total = floatval($GLOBALS['db']->getOne($sql));
 	}else{
 		$order_total = $goods_total = 0;
+        if($_SESSION['sel_cartgoods']){
+            $sql_plus = " AND c.rec_id in (".$_SESSION['sel_cartgoods'].") ";
+        }
 		foreach($supplier_money_info as $key => $val){
 
 			/* 按商品发的红包 */
@@ -2132,8 +2146,8 @@ function get_total_bonus($supplier_money_info)
 					"AND t.send_start_date <= '$today' " .
 					"AND t.send_end_date >= '$today' " .
 					"AND g.supplier_id = ".$key.
-					" AND c.rec_id in (".$_SESSION['sel_cartgoods'].") ".
-					"AND c.rec_type = '" . CART_GENERAL_GOODS . "'";
+					$sql_plus.
+					" AND c.rec_type = '" . CART_GENERAL_GOODS . "'";
 			$goods_total += $GLOBALS['db']->getOne($sql);
 
 			$sql = "SELECT FLOOR('$val' / min_amount) * type_money " .

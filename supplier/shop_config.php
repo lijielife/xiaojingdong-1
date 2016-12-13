@@ -31,7 +31,7 @@ $sess_id = $GLOBALS['sess']->get_session_id();
 
 $auth = mktime();
 $ac = md5($certi_id.'SHOPEX_SMS'.$auth);
-$url = 'http://service.shopex.cn/sms/index.php?certificate_id='.$certi_id.'&sess_id='.$sess_id.'&auth='.$auth.'&ac='.$ac;
+$url = 'http://xxxxxxxxxxx/sms/index.php?certificate_id='.$certi_id.'&sess_id='.$sess_id.'&auth='.$auth.'&ac='.$ac;
 
 /*------------------------------------------------------ */
 //-- 列表编辑 ?act=list_edit
@@ -106,6 +106,11 @@ if ($_REQUEST['act'] == 'list_edit')
     }
     $smarty->assign('cfg', $_CFG);
 
+    //zhouhui
+    $sql = "SELECT latitude,longitude FROM ".$ecs->table('supplier')." where supplier_id=". $_SESSION['supplier_id'];
+    $supplier_info = $db->getRow($sql);
+    $smarty->assign('supplier_info', $supplier_info);
+
     assign_query_info();
     $smarty->display('shop_config.htm');
 }
@@ -135,6 +140,9 @@ elseif ($_REQUEST['act'] == 'post')
     $type = empty($_POST['type']) ? '' : $_POST['type'];
 	$jd=$_POST['jingdu'];
 	$wd=$_POST['weidu'];
+
+    //zhouhui
+    $db->query("UPDATE ".$ecs->table('supplier')." set latitude='$wd',longitude='$jd' where supplier_id=".$_SESSION['supplier_id']);
 	//$jd= substr($jd,7);
 	//$wd= substr($wd,7);
 	$sql="select * from ecs_supplier_shop_config where code='jingdu' and supplier_id=".$_SESSION['supplier_id'];
@@ -312,7 +320,7 @@ elseif ($_REQUEST['act'] == 'post')
     $spt .= "&email=$_CFG[service_email]&phone=$_CFG[service_phone]&icp=".urlencode($_CFG['icp_number']);
     $spt .= "&version=".VERSION."&language=$_CFG[lang]&php_ver=" .PHP_VERSION. "&mysql_ver=" .$db->version();
     $spt .= "&charset=".EC_CHARSET;
-    $spt .= '"></script>';
+
 
     if ($type == 'mail_setting')
     {

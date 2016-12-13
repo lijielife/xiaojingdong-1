@@ -49,7 +49,7 @@ function get_customers($cus_type = CUSTOMER_SERVICE, $supp_id = -1)
 		$of_username = $customer['of_username'];
 		
 		$exist = check_of_username_exist($of_username);
-		
+
 		if($exist)
 		{
 			$status = trim(get_of_user_status($of_username));
@@ -239,8 +239,8 @@ function get_of_user_status($username)
 	$of_url = get_of_url($of_ip, $of_port);
 	$of_domain = get_xmpp_domain();
 
-	$url = $of_url.'/plugins/presence/status?jid='.$username.'@'.$of_domain.'&type=xml';
-
+	$url = $of_url.'/plugins/presence/status?jid='.$username.'@'.$of_ip.'&type=xml';
+	
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url);
 	// 授权验证
@@ -301,13 +301,17 @@ function get_xmpp_domain()
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
 	// 运行curl
-	$result = curl_exec ( $ch );
-
+	$result = trim(curl_exec ( $ch ));
+ 	
 	// 关闭
 	curl_close ( $ch );
-
-	return $result;
+	//获得email的值  
+	$test = new SimpleXMLElement($result);
+	$email = $test->email;  
+	$result = $email;	
+	return $of_ip;//return $result;
 }
+
 
 /**
  *
@@ -325,38 +329,50 @@ function check_of_username_exist($username)
 	$of_port = $_CFG['chat_server_port'];
 	
 	$of_url = get_of_url($of_ip, $of_port);
-	
 	if(empty($username))
 	{
 		return false;
 	}
 
-	$url = $of_url.'/plugins/userService/users/'.$username.'/exist';
+	$url = $of_url.'/plugins/userService/users/'.$username;
 
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url);
 	// 授权验证
 	curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
 	curl_setopt($ch, CURLOPT_USERPWD, $of_username.":".$of_password);
+
 	// 设置可以读取返回值
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
 	// 运行curl
 	$result = trim(curl_exec ( $ch ));
-
 	// 关闭
 	curl_close ( $ch );
 	
-	if($result == 'true')
+	//读XML文件内容，并保存到字符串变量中	
+	$xml = new SimpleXMLElement($result);
+	//获得username的值  
+	$test = new SimpleXMLElement($result);
+	$refusername = $test->username;  
+	if(!empty($username))
 	{
-		return true;
+		if($refusername == $username)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 	else
 	{
 		return false;
-	}
+	}	
 
 }
+
 
 /**
  * 创建用户信息,如果用户信息存在则更新

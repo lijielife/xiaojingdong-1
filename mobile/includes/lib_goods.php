@@ -325,6 +325,9 @@ function get_recommend_goods($type = '', $cats = '')
             $goods[$idx]['shop_price']   = price_format($row['shop_price']);
             $goods[$idx]['final_price'] = price_format(get_final_price($row['goods_id'], 1, false));
             $goods[$idx]['is_exclusive']  = is_exclusive($row['exclusive'],get_final_price($row['goods_id']));
+            if(empty($row['goods_thumb'])){
+                $row['goods_thumb'] = $GLOBALS['db']->getOne("SELECT thumb_url FROM ".$GLOBALS['ecs']->table('goods_gallery')." WHERE goods_id=".$row['goods_id']);
+            }
             $goods[$idx]['thumb']        = get_pc_url().'/'. get_image_path($row['goods_id'], $row['goods_thumb'], true);
             $goods[$idx]['goods_img']    = get_pc_url().'/'. get_image_path($row['goods_id'], $row['goods_img']);
             $goods[$idx]['url']          = build_uri('goods', array('gid' => $row['goods_id']), $row['goods_name']);
@@ -1558,16 +1561,21 @@ return $three_c_arr;
 
 function selled_wap_count($goods_id)
 {
+    $sql = "SELECT ghost_count FROM ".$GLOBALS['ecs']->table('goods')." where goods_id=".$goods_id;
+    $ghost_count = $GLOBALS['db']->getOne($sql);
+
      $sql= "select sum(goods_number) as count from ".$GLOBALS['ecs']->table('order_goods')."where goods_id ='".$goods_id."'";
      $res = $GLOBALS['db']->getOne($sql);
      if($res>0)
-     {
-     return $res;
-     }
-     else
-     {
-       return('0');
-     }
+    {
+       $res = $res;
+    }
+    else
+    {
+        $res = 0;
+    }
+    $res += $ghost_count;
+    return $res;
 }
 
 function get_evaluation_sum($goods_id)

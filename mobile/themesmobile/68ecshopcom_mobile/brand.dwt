@@ -15,7 +15,7 @@
 <script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/jquery.more.js"></script>
 
 </head>
-<body class="body_bj">
+<body class="body_bj">{insert name='add_url_uid'}
 <!-- 头部 start -->
 <header class="header">
   <div class="tab_nav">

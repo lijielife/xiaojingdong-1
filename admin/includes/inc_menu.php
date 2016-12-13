@@ -54,7 +54,7 @@ $modules['02_cat_and_goods']['scan_store'] = 'scan.php?act=insert';
 $modules['03_promotion']['04_bonustype_list'] = 'bonus.php?act=list';
 // $modules['03_promotion']['06_pack_list'] = 'pack.php?act=list';
 // $modules['03_promotion']['07_card_list'] = 'card.php?act=list';
-// $modules['03_promotion']['08_group_buy'] = 'group_buy.php?act=list';
+$modules['03_promotion']['08_group_buy'] = 'group_buy.php?act=list';
 $modules['03_promotion']['09_topic'] = 'topic.php?act=list';
 $modules['03_promotion']['10_auction'] = 'auction.php?act=list';
 $modules['03_promotion']['12_favourable'] = 'favourable.php?act=list';
@@ -155,7 +155,6 @@ $modules['10_priv_admin']['agency_list'] = 'agency.php?act=list';
 $modules['10_priv_admin']['suppliers_list'] = 'suppliers.php?act=list'; // 供货商
 
 $modules['11_system']['01_shop_config'] = 'shop_config.php?act=list_edit';
-$modules['11_system']['shop_authorized'] = 'license.php?act=list_edit';
 $modules['11_system']['02_payment_list'] = 'payment.php?act=list';
 $modules['11_system']['03_shipping_list'] = 'shipping.php?act=list';
 $modules['11_system']['04_mail_settings'] = 'shop_config.php?act=mail_settings';
@@ -184,7 +183,6 @@ $modules['13_backup']['02_db_manage'] = 'database.php?act=backup';
 $modules['13_backup']['03_db_optimize'] = 'database.php?act=optimize';
 $modules['13_backup']['04_sql_query'] = 'sql.php?act=main';
 // $modules['13_backup']['05_synchronous'] = 'integrate.php?act=sync';
-$modules['13_backup']['convert'] = 'convert.php?act=main';
 
 // $modules['14_sms']['02_sms_my_info'] = 'sms.php?act=display_my_info';
 $modules['14_sms']['03_sms_send'] = 'sms.php?act=display_send_ui';

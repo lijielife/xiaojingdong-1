@@ -984,7 +984,7 @@ function assign_ur_here($cat = 0, $str = '')
     }
 
     /* 初始化“页面标题”和“当前位置” */
-    $page_title = $GLOBALS['_CFG']['shop_title'] . '  ' . '';
+    $page_title = $GLOBALS['_CFG']['shop_title'];
     $ur_here    = '<a href=".">' . $GLOBALS['_LANG']['home'] . '</a>';
 
     /* 根据文件名分别处理中间的部分 */
@@ -2941,7 +2941,7 @@ function license_info()
         }
         $url_domain=url_domain();
         $host = 'http://' . $host .$url_domain ;
-        $license = '<a href="http://www.ecshop.com/license.php?product=ecshop_b2c&url=' . urlencode($host) . '" target="_blank"
+        $license = '<a href="http://www.xxxxxxx.com/license.php?product=ecshop_b2c&url=' . urlencode($host) . '" target="_blank"
 >&nbsp;&nbsp;Licensed</a>';
         return $license;
     }

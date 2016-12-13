@@ -6,7 +6,7 @@
           
          {if $order.customers}<i><a href="javascript:chat_online({chat_order_id: '{$order.order_id}', chat_supp_id: '{$order.supplier_id}'});"></a></i>{elseif $order.tel}<i><a href="tel:{$order.tel}"></a></i>{/if}
           
-          <strong>{$order.order_status}</strong></h2>
+          <strong>{$order.order_status}</strong>{if $order.extension_code eq 'pre_sale'}<strong>[预售]</strong>{/if}</h2>
          <a href="user.php?act=order_detail&order_id={$order.order_id}">
        {foreach from=$order.goods_list item=goods name=goods}
        <div class="order_list_goods">

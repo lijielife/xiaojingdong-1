@@ -60,6 +60,12 @@ if ($_REQUEST['act'] == 'add')
 {
     /*初始化*/
     $pickup_point = array();
+
+    if(empty($GLOBALS['_CFG']['shop_country'])){
+        $lnk[] = array('text' => '商店设置', 'href' => 'shop_config.php?act=list_edit');
+        sys_msg('请先设置您店铺所在是省、市、区', 0, $lnk);
+    }
+    
 	$sql = 'select * from ' . $GLOBALS['ecs']->table('region') . ' where parent_id=' . $GLOBALS['_CFG']['shop_country'];
 	$province_list = $GLOBALS['db']->getAll($sql);
 	

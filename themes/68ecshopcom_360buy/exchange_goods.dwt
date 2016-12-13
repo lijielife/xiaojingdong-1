@@ -61,7 +61,7 @@ function reg(str){
   <!-- #BeginLibraryItem "/library/ur_here.lbi" --><!-- #EndLibraryItem -->
     <div id="product-intro" class="goods-info"> 
       <div id="preview">
-        <div style="position:relative;" class="goods-img"> <a href="{if $pictures.0.img_original}{$pictures.0.img_original}{else}{$goods.original_img}{/if}" class="MagicZoom" id="zoom" rel="zoom-position: right;"> 
+        <div style="position:relative; z-index:3;" class="goods-img"> <a href="{if $pictures.0.img_original}{$pictures.0.img_original}{else}{$goods.original_img}{/if}" class="MagicZoom" id="zoom" rel="zoom-position: right;"> 
           <!-- {if $pictures}--> 
           <img  src="{$pictures.0.img_url}" class="goodsimg" id="goods_bimg" width="400" height="400" /> 
           <!-- {else} --> 

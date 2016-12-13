@@ -22,7 +22,7 @@ p a {
 }
 </style>
 </head><body>
-  <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+  <!-- #BeginLibraryItem "/library/page_header_normal.lbi" --><!-- #EndLibraryItem -->
   <div class="blank"></div>
   <div class="block">
     <div class="box">

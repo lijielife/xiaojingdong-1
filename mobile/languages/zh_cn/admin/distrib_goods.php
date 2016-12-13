@@ -82,13 +82,13 @@ $_LANG['button_succeed'] = '活动成功';
 $_LANG['notice_succeed'] = '（更新订单价格）';
 $_LANG['button_fail'] = '活动失败';
 $_LANG['notice_fail'] = '（取消订单，保证金退回帐户余额，失败原因可以写到活动说明中）';
-$_LANG['cancel_order_reason'] = '团购失败';
+$_LANG['cancel_order_reason'] = '拼团失败';
 $_LANG['js_languages']['succeed_confirm'] = '此操作不可逆，您确定要设置该分销商品成功吗？';
 $_LANG['js_languages']['fail_confirm'] = '此操作不可逆，您确定要设置该分销商品失败吗？';
 $_LANG['button_mail'] = '发送邮件';
 $_LANG['notice_mail'] = '（通知客户付清余款，以便发货）';
 $_LANG['mail_result'] = '该分销商品共有 %s 个有效订单，成功发送了 %s 封邮件。';
-$_LANG['invalid_time'] = '您输入了一个无效的团购时间。';
+$_LANG['invalid_time'] = '您输入了一个无效的拼团时间。';
 
 $_LANG['add_success'] = '添加分销商品成功。';
 $_LANG['edit_success'] = '编辑分销商品成功。';
@@ -103,7 +103,7 @@ $_LANG['error_goods_exist'] = '您选择的商品目前有一个分销商品正�
 $_LANG['error_price_ladder'] = '您没有输入有效的价格阶梯！';
 $_LANG['error_restrict_amount'] = '限购数量不能小于价格阶梯中的最大数量';
 
-$_LANG['js_languages']['error_goods_null'] = '您没有选择团购商品！';
+$_LANG['js_languages']['error_goods_null'] = '您没有选择拼团商品！';
 $_LANG['js_languages']['error_deposit'] = '您输入的保证金不是数字！';
 $_LANG['js_languages']['error_restrict_amount'] = '您输入的限购数量不是整数！';
 $_LANG['js_languages']['error_gift_integral'] = '您输入的赠送积分数不是整数！';
@@ -116,7 +116,7 @@ $_LANG['batch_drop_success'] = '成功删除了 %s 条分销商品记录（已�
 $_LANG['no_select_group_buy'] = '您现在没有分销商品记录！';
 
 /* 操作日志 */
-$_LANG['log_action']['group_buy'] = '团购商品';
+$_LANG['log_action']['group_buy'] = '拼团商品';
 
 $_LANG['button_remove'] = '删除分销商品';
 

@@ -1605,18 +1605,23 @@ function  is_exist_prod($first_arr, $one, $prod_exist_arr)
  function selled_count($goods_id)
 {
 	/*$sql = "select sum(goods_number) from " . $GLOBALS['ecs']->table('order_goods') . " AS g ,".$GLOBALS['ecs']->table('order_info') . " AS o WHERE o.pay_status = 2 AND o.order_status >= 1 and o.order_id=g.order_id and g.goods_id = " . $goods_id    ;注意订单状态*/
-	$sql = "select sum(goods_number) from ". $GLOBALS['ecs']->table('order_goods') ." where goods_id=".$goods_id;
+	
+    $sql = "SELECT ghost_count FROM ".$GLOBALS['ecs']->table('goods')." where goods_id=".$goods_id;
+    $ghost_count = $GLOBALS['db']->getOne($sql);
+
+    $sql = "select sum(goods_number) from ". $GLOBALS['ecs']->table('order_goods') ." where goods_id=".$goods_id;
 
    $res = $GLOBALS['db']->getOne($sql);
    if($res>0)
-   {
+    {
 	   $res = $res;
 	}
-	else{
+	else
+    {
 		$res = 0;
-		}
-	
-return $res;
+	}
+	$res += $ghost_count;
+    return $res;
 }
 
 /**

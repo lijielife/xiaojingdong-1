@@ -404,6 +404,6 @@ if($reMsg){
 	if($content){
 		$xhyData = $weixinconfig['auto_reply'];
 		//$xhyData = $weixin->http_post("http://www.niurenqushi.com/app/simsimi/ajax.aspx",array('txt'=>$content));
-		echo $weixin->text("自动回复：".$xhyData)->reply();exit;
+		//echo $weixin->text("自动回复：".$xhyData)->reply();exit;
 	}
 }

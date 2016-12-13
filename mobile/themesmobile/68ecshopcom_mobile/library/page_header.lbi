@@ -1,5 +1,4 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-{insert name='add_url_uid'}
 <script type="text/javascript">
 var process_request = "{$lang.process_request}";
 </script>

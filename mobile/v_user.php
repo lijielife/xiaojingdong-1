@@ -46,6 +46,7 @@ if (!$smarty->is_cached('v_user.dwt', $cache_id))
 	$user_money = get_user_money_by_user_id($_SESSION['user_id']); //用户余额
 	$split_money = get_split_money_by_user_id($_SESSION['user_id']); //分成总金额
 	$user_info['parent_id'] = $db->getOne("select parent_id from ".$ecs->table('users')." where user_id=".$_SESSION['user_id']);
+	$user_info['parent_name'] = $db->getOne("select user_name from ".$ecs->table('users')." where user_id=".$user_info['parent_id']);
 	$smarty->assign('user_info',$user_info);
 	$smarty->assign('info',get_user_info($_SESSION['user_id']));
 	$smarty->assign('user_money',$user_money);

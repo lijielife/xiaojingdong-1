@@ -74,7 +74,7 @@ $_LANG['act_false'] = '操作失败';
 $_LANG['act_ship_num'] = '此单发货数量不能超出订单商品数量';
 $_LANG['act_good_vacancy'] = '商品已缺货';
 $_LANG['act_good_delivery'] = '货已发完';
-$_LANG['notice_gb_ship'] = '备注：团购活动未处理为成功前，不能发货';
+$_LANG['notice_gb_ship'] = '备注：拼团活动未处理为成功前，不能发货';
 $_LANG['back_list'] = '返回订单列表';
 $_LANG['op_remove'] = '删除';
 $_LANG['op_you_can'] = '您可进行的操作';
@@ -90,7 +90,7 @@ $_LANG['address'] = '地址';
 $_LANG['order_time'] = '下单时间';
 $_LANG['detail'] = '查看';
 $_LANG['phone'] = '电话';
-$_LANG['group_buy'] = '（团购）';
+$_LANG['group_buy'] = '（拼团）';
 $_LANG['error_get_goods_info'] = '获取订单商品信息错误';
 $_LANG['exchange_goods'] = '（积分兑换）';
 
@@ -192,7 +192,7 @@ $_LANG['label_money_dues'] = '应付款金额：';
 $_LANG['label_money_refund'] = '应退款金额：';
 $_LANG['label_to_buyer'] = '商家给客户的留言：';
 $_LANG['save_order'] = '保存订单';
-$_LANG['notice_gb_order_amount'] = '（备注：团购如果有保证金，第一次只需支付保证金和相应的支付费用）';
+$_LANG['notice_gb_order_amount'] = '（备注：拼团如果有保证金，第一次只需支付保证金和相应的支付费用）';
 
 $_LANG['action_user'] = '操作者：';
 $_LANG['action_time'] = '操作时间';

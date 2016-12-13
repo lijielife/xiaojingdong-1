@@ -905,6 +905,8 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
     $give_integral = isset($_POST['give_integral']) ? intval($_POST['give_integral']) : '-1';
     $rank_integral = isset($_POST['rank_integral']) ? intval($_POST['rank_integral']) : '-1';
     $suppliers_id = isset($_POST['suppliers_id']) ? intval($_POST['suppliers_id']) : '0';
+    $ghost_count = isset($_POST['ghost_count']) ? intval($_POST['ghost_count']) : '0';
+
 
 	//手机专享价格 app   jx 
 	$exclusive = !empty($_POST['exclusive']) ? $_POST['exclusive'] : -1;
@@ -930,12 +932,12 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
     {
         if ($code == '')
         {
-            $sql = "INSERT INTO " . $ecs->table('goods') . " (goods_name, goods_name_style, goods_sn, " .
+            $sql = "INSERT INTO " . $ecs->table('goods') . " (goods_name, goods_name_style, ghost_count, goods_sn, " .
                     "cat_id, brand_id, shop_price, market_price, is_promote, zhekou, promote_price, " .
                     "promote_start_date, promote_end_date, is_buy,buymax,buymax_start_date,buymax_end_date, goods_img, goods_thumb, original_img, keywords, goods_brief, " .
                     "seller_note, goods_weight, goods_number, warn_number, integral, give_integral, is_best, is_new, is_hot, " .
                     "is_on_sale, is_alone_sale, is_shipping, goods_desc, add_time, last_update, goods_type, rank_integral,exclusive, suppliers_id, cost_price)" .
-                "VALUES ('$_POST[goods_name]', '$goods_name_style', '$goods_sn', '$catgory_id', " .
+                "VALUES ('$_POST[goods_name]', '$goods_name_style', '$ghost_count', '$goods_sn', '$catgory_id', " .
                     "'$brand_id', '$shop_price', '$market_price', '$is_promote', '$zhekou', '$promote_price', ".
                     "'$promote_start_date', '$promote_end_date', '$is_buy','$buymax','$buymax_start_date','$buymax_end_date','$goods_img', '$goods_thumb', '$original_img', ".
                     "'$_POST[keywords]', '$_POST[goods_brief]', '$_POST[seller_note]', '$goods_weight', '$goods_number',".
@@ -944,12 +946,12 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
         }
         else
         {
-            $sql = "INSERT INTO " . $ecs->table('goods') . " (goods_name, goods_name_style, goods_sn, " .
+            $sql = "INSERT INTO " . $ecs->table('goods') . " (goods_name, goods_name_style, ghost_count, goods_sn, " .
                     "cat_id, brand_id, shop_price, market_price, is_promote, zhekou, promote_price, " .
                     "promote_start_date, promote_end_date, is_buy,buymax,buymax_start_date,buymax_end_date,goods_img, goods_thumb, original_img, keywords, goods_brief, " .
                     "seller_note, goods_weight, goods_number, warn_number, integral, give_integral, is_best, is_new, is_hot, is_real, " .
                     "is_on_sale, is_alone_sale, is_shipping, goods_desc, add_time, last_update, goods_type, extension_code,exclusive, rank_integral, cost_price)" .
-                "VALUES ('$_POST[goods_name]', '$goods_name_style', '$goods_sn', '$catgory_id', " .
+                "VALUES ('$_POST[goods_name]', '$goods_name_style', '$ghost_count', '$goods_sn', '$catgory_id', " .
                     "'$brand_id', '$shop_price', '$market_price', '$is_promote', '$zhekou', '$promote_price', ".
                     "'$promote_start_date', '$promote_end_date', '$is_buy','$buymax','$buymax_start_date','$buymax_end_date', '$goods_img', '$goods_thumb', '$original_img', ".
                     "'$_POST[keywords]', '$_POST[goods_brief]', '$_POST[seller_note]', '$goods_weight', '$goods_number',".
@@ -994,6 +996,7 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
                 "brand_id = '$brand_id', " .
                 "shop_price = '$shop_price', " .
 				"exclusive = '$exclusive', ".//手机专享价  app jx
+                "ghost_count = '$ghost_count', ".//虚拟销量
                 "market_price = '$market_price', " .
                 "is_promote = '$is_promote', " .
 				"zhekou = '$zhekou', " .

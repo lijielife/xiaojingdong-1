@@ -78,7 +78,9 @@ if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'selcart')
     $res    = array('err_msg' => '', 'result' => '');
 	if ($_GET['sel_goods'])
 	{
-		$id_ext = " AND rec_id in (". $_GET['sel_goods'] .") ";
+        if($_GET['sel_goods']){
+    		$id_ext = " AND rec_id in (". $_GET['sel_goods'] .") ";
+        }
 		$cart_goods = get_cart_goods($id_ext);
 		$shopping_money = sprintf($_LANG['shopping_money'], $cart_goods['total']['goods_price']);
 		$market_price_desc= sprintf($_LANG['than_market_price'],
@@ -471,8 +473,8 @@ if ($_REQUEST['step'] == 'add_to_cart')
     		/* 进入收货人页面 */
     		$uri = build_uri("pre_sale", array("pre_sale_id" => $pre_sale_id));
     		$result['error']  = 777;
-    		$result['message'] = "此商品为预售商品，请用电脑进行购买";
-    		$result['uri'] = $uri;
+    		$result['message'] = "请到预售商品区购买，自动跳转中";
+    		$result['uri'] = 'pre_sale.php?id='.$pre_sale_id;
     		die($json->encode($result));
     	}
     }
@@ -1123,7 +1125,10 @@ elseif ($_REQUEST['step'] == 'checkout')
             if($flow_type != CART_EXCHANGE_GOODS)
 		{
 		$time_xg_now=gmtime();
-		$sql="select c.goods_number,g.goods_id, g.goods_name,g.is_buy, g.buymax, g.buymax_start_date, g.buymax_end_date from ".$ecs->table('cart'). " AS c left join ".$ecs->table('goods'). " AS g on c.goods_id=g.goods_id where c.rec_id in (".$_REQUEST['sel_goods'].")";
+        if($_REQUEST['sel_goods']){
+            $sql_plus = " and c.rec_id in (".$_REQUEST['sel_goods'].") ";
+        }
+		$sql="select c.goods_number,g.goods_id, g.goods_name,g.is_buy, g.buymax, g.buymax_start_date, g.buymax_end_date from ".$ecs->table('cart'). " AS c left join ".$ecs->table('goods'). " AS g on c.goods_id=g.goods_id where 1 ".$sql_plus;
 		$goods_list = $db->getAll($sql);
 		foreach($goods_list as $k => $v)
 		{
@@ -2882,7 +2887,9 @@ elseif ($_REQUEST['step'] == 'done')
     	
     	$cart_goods = $cart_goods_new[$ok]['goodlist']; 
     	
-    	$id_ext_new = " AND rec_id in (". implode(',',array_keys($cart_goods)) .") ";
+        if($cart_goods){
+        	$id_ext_new = " AND rec_id in (". implode(',',array_keys($cart_goods)) .") ";
+        }
     	
     	//获取佣金id
     	$order['rebate_id'] = 0;//get_order_rebate($ok);
@@ -3744,7 +3751,9 @@ if($_REQUEST['step']=='update_group_cart')
 	$result['subtotal'] = price_format($subtotal, false);
 	//$result['cart_amount_desc'] = sprintf($_LANG['shopping_money'], $cart_goods['total']['goods_price']);
 	/* 取得商品列表，计算合计 */
-            $id_ext = " AND rec_id in (". $_GET['sel_goods'] .") ";
+    if($_GET['sel_goods']){
+        $id_ext = " AND rec_id in (". $_GET['sel_goods'] .") ";
+    }
 	$cart_goods = get_cart_goods($id_ext);
 	//$cart_goods = get_cart_goods();
 	
@@ -4071,9 +4080,12 @@ function flow_drop_cart_goods($id)
             }
             $_del_str = trim($_del_str, ',');
 
+            if($_del_str){
+                $sql_plus = "rec_id IN ($_del_str) OR ";
+            }
             $sql = "DELETE FROM " . $GLOBALS['ecs']->table('cart') .
                     " WHERE $sql_where " .
-                    "AND (rec_id IN ($_del_str) OR parent_id = '$row[goods_id]' OR is_gift <> 0)";
+                    "AND (".$sql_plus." parent_id = '$row[goods_id]' OR is_gift <> 0)";
         }
 
         //如果不是普通商品，只删除该商品即可
@@ -4161,9 +4173,12 @@ $sql_where = $_SESSION['user_id']>0 ? "user_id='". $_SESSION['user_id'] ."' " : 
     }
 
     /* 删除 */
+    if($del_rec_id){
+        $sql_plus =" AND rec_id IN ($del_rec_id) ";
+    }
     $sql = "DELETE FROM " . $GLOBALS['ecs']->table('cart') ."
             WHERE $sql_where 
-            AND rec_id IN ($del_rec_id)";
+            " .$sql_plus;
     $GLOBALS['db']->query($sql);
 }
 

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -131,6 +132,7 @@
                     <!-- {/if} --> 
                   </div>
                 </div>
+               <!--{if $goods.goods_brand neq "" and $cfg.show_brand || $cfg.use_integral || $cfg.show_goodsweight || $cfg.show_addtime}-->
                <ul id="summary1">
                   <!-- {if $goods.goods_brand neq "" and $cfg.show_brand} 显示商品品牌-->
                   <li class="padd">
@@ -156,7 +158,8 @@
                     <div class="dd"> {$goods.add_time} </div>
                   </li>
                   <!-- {/if} -->
-                </ul>
+               </ul>
+               <!--{/if}-->
                <div id="summary-qita">
                   <ul class="qita">
                     <li>
@@ -179,6 +182,7 @@
                     <!-- {/if} -->
                   </ul>
                </div>
+               <!--{if $promotion || $volume_price_list || $goods.is_shipping}-->
                <ul id="summary">
                   <!-- {if $promotion} -->
                   <li class="padd padd-promotion clearfix"> 
@@ -288,9 +292,10 @@
                   <li class="padd padd-spe"> {$lang.goods_free_shipping}</li>
                   <!-- {/if} -->
                 </ul>
+                <!--{/if}-->
                <ul id="choose" class="choose_bor">
                   <!--{if $pups && $ppts}后台安装了门店自提这个配送方式才显示-->
-                  <li>
+                  <li class="choose-pickup-point">
                     <div class="pickup-point-wrap">
                       <div class="dt">自提</div>
                       <div id="pickup_point" onmouseenter="show_list()" onmouseleave="hide_list()">自提点列表</div>
@@ -320,9 +325,9 @@
                       <input type="hidden" name="attr_types" id="spec_attr_type_{$spec_key}" value="0">
                       <ul class="ys_xuan" id="xuan_{$spec_key}">
                         <div class="catt" id="catt_{$spec_key}"> 
-                          <!-- {foreach from=$spec.values item=value key=key} --> 
-                          <a onclick="show_attr_status(this,{$goods.goods_id}, {$attr_id});{if $spec_key eq $attr_id}get_gallery_attr({$id}, {$value.id});{/if}"  href="javascript:" name="{$value.id}" id="xuan_a_{$value.id}"  title="[{if $value.price gt 0}{$lang.plus}{elseif $value.price lt 0}{$lang.minus}{/if} {$value.format_price|abs}]" {if $value.disabled eq 'disabled' && $spec_count eq 1}class="wuxiao"{/if}>
-                          {if  $value.goods_attr_thumb}
+                          <!-- {foreach from=$spec.values item=value key=key} -->
+                            <a onclick="show_attr_status(this,{$goods.goods_id}, {$attr_id});{if $spec_key eq $attr_id}get_gallery_attr({$id}, {$value.id});{/if}"  href="javascript:" name="{$value.id}" id="xuan_a_{$value.id}"  title="[{if $value.price gt 0}{$lang.plus}{elseif $value.price lt 0}{$lang.minus}{/if} {$value.format_price|abs}]" {if $value.disabled eq 'disabled' && $spec_count eq 1}class="wuxiao"{/if}>
+                            {if  $value.goods_attr_thumb}
                           <div class="spec-img"><img src="{$value.goods_attr_thumb}" width=40 height=40 title="{$value.label}" alt="{$value.label}" /></div>
                           <label class="spec-name">{$value.label}</label>
                           {else}
@@ -578,7 +583,7 @@ var select_spe = "{$lang.select_spe}";
 changePriceAll();
 fixpng();
 ShowMyComments({$goods.goods_id},0,1);
-try { onload_leftTime(); }
+try { onload_leftTime(now_time); }
 catch (e) {}
 
 /**

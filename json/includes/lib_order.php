@@ -985,7 +985,9 @@ function cart_amount_new($cartids='', $include_gift = true, $type = CART_GENERAL
             "AND rec_type = '$type' ";
     if (is_array($cartids)){
     	$idinfo = array_filter($cartids);
-    	$sql .= ' AND rec_id in('.implode(',',$idinfo).')';
+        if($idinfo){
+        	$sql .= ' AND rec_id in('.implode(',',$idinfo).')';
+        }
     }
     if (!$include_gift)
     {
@@ -2685,12 +2687,16 @@ function compute_discount($supplierid=-1)
 function get_give_integral()
 {
 	$sql_where = $_SESSION['user_id']>0 ? "c.user_id='". $_SESSION['user_id'] ."' " : "c.session_id = '" . SESS_ID . "' AND c.user_id=0 ";
-        $sql = "SELECT SUM(c.goods_number * IF(g.give_integral > -1, g.give_integral, c.goods_price))" .
+    if($_SESSION['sel_cartgoods']){
+       $sql_plus = " AND c.rec_id in (".$_SESSION['sel_cartgoods'].") ";
+    }
+
+    $sql = "SELECT SUM(c.goods_number * IF(g.give_integral > -1, g.give_integral, c.goods_price))" .
                 "FROM " . $GLOBALS['ecs']->table('cart') . " AS c, " .
                           $GLOBALS['ecs']->table('goods') . " AS g " .
                 "WHERE c.goods_id = g.goods_id " .
                 "AND $sql_where " .
-				"AND c.rec_id in (".$_SESSION['sel_cartgoods'].")" .
+				$sql_plus .
                 "AND c.goods_id > 0 " .
                 "AND c.parent_id = 0 " .
                 "AND c.rec_type = 0 " .

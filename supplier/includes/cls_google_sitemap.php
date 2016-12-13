@@ -1,46 +1,100 @@
-<?php //0046a
-if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo('Site error: the file <b>'.__FILE__.'</b> requires the ionCube PHP Loader '.basename($__ln).' to be installed by the website operator. If you are the website operator please use the <a href="http://www.ioncube.com/lw/">ionCube Loader Wizard</a> to assist with installation.');exit(199);
+<?php
+
+/**
+ * ECSHOP Google sitemap 类
+ * ============================================================================
+ * * 版权所有 2005-2012 上海商派网络科技有限公司，并保留所有权利。
+ * 网站地址: http://www.ecshop.com；
+ * ----------------------------------------------------------------------------
+ * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和
+ * 使用；不允许对程序代码以任何形式任何目的的再发布。
+ * ============================================================================
+ * $Author: liubo $
+ * $Id: cls_google_sitemap.php 17217 2011-01-19 06:29:08Z liubo $
+*/
+
+if (!defined('IN_ECS'))
+{
+    die('Hacking attempt');
+}
+
+class google_sitemap
+{
+    var $header = "<\x3Fxml version=\"1.0\" encoding=\"UTF-8\"\x3F>\n\t<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">";
+    var $charset = "UTF-8";
+    var $footer = "\t</urlset>\n";
+    var $items = array();
+
+    /**
+     * 增加一个新的子项
+     *@access   public
+     *@param    google_sitemap  item    $new_item
+     */
+    function add_item($new_item)
+    {
+        $this->items[] = $new_item;
+    }
+
+    /**
+     * 生成XML文档
+     *@access    public
+     *@param     string  $file_name  如果提供了文件名则生成文件，否则返回字符串.
+     *@return [void|string]
+     */
+    function build( $file_name = null )
+    {
+        $map = $this->header . "\n";
+
+        foreach ($this->items AS $item)
+        {
+            $item->loc = htmlentities($item->loc, ENT_QUOTES);
+            $map .= "\t\t<url>\n\t\t\t<loc>$item->loc</loc>\n";
+
+            // lastmod
+            if ( !empty( $item->lastmod ) )
+                $map .= "\t\t\t<lastmod>$item->lastmod</lastmod>\n";
+
+            // changefreq
+            if ( !empty( $item->changefreq ) )
+                $map .= "\t\t\t<changefreq>$item->changefreq</changefreq>\n";
+
+            // priority
+            if ( !empty( $item->priority ) )
+                $map .= "\t\t\t<priority>$item->priority</priority>\n";
+
+            $map .= "\t\t</url>\n\n";
+        }
+
+        $map .= $this->footer . "\n";
+
+        if (!is_null($file_name))
+        {
+            return file_put_contents($file_name, $map);
+        }
+        else
+        {
+            return $map;
+        }
+    }
+
+}
+
+class google_sitemap_item
+{
+    /**
+     *@access   public
+     *@param    string  $loc        位置
+     *@param    string  $lastmod    日期格式 YYYY-MM-DD
+     *@param    string  $changefreq 更新频率的单位 (always, hourly, daily, weekly, monthly, yearly, never)
+     *@param    string  $priority   更新频率 0-1
+     */
+    function google_sitemap_item($loc, $lastmod = '', $changefreq = '', $priority = '')
+    {
+        $this->loc = $loc;
+        $this->lastmod = $lastmod;
+        $this->changefreq = $changefreq;
+        $this->priority = $priority;
+    }
+}
+
 ?>
-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
-1VoNpQQgiSEA2TJIvyUlRJ7u7G==

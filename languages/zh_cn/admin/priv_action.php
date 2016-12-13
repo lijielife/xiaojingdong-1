@@ -86,7 +86,6 @@ $_LANG['role_manage'] = '角色管理';
 
 // 系统设置部分权限
 $_LANG['shop_config'] = '商店设置';
-$_LANG['shop_authorized'] = '授权证书';
 $_LANG['webcollect_manage'] = '网罗天下管理';
 $_LANG['ship_manage'] = '配送方式管理';
 $_LANG['payment'] = '支付方式管理';
@@ -137,7 +136,7 @@ $_LANG['ad_manage'] = '广告管理';
 $_LANG['gift_manage'] = '赠品管理';
 $_LANG['auction'] = '拍卖活动';
 /* 代码删除 By  www.68ecshop.com Start */
-//$_LANG['group_by'] = '团购活动';
+//$_LANG['group_by'] = '拼团活动';
 /* 代码删除 By  www.68ecshop.com End */
 $_LANG['favourable'] = '优惠活动';
 $_LANG['whole_sale'] = '批发管理';
@@ -165,7 +164,6 @@ $_LANG['db_backup'] = '数据备份';
 $_LANG['db_renew'] = '数据恢复';
 $_LANG['db_optimize'] = '数据表优化';
 $_LANG['sql_query'] = 'SQL查询';
-$_LANG['convert'] = '转换数据';
 
 // 短信管理
 $_LANG['my_info'] = '账号信息';

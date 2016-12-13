@@ -19,7 +19,7 @@
 {insert_scripts files='common.js,global.js,compare.js,utils.js'}
 {insert_scripts files='jquery.json.js,transport.js,user.js'}
 </head>
-<body>
+<body>{insert name='add_url_uid'}
   <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
   <div class="blank"></div>
   <div class="w1210">
@@ -296,7 +296,7 @@
                 <!--{if $smarty.foreach.brands_68ecshop.index gt 0}-->
                 <li title="{$brand.brand_name}" name="{$brand.pinyin}" rel="{$brand.shouzimu}" {if $smarty.foreach.brands_68ecshop.iteration > 8}class="bottom"{/if}>
                   <input type="checkbox" style="display:none;" name="checkbox_brand[]" id="chk-brand-{$smarty.foreach.brands_68ecshop.iteration}" value="{$brand.brand_id_68ecshop}">
-                  <a href="{$brand.url}" onclick="return duoxuan_Onclick('brand','{$smarty.foreach.brands_68ecshop.iteration}', this);"> {if $brand.brand_logo}<img src="data/brandlogo/{$brand.brand_logo}" width="100" height="40"/><em class="main-color">{$brand.brand_name}</em>{else}{$brand.brand_name}{/if}<i></i></a></li>
+                  <a href="{$brand.url}" onclick="return duoxuan_Onclick('brand','{$smarty.foreach.brands_68ecshop.iteration}', this);"> {if $brand.brand_logo}<img src="data/brandlogo/{$brand.brand_logo}" width="100" height="40"/>{else}{$brand.brand_name}{/if}<i></i></a></li>
                 <!--{/if}--> 
                 <!--{/foreach}-->
               </ul>

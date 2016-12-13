@@ -174,7 +174,10 @@ elseif ($_REQUEST['act'] == 'remove')
         $sql = "DELETE FROM " . $ecs->table('feedback') . " WHERE parent_id = '$msg_id' LIMIT 1";
         $db->query($sql, 'SILENT');
 
-        admin_log(addslashes($msg_title), 'remove', 'message');
+        /* 前端用户留言XSS by flashmouse 160523 begin */
+		//admin_log(addslashes($msg_title), 'remove', 'message');
+		admin_log(htmlspecialchars($msg_title), 'remove', 'message');
+		/* 前端用户留言XSS by flashmouse 160523 end */
         $url = 'user_msg.php?act=query&' . str_replace('act=remove', '', $_SERVER['QUERY_STRING']);
         ecs_header("Location: $url\n");
         exit;

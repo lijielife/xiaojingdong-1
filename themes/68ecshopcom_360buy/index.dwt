@@ -18,6 +18,7 @@
 <script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="themes/68ecshopcom_360buy/js/jump.js"></script>
 <script type="text/javascript" src="themes/68ecshopcom_360buy/js/tab.js"></script>
+<script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery-lazyload.js" ></script>
 <script type="text/javascript">
 var compare_no_goods = "{$lang.compare_no_goods}";
 var btn_buy = "{$lang.btn_buy}";
@@ -27,7 +28,7 @@ var select_spe = "{$lang.select_spe}";
 {insert_scripts files='jquery.json.js,transport.js'}
 {insert_scripts files='common.js,index.js'}
 </head>
-<body>
+<body>{insert name='add_url_uid'}
 	<!-- #BeginLibraryItem "/library/page_header_index.lbi" --><!-- #EndLibraryItem -->
     <div class="banner">
 		<!-- #BeginLibraryItem "/library/index_ad.lbi" --><!-- #EndLibraryItem -->

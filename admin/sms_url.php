@@ -30,7 +30,7 @@ if(isset($GLOBALS['_CFG']['certificate_id']))
 
     $auth = local_mktime();  //代码修改  By www.68ecshop.com
     $ac = md5($certi_id.'SHOPEX_SMS'.$auth);
-    $url = 'http://service.shopex.cn/sms/index.php?certificate_id='.$certi_id.'&sess_id='.$sess_id.'&auth='.$auth.'&ac='.$ac;
+    $url = 'http://xxxxxxx/sms/index.php?certificate_id='.$certi_id.'&sess_id='.$sess_id.'&auth='.$auth.'&ac='.$ac;
 }
 
 ?>

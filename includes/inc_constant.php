@@ -144,7 +144,7 @@ define('M_BUSINESS',                5); // 商家
 define('M_COMMENT',                 6); // 评论
 
 /* 团购活动状态 */
-define('GROUP_BUY_CODE',			'group_by'); // 团购的代码标识
+define('GROUP_BUY_CODE',			'group_buy'); // 团购的代码标识
 define('GBS_PRE_START',             0); // 未开始
 define('GBS_UNDER_WAY',             1); // 进行中
 define('GBS_FINISHED',              2); // 已结束

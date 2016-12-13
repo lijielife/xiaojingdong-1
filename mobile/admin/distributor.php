@@ -398,14 +398,14 @@ elseif ($_REQUEST['act'] == 'update')
     $other['qq'] = isset($_POST['extend_field2']) ? htmlspecialchars(trim($_POST['extend_field2'])) : '';
     $other['office_phone'] = isset($_POST['extend_field3']) ? htmlspecialchars(trim($_POST['extend_field3'])) : '';
     $other['home_phone'] = isset($_POST['extend_field4']) ? htmlspecialchars(trim($_POST['extend_field4'])) : '';
-    $other['mobile_phone'] = isset($_POST['extend_field5']) ? htmlspecialchars(trim($_POST['extend_field5'])) : '';
+    //$other['mobile_phone'] = isset($_POST['extend_field5']) ? htmlspecialchars(trim($_POST['extend_field5'])) : '';
 	
-	$sql = "select mobile_phone from ".$GLOBALS['ecs']->table('users')." where user_name = '$username'";
-	if($GLOBALS['db']->getOne($sql) != $other['mobile_phone'])
-	{
-		$sql = "UPDATE ".$GLOBALS['ecs']->table('users')." SET validated = 0 where user_name = '$username'";
-		$GLOBALS['db']->query($sql); 
-	}
+	// $sql = "select mobile_phone from ".$GLOBALS['ecs']->table('users')." where user_name = '$username'";
+	// if($GLOBALS['db']->getOne($sql) != $other['mobile_phone'])
+	// {
+	// 	$sql = "UPDATE ".$GLOBALS['ecs']->table('users')." SET validated = 0 where user_name = '$username'";
+	// 	$GLOBALS['db']->query($sql); 
+	// }
 
     $db->autoExecute($ecs->table('users'), $other, 'UPDATE', "user_name = '$username'");
 

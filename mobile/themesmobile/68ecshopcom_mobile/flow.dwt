@@ -719,7 +719,7 @@ $(".f_pub_checkbox").click(function(){
   <!-- {if $goodsinfo.goodlist} -->
   <section class="order_info">
     <div class="order_list">
-      <a href="supplier.php?suppId={$goodsinfo.supplier_id}"> <h2>{$goodsinfo.goodlist[0].seller}</h2></a>
+      <a href="supplier.php?suppId={$goodsinfo.goodlist[0].supplier_id}"> <h2>{$goodsinfo.goodlist[0].seller}</h2></a>
     </div>
     <!--订单商品循环---> 
     {foreach from=$goodsinfo.goodlist item=goods name=name} 

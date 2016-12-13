@@ -31,7 +31,7 @@ $_LANG['ckdel'] = '确定删除?';
 
 $_LANG['view_cart'] = '查看购物车';
 $_LANG['pick_out'] = '选购中心';
-$_LANG['group_buy_goods'] = '团购商品';
+$_LANG['group_buy_goods'] = '拼团商品';
 $_LANG['snatch'] = '夺宝奇兵';
 $_LANG['tag_cloud'] = '标签云';
 $_LANG['user_center'] = '用户中心';
@@ -49,7 +49,7 @@ $_LANG['pro_sale'] = '预售';
 $_LANG['package'] = '超值礼包';
 $_LANG['stores'] = '店铺列表';
 $_LANG['exchange'] = '积分商城';
-$_LANG['pro_search'] = '限时团购';
+$_LANG['pro_search'] = '限时拼团';
 
 
 $_LANG['namecannotnull'] = '请输入导航栏名称！';

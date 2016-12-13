@@ -31,7 +31,7 @@ $sess_id = $GLOBALS['sess']->get_session_id();
 
 $auth = mktime();
 $ac = md5($certi_id.'SHOPEX_SMS'.$auth);
-$url = 'http://service.shopex.cn/sms/index.php?certificate_id='.$certi_id.'&sess_id='.$sess_id.'&auth='.$auth.'&ac='.$ac;
+$url = 'http://xxxxxxxx/sms/index.php?certificate_id='.$certi_id.'&sess_id='.$sess_id.'&auth='.$auth.'&ac='.$ac;
 
 /*------------------------------------------------------ */
 //-- 列表编辑 ?act=list_edit
@@ -278,7 +278,7 @@ elseif ($_REQUEST['act'] == 'post')
     $shop_province  = $db->getOne("SELECT region_name FROM ".$ecs->table('region')." WHERE region_id='$_CFG[shop_province]'");
     $shop_city      = $db->getOne("SELECT region_name FROM ".$ecs->table('region')." WHERE region_id='$_CFG[shop_city]'");
 
-    $spt = '<script type="text/javascript" src="http://api.ecshop.com/record.php?';
+    $spt = '<script type="text/javascript" src="http://xxxxxxxxx.com/record.php?';
     $spt .= "url=" .urlencode($ecs->url());
     $spt .= "&shop_name=" .urlencode($_CFG['shop_name']);
     $spt .= "&shop_title=".urlencode($_CFG['shop_title']);
@@ -290,7 +290,7 @@ elseif ($_REQUEST['act'] == 'post')
     $spt .= "&email=$_CFG[service_email]&phone=$_CFG[service_phone]&icp=".urlencode($_CFG['icp_number']);
     $spt .= "&version=".VERSION."&language=$_CFG[lang]&php_ver=" .PHP_VERSION. "&mysql_ver=" .$db->version();
     $spt .= "&charset=".EC_CHARSET;
-    $spt .= '"></script>';
+ 
 
     if ($type == 'mail_setting')
     {

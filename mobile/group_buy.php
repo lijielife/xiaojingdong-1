@@ -168,7 +168,10 @@ elseif ($_REQUEST['act'] == 'view')
     $sql = 'UPDATE ' . $ecs->table('goods') . ' SET click_count = click_count + 1 '.
            "WHERE goods_id = '" . $group_buy['goods_id'] . "'";
     $db->query($sql);
-
+    $sql = "SELECT goods_desc FROM ".$ecs->table('goods')." WHERE goods_id = '" . $group_buy['goods_id'] . "'";
+    $goods_desc = $db->getOne($sql);
+    $smarty->assign('goods_desc',  $goods_desc);
+    
     $smarty->assign('now_time',  gmtime());           // 当前系统时间
     $smarty->display('group_buy_goods.dwt', $cache_id);
 }
@@ -329,7 +332,7 @@ function group_buy_list($size, $page)
             "FROM " . $GLOBALS['ecs']->table('goods_activity') . " AS b " .
                 "LEFT JOIN " . $GLOBALS['ecs']->table('goods') . " AS g ON b.goods_id = g.goods_id " .
             "WHERE b.act_type = '" . GAT_GROUP_BUY . "' " .
-            "AND b.start_time <= '$now' AND b.is_finished < 3 ORDER BY b.act_id DESC";
+            "AND b.is_finished < 3 ORDER BY b.start_time ASC,b.act_id DESC";
     $res = $GLOBALS['db']->selectLimit($sql, $size, ($page - 1) * $size);
     while ($group_buy = $GLOBALS['db']->fetchRow($res))
     {
@@ -339,7 +342,8 @@ function group_buy_list($size, $page)
         /* 格式化时间 */
         $group_buy['formated_start_date']   = local_date($GLOBALS['_CFG']['time_format'], $group_buy['start_date']);
         $group_buy['formated_end_date']     = local_date($GLOBALS['_CFG']['time_format'], $group_buy['end_date']);
-
+        $group_buy['start_date']            = strtotime($group_buy['formated_start_date']);
+        $group_buy['end_date']              = strtotime($group_buy['formated_end_date']);
         /* 格式化保证金 */
         $group_buy['formated_deposit'] = price_format($group_buy['deposit'], false);
 

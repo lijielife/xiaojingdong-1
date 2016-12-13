@@ -43,7 +43,7 @@
 <div class="ghs_body">
   <div class="ghs_content1" style="background:url({$shopheader}) no-repeat center top;"><img src="{$shopheader}"></div>
   <div style="height:0px; line-height:0px; clear:both"></div>
-  <div class="ghs_title">
+  <div class="ghs_title" style="background:{$navcolor}">
     <div class="ghs_content" >
       <div class="fl" style="width:830px;"> 
         <a href="supplier.php?suppId={$smarty.get.suppId}" class="cur" style="background:{$navcolor}">店铺首页</a> 

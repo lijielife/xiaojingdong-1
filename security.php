@@ -434,7 +434,8 @@ function action_validate ()
 		
 		$mobile_phone = $_SESSION[VT_MOBILE_VALIDATE];
 		$mobile_code = ! empty($_POST['mobile_code']) ? trim($_POST['mobile_code']) : '';
-		
+
+		$result = validate_mobile_code($mobile_phone, $mobile_code);
 		if($result == 1)
 		{
 			exit(json_encode(array(
