@@ -37,12 +37,14 @@ $modules['04_order']['12_order_excel']              = 'excel.php?act=order_excel
 /* 代码增加 by www.68ecshop.com start */
 $modules['04_order']['12_invoice_list']                 = 'order.php?act=invoice_list';
 
+/*
 $modules['18_virtual']['virtual_goods_s']   = 'virtual_goods.php?act=list&extension_code=virtual_good'; //虚拟商品列表
 $modules['18_virtual']['virtual_goods_add']    = 'virtual_goods.php?act=add&extension_code=virtual_good';  //添加虚拟商品
 $modules['18_virtual']['virtual_validate']   = 'virtual_goods_card.php?act=verification_info';
 $modules['18_virtual']['virtual_card_list']   = 'virtual_goods_card.php?act=all_card';
-
+*/
 /* 代码增加 by www.68ecshop.com end */
+
 $modules['05_dianpu_manage']['01_base']               	= 	'shop_config.php?act=list_edit';
 $modules['05_dianpu_manage']['02_menu']               	= 	'navigator.php?act=list';
 $modules['05_dianpu_manage']['03_guanggao']             = 	'flashplay.php?act=list';
@@ -52,9 +54,12 @@ $modules['05_dianpu_manage']['06_templates']            = 	'template.php?act=lis
 $modules['05_dianpu_manage']['07_street']				= 	'street.php?act=info';
 $modules['05_dianpu_manage']['08_shipping_list']           = 'shipping.php?act=list';
 
+/*
+ * //虚拟团购
 $modules['06_pickup_point_manage']['pickup_point_list']       = 'pickup_point.php?act=list';
 $modules['06_pickup_point_manage']['pickup_point_add']        = 'pickup_point.php?act=add';
 $modules['06_pickup_point_manage']['pickup_point_batch_add']  = 'pickup_point.php?act=batch_add';
+*/
 
 //$modules['10_priv_admin']['admin_logs']             = 'admin_logs.php?act=list';
 $modules['10_priv_admin']['admin_list']             = 'privilege.php?act=list';
