@@ -72,7 +72,7 @@ function erweima1(obj, sType) { var oDiv = document.getElementById(obj); if (sTy
                 <div class="item-coagent">
                     <a href="user.php?act=oath&type=weixin"><i class="weixin"></i>微信</a>
                     <a href="user.php?act=oath&type=qq"><i class="qq"></i>QQ</a>
-                    <a href="user.php?act=oath&type=weibo"><i class="sina"></i>新浪</a>
+                    <!--<a href="user.php?act=oath&type=weibo"><i class="sina"></i>新浪</a>-->
                     <a href="user.php?act=oath&type=alipay" class="last"><i class="alipay"></i>支付宝</a>
                 </div>
               </div>

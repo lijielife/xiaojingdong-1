@@ -92,7 +92,7 @@ function action_login ()
 		$smarty->assign('random', mt_rand());
 	}
 	
-	$smarty->display('login.htm');
+	$smarty->display('login_new.htm');
 }
 
 /* ------------------------------------------------------ */

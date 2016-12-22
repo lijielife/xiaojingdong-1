@@ -92,6 +92,7 @@ $modules['04_order']['12_invoice_list'] = 'order.php?act=invoice_list';
 /* 增值税发票_添加_START_www.68ecshop.com */
 
 /* 虚拟卷订单列表_添加_START_www.68ecshop.com */
+/*
 $modules['18_virtual']['virtual_goods_add'] = 'virtual_goods.php?act=add&extension_code=virtual_good'; // 添加虚拟商品
 $modules['18_virtual']['virtual_goods_sup'] = 'virtual_goods.php?act=list&extension_code=virtual_good&supp=1'; // 虚拟商品列表
 $modules['18_virtual']['virtual_goods_list'] = 'virtual_goods.php?act=list&extension_code=virtual_good'; // 虚拟商品列表
@@ -99,6 +100,7 @@ $modules['18_virtual']['virtual_card_list'] = 'virtual_goods_card.php?act=all_ca
 $modules['18_virtual']['virtual_validate'] = 'virtual_goods_card.php?act=verification_info';
 $modules['18_virtual']['virtual_category'] = 'category.php?act=virtual_list'; // 虚拟商品分类管理
 $modules['18_virtual']['virtual_district'] = 'virtual_goods.php?act=district'; // 虚拟商品商圈管理
+*/
 /* 虚拟卷订单列表_添加_START_www.68ecshop.com */
 
 $modules['05_banner']['ad_position'] = 'ad_position.php?act=list';
@@ -192,6 +194,8 @@ $modules['14_sms']['03_sms_send'] = 'sms.php?act=display_send_ui';
 // $modules['14_sms']['06_sms_charge_history'] =
 // 'sms.php?act=display_charge_history_ui';
 
+
+/*
 $modules['15_rec']['affiliate'] = 'affiliate.php?act=list';
 $modules['15_rec']['affiliate_ck'] = 'affiliate_ck.php?act=list';
 
@@ -199,6 +203,7 @@ $modules['16_email_manage']['email_list'] = 'email_list.php?act=list';
 $modules['16_email_manage']['magazine_list'] = 'magazine_list.php?act=list';
 $modules['16_email_manage']['attention_list'] = 'attention_list.php?act=list';
 $modules['16_email_manage']['view_sendlist'] = 'view_sendlist.php?act=list';
+*/
 
 /* 代码增加_start By www.68ecshop.com */
 $modules['02_supplier']['06_supplier_tag'] = 'supplier_tag.php?act=list';
@@ -233,17 +238,27 @@ $modules['11_system']['website'] = 'website.php?act=list';
 /* 代码增加_start By www.68ecshop.com */
 $modules['03_promotion']['16_takegoods_list'] = 'takegoods.php?act=list';
 $modules['03_promotion']['16_takegoods_order'] = 'takegoods.php?act=order_list';
+
+
 /* 代码增加_end By www.68ecshop.com */
+/*
 $modules['16_email_manage']['sendmail'] = 'sendmail.php?act=sendmail';
+*/
 /* 代码增加_start By www.68ecshop.com */
+
+
 $modules['02_cat_and_goods']['pricecut'] = 'pricecut.php?act=list&status=-1';
 $purview['pricecut'] = 'goods_manage';
 $_LANG['pricecut'] = '降价通知列表';
 /* 代码增加_end By www.68ecshop.com */
+
+
 /* 代码增加_start By www.ecshop68.com */
+/*
 $modules['17_pickup_point_manage']['pickup_point_list'] = 'pickup_point.php?act=list';
 $modules['17_pickup_point_manage']['pickup_point_add'] = 'pickup_point.php?act=add';
 $modules['17_pickup_point_manage']['pickup_point_batch_add'] = 'pickup_point.php?act=batch_add';
+*/
 /* 代码增加_end By www.ecshop68.com */
 
 /* 代码增加_start By www.68ecshop.com */

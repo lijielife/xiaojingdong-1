@@ -54,7 +54,7 @@ window.onerror = killerrors;
         </ul>
         <div class="wrap-line"><span style="left:15px;"></span></div>
       </div>
-		<div class="all-cat main-bg-color"> 
+		<div class="all-cat main-bg-color">
         <!--{foreach from=get_categories_tree(0) item=cat name=cat0}-->
         <div class="list">
           <dl class="cat">
@@ -62,12 +62,12 @@ window.onerror = killerrors;
             <i>&gt;</i>
           </dl>
           <div class="categorys">
-            <div class="item-left fl"> 
-              
-              <!-- {foreach from=$cat.cat_id item=childs name=name} --> 
-              <!-- {foreach from=get_child_tree_best($GLOBALS['smarty']->_var['childs']['id']) item=child_best name=child_best} --> 
+            <div class="item-left fl">
+
+              <!-- {foreach from=$cat.cat_id item=childs name=name} -->
+              <!-- {foreach from=get_child_tree_best($GLOBALS['smarty']->_var['childs']['id']) item=child_best name=child_best} -->
               <!--{if $child_best.url }-->
-             
+
               <div class="item-channels">
                 <div class="channels"> <a href="{$child_best.url}" target="_blank" title="{$child_best.name|escape:html}">{$child_best.name|escape:html}<i>&gt;</i></a> </div>
               </div>
