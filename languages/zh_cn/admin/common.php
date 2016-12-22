@@ -13,8 +13,8 @@
  * $Id: common.php 17217 2011-01-19 06:29:08Z liubo $
  */
 $_LANG['app_name'] = 'ECSHOP';
-$_LANG['cp_home'] = '商之翼 管理中心';
-$_LANG['copyright'] = '版权所有 &copy; 2008-2015 秦皇岛商之翼网络科技有限公司，并保留所有权利。';
+$_LANG['cp_home'] = '旅游人之家 管理中心';
+$_LANG['copyright'] = '版权所有 &copy; 2008-2017 湖南创研科技有限公司，并保留所有权利。';
 $_LANG['query_info'] = '共执行 %d 个查询，用时 %s 秒';
 $_LANG['memory_info'] = '，内存占用 %0.3f MB';
 $_LANG['gzip_enabled'] = '，Gzip 已启用';
@@ -157,6 +157,30 @@ $_LANG['15_rec'] = '推荐管理';
 $_LANG['16_email_manage'] = '邮件群发管理';
 $_LANG['17_weixin_manage'] = '微信模块'; // 增加 by www.68ecshop.com 微商城
 $_LANG['18_virtual'] = '虚拟团购管理';
+
+
+/* 酒店管理后台分类部分, add by ry*/
+$_LANG['02_1_cat_and_goods'] = '酒店房间管理';
+$_LANG['03_1_promotion'] = '促销管理';
+$_LANG['04_1_order'] = '订单管理';
+$_LANG['05_1_banner'] = '广告管理';
+$_LANG['06_1_stats'] = '报表统计';
+$_LANG['07_1_content'] = '文章管理';
+$_LANG['08_1_members'] = '会员管理';
+$_LANG['09_1_others'] = '杂项管理';
+$_LANG['10_1_priv_admin'] = '权限管理';
+$_LANG['11_1_system'] = '系统设置';
+$_LANG['12_1_template'] = '模板管理';
+$_LANG['13_1_backup'] = '数据库管理';
+$_LANG['14_1_sms'] = '短信管理';
+$_LANG['15_1_rec'] = '推荐管理';
+$_LANG['16_1_email_manage'] = '邮件群发管理';
+$_LANG['17_1_weixin_manage'] = '微信模块'; // 增加 by www.68ecshop.com 微商城
+$_LANG['18_1_virtual'] = '虚拟团购管理';
+//$_LANG['01_goods_list'] = '商品列表';
+$_LANG['02_1_supplier_goods_list'] = '入驻商商品列表';
+//$_LANG['03_goods_add'] = '添加新商品';
+//$_LANG['04_category_list'] = '商品分类';
 
 /* 商品管理 */
 /* 代码增加_start By supplier.68ecshop.com */
@@ -416,15 +440,22 @@ $_LANG['alipay_look'] = '<a href=\"https://www.alipay.com/himalayas/practicality
 
 /* 代码增加_start By supplier.68ecshop.com */
 $_LANG['02_supplier'] = '入驻商管理';
+$_LANG['02_1_supplier'] = '酒店管理';
 $_LANG['05_supplier_rank'] = '入驻商等级';
+$_LANG['05_1_supplier_rank'] = '入驻商等级';
 $_LANG['06_supplier_tag'] = '店铺标签';
+$_LANG['06_1_supplier_tag'] = '店铺标签';
 
 $_LANG['01_supplier_reg'] = '入驻商申请列表';
+$_LANG['01_1_supplier_reg'] = '酒店申请列表';
 $_LANG['02_supplier_list'] = '入驻商列表';
+$_LANG['02_1_supplier_list'] = '酒店列表';
 $_LANG['03_rebate_nopay'] = '平台交易统计';//本期待结';
 //$_LANG['03_rebate_pay'] = '往期结算';
 $_LANG['04_shop_category'] = '店铺街分类';
+$_LANG['04_1_shop_category'] = '店铺街分类';
 $_LANG['05_shop_street'] = '店铺街列表';
+$_LANG['05_1_shop_street'] = '店铺街列表';
 $_LANG['cfg_name']['company_type'] = '入驻商企业类型';
 $_LANG['cfg_desc']['company_type'] = '入驻商申请时会用到，填写时注意每行一个企业类型';
 
@@ -472,6 +503,7 @@ $_LANG['01_goods_list_pass3'] = '审核未通过商品';
 
 $_LANG['02_rebate_manage'] = '佣金管理';
 $_LANG['03_rebate_nopay'] = '平台交易统计';//本期待结';
+$_LANG['03_1_rebate_nopay'] = '平台交易统计';//本期待结';
 $_LANG['03_rebate_pay'] = '往期结算';
 
 $_LANG['05_dianpu_manage'] = '店铺系统设置';

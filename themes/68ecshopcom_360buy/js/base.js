@@ -116,7 +116,9 @@ brand_reco();
 
 //登陆页面 鼠标滑过微信图标显示二维码
 $('.user-weixin').hover(function(){
-	$(this).find('.erweima').toggle();	
+	$(this).find('.erweima').show();
+},function(){
+	$(this).find('.erweima').hide();
 })
 
 //文字弹出层关闭
