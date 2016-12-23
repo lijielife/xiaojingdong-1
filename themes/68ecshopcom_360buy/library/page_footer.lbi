@@ -22,7 +22,9 @@
       		<!-- 结束ICP 证书{/if} -->
         </p>
         <p>
-             <a href="javascript:;">{$copyright}</a> <a href="javascript:;">{$shop_address} {$shop_postcode}</a>
+             <!--<a href="javascript:;">{$copyright}</a> <a href="javascript:;">{$shop_address} {$shop_postcode}</a>-->
+            <a href="javascript:;">© 2005-2017 旅游人之家 版权所有，并保留所有权利</a> <a href="javascript:;">{$shop_address} {$shop_postcode}</a>
+
              <a href="javascript:;"><!-- 客服电话{if $service_phone} -->
               Tel: {$service_phone}
               <!-- 结束客服电话{/if} --></a>

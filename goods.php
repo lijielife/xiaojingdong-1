@@ -376,7 +376,8 @@ if (!$smarty->is_cached('goods.dwt', $cache_id))
 	$district_id = $db->getOne('select region_id from ' . $ecs->table('region') . ' where parent_id=' . $city_id);
 	$smarty->assign('district_id',    $district_id);
 /* 代码增加_end   By www.ecshop68.com */
-	$pups = $db->getOne('select * from ' . $ecs->table('shipping') . ' where shipping_code="pups"');
+	//$pups = $db->getOne('select * from ' . $ecs->table('shipping') . ' where shipping_code="pups"');
+	$pups = false;//关闭门店自提
     $smarty->assign('pups',    $pups);
     /* 代码增加 By  www.68ecshop.com Start */
     $suppid = intval($_REQUEST['suppid']);

@@ -43,6 +43,7 @@
 			qs.style.display="none";
 		}
 	  </script>
+	  <!--
       <li class="menu-item">
         <div class="sn-menu"> 
           <a class="menu-hd sn-mobile" href="" target="_top">手机版<b></b></a>
@@ -57,6 +58,7 @@
           </div>
         </div>
       </li>
+      -->
       <li class="sn-seller menu-item">
         <div class="sn-menu">
         <a class="menu-hd" href="" target="_top">商家支持<b></b></a>
