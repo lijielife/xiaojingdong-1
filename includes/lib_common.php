@@ -4191,10 +4191,11 @@ function Recordkeyword($word_www_68ecshop_com, $items = 0, $searchengine = 'ecsh
         $GLOBALS['db']->query($sql_www_68ecshop_com);
 		$w_id = $GLOBALS['db']->insert_id();
 	}
+
 	if (!empty($w_id))
 	{
     	$ip_www_68ecshop_com       = real_ip();
-    	$area_www_68ecshop_com     = ecs_geoip($ip);
+    	$area_www_68ecshop_com     = ecs_geoip($ip_www_68ecshop_com);
     	$sql_www_68ecshop_com = 'INSERT INTO ' . $GLOBALS['ecs']->table('keyword_area') . ' ( ' .
                 'w_id, access_time, ip_address, area) VALUES (' .
                 "'$w_id', '".gmtime()."', '$ip_www_68ecshop_com', '$area_www_68ecshop_com')";
