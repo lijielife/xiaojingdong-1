@@ -329,6 +329,7 @@ $_LANG['vote_list'] = '在线调查';
 /* 会员管理 */
 $_LANG['08_unreply_msg'] = '会员留言';
 $_LANG['03_users_list'] = '会员列表';
+$_LANG['03_users_top'] = '会员消费排行';
 
 $_LANG['04_users_export'] = '会员导出'; // 代码增加 By www.68ecshop.com
 
@@ -561,5 +562,10 @@ $_LANG['cfg_range']['takegoods_check_money']['0'] = '关闭';
 $_LANG['template_files']['takegoods'] = '提货商品页模板';
 /* 代码增加_end By www.68ecshop.com */
 $_LANG['sendmail'] = '发送邮件';
+
+
+/* 酒店管理 */
+$_LANG['08_hotel_type'] = '酒店类型';
+/* 酒店管理 */
 
 ?>
