@@ -128,21 +128,9 @@ class ECS
      */
     function url()
     {
-        if(strpos(PHP_SELF, ADMIN_PATH . '/') !== false)
-        {
-            $curr = preg_replace('/(.*)(' . ADMIN_PATH . ')(\/?)(.)*/i', '\1', dirname(PHP_SELF));
-        }
-        else if(strpos(PHP_SELF, HOTEL_ADMIN_PATH . '/') !== false)
-        {
-            $curr = preg_replace('/(.*)(' . HOTEL_ADMIN_PATH . ')(\/?)(.)*/i', '\1', dirname(PHP_SELF));
-        }
-        else
-        {
-            $curr = dirname(PHP_SELF);
-        }
-//        $curr = strpos(PHP_SELF, ADMIN_PATH . '/') !== false ?
-//                preg_replace('/(.*)(' . ADMIN_PATH . ')(\/?)(.)*/i', '\1', dirname(PHP_SELF)) :
-//                dirname(PHP_SELF);
+        $curr = strpos(PHP_SELF, ADMIN_PATH . '/') !== false ?
+                preg_replace('/(.*)(' . ADMIN_PATH . ')(\/?)(.)*/i', '\1', dirname(PHP_SELF)) :
+                dirname(PHP_SELF);
 
         $root = str_replace('\\', '/', $curr);
 

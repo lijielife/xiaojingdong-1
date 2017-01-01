@@ -60,14 +60,14 @@ if ($_REQUEST['act'] == 'list_edit')
      }   */
    $group_list = get_settings(array('1'), array('shop_header_color','shop_header_text'));
 	function get_street_type(){
-        $sql = "select str_id,str_name from ".$GLOBALS['ecs']->table('street_category')." where is_show = 1";
-        $info = $GLOBALS['db']->getAll($sql);
-        $ret = array();
-        foreach($info as $k=>$v){
-            $ret[$v['str_id']] = $v['str_name'];
-        }
-        return $ret;
-    }
+	$sql = "select str_id,str_name from ".$GLOBALS['ecs']->table('street_category')." where is_show = 1";
+	$info = $GLOBALS['db']->getAll($sql);
+	$ret = array();
+	foreach($info as $k=>$v){
+		$ret[$v['str_id']] = $v['str_name'];
+	}
+	return $ret;
+}
 	//$street_info = $db->getRow("select * from ".$ecs->table('supplier_street')." where supplier_id=".$_SESSION['supplier_id']);
 	$smarty->assign('stype',get_street_type());
 	//$item_list[][9]['vars']=$street_info;
