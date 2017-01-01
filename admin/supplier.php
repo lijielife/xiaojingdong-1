@@ -547,7 +547,7 @@ function suppliers_list()
         $filter['sort_order'] = empty($_REQUEST['sort_order']) ? 'ASC' : trim($_REQUEST['sort_order']);
         $filter['status'] = empty($_REQUEST['status']) ? '0' : intval($_REQUEST['status']);
 
-        $where = 'WHERE applynum = 3 ';
+        $where = 'WHERE applynum = 3 AND supplier_type=1';
         $where .= $filter['status'] ? " AND s.status = '". $filter['status']. "' " : " AND s.status in('0','-1') ";
         if ($filter['supplier_name'])
         {

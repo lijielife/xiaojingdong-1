@@ -76,18 +76,31 @@ elseif ($_REQUEST['act'] == 'query')
         array('filter' => $result['filter'], 'page_count' => $result['page_count']));
 }
 
-
 /*------------------------------------------------------ */
 //-- 查看、编辑供货商
 /*------------------------------------------------------ */
 elseif ($_REQUEST['act']== 'edit')
+{
+    $supplier_id = isset($_REQUEST['id']) ? $_REQUEST['id'] : 0;
+    if(!$supplier_id)
+    {
+        sys_msg(sprintf('酒店id不能为空', 1));
+    }
+    $smarty->assign('supplier_id', $supplier_id);
+    $smarty->display('supplier_info.htm');
+}
+
+/*------------------------------------------------------ */
+//-- 查看、编辑供货商基本信息,由酒店供货商自己填写
+/*------------------------------------------------------ */
+elseif ($_REQUEST['act']== 'supplier_base_info')
 {
     /* 检查权限 */
     admin_priv('supplier_manage');
     $suppliers = array();
 
     /* 取得供货商信息 */
-    $id = $_REQUEST['id'];
+    $id = $_REQUEST['supplier_id'];
 // 	 $status = intval($_REQUEST['status']);
     $sql = "SELECT * FROM " . $ecs->table('supplier') . " WHERE supplier_id = '$id'";
     $supplier = $db->getRow($sql);
@@ -140,7 +153,7 @@ elseif ($_REQUEST['act']== 'edit')
 
     assign_query_info();
 
-    $smarty->display('supplier_info.htm');
+    $smarty->display('supplier_base_info.htm');
 
 
 }
@@ -213,10 +226,10 @@ elseif ($_REQUEST['act']=='update')
     $status_url = intval($_POST['status_url']);
     $supplier = array(
         //'rank_id'   => intval($_POST['rank_id']),
-        //'country'   => intval($_POST['country']),
-        //'province'   => intval($_POST['province']),
-        //'city'   => intval($_POST['city']),
-        //'district'   => intval($_POST['district']),
+        'country'   => intval($_POST['country']),
+        'province'   => intval($_POST['province']),
+        'city'   => intval($_POST['city']),
+        'district'   => intval($_POST['district']),
         //'address'   => trim($_POST['address']),
         //'tel'   => trim($_POST['tel']),
         //'email'   => trim($_POST['email']),
@@ -549,7 +562,7 @@ function suppliers_list()
         $filter['sort_order'] = empty($_REQUEST['sort_order']) ? 'ASC' : trim($_REQUEST['sort_order']);
         $filter['status'] = empty($_REQUEST['status']) ? '0' : intval($_REQUEST['status']);
 
-        $where = 'WHERE applynum = 3 ';
+        $where = 'WHERE applynum = 3 AND supplier_type=2';
         $where .= $filter['status'] ? " AND s.status = '". $filter['status']. "' " : " AND s.status in('0','-1') ";
         if ($filter['supplier_name'])
         {

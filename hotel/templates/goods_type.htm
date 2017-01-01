@@ -11,7 +11,7 @@
 
 <table width="100%" cellpadding="3" cellspacing="1" id="listTable">
   <tr>
-    <th>{$lang.goods_type_name}</th>
+    <th>酒店类型名称</th>
     <th>{$lang.attr_groups}</th>
     <th>{$lang.attribute_number}</th>
     <th>{$lang.goods_type_status}</th>
@@ -24,7 +24,7 @@
     <td align="right">{$goods_type.attr_count}</td>
     <td align="center"><img src="images/{if $goods_type.enabled}yes{else}no{/if}.gif" ></td>
     <td align="center">
-      <a href="attribute.php?act=list&goods_type={$goods_type.cat_id}" title="{$lang.attribute}">{$lang.attribute}</a> |
+      <a href="attribute.php?act=list&goods_type={$goods_type.cat_id}" title="{$lang.attribute}">属性列表</a> |
       <a href="goods_type.php?act=edit&cat_id={$goods_type.cat_id}" title="{$lang.edit}">{$lang.edit}</a> |
       <a href="javascript:;" onclick="listTable.remove({$goods_type.cat_id}, '{$lang.remove_confirm}')" title="{$lang.remove}">{$lang.remove}</a>
     </td>

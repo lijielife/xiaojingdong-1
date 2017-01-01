@@ -59,6 +59,7 @@ if ($_REQUEST['act'] == 'list_edit')
 		$sql="insert into ecs_supplier_shop_config(parent_id, code,type,sort_order,supplier_id) VALUES ('1','jwdbj','jwd','1','".$_SESSION['supplier_id']."')";
      }   */
    $group_list = get_settings(array('1'), array('shop_header_color','shop_header_text'));
+    //print_r($group_list);exit;
 	function get_street_type(){
         $sql = "select str_id,str_name from ".$GLOBALS['ecs']->table('street_category')." where is_show = 1";
         $info = $GLOBALS['db']->getAll($sql);

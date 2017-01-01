@@ -175,7 +175,7 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
         $warning = sprintf($_LANG['not_writable_warning'], '../' . IMAGE_DIR . '/'.date('Ym'));
         $smarty->assign('warning', $warning);
     }
-
+    //var_dump($is_add);exit;
     /* 取得商品信息 */
     if ($is_add)
     {
@@ -255,6 +255,7 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
         /* 商品信息 */
         $sql = "SELECT * FROM " . $ecs->table('goods') . " WHERE goods_id = '$_REQUEST[goods_id]'";
         $goods = $db->getRow($sql);
+        //print_r($goods);exit;
 
 		// 代码增加_start_derek20150129admin_goods  www.68ecshop.com
 		
@@ -515,6 +516,9 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
     $smarty->assign('gd', gd_version());
     $smarty->assign('thumb_width', $_CFG['thumb_width']);
     $smarty->assign('thumb_height', $_CFG['thumb_height']);
+
+    //echo $goods['goods_type'] . '-' . $goods['goods_id'] . '<br>';
+    //$d = build_attr_html($goods['goods_type'], $goods['goods_id'],$bar_code);echo $d;exit;
 	
     $smarty->assign('goods_attr_html', build_attr_html($goods['goods_type'], $goods['goods_id'],$bar_code));
 	

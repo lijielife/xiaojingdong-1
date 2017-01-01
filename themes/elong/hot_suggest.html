@@ -1,0 +1,135 @@
+<!-- 城市热门推荐,用户关键词的推荐框,用于用户选择城市后的热门推荐，eg:首页的关键字-->
+
+<div id="h_contentend" style="display:none">
+    <img src="http://tj.elong.com/statistics.gif?TableName=FlowStatiData&amp;SessionGuid=414d27b0-5c5b-448f-9a35-dbb09df3f742&amp;ReferType=elong&amp;StatiData=elong&amp;ReferHost=&amp;ReferPage=&amp;CurrentHost=www.elong.com&amp;CurrentPage=/&amp;CookieGuid=98e1f49d-31cb-4e62-b4a1-743be183431b&amp;ReferQueryString=&amp;CurrentQueryString=">
+    <img src="http://tj.elongstatic.com/t.gif?g=05829&amp;cid=98e1f49d-31cb-4e62-b4a1-743be183431b&amp;sid=414d27b0-5c5b-448f-9a35-dbb09df3f742&amp;rf=&amp;bs=1920*1080&amp;ch=home&amp;pt=ElongIndexPage&amp;p1=50&amp;p88=1483004596693&amp;p89=1483004596705&amp;p90=1483004596709&amp;p91=1483004596709&amp;p92=1483004596744&amp;p93=1483004596744&amp;p94=1483004596872&amp;p95=1483004596972&amp;p96=1483004596892&amp;p97=1483004597524&amp;p98=1483004597176&amp;p99=1483004662177&amp;p100=0001f147c4568f00b204ffffffffe81b52dfba3374488dd1524afffffffff080d0798f00b204e1210589046621894c605f04&amp;p70=232&amp;p71=0&amp;p72=0&amp;p73=28&amp;p74=232&amp;p75=link&amp;p76=http://www.elongstatic.com/common/css/el_common.css?t=201612152209&amp;p77=0&amp;p78=0&amp;p79=0&amp;p80=261&amp;p81=0&amp;p82=0&amp;p83=0&amp;p84=0" style="display:none;">
+    <div style="position: absolute; z-index: 2000; top: 365px; left: 241.5px;" winstyle="hot">
+        <div style="width:300px;" class="com_hotresults">
+            <div style="width:100%;">
+                <div class="hotel_near" id="hotel_near" >
+                    <!-- <p>
+                        <tt class="t14 bold">交通枢纽</tt>
+                        <br>
+                        <span method="hotData" data="0|0">上海站</span>
+                        <span method="hotData" data="0|1">上海虹桥站</span>
+                        <span method="hotData" data="0|2">上海南站</span>
+                        <span method="hotData" data="0|3">上海西站</span>
+                        <span method="hotData" data="0|4">上海虹桥机场</span>
+                        <span method="hotData" data="0|5">上海浦东机场</span></p>
+                    <p>
+                        <tt class="t14 bold">地铁站</tt>
+                        <br>
+                        <span method="hotData" data="1|0">国权路</span>
+                        <span method="hotData" data="1|1">海伦路</span>
+                        <span method="hotData" data="1|2">航中路</span>
+                        <span method="hotData" data="1|3">虹桥1号航站楼</span>
+                        <span method="hotData" data="1|4">虹桥2号航站楼</span>
+                        <span method="hotData" data="1|5">虹桥火车站</span>
+                        <span method="hotData" data="1|6">虹桥路</span>
+                        <span method="hotData" data="1|7">江湾体育场</span>
+                        <span method="hotData" data="1|8">交通大学</span>
+                        <span method="hotData" data="1|9">老西门</span></p>
+                    <p>
+                        <tt class="t14 bold">热门位置</tt>
+                        <br>
+                        <span method="hotData" data="2|0">陆家嘴</span>
+                        <span method="hotData" data="2|1">外滩</span>
+                        <span method="hotData" data="2|2">人民广场</span>
+                        <span method="hotData" data="2|3">静安寺</span>
+                        <span method="hotData" data="2|4">新国际博览中心</span>
+                        <span method="hotData" data="2|5">浦东世博园区</span>
+                        <span method="hotData" data="2|6">浦东机场</span>
+                        <span method="hotData" data="2|7">五角场商业区</span>
+                        <span method="hotData" data="2|8">豫园（城隍庙）</span>
+                        <span method="hotData" data="2|9">徐家汇</span></p>
+                    <p>
+                        <tt class="t14 bold">热门品牌</tt>
+                        <br>
+                        <span method="hotData" data="3|0">汉庭</span>
+                        <span method="hotData" data="3|1">如家</span>
+                        <span method="hotData" data="3|2">格林豪泰</span>
+                        <span method="hotData" data="3|3">锦江之星</span>
+                        <span method="hotData" data="3|4">莫泰</span>
+                        <span method="hotData" data="3|5">7天</span>
+                        <span method="hotData" data="3|6">99连锁</span>
+                        <span method="hotData" data="3|7">布丁</span>
+                        <span method="hotData" data="3|8">全季</span>
+                        <span method="hotData" data="3|9">速8</span></p> -->
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="com_cbox_b com_cbox_lt"></div>
+            <div class="com_cbox_b com_cbox_rt"></div>
+            <div class="com_cbox_b com_cbox_lb"></div>
+            <div class="com_cbox_b com_cbox_rb"></div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var is_show = false;
+    $(function(){
+        $('#keywords').focus(function(){
+            var html = '';
+            $.ajax({
+                url : 'http://openapi.elong.com/suggest/hotsuggest.html?language=cn&cityId=' + $('#hotelCity').attr('cityid'),
+                dataType : 'jsonp',
+                success : function(data){
+                    //console.log(data);
+                    if(data.length > 0){
+                        $(data).each(function(key,val){
+                            html += '<p><tt class="t14 bold">' + val['Name'] + '</tt><br>';
+
+                            $(val['TypeNameList']).each(function(k,v){
+                                html += '<span method="hotData">' + v['Name'] + '</span>';
+                            })
+                            html += '</p>';
+                        })
+                    }
+                    if(html != ''){
+                        $('#hotel_near').html(html);
+                        $('#h_contentend').show();
+                        $('#hotel_near span').each(function(){
+                            var keyword = $(this).text();
+                            $(this).click(function(){
+                                $('#keywords').val(keyword);
+                                $('#h_contentend').hide();
+                            })
+                        })
+                    }
+                },
+                error : function(){
+                    console.log(url);
+                }
+
+            })
+        })
+
+        $('#keywords').blur(function(){
+            if(!is_show){
+                $('#h_contentend').hide();
+            }
+        })
+
+        $('#h_contentend').mouseenter(function(){
+            is_show = true;
+        })
+        $('#h_contentend').mouseleave(function(){
+            is_show = false;
+        })
+        
+    })
+
+    //关键此搜索
+    $('#keywords').keyup(function(){
+        var keyword = $(this).val();
+        keyword = $.trim(keyword);
+        if(keyword == ''){
+            $('#c_contentend').hide();
+            $('#m_contentend').show();
+        }else{
+            get_data(keyword); 
+        }
+    })
+</script>

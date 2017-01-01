@@ -640,6 +640,39 @@ function get_attr_list($cat_id, $goods_id = 0)
 }
 
 /**
+ * 取得酒店通用属性和某分类的属性，add by ry
+ * @param   int     $cat_id     分类编号
+ * @param   int     $goods_id   商品编号
+ * @return  array   规格与属性列表
+ */
+function get_hotels_attr_list($cat_id, $goods_id = 0)
+{
+    if (empty($cat_id))
+    {
+        return array();
+    }
+
+    // 查询属性值及商品的属性值
+    $sql = "SELECT a.attr_id, a.attr_name, a.attr_input_type, a.attr_type,a.attr_txm, a.attr_values, v.attr_value, v.attr_price ".
+        "FROM " .$GLOBALS['ecs']->table('hotels_attribute'). " AS a ".
+        "LEFT JOIN " .$GLOBALS['ecs']->table('hotels_attr'). " AS v ".
+        "ON v.attr_id = a.attr_id AND v.goods_id = '$goods_id' ".
+        "WHERE a.cat_id = " . intval($cat_id) ." OR a.cat_id = 0 ".
+        "ORDER BY a.sort_order, a.attr_type, a.attr_id, v.attr_price, v.goods_attr_id";
+    //echo $sql. '<br>';
+    /* $sql = "SELECT a.attr_id, a.attr_name, a.attr_input_type, a.attr_type, a.attr_values, v.attr_value, v.attr_price ".
+         "FROM " .$GLOBALS['ecs']->table('attribute'). " AS a ".
+         "LEFT JOIN " .$GLOBALS['ecs']->table('goods_attr'). " AS v ".
+         "ON v.attr_id = a.attr_id AND v.goods_id = '$goods_id' ".
+         "WHERE a.cat_id = " . intval($cat_id) ." OR a.cat_id = 0 ".
+         "ORDER BY a.sort_order, a.attr_type, a.attr_id, v.attr_price, v.goods_attr_id";*/
+
+    $row = $GLOBALS['db']->GetAll($sql);
+
+    return $row;
+}
+
+/**
  * 获取商品类型中包含规格的类型列表
  *
  * @access  public
@@ -691,8 +724,8 @@ function build_attr_html($cat_id, $goods_id = 0 , $bar_code = 0)
                 "<a href='javascript:;' onclick='removeSpec(this)'>[-]</a>";
             $spec = $val['attr_id'];
         }
-    
-      					
+
+
          $html.=$val[attr_name]."：</td><td><input type='hidden' name='attr_id_list[]' value='$val[attr_id]' txm='$val[attr_txm]' class='ctxm_$val[attr_txm]' />";
 
         if ($val['attr_input_type'] == 0)
@@ -723,13 +756,13 @@ function build_attr_html($cat_id, $goods_id = 0 , $bar_code = 0)
                     '<option value="' . $opt . '" selected="selected">' . $opt . '</option>';
             }
             $html .= '</select> ';
-           
+
         }
-      
+
         $html .= ($val['attr_type'] == 1 || $val['attr_type'] == 2) ?
             $GLOBALS['_LANG']['spec_price'].' <input type="text" name="attr_price_list[]" value="' . $val['attr_price'] . '" size="5" maxlength="10" />' :
             ' <input type="hidden" name="attr_price_list[]" value="0" />';
-        
+
         if($val[attr_txm] > 0){
         	$html .="<span class=\"notice-span\" style=\"display:block\" id=\"attr_".$val['attr_id'] ."\">此属性是条码属性，您只有选择完所有的条码属性后才能输入“组合属性”的对应条形码</span>";
         }
@@ -747,6 +780,184 @@ function build_attr_html($cat_id, $goods_id = 0 , $bar_code = 0)
 	}else{
 		$html .= '<div id="input_txm"></div>';
 	}
+
+
+
+    return $html;
+}
+
+/**
+ * 根据属性数组创建属性的表单,为酒店设施服务 add by ry
+ *
+ * @access  public
+ * @param   int     $cat_id     分类编号
+ * @param   int     $goods_id   商品编号
+ * @return  string
+ */
+function build_hotels_attr_html($cat_id, $goods_id = 0 , $bar_code = 0)
+{
+    $attr = get_hotels_attr_list($cat_id, $goods_id);
+    $html = '<table width="100%" id="attrTable">';
+    $spec = 0;
+
+    foreach ($attr AS $key => $val)
+    {
+        $html .= "<tr><td class='label'>";
+        if($val[attr_txm] > 0){
+            $html.="<a href=\"javascript:showNotice('attr_".$val['attr_id'] ."');\" title=\"点击此处查看提示信息\"><img src=\"images/notice.gif\" alt=\"点击此处查看提示信息\" border=\"0\" height=\"16\" width=\"16\"></a>";
+        }
+        if ($val['attr_type'] == 1 || $val['attr_type'] == 2)
+        {
+            $html .= ($spec != $val['attr_id']) ?
+                "<a href='javascript:;' onclick='addSpec(this)'>[+]</a>" :
+                "<a href='javascript:;' onclick='removeSpec(this)'>[-]</a>";
+            $spec = $val['attr_id'];
+        }
+
+
+        $html.=$val[attr_name]."：</td><td><input type='hidden' name='attr_id_list[]' value='$val[attr_id]' txm='$val[attr_txm]' class='ctxm_$val[attr_txm]' />";
+
+        if ($val['attr_input_type'] == 0)
+        {
+            $html .= '<input name="attr_value_list[]" type="text" value="' .htmlspecialchars($val['attr_value']). '" size="40" /> ';
+        }
+        elseif ($val['attr_input_type'] == 2)
+        {
+            $html .= '<textarea name="attr_value_list[]" rows="3" cols="40">' .htmlspecialchars($val['attr_value']). '</textarea>';
+        }
+        else
+        {
+            if($val[attr_txm] > 0){
+                $html .= '<select class=attr_num_'.$val[attr_id].' name="attr_value_list[]" onchange="getType('.$val[attr_txm].','.$cat_id.','. $this.value.','.$goods_id.')">';
+            }else{
+                $html .= '<select class=attr_num_'.$val[attr_id].' name="attr_value_list[]" >';
+            }
+            $html .= '<option value="">' .$GLOBALS['_LANG']['select_please']. '</option>';
+
+            $attr_values = explode("\n", $val['attr_values']);
+
+            foreach ($attr_values AS $opt)
+            {
+                $opt    = trim(htmlspecialchars($opt));
+
+                $html   .= ($val['attr_value'] != $opt) ?
+                    '<option value="' . $opt . '">' . $opt . '</option>' :
+                    '<option value="' . $opt . '" selected="selected">' . $opt . '</option>';
+            }
+            $html .= '</select> ';
+
+        }
+
+//        $html .= ($val['attr_type'] == 1 || $val['attr_type'] == 2) ?
+//            $GLOBALS['_LANG']['spec_price'].' <input type="text" name="attr_price_list[]" value="' . $val['attr_price'] . '" size="5" maxlength="10" />' :
+//            ' <input type="hidden" name="attr_price_list[]" value="0" />';
+
+//        if($val[attr_txm] > 0){
+//            $html .="<span class=\"notice-span\" style=\"display:block\" id=\"attr_".$val['attr_id'] ."\">此属性是条码属性，您只有选择完所有的条码属性后才能输入“组合属性”的对应条形码</span>";
+//        }
+        $html .= '</td></tr>';
+    }
+    $html .= '</table>';
+
+    if($bar_code){
+        $html .= '<div id="input_txm"><table  width="100%"  >';
+        foreach($bar_code as $value){
+            $html .='<tr><td class="label">条形码</td><td><input type="hidden" name="txm_shu[]" value='.$value['taypes'].'>'.$value['taypes'].'<td/><td><input type="text" name="tiaoxingm[]" value='.$value['bar_code'].'></td></tr>';
+
+        }
+        $html .='</table ></div>';
+    }else{
+        $html .= '<div id="input_txm"></div>';
+    }
+
+
+
+    return $html;
+}
+
+/**
+ * 根据属性数组创建属性的表单,为酒店位置服务 add by ry
+ *
+ * @access  public
+ * @param   int     $cat_id     分类编号
+ * @param   int     $goods_id   商品编号
+ * @return  string
+ */
+function build_hotels_location_attr_html($cat_id, $goods_id = 0 , $bar_code = 0)
+{
+    $attr = get_hotels_attr_list($cat_id, $goods_id);
+    $html = '<table width="100%" id="attrTable">';
+    $spec = 0;
+
+    foreach ($attr AS $key => $val)
+    {
+        $html .= "<tr><td class='label'>";
+        if($val[attr_txm] > 0){
+            $html.="<a href=\"javascript:showNotice('attr_".$val['attr_id'] ."');\" title=\"点击此处查看提示信息\"><img src=\"images/notice.gif\" alt=\"点击此处查看提示信息\" border=\"0\" height=\"16\" width=\"16\"></a>";
+        }
+        if ($val['attr_type'] == 1 || $val['attr_type'] == 2)
+        {
+            $html .= ($spec != $val['attr_id']) ?
+                "<a href='javascript:;' onclick='addSpec(this)'>[+]</a>" :
+                "<a href='javascript:;' onclick='removeSpec(this)'>[-]</a>";
+            $spec = $val['attr_id'];
+        }
+
+
+        $html.=$val[attr_name]."：</td><td><input type='hidden' name='attr_id_list[]' value='$val[attr_id]' txm='$val[attr_txm]' class='ctxm_$val[attr_txm]' />";
+
+        if ($val['attr_input_type'] == 0)
+        {
+            $html .= '<input name="attr_value_list[]" type="text" value="' .htmlspecialchars($val['attr_value']). '" size="40" /> ';
+        }
+        elseif ($val['attr_input_type'] == 2)
+        {
+            $html .= '<textarea name="attr_value_list[]" rows="3" cols="40">' .htmlspecialchars($val['attr_value']). '</textarea>';
+        }
+        else
+        {
+            if($val[attr_txm] > 0){
+                $html .= '<select class=attr_num_'.$val[attr_id].' name="attr_value_list[]" onchange="getType('.$val[attr_txm].','.$cat_id.','. $this.value.','.$goods_id.')">';
+            }else{
+                $html .= '<select class=attr_num_'.$val[attr_id].' name="attr_value_list[]" >';
+            }
+            $html .= '<option value="">' .$GLOBALS['_LANG']['select_please']. '</option>';
+
+            $attr_values = explode("\n", $val['attr_values']);
+
+            foreach ($attr_values AS $opt)
+            {
+                $opt    = trim(htmlspecialchars($opt));
+
+                $html   .= ($val['attr_value'] != $opt) ?
+                    '<option value="' . $opt . '">' . $opt . '</option>' :
+                    '<option value="' . $opt . '" selected="selected">' . $opt . '</option>';
+            }
+            $html .= '</select> ';
+
+        }
+
+//        $html .= ($val['attr_type'] == 1 || $val['attr_type'] == 2) ?
+//            $GLOBALS['_LANG']['spec_price'].' <input type="text" name="attr_price_list[]" value="' . $val['attr_price'] . '" size="5" maxlength="10" />' :
+//            ' <input type="hidden" name="attr_price_list[]" value="0" />';
+
+//        if($val[attr_txm] > 0){
+//            $html .="<span class=\"notice-span\" style=\"display:block\" id=\"attr_".$val['attr_id'] ."\">此属性是条码属性，您只有选择完所有的条码属性后才能输入“组合属性”的对应条形码</span>";
+//        }
+        $html .= '</td></tr>';
+    }
+    $html .= '</table>';
+
+    if($bar_code){
+        $html .= '<div id="input_txm"><table  width="100%"  >';
+        foreach($bar_code as $value){
+            $html .='<tr><td class="label">条形码</td><td><input type="hidden" name="txm_shu[]" value='.$value['taypes'].'>'.$value['taypes'].'<td/><td><input type="text" name="tiaoxingm[]" value='.$value['bar_code'].'></td></tr>';
+
+        }
+        $html .='</table ></div>';
+    }else{
+        $html .= '<div id="input_txm"></div>';
+    }
 
 
 

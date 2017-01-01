@@ -11,7 +11,7 @@
  * ============================================================================
  * $Author: liubo $
  * $Id: attribute.php 17217 2011-01-19 06:29:08Z liubo $
-*/
+ */
 
 define('IN_ECS', true);
 
@@ -98,7 +98,7 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit')
             'attr_values' => '',
             'attr_type' => 0,
             'is_linked' => 0,
-			 'attr_txm' => 0,
+            'attr_txm' => 0,
         );
     }
     else
@@ -150,10 +150,10 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
         'attr_index'      => $_POST['attr_index'],
         'attr_input_type' => $_POST['attr_input_type'],
         'is_linked'       => $_POST['is_linked'],
-		'attr_txm'		  => $_POST['attr_txm'],
+        'attr_txm'		  => $_POST['attr_txm'],
         'attr_values'     => isset($_POST['attr_values']) ? $_POST['attr_values'] : '',
         'attr_type'       => empty($_POST['attr_type']) ? '0' : intval($_POST['attr_type']),
-		
+
         'attr_group'      => isset($_POST['attr_group']) ? intval($_POST['attr_group']) : 0
     );
 
@@ -161,7 +161,7 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
     if ($is_insert)
     {
         $db->autoExecute($ecs->table('attribute'), $attr, 'INSERT');
-      	$insert_id=$db->insert_id();
+        $insert_id=$db->insert_id();
         admin_log($_POST['attr_name'], 'add', 'attribute');
         $links = array(
             array('text' => $_LANG['add_next'], 'href' => '?act=add&goods_type=' . $_POST['cat_id']),
@@ -181,19 +181,19 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
         //sys_msg(sprintf($_LANG['edit_ok'], $attr['attr_name']), 0, $links);
     }
 
-	/* 增加代码_start By www.ecshop68.com */
-	$attr_id_www_ecshop68_com = $is_insert ? $insert_id : $_POST['attr_id'];
+    /* 增加代码_start By www.ecshop68.com */
+    $attr_id_www_ecshop68_com = $is_insert ? $insert_id : $_POST['attr_id'];
 
-	$msg_attr_www_ecshop68_com = $is_insert ?   $_LANG['add_ok']  : $_LANG['edit_ok'];
-	if($_POST['is_attr_gallery'] == '1')
-	{
-		$sql_www_ecshop68_com="update " .$ecs->table("attribute"). " set  is_attr_gallery=0 where cat_id='".$_POST['cat_id']."' ";
-		$db->query($sql_www_ecshop68_com);
-	}
-	$sql_www_ecshop68_com="update " .$ecs->table("attribute"). " set  is_attr_gallery='$_POST[is_attr_gallery]' where attr_id='$attr_id_www_ecshop68_com' ";
-	$db->query($sql_www_ecshop68_com);
-	sys_msg(sprintf($msg_attr_www_ecshop68_com, $attr['attr_name']), 0, $links);
-	/* 增加代码_end By www.ecshop68.com */
+    $msg_attr_www_ecshop68_com = $is_insert ?   $_LANG['add_ok']  : $_LANG['edit_ok'];
+    if($_POST['is_attr_gallery'] == '1')
+    {
+        $sql_www_ecshop68_com="update " .$ecs->table("attribute"). " set  is_attr_gallery=0 where cat_id='".$_POST['cat_id']."' ";
+        $db->query($sql_www_ecshop68_com);
+    }
+    $sql_www_ecshop68_com="update " .$ecs->table("attribute"). " set  is_attr_gallery='$_POST[is_attr_gallery]' where attr_id='$attr_id_www_ecshop68_com' ";
+    $db->query($sql_www_ecshop68_com);
+    sys_msg(sprintf($msg_attr_www_ecshop68_com, $attr['attr_name']), 0, $links);
+    /* 增加代码_end By www.ecshop68.com */
 
 }
 
@@ -304,9 +304,9 @@ elseif ($_REQUEST['act'] == 'get_attr_num')
     $id = intval($_GET['attr_id']);
 
     $sql = "SELECT COUNT(*) ".
-           " FROM " . $ecs->table('goods_attr') . " AS a, ".
-           $ecs->table('goods') . " AS g ".
-           " WHERE g.goods_id = a.goods_id AND g.is_delete = 0 AND attr_id = '$id' ";
+        " FROM " . $ecs->table('goods_attr') . " AS a, ".
+        $ecs->table('goods') . " AS g ".
+        " WHERE g.goods_id = a.goods_id AND g.is_delete = 0 AND attr_id = '$id' ";
 
     $goods_num = $db->getOne($sql);
 
@@ -342,52 +342,52 @@ elseif ($_REQUEST['act'] == 'get_attr_groups')
 /*------------------------------------------------------ */
 elseif ($_REQUEST['act'] == 'savecolor')
 {
-	$sql = "delete from ". $ecs->table('attribute_color') ." where attr_id= '$_REQUEST[attr_id]' ";
-	$db->query($sql);
-	foreach ($_REQUEST['color_name'] AS $color_key=> $color_name)
-	{
-		if ($_REQUEST['color_code'][$color_key])
-		{
-			$sql="insert into ". $ecs->table('attribute_color') ."(attr_id, color_name, color_code) values('$_REQUEST[attr_id]', '$color_name', '". $_REQUEST['color_code'][$color_key] ."' )";
-			$db->query($sql);
-		}
-	}
-	$link[] = array('text' => '返回设置页面', 'href' => 'attribute.php?act=setcolor&attr_id='.$_REQUEST['attr_id']);
+    $sql = "delete from ". $ecs->table('attribute_color') ." where attr_id= '$_REQUEST[attr_id]' ";
+    $db->query($sql);
+    foreach ($_REQUEST['color_name'] AS $color_key=> $color_name)
+    {
+        if ($_REQUEST['color_code'][$color_key])
+        {
+            $sql="insert into ". $ecs->table('attribute_color') ."(attr_id, color_name, color_code) values('$_REQUEST[attr_id]', '$color_name', '". $_REQUEST['color_code'][$color_key] ."' )";
+            $db->query($sql);
+        }
+    }
+    $link[] = array('text' => '返回设置页面', 'href' => 'attribute.php?act=setcolor&attr_id='.$_REQUEST['attr_id']);
     sys_msg('恭喜，您已成功设置了颜色代码！', 0, $link);
 }
 elseif ($_REQUEST['act'] == 'setcolor')
 {
     /* 检查权限 */
     admin_priv('attr_manage');
-	
-	$sql = "SELECT * FROM " . $ecs->table('attribute') . " WHERE attr_id = '$_REQUEST[attr_id]'";
-    $attr = $db->getRow($sql); 
+
+    $sql = "SELECT * FROM " . $ecs->table('attribute') . " WHERE attr_id = '$_REQUEST[attr_id]'";
+    $attr = $db->getRow($sql);
     $smarty->assign('attr', $attr);
-	
-	$colors_code=array();
-	$sql="select * from ". $ecs->table('attribute_color') . " where attr_id = '$_REQUEST[attr_id]'";
-	$res_color = $db->query($sql);
-	while ($row_color = $db->fetchRow($res_color))
-	{
-		$colors_code[$row_color['color_name']] = $row_color['color_code'];
-	}
-	
-	if($attr['attr_values'])
-	{
-		$color_list= str_replace("\r\n", "\n", $attr['attr_values']);
-		$color_array = explode("\n", $color_list);
-		$color_list=array();
-		foreach ($color_array as $ckey=>$cval)
-		{
-			$color_list[$ckey]['color_name'] = $cval;
-			$color_list[$ckey]['color_code'] = $colors_code[$cval] ? $colors_code[$cval] : '';
-		}
-	}
-	
+
+    $colors_code=array();
+    $sql="select * from ". $ecs->table('attribute_color') . " where attr_id = '$_REQUEST[attr_id]'";
+    $res_color = $db->query($sql);
+    while ($row_color = $db->fetchRow($res_color))
+    {
+        $colors_code[$row_color['color_name']] = $row_color['color_code'];
+    }
+
+    if($attr['attr_values'])
+    {
+        $color_list= str_replace("\r\n", "\n", $attr['attr_values']);
+        $color_array = explode("\n", $color_list);
+        $color_list=array();
+        foreach ($color_array as $ckey=>$cval)
+        {
+            $color_list[$ckey]['color_name'] = $cval;
+            $color_list[$ckey]['color_code'] = $colors_code[$cval] ? $colors_code[$cval] : '';
+        }
+    }
+
     $smarty->assign('color_list', $color_list);
-	$smarty->assign('ur_here', '设置颜色');
+    $smarty->assign('ur_here', '设置颜色');
     $smarty->assign('action_link', array('href' => 'attribute.php?act=list&goods_type='.$attr['cat_id'], 'text' => $_LANG['09_attribute_list']));
-	 /* 显示模板 */
+    /* 显示模板 */
     assign_query_info();
     $smarty->display('attribute_setcolor.htm');
 
@@ -421,10 +421,10 @@ function get_attrlist()
 
     /* 查询 */
     $sql = "SELECT a.*, t.cat_name " .
-            " FROM " . $GLOBALS['ecs']->table('attribute') . " AS a ".
-            " LEFT JOIN " . $GLOBALS['ecs']->table('goods_type') . " AS t ON a.cat_id = t.cat_id " . $where .
-            " ORDER BY $filter[sort_by] $filter[sort_order] ".
-            " LIMIT " . $filter['start'] .", $filter[page_size]";
+        " FROM " . $GLOBALS['ecs']->table('attribute') . " AS a ".
+        " LEFT JOIN " . $GLOBALS['ecs']->table('goods_type') . " AS t ON a.cat_id = t.cat_id " . $where .
+        " ORDER BY $filter[sort_by] $filter[sort_order] ".
+        " LIMIT " . $filter['start'] .", $filter[page_size]";
     $row = $GLOBALS['db']->getAll($sql);
 
     foreach ($row AS $key => $val)

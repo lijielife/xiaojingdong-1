@@ -1,0 +1,68 @@
+<dl class="date_picker clearfix">
+    <dt class="w60">入住</dt>
+    <dd>
+        <label>
+            <div class="input-group date form_date_checkin" data-date="" width="100%" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                <input class="form-control" size="16" id="checkin" type="text" value="" readonly>
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </label>
+    </dd>
+    <dt class="w50">退房</dt>
+    <dd>
+        <label>
+            <div class="input-group date form_date_checkout" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                <input class="form-control" size="16" id="checkout" type="text" value="" readonly>
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </label>
+    </dd>
+</dl>
+<script type="text/javascript">
+    $(function() {
+        
+        $('.form_date_checkin').datetimepicker({
+            language: 'zh',
+            // {format: 'yyyy-mm-dd hh:ii'}，
+            weekStart: 1,
+            todayBtn: 1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0
+        });
+        $('.form_date_checkout').datetimepicker({
+            language: 'zh',
+            weekStart: 1,
+            todayBtn: 1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0
+        });
+        var mydate = new Date();
+        var default_start_date = mydate.getFullYear() + '-' + (mydate.getMonth()+1) + '-' + mydate.getDate();
+        $('#checkin').val(default_start_date);
+
+        var currentDate = new Date("yyyy-MM-dd hh:mm:ss");
+        var currentTime = currentDate.toLocaleString().substring(11);
+        var now = new Date();
+        now = new Date(now.getTime() + 86400000);
+        var yyyy = now.getFullYear(), mm = (now.getMonth() + 1).toString(), dd = now
+                .getDate().toString();
+        if (mm.length == 1) {
+            mm = '0' + mm;
+        }
+        if (dd.length == 1) {
+            dd = '0' + dd;
+        }
+        var nextDay = yyyy + '-' + mm  + '-' + dd;
+        $('#checkout').val(nextDay);
+    })
+</script>

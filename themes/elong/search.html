@@ -1,0 +1,2340 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title></title>
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <link rel="stylesheet" rev="stylesheet" href="css/new2015.min.css" type="text/css" media="all">
+        <link rel="stylesheet" rev="stylesheet" href="css/hotel-com.css" type="text/css" media="all">
+        <link rel="stylesheet" type="text/css" href="css/list-2015.css">
+        <script src="js/jquery-1.8.3.min.js"></script>
+        <style type="text/css">
+            .BMap_mask {
+                background:transparent url(about:blank);
+            }
+            .BMap_noscreen {
+                display:none;
+            }
+            .BMap_button {
+                cursor:pointer;
+            }
+            .BMap_zoomer {
+                background-image:url(http://api.map.baidu.com/images/mapctrls1d3.gif);
+                background-repeat:no-repeat;
+                overflow:hidden;
+                font-size:1px;
+                position:absolute;
+                width:7px;
+                height:7px;
+            }
+            .BMap_stdMpCtrl div {
+                position:absolute;
+            }
+            .BMap_stdMpPan {
+                width:44px;
+                height:44px;
+                overflow:hidden;
+                background:url(http://api.map.baidu.com/images/mapctrls2d0.png) no-repeat;
+            }
+            .BMap_ie6 .BMap_stdMpPan {
+                background:none;
+            }
+            .BMap_ie6 .BMap_smcbg {
+                left:0;
+                width:44px;
+                height:464px;
+                filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://api.map.baidu.com/images/mapctrls2d0.png');
+            }
+            .BMap_ie6 .BMap_stdMpPanBg {
+                z-index:-1;
+            }
+            .BMap_stdMpPan .BMap_button {
+                height:15px;
+                width:15px;
+            }
+            .BMap_panN,.BMap_panW,.BMap_panE,.BMap_panS {
+                overflow:hidden;
+            }
+            .BMap_panN {
+                left:14px;
+                top:0;
+            }
+            .BMap_panW {
+                left:1px;
+                top:12px;
+            }
+            .BMap_panE {
+                left:27px;
+                top:12px;
+            }
+            .BMap_panS {
+                left:14px;
+                top:25px;
+            }
+            .BMap_stdMpZoom {
+                top:45px;
+                overflow:hidden;
+            }
+            .BMap_stdMpZoom .BMap_button {
+                width:22px;
+                height:21px;
+                left:12px;
+                overflow:hidden;
+                background-image:url(http://api.map.baidu.com/images/mapctrls2d0.png);
+                background-repeat:no-repeat;
+                z-index:10;
+            }
+            .BMap_ie6 .BMap_stdMpZoom .BMap_button {
+                background:none;
+            }
+            .BMap_stdMpZoomIn {
+                background-position:0 -221px;
+            }
+            .BMap_stdMpZoomOut {
+                background-position:0 -265px;
+            }
+            .BMap_ie6 .BMap_stdMpZoomIn div {
+                left:0;
+                top:-221px;
+            }
+            .BMap_ie6 .BMap_stdMpZoomOut div {
+                left:0;
+                top:-265px;
+            }
+            .BMap_stdMpType4 .BMap_stdMpZoom .BMap_button {
+                left:0;
+                overflow:hidden;
+                background:-webkit-gradient(linear,50% 0,50% 100%,from(rgba(255,255,255,0.85)),to(rgba(217,217,217,0.85)));
+                z-index:10;
+                -webkit-border-radius:22px;
+                width:34px;
+                height:34px;
+                border:1px solid rgba(255,255,255,0.5);
+                -webkit-box-shadow:0 2px 3.6px #CCC;
+                display:-webkit-box;
+                -webkit-box-align:center;
+                -webkit-box-pack:center;
+                -webkit-box-sizing:border-box;
+            }
+            .BMap_stdMpType4 .BMap_smcbg {
+                position:static;
+                background:url(http://api.map.baidu.com/images/mapctrls2d0_mb.png) 0 0 no-repeat;
+                -webkit-background-size:24px 32px;
+            }
+            .BMap_stdMpType4 .BMap_stdMpZoomIn {
+                background-position:0 0;
+            }
+            .BMap_stdMpType4 .BMap_stdMpZoomIn .BMap_smcbg {
+                width:24px;
+                height:24px;
+                background-position:0 0;
+            }
+            .BMap_stdMpType4 .BMap_stdMpZoomOut {
+                background-position:0 0;
+            }
+            .BMap_stdMpType4 .BMap_stdMpZoomOut .BMap_smcbg {
+                width:24px;
+                height:6px;
+                background-position:0 -25px;
+            }
+            .BMap_stdMpSlider {
+                width:37px;
+                top:18px;
+            }
+            .BMap_stdMpSliderBgTop {
+                left:18px;
+                width:10px;
+                overflow:hidden;
+                background:url(http://api.map.baidu.com/images/mapctrls2d0.png) no-repeat -23px -226px;
+            }
+            .BMap_stdMpSliderBgBot {
+                left:19px;
+                height:8px;
+                width:10px;
+                top:124px;
+                overflow:hidden;
+                background:url(http://api.map.baidu.com/images/mapctrls2d0.png) no-repeat -33px bottom;
+            }
+            .BMap_ie6 .BMap_stdMpSliderBgTop,.BMap_ie6 .BMap_stdMpSliderBgBot {
+                background:none;
+            }
+            .BMap_ie6 .BMap_stdMpSliderBgTop div {
+                left:-23px;
+                top:-226px;
+            }
+            .BMap_ie6 .BMap_stdMpSliderBgBot div {
+                left:-33px;
+                bottom:0;
+            }
+            .BMap_stdMpSliderMask {
+                height:100%;
+                width:24px;
+                left:10px;
+                cursor:pointer;
+            }
+            .BMap_stdMpSliderBar {
+                height:11px;
+                width:19px;
+                left:13px;
+                top:80px;
+                overflow:hidden;
+                background:url(http://api.map.baidu.com/images/mapctrls2d0.png) no-repeat 0 -309px;
+            }
+            .BMap_stdMpSliderBar.h {
+                background:url(http://api.map.baidu.com/images/mapctrls2d0.png) no-repeat 0 -320px;
+            }
+            .BMap_ie6 .BMap_stdMpSliderBar,.BMap_ie6 .BMap_stdMpSliderBar.h {
+                background:none;
+            }
+            .BMap_ie6 .BMap_stdMpSliderBar div {
+                top:-309px;
+            }
+            .BMap_ie6 .BMap_stdMpSliderBar.h div {
+                top:-320px;
+            }
+            .BMap_zlSt,.BMap_zlCity,.BMap_zlProv,.BMap_zlCountry {
+                position:absolute;
+                left:34px;
+                height:21px;
+                width:28px;
+                background-image:url(http://api.map.baidu.com/images/mapctrls2d0.png);
+                background-repeat:no-repeat;
+                font-size:0;
+                cursor:pointer;
+            }
+            .BMap_ie6 .BMap_zlSt,.BMap_ie6 .BMap_zlCity,.BMap_ie6 .BMap_zlProv,.BMap_ie6 .BMap_zlCountry {
+                background:none;
+                overflow:hidden;
+            }
+            .BMap_zlHolder {
+                display:none;
+                position:absolute;
+                top:0;
+            }
+            .BMap_zlHolder.hvr {
+                display:block;
+            }
+            .BMap_zlSt {
+                background-position:0 -380px;
+                top:21px;
+            }
+            .BMap_zlCity {
+                background-position:0 -401px;
+                top:57px;
+            }
+            .BMap_zlProv {
+                background-position:0 -422px;
+                top:81px;
+            }
+            .BMap_zlCountry {
+                background-position:0 -443px;
+                top:105px;
+            }
+            .BMap_ie6 .BMap_zlSt div {
+                top:-380px;
+            }
+            .BMap_ie6 .BMap_zlCity div {
+                top:-401px;
+            }
+            .BMap_ie6 .BMap_zlProv div {
+                top:-422px;
+            }
+            .BMap_ie6 .BMap_zlCountry div {
+                top:-443px;
+            }
+            .BMap_stdMpType1 .BMap_stdMpSlider,.BMap_stdMpType2 .BMap_stdMpSlider,.BMap_stdMpType3 .BMap_stdMpSlider,.BMap_stdMpType4 .BMap_stdMpSlider,.BMap_stdMpType2 .BMap_stdMpZoom,.BMap_stdMpType3 .BMap_stdMpPan,.BMap_stdMpType4 .BMap_stdMpPan {
+                display:none;
+            }
+            .BMap_stdMpType3 .BMap_stdMpZoom {
+                top:0;
+            }
+            .BMap_stdMpType4 .BMap_stdMpZoom {
+                top:0;
+            }
+            .BMap_cpyCtrl a {
+                font-size:11px;
+                color:#7979CC;
+            }
+            .BMap_scaleCtrl {
+                height:23px;
+                overflow:hidden;
+            }
+            .BMap_scaleCtrl div.BMap_scaleTxt {
+                font-size:11px;
+                font-family:Arial,sans-serif;
+            }
+            .BMap_scaleCtrl div {
+                position:absolute;
+                overflow:hidden;
+            }
+            .BMap_scaleHBar img,.BMap_scaleLBar img,.BMap_scaleRBar img {
+                position:absolute;
+                width:37px;
+                height:442px;
+                left:0;
+            }
+            .BMap_scaleHBar {
+                width:100%;
+                height:5px;
+                font-size:0;
+                bottom:0;
+            }
+            .BMap_scaleHBar img {
+                top:-437px;
+                width:100%;
+            }
+            .BMap_scaleLBar,.BMap_scaleRBar {
+                width:3px;
+                height:9px;
+                bottom:0;
+                font-size:0;
+                z-index:1;
+            }
+            .BMap_scaleLBar img {
+                top:-427px;
+                left:0;
+            }
+            .BMap_scaleRBar img {
+                top:-427px;
+                left:-5px;
+            }
+            .BMap_scaleLBar {
+                left:0;
+            }
+            .BMap_scaleRBar {
+                right:0;
+            }
+            .BMap_scaleTxt {
+                text-align:center;
+                width:100%;
+                cursor:default;
+                line-height:18px;
+            }
+            .BMap_omCtrl {
+                background-color:#fff;
+                overflow:hidden;
+            }
+            .BMap_omOutFrame {
+                position:absolute;
+                width:100%;
+                height:100%;
+                left:0;
+                top:0;
+            }
+            .BMap_omInnFrame {
+                position:absolute;
+                border:1px solid #999;
+                background-color:#ccc;
+                overflow:hidden;
+            }
+            .BMap_omMapContainer {
+                position:absolute;
+                overflow:hidden;
+                width:100%;
+                height:100%;
+                left:0;
+                top:0;
+            }
+            .BMap_omViewMv {
+                border-width:1px;
+                border-style:solid;
+                border-left-color:#84b0df;
+                border-top-color:#adcff4;
+                border-right-color:#274b8b;
+                border-bottom-color:#274b8b;
+                position:absolute;
+                z-index:600;
+            }
+            .BMap_omViewInnFrame {
+                border:1px solid #3e6bb8;
+            }
+            .BMap_omViewMask {
+                width:1000px;
+                height:1000px;
+                position:absolute;
+                left:0;
+                top:0;
+                background-color:#68c;
+                opacity:.2;
+                filter:progid:DXImageTransform.Microsoft.Alpha(opacity=20);
+            }
+            .BMap_omBtn {
+                height:13px;
+                width:13px;
+                position:absolute;
+                cursor:pointer;
+                overflow:hidden;
+                background:url(http://api.map.baidu.com/images/mapctrls1d3.gif) no-repeat;
+                z-index:1210;
+            }
+            .anchorBR .BMap_omOutFrame {
+                border-top:1px solid #999;
+                border-left:1px solid #999;
+            }
+            .quad4 .BMap_omBtn {
+                background-position:-26px -27px;
+            }
+            .quad4 .BMap_omBtn.hover {
+                background-position:0 -27px;
+            }
+            .quad4 .BMap_omBtn.BMap_omBtnClosed {
+                background-position:-39px -27px;
+            }
+            .quad4 .BMap_omBtn.BMap_omBtnClosed.hover {
+                background-position:-13px -27px;
+            }
+            .anchorTR .BMap_omOutFrame {
+                border-bottom:1px solid #999;
+                border-left:1px solid #999;
+            }
+            .quad1 .BMap_omBtn {
+                background-position:-39px -41px;
+            }
+            .quad1 .BMap_omBtn.hover {
+                background-position:-13px -41px;
+            }
+            .quad1 .BMap_omBtn.BMap_omBtnClosed {
+                background-position:-26px -41px;
+            }
+            .quad1 .BMap_omBtn.BMap_omBtnClosed.hover {
+                background-position:0 -41px;
+            }
+            .anchorBL .BMap_omOutFrame {
+                border-top:1px solid #999;
+                border-right:1px solid #999;
+            }
+            .quad3 .BMap_omBtn {
+                background-position:-27px -40px;
+            }
+            .quad3 .BMap_omBtn.hover {
+                background-position:-1px -40px;
+            }
+            .quad3
+                        .BMap_omBtn.BMap_omBtnClosed {
+                background-position:-40px -40px;
+            }
+            .quad3 .BMap_omBtn.BMap_omBtnClosed.hover {
+                background-position:-14px -40px;
+            }
+            .anchorTL .BMap_omOutFrame {
+                border-bottom:1px solid #999;
+                border-right:1px solid #999;
+            }
+            .quad2 .BMap_omBtn {
+                background-position:-40px -28px;
+            }
+            .quad2 .BMap_omBtn.hover {
+                background-position:-14px -28px;
+            }
+            .quad2 .BMap_omBtn.BMap_omBtnClosed {
+                background-position:-27px -28px;
+            }
+            .quad2 .BMap_omBtn.BMap_omBtnClosed.hover {
+                background-position:-1px -28px;
+            }
+            .anchorR .BMap_omOutFrame {
+                border-bottom:1px solid #999;
+                border-left:1px solid #999;
+                border-top:1px solid #999;
+            }
+            .anchorL .BMap_omOutFrame {
+                border-bottom:1px solid #999;
+                border-right:1px solid #999;
+                border-top:1px solid #999;
+            }
+            .anchorB .BMap_omOutFrame {
+                border-top:1px solid #999;
+                border-left:1px solid #999;
+                border-right:1px solid #999;
+            }
+            .anchorT .BMap_omOutFrame {
+                border-bottom:1px solid #999;
+                border-right:1px solid #999;
+                border-left:1px solid #999;
+            }
+            .anchorNon .BMap_omOutFrame,.withOffset .BMap_omOutFrame {
+                border:1px solid #999;
+            }
+            .BMap_zoomMask0,.BMap_zoomMask1 {
+                position:absolute;
+                left:0;
+                top:0;
+                width:100%;
+                height:100%;
+                background:transparent url(http://api.map.baidu.com/images/blank.gif);
+                z-index:1000;
+            }
+            .BMap_contextMenu {
+                position:absolute;
+                border-top:1px solid #adbfe4;
+                border-left:1px solid #adbfe4;
+                border-right:1px solid #8ba4d8;
+                border-bottom:1px solid #8ba4d8;
+                padding:0;
+                margin:0;
+                width:auto;
+                visibility:hidden;
+                background:#fff;
+                z-index:10000000;
+            }
+            .BMap_cmShadow {
+                position:absolute;
+                background:#000;
+                opacity:.3;
+                filter:alpha(opacity=30);
+                visibility:hidden;
+                z-index:9000000;
+            }
+            div.BMap_cmDivider {
+                border-bottom:1px solid #adbfe4;
+                font-size:0;
+                padding:1px;
+                margin:0 6px;
+            }
+            div.BMap_cmFstItem {
+                margin-top:2px;
+            }
+            div.BMap_cmLstItem {
+                margin-bottom:2px;
+            }
+            .BMap_shadow img {
+                border:0 none;
+                margin:0;
+                padding:0;
+                position:absolute;
+                height:370px;
+                width:1144px;
+            }
+            .BMap_pop .BMap_top {
+                border-top:1px solid #ababab;
+                background-color:#fff;
+            }
+            .BMap_pop .BMap_center {
+                border-left:1px solid #ababab;
+                border-right:1px solid #ababab;
+                background-color:#fff;
+            }
+            .BMap_pop .BMap_bottom {
+                border-bottom:1px solid #ababab;
+                background-color:#fff;
+            }
+            .BMap_shadow,.BMap_shadow img,.BMap_shadow div {
+                -moz-user-select:none;
+                -webkit-user-select:none;
+            }
+            .BMap_checkbox {
+                background:url(http://api.map.baidu.com/images/mapctrls1d3.gif);
+                vertical-align:middle;
+                display:inline-block;
+                width:11px;
+                height:11px;
+                margin-right:4px;
+                background-position:-14px 90px;
+            }
+            .BMap_checkbox.checked {
+                background-position:-2px 90px;
+            }
+            .BMap_pop .BMap_top img,.BMap_pop .BMap_center img,.BMap_pop .BMap_bottom img {
+                display:none;
+            }
+            @media print {
+                .BMap_noprint {
+                display:none;
+            }
+            .BMap_noscreen {
+                display:block;
+            }
+            .BMap_mask {
+                background:none;
+            }
+            .BMap_pop .BMap_top img,.BMap_pop .BMap_center img,.BMap_pop .BMap_bottom img {
+                display:block;
+            }
+            }.BMap_vectex {
+                cursor:pointer;
+                width:11px;
+                height:11px;
+                position:absolute;
+                background-repeat:no-repeat;
+                background-position:0 0;
+            }
+            .BMap_vectex_nodeT {
+                background-image:url(http://api.map.baidu.com/images/nodeT.gif);
+            }
+            .BMap_vectex_node {
+                background-image:url(http://api.map.baidu.com/images/node.gif);
+            }
+        </style>
+    </head>
+    
+    <body>
+        <!--=====================h eader 2016-12-20 start=====================- -> <div id="header" class="header" v="20161220" b="hotels" g="NaN" lg="f"> <div class="header_top response_wrap3 clearfix" style="width: 1200px;"> <div class="logo"> <a href="#" title="艺龙旅行网">艺龙旅行网</a></div>  <div class="right mt5"> <div class="branch_menu left mr10"> <span><a href="#" rel="nofollow">积分商城</a></span> <b></b> <span><a href="#" rel="nofollow">礼品卡</a></span> <b></b> <span class="online-customer"><a target="_blank" href="#" rel="nofollow">在线客服</a></span> <b></b> <span><a target="_blank" href="http://help.elong.com/">帮助中心</a></span> <b></b> <span class="language" method="newSpanLang"> <a href="#" method="eng">English</a><i class="com_icon04 left"></i><p><a href="#" title="简体版" rel="nofollow">简体版</a> <a href="#" rel="nofollow" title="繁體版">繁体版</a></p> </span> </div> <a class="one_panic mr10 left" href="http://promotion.elong.com/index/cn/2016/elong_app_down/index.html" rel="nofollow" target="_blank"><i class="com_icon01 left"></i><em>手机版</em><em method="newPromotion">专享五折起</em> <div class="only_phone" method="onlyPhoneDiv" style="display: none"> <i class="com_arrow_tl"></i> </div> </a> <span class="online_phone left"> <i class="com_icon02 left"></i> <em>7×24 客服电话</em><b class="" method="newPhoneNo"><i class="com_icon03 right"></i>4009-333-333</b> <div class="on_phonnum" method="newPhoneDiv"> <i class="com_arrow_tl"></i> <ul> <!--当鼠标移入时显示-->
+        <li>
+            <p>国内：4009-333-333</p>
+        </li>
+        <li>
+            <p>香港：852-8131-8883</p>
+            <p class="ti3">852-8131-8983</p></li>
+        <li>
+            <p>台湾：886-2-7717-8123</p>
+        </li>
+        <li class="last">
+            <p>海外：86-10-6432-9999</p>
+        </li>
+        </ul>
+        </div>
+        </span>
+        </div>
+        </div>
+        <!--导航-->
+        <div class="nav_box">
+            <div id="nav" class="response_wrap3" style="width: 1200px;">
+                <ul class="link" id="channelMenu">
+                    <li sid="28632">
+                        <a href="#" title="艺龙旅行网" id="nav_home">首页</a></li>
+                    <li sid="28639" class="on">
+                        <a title="酒店预订" href="#" id="nav_hotels">国内酒店
+                            <span class="rslide"></span></a>
+                    </li>
+                    <li style="display:none;" sid="41493">
+                        <a href="#" id="A1" title="酒店团购">团购</a></li>
+                    <li sid="28642">
+                        <a href="#" id="nav_hotelsw" title="国际酒店">国际酒店
+                            <span class="icon_coupon" style="background: url(http://img.elongstatic.com/index/fixed/icon2015-0.png) no-repeat; background-position: -259px 0;"></span></a>
+                    </li>
+                    <li sid="">
+                        <a href="#" id="nav_apartment" title="短租公寓">短租公寓
+                            <span class="icon_apart" style="background: url(http://img.elongstatic.com/index/fixed/icon2015-0.png) no-repeat; background-position: -307px 0;"></span></a>
+                    </li>
+                    <li style="display:none;" sid="52756">
+                        <a href="#" title="限时抢">限时抢</a></li>
+                    <li sid="28640">
+                        <a href="#" title="机票预订">机票
+                            <span class="icon_air"></span></a>
+                    </li>
+                    <li sid="28640">
+                        <a href="#" title="火车票">火车票</a></li>
+                    <li sid="28640">
+                        <a href="#" title="汽车票">汽车票
+                            <span class="icon_reserve" style="background: url(http://img.elongstatic.com/index/fixed/icon2015-0.png) no-repeat; background-position: -540px 0;"></span></a>
+                    </li>
+                    <li class="" sid="">
+                        <a title="用车" href="http://car.elong.com/">用车</a>
+                        <span class="icon_new" style="background: url(http://img.elongstatic.com/index/fixed/icon2015-0.png) no-repeat; background-position: -490px 0;"></span>
+                    </li>
+                    <li>
+                        <a href="#" title="旅游指南">旅游指南</a></li>
+                </ul>
+                <div class="account" method="dvAccount">
+                    <input type="hidden" id="hidden_memberid_user" value="">
+                    <input type="hidden" id="hidden_user_name" value="">
+                    <div class="log" id="user_display_login">
+                        <span>
+                            <a href="#" rel="nofollow">登录</a></span>|
+                        <span>
+                            <a href="#" rel="nofollow">注册</a></span>
+                    </div>
+                    <!--弹出-->
+                    <div class="drop_box_log pt" style="display: none" id="div_user_center">
+                        <div class="new_btnLogin">
+                            <a href="#" rel="nofollow">登录</a></div>
+                        <ul class="clx">
+                            <li class="icon_d1">
+                                <b>
+                                </b>
+                                <a href="#" rel="nofollow">酒店订单</a></li>
+                            <li class="icon_d2" style="display:none;">
+                                <b>
+                                </b>
+                                <a href="#" rel="nofollow">团购订单</a></li>
+                            <li class="icon_d3">
+                                <a href="#" rel="nofollow">机票订单</a></li>
+                            <li class="icon_d4">
+                                <a href="#" rel="nofollow">火车票订单</a></li>
+                            <li class="icon_d5">
+                                <b>
+                                </b>
+                                <a href="#" rel="nofollow">现金账户</a></li>
+                            <li class="icon_d6">
+                                <b>
+                                </b>
+                                <a href="#" rel="nofollow">汽车票订单</a></li>
+                            <li class="icon_d7">
+                                <b>
+                                </b>
+                                <a href="#" rel="nofollow">酒店收藏</a></li>
+                            <li class="icon_d8">
+                                <b style="display: none;" id="comment_notice">9</b>
+                                <a id="n_comment_a" href="#" rel="nofollow">我的点评</a></li>
+                            <li class="icon_d9">
+                                <b>
+                                </b>
+                                <a href="#" rel="nofollow">个人设置</a></li>
+                        </ul>
+                    </div>
+                    <!--弹出 end--></div>
+            </div>
+        </div>
+        <style type="text/css">.appWrap { background: url(images/app-com.png) no-repeat 0 -483px } .appBox .close { background: url(images/app-com.png) no-repeat -328px -182px; _background-image: url(images/app-com-ie6.png); } .appBox .close:hover { background-position: -358px -182px; } .appBox .intro { width: 480px; height: 210px; background: url(http://img.elongstatic.com/index/other/fx_btm.png) no-repeat 0 0px; font-size: 0; line-height: 0; overflow: hidden; position: absolute; top: 27px; left: 33px; } .appBox .way i { display: inline-block; width: 43px; height: 43px; margin-right: 5px; background: url(images/app-com.png) no-repeat 0 -334px; _background-image: url(images/app-com-ie6.png); vertical-align: middle; } .appBox .way .but { width: 170px; height: 30px; background: url(images/app-com.png) no-repeat -181px -334px; _background-image: url(images/app-com-ie6.png); border: 0; text-align: center; color: #fff; font: 16px "Microsoft Yahei", Simsun, sans-serif; cursor: pointer; } .appBox .way .but:hover { background-position: -181px -364px; } .appBox .way .success i { width: 20px; height: 16px; margin-right: 5px; background: url(images/app-com.png) no-repeat -181px -394px; _background-image: url(images/app-com-ie6.png); vertical-align: middle; }</style>
+        <div class="clear"></div>
+        </div>
+        <!--=====================h eader end=====================- -> 
+        <!-- 城市列表start -->
+        <div class="cont_box response_wrap3" method="listPageContainer">
+            <!-- cms start -->
+            <!-- cms end -->
+            <div class="mt10 mb10">
+                <h2 class="t24 left yahei mr20">湘潭酒店预订</h2>
+                <div class="pt5 link555">
+                    <a title="艺龙旅行网" href="#">首页</a>
+                    <span class="simsun">&gt;</span>
+                    <a title="酒店" href="#">酒店</a>
+                    <span class="simsun">&gt;</span>
+                    <a title="湘潭酒店" href="#">湘潭酒店</a>
+                    <span class="simsun">&gt;</span>
+                    <h1 class="breadcrumb" id="lastCrumbs">湘潭酒店</h1></div>
+            </div>
+            <div method="searchBox" id="m_searchBox" data-id="mainSearchBox" class="search_box mb5">
+                <div data-wrap="cityWrap" class="search_item search_termini">
+                    <label>
+                        <span>目的地</span>
+                        <input data-bindid="city" method="city" type="input" class="input_f16 input_termini" value="湘潭市" cityname="湘潭市" citynameen="Xiangtan" citynamecn="湘潭市" cityid="1906"></label>
+                </div>
+                <div class="search_item search_date">
+                    <label class="left br" data-wrap="checkInWrap">
+                        <span>入住</span>
+                        <input data-bindid="checkIn" method="checkIn" type="input" value="2016-12-27" selectedvalue="2016-12-27" class="input_f16 input_date">
+                        <span class="icon_date_s"></span>
+                    </label>
+                    <label class="left" data-wrap="checkOutWrap">
+                        <span>离店</span>
+                        <input data-bindid="checkOut" method="checkOut" type="input" value="2016-12-28" selectedvalue="2016-12-28" class="input_f16 input_date">
+                        <span class="icon_date_e"></span>
+                        <span class="total" data-bindid="dayCount">(共1晚)</span></label>
+                </div>
+                <div class="search_item search_keywords" data-wrap="allInOneWrap">
+                    <label>
+                        <span>关键词</span>
+                        <input data-bindid="allInOne" method="allInOne" type="input" class="input_f16 input_termini" value="如位置\酒店名\品牌"></label>
+                </div>
+                <div class="btn_search_w1 right" data-bindid="search" method="search">
+                    <span class="icon_search mr10"></span>搜索</div>
+            </div>
+            <div class="filter_box beee mb20 z10" id="filterZone" method="filterZone">
+                <div class="filter_btn" method="showOrHideFilter" data-show="1">收起服务设施&amp;房型人数</div>
+                <!-- location start -->
+                <div class="filter_item z10" method="locationFilterPart" data-multi="0">
+                    <div class="filter_title">
+                        <span class="icon_filter_posi"></span>位置
+                        <i class="b-line"></i></div>
+                    <div class="filter_option_box">
+                        <div class="filter_option">
+                            <div class="filter_unlimited" data-id="-1" method="location">不限</div>
+                            <ul class="filter_posi_type">
+                                <li class="" method="locationTab" data-typeid="5">商圈
+                                    <i class="icon_triangle_8b"></i></li>
+                                <li method="locationTab" data-typeid="4">行政区
+                                    <i class="icon_triangle_8b"></i></li>
+                                <li method="locationTab" data-typeid="601">地铁站
+                                    <i class="icon_triangle_8b"></i></li>
+                                <li method="locationTab" data-typeid="60" class="on">机场/车站
+                                    <i class="icon_triangle_8b"></i></li>
+                                <li method="locationTab" data-typeid="61">医院
+                                    <i class="icon_triangle_8b"></i></li>
+                                <li method="locationTab" data-typeid="62">大学
+                                    <i class="icon_triangle_8b"></i></li>
+                                <li method="locationTab" data-typeid="63">市内景点
+                                    <i class="icon_triangle_8b"></i></li>
+                                <li method="locationTab" data-typeid="64">市外景点
+                                    <i class="icon_triangle_8b"></i></li>
+                            </ul>
+                            <div class="filter_posi_show">
+                                <ul class="filter_posi_list" method="locationArr" data-typeid="5" style="display: none;">
+                                    <li class="" title="基建营" method="location" data-id="100759772" data-name="基建营" data-typeid="5">
+                                        <i class="icon_radio1"></i>
+                                        <span>基建营</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="市区" method="location" data-id="100756246" data-name="市区" data-typeid="5">
+                                        <i class="icon_radio1"></i>
+                                        <span>市区</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="建设路口" method="location" data-id="100756247" data-name="建设路口" data-typeid="5">
+                                        <i class="icon_radio1"></i>
+                                        <span>建设路口</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="板塘铺" method="location" data-id="100758283" data-name="板塘铺" data-typeid="5">
+                                        <i class="icon_radio1"></i>
+                                        <span>板塘铺</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="易俗河" method="location" data-id="100756248" data-name="易俗河" data-typeid="5">
+                                        <i class="icon_radio1"></i>
+                                        <span>易俗河</span>
+                                        <input type="radio"></li>
+                                </ul>
+                                <ul class="filter_posi_list" method="locationArr" data-typeid="4" style="display:none">
+                                    <li class="" title="雨湖区" method="location" data-id="100323805" data-name="雨湖区" data-typeid="4">
+                                        <i class="icon_radio1"></i>
+                                        <span>雨湖区</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="岳塘区" method="location" data-id="100324038" data-name="岳塘区" data-typeid="4">
+                                        <i class="icon_radio1"></i>
+                                        <span>岳塘区</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="湘潭县" method="location" data-id="100322341" data-name="湘潭县" data-typeid="4">
+                                        <i class="icon_radio1"></i>
+                                        <span>湘潭县</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="湘乡市" method="location" data-id="100323034" data-name="湘乡市" data-typeid="4">
+                                        <i class="icon_radio1"></i>
+                                        <span>湘乡市</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="韶山市" method="location" data-id="100322258" data-name="韶山市" data-typeid="4">
+                                        <i class="icon_radio1"></i>
+                                        <span>韶山市</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="长塘区" method="location" data-id="100759484" data-name="长塘区" data-typeid="4">
+                                        <i class="icon_radio1"></i>
+                                        <span>长塘区</span>
+                                        <input type="radio"></li>
+                                </ul>
+                                <!--如果为地铁的-->
+                                <ul class="filter_posi_list" method="locationArr" data-typeid="601" style="">
+                                    <li class="subway_num_wrap">
+                                        <div class="subway_num">
+                                            <div class="subway_num_list">
+                                                <ul class="clearfix">
+                                                    <!-- -- 需要中英文 ---->
+                                                    <li data-subwaykey="Line 1" class="check" method="subwayName">
+                                                        <a href="javascript:void(0);">1号线</a></li>
+                                                    <!-- -- 需要中英文 ---->
+                                                    <li data-subwaykey="Line 2" class="" method="subwayName">
+                                                        <a href="javascript:void(0);">2号线</a></li>
+                                                    <!-- -- 需要中英文 ---->
+                                                    <li data-subwaykey="Line 3" class="" method="subwayName">
+                                                        <a href="javascript:void(0);">3号线</a></li>
+                                                    <!-- -- 需要中英文 ---->
+                                                    <li data-subwaykey="Line 4" class="" method="subwayName">
+                                                        <a href="javascript:void(0);">4号线</a></li>
+                                                    <!-- -- 需要中英文 ---->
+                                                    <li data-subwaykey="Line 5" class="" method="subwayName">
+                                                        <a href="javascript:void(0);">5号线</a></li>
+                                                    <!-- -- 需要中英文 ---->
+                                                    <li data-subwaykey="Line 6" class="" method="subwayName">
+                                                        <a href="javascript:void(0);">6号线</a></li>
+                                                    <!-- -- 需要中英文 ---->
+                                                    <li data-subwaykey="Line 7" class="" method="subwayName">
+                                                        <a href="javascript:void(0);">7号线</a></li>
+                                                    <!-- -- 需要中英文 ---->
+                                                    <li data-subwaykey="Line 8" class="" method="subwayName">
+                                                        <a href="javascript:void(0);">8号线</a></li>
+                                                    <!-- -- 需要中英文 ---->
+                                                    <li data-subwaykey="Line 9" class="" method="subwayName">
+                                                        <a href="javascript:void(0);">9号线</a></li>
+                                                    <!-- -- 需要中英文 ---->
+                                                    <li data-subwaykey="Line 10" class="" method="subwayName">
+                                                        <a href="javascript:void(0);">10号线</a></li>
+                                                    <!-- -- 需要中英文 ---->
+                                                    <li data-subwaykey="Line 11" class="" method="subwayName">
+                                                        <a href="javascript:void(0);">11号线</a></li>
+                                                    <!-- -- 需要中英文 ---->
+                                                    <li data-subwaykey="Line 12" class="" method="subwayName">
+                                                        <a href="javascript:void(0);">12号线</a></li>
+                                                    <!-- -- 需要中英文 ---->
+                                                    <li data-subwaykey="Line 13" class="" method="subwayName">
+                                                        <a href="javascript:void(0);">13号线</a></li>
+                                                    <!-- -- 需要中英文 ---->
+                                                    <li data-subwaykey="Line 16" class="" method="subwayName">
+                                                        <a href="javascript:void(0);">16号线</a></li>
+                                                    <!-- -- 需要中英文 ---->
+                                                    <li data-subwaykey="cixuanfu" class="" method="subwayName">
+                                                        <a href="javascript:void(0);">磁悬浮</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="subway_station">
+                                                <ul class="clearfix" method="subwayContainer" id="subwaycontainer">
+                                                    <li class="first">
+                                                        <a title="莘庄" href="javascript:void(0);" method="location" data-id="60000390" data-name="莘庄" data-typeid="601">
+                                                            <span class="fist"></span>
+                                                            <span class="secd">莘庄</span></a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a title="外环路" href="javascript:void(0);" method="location" data-id="60000379" data-name="外环路" data-typeid="601">
+                                                            <span class="fist"></span>
+                                                            <span class="secd">外环路</span></a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a title="莲花路" href="javascript:void(0);" method="location" data-id="60000391" data-name="莲花路" data-typeid="601">
+                                                            <span class="fist"></span>
+                                                            <span class="secd">莲花路</span></a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a title="锦江乐园" href="javascript:void(0);" method="location" data-id="60000394" data-name="锦江乐园" data-typeid="601" class="on" data-selected="1">
+                                                            <span class="fist"></span>
+                                                            <span class="secd">锦江乐园</span></a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a title="上海南站" href="javascript:void(0);" method="location" data-id="60000370" data-name="上海南站" data-typeid="601">
+                                                            <span class="fist"></span>
+                                                            <span class="secd">上海南站</span></a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a title="漕宝路" href="javascript:void(0);" method="location" data-id="60000389" data-name="漕宝路" data-typeid="601">
+                                                            <span class="fist"></span>
+                                                            <span class="secd">漕宝路</span></a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a title="上海体育馆" href="javascript:void(0);" method="location" data-id="60000369" data-name="上海体育馆" data-typeid="601">
+                                                            <span class="fist"></span>
+                                                            <span class="secd">上海体育馆</span></a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a title="徐家汇" href="javascript:void(0);" method="location" data-id="60000385" data-name="徐家汇" data-typeid="601">
+                                                            <span class="fist"></span>
+                                                            <span class="secd">徐家汇</span></a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a title="衡山路" href="javascript:void(0);" method="location" data-id="60000392" data-name="衡山路" data-typeid="601">
+                                                            <span class="fist"></span>
+                                                            <span class="secd">衡山路</span></a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a title="常熟路" href="javascript:void(0);" method="location" data-id="60000382" data-name="常熟路" data-typeid="601">
+                                                            <span class="fist"></span>
+                                                            <span class="secd">常熟路</span></a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a title="陕西南路" href="javascript:void(0);" method="location" data-id="60000395" data-name="陕西南路" data-typeid="601">
+                                                            <span class="fist"></span>
+                                                            <span class="secd">陕西南路</span></a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a title="黄陂南路" href="javascript:void(0);" method="location" data-id="60000396" data-name="黄陂南路" data-typeid="601">
+                                                            <span class="fist"></span>
+                                                            <span class="secd">黄陂南路</span></a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a title="人民广场" href="javascript:void(0);" method="location" data-id="60000374" data-name="人民广场" data-typeid="601">
+                                                            <span class="fist"></span>
+                                                            <span class="secd">人民广场</span></a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a title="新闸路" href="javascript:void(0);" method="location" data-id="60000386" data-name="新闸路" data-typeid="601">
+                                                            <span class="fist"></span>
+                                                            <span class="secd">新闸路</span></a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a title="汉中路" href="javascript:void(0);" method="location" data-id="60000387" data-name="汉中路" data-typeid="601">
+                                                            <span class="fist"></span>
+                                                            <span class="secd">汉中路</span></a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a title="上海火车站" href="javascript:void(0);" method="location" data-id="60000371" data-name="上海火车站" data-typeid="601">
+                                                            <span class="fist"></span>
+                                                            <span class="secd">上海火车站</span></a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a title="中山北路" href="javascript:void(0);" method="location" data-id="60000373" data-name="中山北路" data-typeid="601">
+                                                            <span class="fist"></span>
+                                                            <span class="secd">中山北路</span></a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a title="延长路" href="javascript:void(0);" method="location" data-id="60000383" data-name="延长路" data-typeid="601">
+                                                            <span class="fist"></span>
+                                                            <span class="secd">延长路</span></a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a title="上海马戏城" href="javascript:void(0);" method="location" data-id="60000372" data-name="上海马戏城" data-typeid="601">
+                                                            <span class="fist"></span>
+                                                            <span class="secd">上海马戏城</span></a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a title="汶水路" href="javascript:void(0);" method="location" data-id="60000388" data-name="汶水路" data-typeid="601">
+                                                            <span class="fist"></span>
+                                                            <span class="secd">汶水路</span></a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a title="彭浦新村" href="javascript:void(0);" method="location" data-id="60000384" data-name="彭浦新村" data-typeid="601">
+                                                            <span class="fist"></span>
+                                                            <span class="secd">彭浦新村</span></a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a title="共康路" href="javascript:void(0);" method="location" data-id="60000376" data-name="共康路" data-typeid="601">
+                                                            <span class="fist"></span>
+                                                            <span class="secd">共康路</span></a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a title="通河新村" href="javascript:void(0);" method="location" data-id="60000393" data-name="通河新村" data-typeid="601">
+                                                            <span class="fist"></span>
+                                                            <span class="secd">通河新村</span></a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a title="呼兰路" href="javascript:void(0);" method="location" data-id="60000378" data-name="呼兰路" data-typeid="601">
+                                                            <span class="fist"></span>
+                                                            <span class="secd">呼兰路</span></a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a title="共富新村" href="javascript:void(0);" method="location" data-id="60000375" data-name="共富新村" data-typeid="601">
+                                                            <span class="fist"></span>
+                                                            <span class="secd">共富新村</span></a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a title="宝安公路" href="javascript:void(0);" method="location" data-id="60000380" data-name="宝安公路" data-typeid="601">
+                                                            <span class="fist"></span>
+                                                            <span class="secd">宝安公路</span></a>
+                                                    </li>
+                                                    <li class="">
+                                                        <a title="友谊西路" href="javascript:void(0);" method="location" data-id="60000377" data-name="友谊西路" data-typeid="601">
+                                                            <span class="fist"></span>
+                                                            <span class="secd">友谊西路</span></a>
+                                                    </li>
+                                                    <li class="last">
+                                                        <a title="富锦路" href="javascript:void(0);" method="location" data-id="60000381" data-name="富锦路" data-typeid="601">
+                                                            <span class="fist"></span>
+                                                            <span class="secd">富锦路</span></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <!-- 机场 车站判断id-->
+                                <div class="filter_lis_pos" method="locationArr" data-typeid="60" style="">
+                                    <!-- -- 需要中英文 ---->
+                                    <div class="lis_pos">
+                                        <div class="filter_lis_tit">
+                                            <span class="icons-train"></span>火车站</div>
+                                        <ul class="filter_posi_list">
+                                            <li class="" title="湘潭站" method="location" data-id="60001279" data-name="湘潭站" data-typeid="60">
+                                                <i class="icon_radio1"></i>
+                                                <span>湘潭站</span>
+                                                <input type="radio"></li>
+                                            <li class="" title="湘乡站" method="location" data-id="14387964" data-name="湘乡站" data-typeid="60">
+                                                <i class="icon_radio1"></i>
+                                                <span>湘乡站</span>
+                                                <input type="radio"></li>
+                                        </ul>
+                                    </div>
+                                    <!-- -- 需要中英文 ---->
+                                    <div class="lis_pos">
+                                        <div class="filter_lis_tit">
+                                            <span class="icons-car"></span>汽车客运站</div>
+                                        <ul class="filter_posi_list">
+                                            <li class="" title="湘潭汽车站" method="location" data-id="14387033" data-name="湘潭汽车站" data-typeid="60">
+                                                <i class="icon_radio1"></i>
+                                                <span>湘潭汽车站</span>
+                                                <input type="radio"></li>
+                                            <li class="" title="湘潭西站" method="location" data-id="51185775" data-name="湘潭西站" data-typeid="60">
+                                                <i class="icon_radio1"></i>
+                                                <span>湘潭西站</span>
+                                                <input type="radio"></li>
+                                            <li class="" title="湘潭汽车东站" method="location" data-id="14391974" data-name="湘潭汽车东站" data-typeid="60">
+                                                <i class="icon_radio1"></i>
+                                                <span>湘潭汽车东站</span>
+                                                <input type="radio"></li>
+                                            <li class="" title="湘潭天易汽车站" method="location" data-id="60632370" data-name="湘潭天易汽车站" data-typeid="60">
+                                                <i class="icon_radio1"></i>
+                                                <span>湘潭天易汽车站</span>
+                                                <input type="radio"></li>
+                                            <li class="" title="湘潭县汽车站" method="location" data-id="60632371" data-name="湘潭县汽车站" data-typeid="60">
+                                                <i class="icon_radio1"></i>
+                                                <span>湘潭县汽车站</span>
+                                                <input type="radio"></li>
+                                            <li class="" title="湘潭客运汽车南站" method="location" data-id="60632372" data-name="湘潭客运汽车南站" data-typeid="60">
+                                                <i class="icon_radio1"></i>
+                                                <span>湘潭客运汽车南站</span>
+                                                <input type="radio"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <ul class="filter_posi_list" method="locationArr" data-typeid="61" style="display:none">
+                                    <li class="" title="湘潭市中心医院" method="location" data-id="14384940" data-name="湘潭市中心医院" data-typeid="61">
+                                        <i class="icon_radio1"></i>
+                                        <span>湘潭市中心医院</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="湘潭市第一人民医院" method="location" data-id="14387535" data-name="湘潭市第一人民医院" data-typeid="61">
+                                        <i class="icon_radio1"></i>
+                                        <span>湘潭市第一人民医院</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="湘潭市第二人民医院" method="location" data-id="14392144" data-name="湘潭市第二人民医院" data-typeid="61">
+                                        <i class="icon_radio1"></i>
+                                        <span>湘潭市第二人民医院</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="湘潭市第三人民医院" method="location" data-id="60158070" data-name="湘潭市第三人民医院" data-typeid="61">
+                                        <i class="icon_radio1"></i>
+                                        <span>湘潭市第三人民医院</span>
+                                        <input type="radio"></li>
+                                </ul>
+                                <ul class="filter_posi_list" method="locationArr" data-typeid="62" style="display:none">
+                                    <li class="" title="湘潭大学" method="location" data-id="51139341" data-name="湘潭大学" data-typeid="62">
+                                        <i class="icon_radio1"></i>
+                                        <span>湘潭大学</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="湖南科技大学" method="location" data-id="60003864" data-name="湖南科技大学" data-typeid="62">
+                                        <i class="icon_radio1"></i>
+                                        <span>湖南科技大学</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="湖南工程学院" method="location" data-id="60003865" data-name="湖南工程学院" data-typeid="62">
+                                        <i class="icon_radio1"></i>
+                                        <span>湖南工程学院</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="湖南工学院" method="location" data-id="60003866" data-name="湖南工学院" data-typeid="62">
+                                        <i class="icon_radio1"></i>
+                                        <span>湖南工学院</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="湖南吉利汽车职业技术学院" method="location" data-id="60003869" data-name="湖南吉利汽车职业技术学院" data-typeid="62">
+                                        <i class="icon_radio1"></i>
+                                        <span>湖南吉利汽车职业技术学院</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="湘潭职业技术学院" method="location" data-id="51139482" data-name="湘潭职业技术学院" data-typeid="62">
+                                        <i class="icon_radio1"></i>
+                                        <span>湘潭职业技术学院</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="湖南理工职业技术学院" method="location" data-id="14377661" data-name="湖南理工职业技术学院" data-typeid="62">
+                                        <i class="icon_radio1"></i>
+                                        <span>湖南理工职业技术学院</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="湖南软件职业学院" method="location" data-id="60003870" data-name="湖南软件职业学院" data-typeid="62">
+                                        <i class="icon_radio1"></i>
+                                        <span>湖南软件职业学院</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="湖南电气职业技术学院" method="location" data-id="14391254" data-name="湖南电气职业技术学院" data-typeid="62" style="display:none" data-mark="1">
+                                        <i class="icon_radio1"></i>
+                                        <span>湖南电气职业技术学院</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="湖南科技工业职业技术学院" method="location" data-id="60003871" data-name="湖南科技工业职业技术学院" data-typeid="62" style="display:none" data-mark="1">
+                                        <i class="icon_radio1"></i>
+                                        <span>湖南科技工业职业技术学院</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="湖南工程学院应用技术学院" method="location" data-id="14377881" data-name="湖南工程学院应用技术学院" data-typeid="62" style="display:none" data-mark="1">
+                                        <i class="icon_radio1"></i>
+                                        <span>湖南工程学院应用技术学院</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="湖南科技大学潇湘学院" method="location" data-id="14389853" data-name="湖南科技大学潇湘学院" data-typeid="62" style="display:none" data-mark="1">
+                                        <i class="icon_radio1"></i>
+                                        <span>湖南科技大学潇湘学院</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="湘潭大学兴湘学院" method="location" data-id="14385072" data-name="湘潭大学兴湘学院" data-typeid="62" style="display:none" data-mark="1">
+                                        <i class="icon_radio1"></i>
+                                        <span>湘潭大学兴湘学院</span>
+                                        <input type="radio"></li>
+                                    <li class="filter_more on icon_hl_more1" style="display: block;" method="showAllOps" data-typeid="62" data-showall="0"></li>
+                                </ul>
+                                <ul class="filter_posi_list" method="locationArr" data-typeid="63" style="display:none">
+                                    <li class="" title="湘潭文庙" method="location" data-id="60520241" data-name="湘潭文庙" data-typeid="63">
+                                        <i class="icon_radio1"></i>
+                                        <span>湘潭文庙</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="齐白石纪念馆" method="location" data-id="60520243" data-name="齐白石纪念馆" data-typeid="63">
+                                        <i class="icon_radio1"></i>
+                                        <span>齐白石纪念馆</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="湘潭秋瑾故居" method="location" data-id="60521906" data-name="湘潭秋瑾故居" data-typeid="63">
+                                        <i class="icon_radio1"></i>
+                                        <span>湘潭秋瑾故居</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="上屋场" method="location" data-id="14398441" data-name="上屋场" data-typeid="63">
+                                        <i class="icon_radio1"></i>
+                                        <span>上屋场</span>
+                                        <input type="radio"></li>
+                                </ul>
+                                <ul class="filter_posi_list" method="locationArr" data-typeid="64" style="display:none">
+                                    <li class="" title="韶山毛泽东故居" method="location" data-id="60520239" data-name="韶山毛泽东故居" data-typeid="64">
+                                        <i class="icon_radio1"></i>
+                                        <span>韶山毛泽东故居</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="滴水洞风景区" method="location" data-id="60520240" data-name="滴水洞风景区" data-typeid="64">
+                                        <i class="icon_radio1"></i>
+                                        <span>滴水洞风景区</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="彭德怀纪念馆" method="location" data-id="14388200" data-name="彭德怀纪念馆" data-typeid="64">
+                                        <i class="icon_radio1"></i>
+                                        <span>彭德怀纪念馆</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="湘潭农博园" method="location" data-id="14384738" data-name="湘潭农博园" data-typeid="64">
+                                        <i class="icon_radio1"></i>
+                                        <span>湘潭农博园</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="韶峰" method="location" data-id="60521903" data-name="韶峰" data-typeid="64">
+                                        <i class="icon_radio1"></i>
+                                        <span>韶峰</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="茅浒水乡" method="location" data-id="60521904" data-name="茅浒水乡" data-typeid="64">
+                                        <i class="icon_radio1"></i>
+                                        <span>茅浒水乡</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="毛氏宗祠" method="location" data-id="60521907" data-name="毛氏宗祠" data-typeid="64">
+                                        <i class="icon_radio1"></i>
+                                        <span>毛氏宗祠</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="韶山烈士陵园" method="location" data-id="14387954" data-name="韶山烈士陵园" data-typeid="64">
+                                        <i class="icon_radio1"></i>
+                                        <span>韶山烈士陵园</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="毛泽东诗词碑林" method="location" data-id="60521908" data-name="毛泽东诗词碑林" data-typeid="64" style="display:none" data-mark="1">
+                                        <i class="icon_radio1"></i>
+                                        <span>毛泽东诗词碑林</span>
+                                        <input type="radio"></li>
+                                    <li class="" title="昭山" method="location" data-id="51139269" data-name="昭山" data-typeid="64" style="display:none" data-mark="1">
+                                        <i class="icon_radio1"></i>
+                                        <span>昭山</span>
+                                        <input type="radio"></li>
+                                    <li class="filter_more on icon_hl_more1" style="display: block;" method="showAllOps" data-typeid="64" data-showall="0"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- location end -->
+                <!-- price start -->
+                <div class="filter_item" method="priceFilterPart" data-multi="1">
+                    <div class="filter_title">
+                        <span class="icon_filter_pri"></span>房价
+                        <i class="b-line"></i></div>
+                    <div class="filter_option_box">
+                        <div class="filter_option">
+                            <div method="price" data-id="-1" data-low="0" data-high="0" class="filter_unlimited filter_unlimited_on">不限</div>
+                            <div class="filter_custom">
+                                <span class="mr5">自定义</span>
+                                <span class="mr5">
+                                    <input method="lowPrice" type="input" class="input_f12"></span>
+                                <span class="mr5 cddd">—</span>
+                                <span class="mr5">
+                                    <input method="highPrice" type="input" class="input_f12"></span>
+                                <span method="priceConfirm" data-id="999" class="btn_filter_sure">确定</span></div>
+                            <ul class="filter_cb_list filter_cb_list1">
+                                <li method="price" data-id="1" data-low="0" data-high="150" data-name="150元以下">
+                                    <i class="icon_radio1"></i>
+                                    <span>150元以下</span>
+                                    <input type="radio"></li>
+                                <li method="price" data-id="2" data-low="150" data-high="300" data-name="150-300元">
+                                    <i class="icon_radio1"></i>
+                                    <span>150-300元</span>
+                                    <input type="radio"></li>
+                                <li method="price" data-id="3" data-low="301" data-high="450" data-name="301-450元">
+                                    <i class="icon_radio1"></i>
+                                    <span>301-450元</span>
+                                    <input type="radio"></li>
+                                <li method="price" data-id="4" data-low="451" data-high="600" data-name="451-600元">
+                                    <i class="icon_radio1"></i>
+                                    <span>451-600元</span>
+                                    <input type="radio"></li>
+                                <li method="price" data-id="5" data-low="600" data-high="0" data-name="600元以上">
+                                    <i class="icon_radio1"></i>
+                                    <span>600元以上</span>
+                                    <input type="radio"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- price end -->
+                <!-- star start -->
+                <div class="filter_item" method="starFilterPart" data-multi="1">
+                    <div class="filter_title">
+                        <span class="icon_filter_star"></span>星级
+                        <i class="b-line"></i></div>
+                    <div class="filter_option_box">
+                        <div class="filter_option">
+                            <div method="star" data-id="-1" class="filter_unlimited filter_unlimited_on">不限</div>
+                            <ul class="filter_cb_list">
+                                <li method="star" data-id="2" data-name="经济/客栈" data-selected="0">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>经济/客栈</span>
+                                    <input type="checkbox"></li>
+                                <li method="star" data-id="3" data-name="三星/舒适" data-selected="0">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>三星/舒适</span>
+                                    <input type="checkbox"></li>
+                                <li method="star" data-id="4" data-name="四星/高档" data-selected="0">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>四星/高档</span>
+                                    <input type="checkbox"></li>
+                                <li method="star" data-id="5" data-name="五星/豪华" data-selected="0">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>五星/豪华</span>
+                                    <input type="checkbox"></li>
+                                <li method="star" data-id="11" data-name="公寓" data-selected="0">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>公寓</span>
+                                    <input type="checkbox"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- star end -->
+                <!--1010.人数 1011.设施 1012.主题 3.品牌 -->
+                <!-- 3.品牌 -->
+                <div class="filter_item" method="brandFilterPart" data-typeid="3" data-multi="1">
+                    <div class="filter_title">
+                        <span class="icon_filter_prod"></span>品牌
+                        <i class="b-line"></i></div>
+                    <div class="filter_option_box">
+                        <div class="filter_option">
+                            <div method="brand" data-id="-1" class="filter_unlimited filter_unlimited_on">不限</div>
+                            <ul class="filter_cb_list" method="brandList">
+                                <li method="brand" data-typeid="3" data-id="56" data-name="汉庭" data-selected="0">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>汉庭</span>
+                                    <input type="checkbox"></li>
+                                <li method="brand" data-typeid="3" data-id="32" data-name="如家" data-selected="0">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>如家</span>
+                                    <input type="checkbox"></li>
+                                <li method="brand" data-typeid="3" data-id="53" data-name="7天" data-selected="0">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>7天</span>
+                                    <input type="checkbox"></li>
+                                <li method="brand" data-typeid="3" data-id="39532" data-name="五彩今天" data-selected="0">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>五彩今天</span>
+                                    <input type="checkbox"></li>
+                                <li method="brand" data-typeid="3" data-id="44" data-name="格林豪泰" data-selected="0">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>格林豪泰</span>
+                                    <input type="checkbox"></li>
+                            </ul>
+                            <div class="filter_cb_more" method="showAllBrand" data-showall="0">舒适/高档/豪华品牌</div>
+                            <div class="filter_more icon_hl_more1" method="showAllBrand" data-showall="0" data-btn="brand"></div>
+                            <!-- allbrand start -->
+                            <div id="allBrandDiv" method="allBrand" class="more_finfo" style="display: none;">
+                                <div class="filter_layer">
+                                    <h4 class="filter_close">
+                                        <a title="关闭" href="javascript:void(0);" method="closeBrand">
+                                            <span class="hide">关闭</span></a>
+                                    </h4>
+                                    <div class="brand_box">
+                                        <h3>经济</h3>
+                                        <div class="brand_list" id="allBrandList">
+                                            <ul>
+                                                <li method="brand" data-typeid="3" data-id="39532" data-name="五彩今天" data-selected="0">
+                                                    <i class="icon_checkbox1"></i>
+                                                    <span>五彩今天</span>
+                                                    <input type="checkbox"></li>
+                                                <li method="brand" data-typeid="3" data-id="32" data-name="如家" data-selected="0">
+                                                    <i class="icon_checkbox1"></i>
+                                                    <span>如家</span>
+                                                    <input type="checkbox"></li>
+                                                <li method="brand" data-typeid="3" data-id="53" data-name="7天" data-selected="0">
+                                                    <i class="icon_checkbox1"></i>
+                                                    <span>7天</span>
+                                                    <input type="checkbox"></li>
+                                                <li method="brand" data-typeid="3" data-id="56" data-name="汉庭" data-selected="0">
+                                                    <i class="icon_checkbox1"></i>
+                                                    <span>汉庭</span>
+                                                    <input type="checkbox"></li>
+                                                <li method="brand" data-typeid="3" data-id="44" data-name="格林豪泰" data-selected="0">
+                                                    <i class="icon_checkbox1"></i>
+                                                    <span>格林豪泰</span>
+                                                    <input type="checkbox"></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- allbrand end --></div>
+                    </div>
+                </div>
+                <!--1010.人数 1011.设施 1012.主题 3.品牌 -->
+                <!--1010.人数 1011.设施 1012.主题 -->
+                <div class="filter_item" method="themeFilterPart" data-typeid="1012" data-multi="1">
+                    <div class="filter_title">
+                        <span class="icon_filter_theme"></span>主题
+                        <i class="b-line"></i></div>
+                    <div class="filter_option_box">
+                        <div class="filter_option">
+                            <div method="theme" data-id="-1" class="filter_unlimited filter_unlimited_on">不限</div>
+                            <ul class="filter_cb_list" method="themeList">
+                                <li method="theme" data-typeid="1012" data-id="100000270" data-name="商旅之家" data-selected="0">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>商旅之家</span>
+                                    <input type="checkbox"></li>
+                                <li method="theme" data-typeid="1012" data-id="100000278" data-name="聚会做饭" data-selected="0">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>聚会做饭</span>
+                                    <input type="checkbox"></li>
+                                <li method="theme" data-typeid="1012" data-id="100000682" data-name="农家乐" data-selected="0">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>农家乐</span>
+                                    <input type="checkbox"></li>
+                                <li method="theme" data-typeid="1012" data-id="100000279" data-name="休闲情调" data-selected="0">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>休闲情调</span>
+                                    <input type="checkbox"></li>
+                                <li method="theme" data-typeid="1012" data-id="100000107" data-name="四合院" data-selected="0">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>四合院</span>
+                                    <input type="checkbox"></li>
+                                <li method="theme" data-typeid="1012" data-id="100000099" data-name="青年旅社" data-selected="0">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>青年旅社</span>
+                                    <input type="checkbox"></li>
+                                <li method="theme" data-typeid="1012" data-id="100000271" data-name="度假休闲" data-selected="0">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>度假休闲</span>
+                                    <input type="checkbox"></li>
+                                <li method="theme" data-typeid="1012" data-id="100000272" data-name="看病就医" data-selected="0">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>看病就医</span>
+                                    <input type="checkbox"></li>
+                                <li method="theme" data-typeid="1012" data-id="100000273" data-name="培训学习" data-selected="0" style="display:none" data-mark="1">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>培训学习</span>
+                                    <input type="checkbox"></li>
+                                <li method="theme" data-typeid="1012" data-id="100000274" data-name="聚会" data-selected="0" style="display:none" data-mark="1">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>聚会</span>
+                                    <input type="checkbox"></li>
+                                <li method="theme" data-typeid="1012" data-id="100000275" data-name="蜜月出行" data-selected="0" style="display:none" data-mark="1">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>蜜月出行</span>
+                                    <input type="checkbox"></li>
+                                <li method="theme" data-typeid="1012" data-id="100000276" data-name="家庭旅馆" data-selected="0" style="display:none" data-mark="1">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>家庭旅馆</span>
+                                    <input type="checkbox"></li>
+                                <li method="theme" data-typeid="1012" data-id="100000277" data-name="别墅" data-selected="0" style="display:none" data-mark="1">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>别墅</span>
+                                    <input type="checkbox"></li>
+                                <li method="theme" data-typeid="1012" data-id="100000102" data-name="温泉酒店" data-selected="0" style="display:none" data-mark="1">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>温泉酒店</span>
+                                    <input type="checkbox"></li>
+                                <li method="theme" data-typeid="1012" data-id="100000103" data-name="海景酒店" data-selected="0" style="display:none" data-mark="1">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>海景酒店</span>
+                                    <input type="checkbox"></li>
+                                <li method="theme" data-typeid="1012" data-id="100000100" data-name="精品酒店（设计师酒店）" data-selected="0" style="display:none" data-mark="1">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>精品酒店（设计师酒店）</span>
+                                    <input type="checkbox"></li>
+                                <li method="theme" data-typeid="1012" data-id="100000101" data-name="情侣酒店" data-selected="0" style="display:none" data-mark="1">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>情侣酒店</span>
+                                    <input type="checkbox"></li>
+                                <li method="theme" data-typeid="1012" data-id="100000681" data-name="客栈\民宿" data-selected="0" style="display:none" data-mark="1">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>客栈\民宿</span>
+                                    <input type="checkbox"></li>
+                                <li method="theme" data-typeid="1012" data-id="100000680" data-name="公寓" data-selected="0" style="display:none" data-mark="1">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>公寓</span>
+                                    <input type="checkbox"></li>
+                                <li method="theme" data-typeid="1012" data-id="100000104" data-name="高尔夫酒店" data-selected="0" style="display:none" data-mark="1">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>高尔夫酒店</span>
+                                    <input type="checkbox"></li>
+                                <li method="theme" data-typeid="1012" data-id="100000105" data-name="园林庭院" data-selected="0" style="display:none" data-mark="1">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>园林庭院</span>
+                                    <input type="checkbox"></li>
+                            </ul>
+                            <div class="icon_hl_more1 filter_more" method="showAllOps" data-showall="0"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--1010.人数 1011.设施 1012.主题 3.品牌 -->
+                <!--1010.人数 1011.设施 1012.主题 -->
+                <div class="filter_item " method="facilityFilterPart" data-typeid="1011" data-multi="1" style="">
+                    <div class="filter_title">
+                        <span class="icon_filter_serv"></span>服务
+                        <i class="b-line"></i></div>
+                    <div class="filter_option_box">
+                        <div class="filter_option">
+                            <div method="facility" data-id="-1" class="filter_unlimited filter_unlimited_on">不限</div>
+                            <ul class="filter_cb_list" method="facilityList">
+                                <li method="facility" data-typeid="1011" data-id="100000010" data-name="叫醒服务" data-selected="0">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>叫醒服务</span>
+                                    <input type="checkbox"></li>
+                                <li method="facility" data-typeid="1011" data-id="100000205" data-name="免费wifi" data-selected="0">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>免费wifi</span>
+                                    <input type="checkbox"></li>
+                                <li method="facility" data-typeid="1011" data-id="100000017" data-name="行李寄存" data-selected="0">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>行李寄存</span>
+                                    <input type="checkbox"></li>
+                                <li method="facility" data-typeid="1011" data-id="100000208" data-name="会议设施" data-selected="0">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>会议设施</span>
+                                    <input type="checkbox"></li>
+                                <li method="facility" data-typeid="1011" data-id="100000197" data-name="免费停车" data-selected="0">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>免费停车</span>
+                                    <input type="checkbox"></li>
+                                <li method="facility" data-typeid="1011" data-id="100000037" data-name="双床" data-selected="0">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>双床</span>
+                                    <input type="checkbox"></li>
+                                <li method="facility" data-typeid="1011" data-id="100000036" data-name="大床" data-selected="0">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>大床</span>
+                                    <input type="checkbox"></li>
+                                <li method="facility" data-typeid="1011" data-id="100000242" data-name="免费接机服务" data-selected="0">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>免费接机服务</span>
+                                    <input type="checkbox"></li>
+                                <li method="facility" data-typeid="1011" data-id="100000696" data-name="提供发票" data-selected="0" style="display:none" data-mark="1">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>提供发票</span>
+                                    <input type="checkbox"></li>
+                                <li method="facility" data-typeid="1011" data-id="100000225" data-name="餐厅" data-selected="0" style="display:none" data-mark="1">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>餐厅</span>
+                                    <input type="checkbox"></li>
+                                <li method="facility" data-typeid="1011" data-id="100000268" data-name="室外游泳池" data-selected="0" style="display:none" data-mark="1">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>室外游泳池</span>
+                                    <input type="checkbox"></li>
+                                <li method="facility" data-typeid="1011" data-id="100000160" data-name="健身中心" data-selected="0" style="display:none" data-mark="1">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>健身中心</span>
+                                    <input type="checkbox"></li>
+                                <li method="facility" data-typeid="1011" data-id="100000163" data-name="室内游泳池" data-selected="0" style="display:none" data-mark="1">
+                                    <i class="icon_checkbox1"></i>
+                                    <span>室内游泳池</span>
+                                    <input type="checkbox"></li>
+                            </ul>
+                            <div class="icon_hl_more1 filter_more" method="showAllOps" data-showall="0"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--1010.人数 1011.设施 1012.主题 3.品牌 -->
+                <!--1010.人数 1011.设施 1012.主题 -->
+                <div class="filter_item filter_last" method="personFilterPart" data-typeid="1010" data-multi="0" style="">
+                    <div class="filter_title">
+                        <span class="icon_filter_per"></span>人数
+                        <i class="b-line"></i></div>
+                    <div class="filter_option_box">
+                        <div class="filter_option">
+                            <div method="person" data-id="-1" class="filter_unlimited filter_unlimited_on">不限</div>
+                            <ul class="filter_cb_list" method="personList">
+                                <li method="person" data-typeid="1010" data-id="1" data-name="1人" data-selected="0">
+                                    <i class="icon_radio1"></i>
+                                    <span>1人</span>
+                                    <input type="radio"></li>
+                                <li method="person" data-typeid="1010" data-id="2" data-name="2人" data-selected="0">
+                                    <i class="icon_radio1"></i>
+                                    <span>2人</span>
+                                    <input type="radio"></li>
+                                <li method="person" data-typeid="1010" data-id="3" data-name="3人" data-selected="0">
+                                    <i class="icon_radio1"></i>
+                                    <span>3人</span>
+                                    <input type="radio"></li>
+                                <li method="person" data-typeid="1010" data-id="4" data-name="4人" data-selected="0">
+                                    <i class="icon_radio1"></i>
+                                    <span>4人</span>
+                                    <input type="radio"></li>
+                                <li method="person" data-typeid="1010" data-id="5" data-name="5人" data-selected="0">
+                                    <i class="icon_radio1"></i>
+                                    <span>5人</span>
+                                    <input type="radio"></li>
+                                <li method="person" data-typeid="1010" data-id="6" data-name="6人" data-selected="0">
+                                    <i class="icon_radio1"></i>
+                                    <span>6人</span>
+                                    <input type="radio"></li>
+                                <li method="person" data-typeid="1010" data-id="7" data-name="6人以上" data-selected="0">
+                                    <i class="icon_radio1"></i>
+                                    <span>6人以上</span>
+                                    <input type="radio"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="condition mb10" id="conditionZone" method="conditionZone">
+                <div class="cont_total left">
+                    <span class="t24 mr5" id="hotelCount">2</span>家酒店满足条件</div>
+                <div class="cond-list" method="conditionList">
+                    <span method="delCondition" data-type="allInOne" data-id="1" title="删除此条件">华天
+                        <i class="icon_close_hl"></i></span>
+                    <span method="delCondition" data-type="allInOne" data-id="1" title="删除此条件">如家
+                        <i class="icon_close_hl"></i></span>
+                    <a title="清空条件" href="javascript:void(0);" method="cleanCondition">清空条件</a></div>
+            </div>
+            <div class="hlist_box">
+                <!--左侧内容 start-->
+                <div class="hlist_main left">
+                    <div class="h_booked_wrap mt10 mb10" id="bookingRateZone" style="display:none">
+                        <div class="bcde h_booked">
+                            <div class="percentBox mr15">
+                                <div id="percentBackground" class="percentBox_bg"></div>
+                                <div id="bookPercent"></div>
+                                <div class="pertxt">
+                                    <div method="percent" class="pertxt_num"></div>
+                                    <div class="pertxt_com">已订完</div></div>
+                            </div>
+                            <span class="t16 yahei c37d" method="bookingRateText"></span>
+                            <i class="icon_close_bkd" method="close"></i>
+                        </div>
+                    </div>
+                    <div class="h_sort bcde mb10" id="sortZone" method="sortZone">
+                        <ul class="sort_list left">
+                            <li method="sort" data-mth="1" data-dirc="1" title="默认排序" class="on" data-default="1">推荐</li>
+                            <li method="sort" data-mth="2" data-dirc="2" title="点击按口碑由高到低排序">口碑
+                                <i class="icon_sort_arrb1"></i></li>
+                            <li method="sort" data-mth="3" data-dirc="1" class="no">距离
+                                <i class="icon_sort_arrb2"></i></li>
+                            <li method="sort" data-mth="4" data-dirc="1" title="点击按价格由低到高排序">价格
+                                <i class="icon_sort_arrb2"></i></li>
+                            <li method="sort" data-mth="4" data-dirc="2" style="display:none">价格
+                                <i class="icon_sort_arrb1"></i></li>
+                        </ul>
+                        <div class="sort_filter right">
+                            <ul class="sort_fil_list" style="height:38px;width:252px">
+                                <!-- <li method="coupon" data-id="0" data-name="返现" class=""><i class="icon_checkbox2 "></i><span>返现</span><input type="checkbox"></li>
+                                <li method="prePay" data-id="0" data-name="预付" class=""><i class="icon_checkbox2 "></i><span>预付</span><input type="checkbox"></li>
+                                <li method="flashSale" data-id="0" data-name="限时抢" class=""><i class="icon_checkbox2 "></i><span>限时抢</span><input type="checkbox"></li>
+                                -->
+                            </ul>
+                            <ul class="sort_back_tit">
+                                <li method="couponPrice" data-selected="1" class="sort_back_l on" data-default="1">返后价</li>
+                                <li method="couponPrice" data-selected="" class="sort_back_r ">返前价</li></ul>
+                        </div>
+                    </div>
+                    <div class="h_sale mb10" id="hotSaleContainer" method="hotSaleContainer" style="display: none;" data-type="1">
+                        <div class="h_sale_title left">
+                            <a href="#">今日促销</a>
+                            <span class="icon_sale"></span>
+                        </div>
+                        <ul class="h_sale_info">
+                            <li method="hotelNode" class="h_sale_item" data-index="0">
+                                <div class="h_sale_pic left">
+                                    <a href="#" target="_blank">
+                                        <img src="images/0004T1ws.jpg" alt="湘潭华都国际大酒店" height="100"></a>
+                                </div>
+                                <div class="h_sale_text">
+                                    <a href="#" target="_blank">湘潭华都国际大酒店
+                                        <b class=""></b></a>
+                                    <p class="h_sale_addr">岳塘区建设南路328号(近芙蓉路)</p>
+                                    <p class="h_sale_pri">
+                                        <span>
+                                            <span class="cf55 t16">¥138</span>起</span></p>
+                                </div>
+                            </li>
+                            <li method="hotelNode" class="h_sale_item" data-index="0">
+                                <div class="h_sale_pic left">
+                                    <a href="#" target="_blank">
+                                        <img src="images/0004KWlE.jpg" alt="湘潭湘江之星酒店" height="100"></a>
+                                </div>
+                                <div class="h_sale_text">
+                                    <a href="#" target="_blank">湘潭湘江之星酒店
+                                        <b class=""></b></a>
+                                    <p class="h_sale_addr">岳塘区建设南路255号(海关对面)</p>
+                                    <p class="h_sale_pri">
+                                        <span>
+                                            <span class="cf55 t16">¥86</span>起</span></p>
+                                </div>
+                            </li>
+                            <li method="hotelNode" class="h_sale_item" data-index="1" style="display:none">
+                                <div class="h_sale_pic left">
+                                    <a href="#" target="_blank">
+                                        <img src="images/0004UsB0.jpg" alt="湘潭贰盟苹果酒店" height="100"></a>
+                                </div>
+                                <div class="h_sale_text">
+                                    <a href="#" target="_blank">湘潭贰盟苹果酒店
+                                        <b class=""></b></a>
+                                    <p class="h_sale_addr">岳塘区建鑫广场双拥中路198号</p>
+                                    <p class="h_sale_pri">
+                                        <span>
+                                            <span class="cf55 t16">¥153</span>起</span></p>
+                                </div>
+                            </li>
+                            <li method="hotelNode" class="h_sale_item" data-index="1" style="display:none">
+                                <div class="h_sale_pic left">
+                                    <a href="#" target="_blank">
+                                        <img src="images/0005Sfji.jpg" alt="湘潭铭逸酒店" height="100"></a>
+                                </div>
+                                <div class="h_sale_text">
+                                    <a href="#" target="_blank">湘潭铭逸酒店
+                                        <b class=""></b></a>
+                                    <p class="h_sale_addr">河东大道88号,市电业局斜对面</p>
+                                    <p class="h_sale_pri">
+                                        <span>
+                                            <span class="cf55 t16">¥208</span>起</span></p>
+                                </div>
+                            </li>
+                            <li method="hotelNode" class="h_sale_item" data-index="2" style="display:none">
+                                <div class="h_sale_pic left">
+                                    <a href="#" target="_blank">
+                                        <img src="images/0003mVdw.jpg" alt="湘潭铂廷大酒店" height="100"></a>
+                                </div>
+                                <div class="h_sale_text">
+                                    <a href="#" target="_blank">湘潭铂廷大酒店
+                                        <b class=""></b></a>
+                                    <p class="h_sale_addr">湘潭市岳塘区芙蓉中路48号(交通运输局)</p>
+                                    <p class="h_sale_pri">
+                                        <span>
+                                            <span class="cf55 t16">¥138</span>起</span></p>
+                                </div>
+                            </li>
+                            <li method="hotelNode" class="h_sale_item" data-index="2" style="display:none">
+                                <div class="h_sale_pic left">
+                                    <a href="#" target="_blank">
+                                        <img src="images/00006Z70.jpg" alt="湘潭角色大酒店" height="100"></a>
+                                </div>
+                                <div class="h_sale_text">
+                                    <a href="#" target="_blank">湘潭角色大酒店
+                                        <b class=""></b></a>
+                                    <p class="h_sale_addr">吉安南路168号中瀚财富广场B座(靠近人民法院/市政府)</p>
+                                    <p class="h_sale_pri">
+                                        <span>
+                                            <span class="cf55 t16">¥118</span>起</span></p>
+                                </div>
+                            </li>
+                        </ul>
+                        <span class="icon_close_sale" method="close"></span>
+                        <span class="h_sale_change link555">
+                            <a href="#" method="change" data-count="6" data-index="0">换一换</a></span>
+                    </div>
+                    <!-- cms start -->
+                    <!-- cms end -->
+                    <div id="hotelContainer">
+                        <div class="h_list" method="hotelList">
+                            <div class="h_item" id="hotel51906005" method="hotelItem" data-hotelid="51906005" style="background: rgb(255, 255, 255);">
+                                <div class="h_info">
+                                    <div class="h_info_pic" data-mark="img_51906005_container" method="imgContainer">
+                                        <a href="#" target="_blank">
+                                            <img method="bigImg" data-mark="img_51906005" src="images/0000bhGr.jpg" data-src="http://pavo.elongstatic.com/i/Hotel480_350/0000bhGr.jpg" alt="湘潭华天大酒店" width="180" height="130"></a>
+                                    </div>
+                                    <div class="h_info_text">
+                                        <!---------------->
+                                        <div class="h_info_pri">
+                                            <p>
+                                                <a href="#" target="_blank">
+                                                    <span class="c666">¥</span>
+                                                    <span class="h_pri_num ">254</span>
+                                                    <span class="cf55">起</span></a>
+                                            </p>
+                                            <p class="mt5"></p>
+                                            <div class="to_detail">
+                                                <a class="t14" href="#" target="_blank">查看详情</a></div>
+                                            <div class="h_add_cc">
+                                                <!--<span class="add_compare" method="comparison" data-hotelid="51906005">
+                                                <i class="icon_add_comp"></i>对比
+                                                </span>-->
+                                                <span class="add_collect ml20" method="collectable" data-hotelid="51906005">
+                                                    <i class="icon_add_coll" locationforfav="favcount"></i>
+                                                    <b>144人</b>收藏
+                                                    <em class="add_collect_1">+1</em></span>
+                                            </div>
+                                        </div>
+                                        <!---------------->
+                                        <div class="h_info_comt">
+                                            <a href="#" target="_blank" class="h_comt_data">
+                                                <span method="review" class="h_info_comt_bg">
+                                                    <i class="t18">97%</i>
+                                                    <i class="c555">好评</i></span>
+                                                <span class="c555 block mt5">来自
+                                                    <b>1778</b>条点评</span>
+                                            </a>
+                                            <p class="lastt_book mt10" id="recentOrder_51906005">最新预订:33分钟前</p></div>
+                                        <!---------------->
+                                        <div class="h_info_base">
+                                            <p class="h_info_b1">
+                                                <a href="#" target="_blank" title="湘潭华天大酒店">
+                                                    <span class="icon_nmb" id="icon_nmb_id">1</span>湘潭华天大酒店</a>
+                                                <i class="icon_crown" title="艺龙皇冠级合作酒店"></i>
+                                                <b class="icon_stars icon_elevel5" title="艺龙用户评定为豪华型酒店"></b>
+                                            </p>
+                                            <p class="h_info_b2">
+                                                <a href="#">[建设路口]</a>岳塘区建设路口 国际金融大厦(近步步高广场)</p>
+                                            <div class="hotel_inf_sale clearfix mt5">
+                                                <p class="h_comt_other">
+                                                    <span class="icon_faci_s1" title="WiFi上网"></span>
+                                                    <span class="icon_faci_s3" title="宽带上网"></span>
+                                                    <span class="icon_faci_s2" title="停车场"></span>
+                                                    <span class="icon_faci_s6" title="餐厅"></span>
+                                                    <span class="icon_faci_s7" title="健身房"></span>
+                                                </p>
+                                            </div>
+                                            <p class="h_info_b4">
+                                                <span class="l1" title="湘潭华天大酒店地图" method="showMap" data-lng="112.926070" data-lat="27.840593" data-maptype="0" data-hotelid="51906005" data-hotelname="湘潭华天大酒店" data-hoteladdress="岳塘区建设路口 国际金融大厦(近步步高广场)">
+                                                    <i class="icon_land_map"></i>地图</span>
+                                                <span class="l2" title="湘潭华天大酒店街景" method="showSoSoMap" data-svid="25031048130919165039700" data-heading="0" data-pitch="0" data-zoom="0" data-maptype="2" data-hotelid="51906005">
+                                                    <i class="icon_land_street"></i>街景</span>
+                                            </p>
+                                        </div>
+                                        <!----------------></div>
+                                    <!--------------------------Map Start--------------------------------------->
+                                    <!-- 地图 start-->
+                                    <div id="h_map_wrap51906005" style="display:none; height: 410px;"></div>
+                                    <!-- 地图 end-->
+                                    <div id="soso_map_wrap51906005" style="display:none" class="mt10"></div>
+                                    <!--------------------------Map End------------------------------------------->
+                                    <!--------------------------Review Start----------------------------------------->
+                                    <!--------------------------Review End------------------------------------------->
+                                    <!--------------------------psgRecommend start------------------------------------------->
+                                    <!--------------------------psgRecommend End-------------------------------------------></div>
+                            </div>
+                            <div class="h_item" id="hotel90203905" method="hotelItem" data-hotelid="90203905" style="background: rgb(255, 255, 255);">
+                                <div class="h_info">
+                                    <div class="h_info_pic" data-mark="img_90203905_container" method="imgContainer">
+                                        <a href="#" target="_blank">
+                                            <img method="bigImg" data-mark="img_90203905" src="images/0003mnvD.jpg" data-src="http://pavo.elongstatic.com/i/Hotel480_350/0003mnvD.jpg" alt="湘乡华龙华天大酒店" width="180" height="130"></a>
+                                    </div>
+                                    <div class="h_info_text">
+                                        <!---------------->
+                                        <div class="h_info_pri">
+                                            <p>
+                                                <a href="#" target="_blank">
+                                                    <span class="c666">¥</span>
+                                                    <span class="h_pri_num ">228</span>
+                                                    <span class="cf55">起</span></a>
+                                            </p>
+                                            <p class="mt5"></p>
+                                            <div class="to_detail">
+                                                <a class="t14" href="#" target="_blank">查看详情</a></div>
+                                            <div class="h_add_cc">
+                                                <!--<span class="add_compare" method="comparison" data-hotelid="90203905">
+                                                <i class="icon_add_comp"></i>对比
+                                                </span>-->
+                                                <span class="add_collect ml20" method="collectable" data-hotelid="90203905">
+                                                    <i class="icon_add_coll" locationforfav="favcount"></i>
+                                                    <b>13人</b>收藏
+                                                    <em class="add_collect_1">+1</em></span>
+                                            </div>
+                                        </div>
+                                        <!---------------->
+                                        <div class="h_info_comt">
+                                            <a href="#" target="_blank" class="h_comt_data">
+                                                <span method="review" class="h_info_comt_bg">
+                                                    <i class="t18">88%</i>
+                                                    <i class="c555">好评</i></span>
+                                                <span class="c555 block mt5">来自
+                                                    <b>24</b>条点评</span>
+                                            </a>
+                                            <p class="lastt_book mt10" id="recentOrder_90203905">最新预订:56分钟前</p></div>
+                                        <!---------------->
+                                        <div class="h_info_base">
+                                            <p class="h_info_b1">
+                                                <a href="#" target="_blank" title="湘乡华龙华天大酒店">
+                                                    <span class="icon_nmb" id="icon_nmb_id">2</span>湘乡华龙华天大酒店</a>
+                                                <b class="icon_stars icon_elevel3" title="艺龙用户评定为舒适型酒店"></b>
+                                            </p>
+                                            <p class="h_info_b2">
+                                                <a href="#">[市中心]</a>湘潭市湘乡市桑梅路138号</p>
+                                            <div class="hotel_inf_sale clearfix mt5">
+                                                <p class="h_comt_other">
+                                                    <span class="icon_faci_s1" title="WiFi上网"></span>
+                                                    <span class="icon_faci_s3" title="宽带上网"></span>
+                                                    <span class="icon_faci_s2" title="停车场"></span>
+                                                </p>
+                                            </div>
+                                            <p class="h_info_b4">
+                                                <span class="l1" title="湘乡华龙华天大酒店地图" method="showMap" data-lng="112.546014" data-lat="27.748804" data-maptype="0" data-hotelid="90203905" data-hotelname="湘乡华龙华天大酒店" data-hoteladdress="湘潭市湘乡市桑梅路138号">
+                                                    <i class="icon_land_map"></i>地图</span>
+                                                <span class="l2 no">
+                                                    <i class="icon_land_street"></i>街景</span>
+                                            </p>
+                                        </div>
+                                        <!----------------></div>
+                                    <!--------------------------Map Start--------------------------------------->
+                                    <!-- 地图 start-->
+                                    <div id="h_map_wrap90203905" style="display:none; height: 410px;"></div>
+                                    <!-- 地图 end-->
+                                    <div id="soso_map_wrap90203905" style="display:none" class="mt10"></div>
+                                    <!--------------------------Map End------------------------------------------->
+                                    <!--------------------------Review Start----------------------------------------->
+                                    <!--------------------------Review End------------------------------------------->
+                                    <!--------------------------psgRecommend start------------------------------------------->
+                                    <!--------------------------psgRecommend End-------------------------------------------></div>
+                            </div>
+                        </div>
+                        <div class="h_nore_recom mb10" method="recommendedInfo" style="">
+                            <i class="icon_recom3" style="float:left"></i>
+                            <span class="t18 yahei cf90">相关推荐</span>我们为您推荐以下酒店</div>
+                        <div class="h_list" method="hotelList">
+                            <div class="h_item" id="hotel51906005" method="hotelItem" data-hotelid="51906005" style="background: rgb(255, 255, 255);">
+                                <div class="h_info">
+                                    <div class="h_info_pic" data-mark="img_51906005_container" method="imgContainer">
+                                        <a href="#" target="_blank">
+                                            <img method="bigImg" data-mark="img_51906005" src="images/0000bhGr.jpg" data-src="http://pavo.elongstatic.com/i/Hotel480_350/0000bhGr.jpg" alt="湘潭华天大酒店" width="180" height="130"></a>
+                                    </div>
+                                    <div class="h_info_text">
+                                        <!---------------->
+                                        <div class="h_info_pri">
+                                            <p>
+                                                <a href="#" target="_blank">
+                                                    <span class="c666">¥</span>
+                                                    <span class="h_pri_num ">254</span>
+                                                    <span class="cf55">起</span></a>
+                                            </p>
+                                            <p class="mt5"></p>
+                                            <div class="to_detail">
+                                                <a class="t14" href="#" target="_blank">查看详情</a></div>
+                                            <div class="h_add_cc">
+                                                <!--<span class="add_compare" method="comparison" data-hotelid="51906005">
+                                                <i class="icon_add_comp"></i>对比
+                                                </span>-->
+                                                <span class="add_collect ml20" method="collectable" data-hotelid="51906005">
+                                                    <i class="icon_add_coll" locationforfav="favcount"></i>
+                                                    <b>144人</b>收藏
+                                                    <em class="add_collect_1">+1</em></span>
+                                            </div>
+                                        </div>
+                                        <!---------------->
+                                        <div class="h_info_comt">
+                                            <a href="#" target="_blank" class="h_comt_data">
+                                                <span method="review" class="h_info_comt_bg">
+                                                    <i class="t18">97%</i>
+                                                    <i class="c555">好评</i></span>
+                                                <span class="c555 block mt5">来自
+                                                    <b>1778</b>条点评</span>
+                                            </a>
+                                            <p class="lastt_book mt10" id="recentOrder_51906005">最新预订:33分钟前</p></div>
+                                        <!---------------->
+                                        <div class="h_info_base">
+                                            <p class="h_info_b1">
+                                                <a href="#" target="_blank" title="湘潭华天大酒店">
+                                                    <span class="icon_nmb" id="icon_nmb_id">1</span>湘潭华天大酒店</a>
+                                                <i class="icon_crown" title="艺龙皇冠级合作酒店"></i>
+                                                <b class="icon_stars icon_elevel5" title="艺龙用户评定为豪华型酒店"></b>
+                                            </p>
+                                            <p class="h_info_b2">
+                                                <a href="#">[建设路口]</a>岳塘区建设路口 国际金融大厦(近步步高广场)</p>
+                                            <div class="hotel_inf_sale clearfix mt5">
+                                                <p class="h_comt_other">
+                                                    <span class="icon_faci_s1" title="WiFi上网"></span>
+                                                    <span class="icon_faci_s3" title="宽带上网"></span>
+                                                    <span class="icon_faci_s2" title="停车场"></span>
+                                                    <span class="icon_faci_s6" title="餐厅"></span>
+                                                    <span class="icon_faci_s7" title="健身房"></span>
+                                                </p>
+                                            </div>
+                                            <p class="h_info_b4">
+                                                <span class="l1" title="湘潭华天大酒店地图" method="showMap" data-lng="112.926070" data-lat="27.840593" data-maptype="0" data-hotelid="51906005" data-hotelname="湘潭华天大酒店" data-hoteladdress="岳塘区建设路口 国际金融大厦(近步步高广场)">
+                                                    <i class="icon_land_map"></i>地图</span>
+                                                <span class="l2" title="湘潭华天大酒店街景" method="showSoSoMap" data-svid="25031048130919165039700" data-heading="0" data-pitch="0" data-zoom="0" data-maptype="2" data-hotelid="51906005">
+                                                    <i class="icon_land_street"></i>街景</span>
+                                            </p>
+                                        </div>
+                                        <!----------------></div>
+                                    <!--------------------------Map Start--------------------------------------->
+                                    <!-- 地图 start-->
+                                    <div id="h_map_wrap51906005" style="display:none; height: 410px;"></div>
+                                    <!-- 地图 end-->
+                                    <div id="soso_map_wrap51906005" style="display:none" class="mt10"></div>
+                                </div>
+                            </div>
+                            <div class="h_item" id="hotel90203905" method="hotelItem" data-hotelid="90203905" style="background: rgb(255, 255, 255);">
+                                <div class="h_info">
+                                    <div class="h_info_pic" data-mark="img_90203905_container" method="imgContainer">
+                                        <a href="#" target="_blank">
+                                            <img method="bigImg" data-mark="img_90203905" src="images/0003mnvD.jpg" data-src="http://pavo.elongstatic.com/i/Hotel480_350/0003mnvD.jpg" alt="湘乡华龙华天大酒店" width="180" height="130"></a>
+                                    </div>
+                                    <div class="h_info_text">
+                   
+                                        <div class="h_info_pri">
+                                            <p>
+                                                <a href="#" target="_blank">
+                                                    <span class="c666">¥</span>
+                                                    <span class="h_pri_num ">228</span>
+                                                    <span class="cf55">起</span></a>
+                                            </p>
+                                            <p class="mt5"></p>
+                                            <div class="to_detail">
+                                                <a class="t14" href="#" target="_blank">查看详情</a></div>
+                                            <div class="h_add_cc">
+                                                <!--<span class="add_compare" method="comparison" data-hotelid="90203905">
+                                                <i class="icon_add_comp"></i>对比
+                                                </span>-->
+                                                <span class="add_collect ml20" method="collectable" data-hotelid="90203905">
+                                                    <i class="icon_add_coll" locationforfav="favcount"></i>
+                                                    <b>13人</b>收藏
+                                                    <em class="add_collect_1">+1</em></span>
+                                            </div>
+                                        </div>
+                                       
+                                        <div class="h_info_comt">
+                                            <a href="#" target="_blank" class="h_comt_data">
+                                                <span method="review" class="h_info_comt_bg">
+                                                    <i class="t18">88%</i>
+                                                    <i class="c555">好评</i></span>
+                                                <span class="c555 block mt5">来自
+                                                    <b>24</b>条点评</span>
+                                            </a>
+                                            <p class="lastt_book mt10" id="recentOrder_90203905">最新预订:56分钟前</p></div>
+                            
+                                        <div class="h_info_base">
+                                            <p class="h_info_b1">
+                                                <a href="#" target="_blank" title="湘乡华龙华天大酒店">
+                                                    <span class="icon_nmb" id="icon_nmb_id">2</span>湘乡华龙华天大酒店</a>
+                                                <b class="icon_stars icon_elevel3" title="艺龙用户评定为舒适型酒店"></b>
+                                            </p>
+                                            <p class="h_info_b2">
+                                                <a href="#">[市中心]</a>湘潭市湘乡市桑梅路138号</p>
+                                            <div class="hotel_inf_sale clearfix mt5">
+                                                <p class="h_comt_other">
+                                                    <span class="icon_faci_s1" title="WiFi上网"></span>
+                                                    <span class="icon_faci_s3" title="宽带上网"></span>
+                                                    <span class="icon_faci_s2" title="停车场"></span>
+                                                </p>
+                                            </div>
+                                            <p class="h_info_b4">
+                                                <span class="l1" title="湘乡华龙华天大酒店地图" method="showMap" data-lng="112.546014" data-lat="27.748804" data-maptype="0" data-hotelid="90203905" data-hotelname="湘乡华龙华天大酒店" data-hoteladdress="湘潭市湘乡市桑梅路138号">
+                                                    <i class="icon_land_map"></i>地图</span>
+                                                <span class="l2 no">
+                                                    <i class="icon_land_street"></i>街景</span>
+                                            </p>
+                                        </div>
+                                        <!----------------></div>
+                                    <!--------------------------Map Start--------------------------------------->
+                                    <!-- 地图 start-->
+                                    <div id="h_map_wrap90203905" style="display:none; height: 410px;"></div>
+                                    <!-- 地图 end-->
+                                    <div id="soso_map_wrap90203905" style="display:none" class="mt10"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--分页 start-->
+                    <div id="pageContainer" class="paging1">
+                        <a href="javascript:void(0)" class="page_prev" data-index="3">上一页</a>
+                        <a href="javascript:void(0)" class="on">1</a>
+                        <a method="page" data-index="2" href="javascript:void(0)" title="第2页">2</a>
+                        <a method="page" data-index="3" href="javascript:void(0)" title="第3页">3</a>
+                        <a method="page" data-index="4" href="javascript:void(0)" title="第4页">4</a>
+                        <a method="page" data-index="5" href="javascript:void(0)" title="第5页">5</a>
+                        <a method="page" data-index="6" href="javascript:void(0)" title="第6页">6</a>
+                        <a method="page" data-index="7" href="javascript:void(0)" title="第7页">7</a>
+                        <span>...</span>
+                        <a method="page" data-index="275" href="javascript:void(0)" title="第275页">275</a>
+                        <a method="page" data-index="2" href="javascript:void(0)" class="page_next" title="下一页">下一页</a></div>
+                    <!--分页 end--></div>
+                <!-- 右侧内容 -->
+                <div id="rightSpanDiv">
+                    <div class="hlist_sider right">
+                        <div method="stayWhere" class="r_where mb10" style="display:none">
+                            <i class="icon_where left"></i>
+                            <i class="icon_sort_arrr4 right"></i>看看大家都住哪儿</div>
+                        <div id="sidebarMap" class="r_map bddd mb10">
+                            <div class="map_tool bbddd">
+                                <div method="bigMap" class="map_enter t14 left">
+                                    <b class="icon_seemap"></b>查看大地图
+                                    <i class="icon_sort_arrr3 ml5"></i></div>
+                                <div method="fixed" class="right mr15 on" data-selected="1" data-enablefix="0" style="display: none;">
+                                    <i class="icon_checkbox1"></i>跟随浮动</div>
+                            </div>
+                            <div id="rightMap" class="r_map bddd mt20" style="overflow: hidden; position: relative; z-index: 0; background-color: rgb(243, 241, 236); color: rgb(0, 0, 0); text-align: left;">
+                                <div style="overflow: visible; position: absolute; z-index: 0; left: 0px; top: 0px; cursor:default;">
+                                    <div class="BMap_mask" style="position: absolute; left: 0px; top: 0px; z-index: 9; overflow: hidden; user-select: none; width: 452px; height: 760px;"></div>
+                                    <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 200;">
+                                        <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 800;"></div>
+                                        <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 700;"></div>
+                                        <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 600;"></div>
+                                        <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 500;">
+                                            <label class="BMapLabel" unselectable="on" style="position: absolute; display: inline; cursor: inherit; background: none; border: 0px; padding: 1px; white-space: nowrap; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: arial, sans-serif; z-index: 10; user-select: none; left: 381px; top: 306px;">
+                                                <div id="label_51906005" class="mapIconHotel6">
+                                                    <div class="xinxi" title="湘潭华天大酒店">湘潭华天大酒店
+                                                        <span class="s1"></span></div>
+                                                </div>
+                                            </label>
+                                            <label class="BMapLabel" unselectable="on" style="position: absolute; display: inline; cursor: inherit; background: none; border: 0px; padding: 1px; white-space: nowrap; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: arial, sans-serif; z-index: -5549760; user-select: none; left: 51px; top: 396px;">
+                                                <div id="label_90203905" class="mapIconHotel6">
+                                                    <div class="xinxi" title="湘乡华龙华天大酒店">湘乡华龙华天大酒店
+                                                        <span class="s1"></span></div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 400;"></div>
+                                        <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 300;"></div>
+                                        <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 201;"></div>
+                                        <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 200;"></div>
+                                    </div>
+                                    <div style="position: absolute; overflow: visible; top: 0px; left: 0px; z-index: 1;">
+                                        <div style="position: absolute; overflow: visible; z-index: -100; left: 226px; top: 380px;">
+                                            <img src="" style="position: absolute; border: none; width: 256px; height: 256px; left: 3px; top: -64px; max-width: none; opacity: 1;">
+                                            <img src="" style="position: absolute; border: none; width: 256px; height: 256px; left: -253px; top: 192px; max-width: none; opacity: 1;">
+                                            <img src="" style="position: absolute; border: none; width: 256px; height: 256px; left: -253px; top: -320px; max-width: none; opacity: 1;">
+                                            <img src="" style="position: absolute; border: none; width: 256px; height: 256px; left: 3px; top: 192px; max-width: none; opacity: 1;">
+                                            <img src="" style="position: absolute; border: none; width: 256px; height: 256px; left: 3px; top: -320px; max-width: none; opacity: 1;">
+                                            <img src="" style="position: absolute; border: none; width: 256px; height: 256px; left: -253px; top: -576px; max-width: none; opacity: 1;">
+                                            <img src="" style="position: absolute; border: none; width: 256px; height: 256px; left: 3px; top: -576px; max-width: none; opacity: 1;">
+                                            <img src="" style="position: absolute; border: none; width: 256px; height: 256px; left: -253px; top: -64px; max-width: none; opacity: 1;"></div>
+                                    </div>
+                                    <div style="position: absolute; overflow: visible; top: 0px; left: 0px; z-index: 2;"></div>
+                                </div>
+                                <div class=" anchorBL" style="height: 32px; position: absolute; z-index: 10; text-size-adjust: none; bottom: 0px; right: auto; top: auto; left: 1px; display: none;">
+                                    <a title="到百度地图查看此区域" target="_blank" href="http://map.baidu.com/?sr=1" style="outline: none;">
+                                        <img style="border:none;width:77px;height:32px" src="images/copyright_logo.png"></a>
+                                </div>
+                                <div id="zoomer" style="position:absolute;z-index:0;top:0px;left:0px;overflow:hidden;visibility:hidden;cursor:default">
+                                    <div class="BMap_zoomer" style="top:0;left:0;"></div>
+                                    <div class="BMap_zoomer" style="top:0;right:0;"></div>
+                                    <div class="BMap_zoomer" style="bottom:0;left:0;"></div>
+                                    <div class="BMap_zoomer" style="bottom:0;right:0;"></div>
+                                </div>
+                                <div unselectable="on" class=" BMap_stdMpCtrl BMap_stdMpType3 BMap_noprint anchorTL" style="width: 22px; height: 42px; bottom: auto; right: auto; top: 10px; left: 10px; position: absolute; z-index: 1100; text-size-adjust: none;">
+                                    <div class="BMap_stdMpPan">
+                                        <div class="BMap_button BMap_panN" title="向上平移"></div>
+                                        <div class="BMap_button BMap_panW" title="向左平移"></div>
+                                        <div class="BMap_button BMap_panE" title="向右平移"></div>
+                                        <div class="BMap_button BMap_panS" title="向下平移"></div>
+                                        <div class="BMap_stdMpPanBg BMap_smcbg"></div>
+                                    </div>
+                                    <div class="BMap_stdMpZoom" style="height: 42px; width: 22px;">
+                                        <div class="BMap_button BMap_stdMpZoomIn" title="放大一级" style="left: 0px;">
+                                            <div class="BMap_smcbg"></div>
+                                        </div>
+                                        <div class="BMap_button BMap_stdMpZoomOut" title="缩小一级" style="top: 21px; left: 0px;">
+                                            <div class="BMap_smcbg"></div>
+                                        </div>
+                                        <div class="BMap_stdMpSlider" style="height: 0px;">
+                                            <div class="BMap_stdMpSliderBgTop" style="height: 0px;">
+                                                <div class="BMap_smcbg"></div>
+                                            </div>
+                                            <div class="BMap_stdMpSliderBgBot"></div>
+                                            <div class="BMap_stdMpSliderMask" title="放置到此级别"></div>
+                                            <div class="BMap_stdMpSliderBar" title="拖动缩放" style="cursor:default;">
+                                                <div class="BMap_smcbg"></div>
+                                            </div>
+                                        </div>
+                                        <div class="BMap_zlHolder">
+                                            <div class="BMap_zlSt">
+                                                <div class="BMap_smcbg"></div>
+                                            </div>
+                                            <div class="BMap_zlCity">
+                                                <div class="BMap_smcbg"></div>
+                                            </div>
+                                            <div class="BMap_zlProv">
+                                                <div class="BMap_smcbg"></div>
+                                            </div>
+                                            <div class="BMap_zlCountry">
+                                                <div class="BMap_smcbg"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div unselectable="on" class=" BMap_scaleCtrl BMap_noprint anchorBL" style="bottom: 18px; right: auto; top: auto; left: 81px; width: 93px; position: absolute; z-index: 10; text-size-adjust: none; display: block;">
+                                    <div class="BMap_scaleTxt" unselectable="on" style="background-color: transparent; color: black;">10&nbsp;公里</div>
+                                    <div class="BMap_scaleBar BMap_scaleHBar" style="background-color: black;">
+                                        <img style="border:none" src="images/mapctrls.png"></div>
+                                    <div class="BMap_scaleBar BMap_scaleLBar" style="background-color: black;">
+                                        <img style="border:none" src="images/mapctrls.png"></div>
+                                    <div class="BMap_scaleBar BMap_scaleRBar" style="background-color: black;">
+                                        <img style="border:none" src="images/mapctrls.png"></div>
+                                </div>
+                                <div unselectable="on" class=" BMap_cpyCtrl BMap_noprint anchorBL" style="cursor: default; white-space: nowrap; color: black; background: none; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 11px; line-height: 15px; font-family: arial, sans-serif; bottom: 2px; right: auto; top: auto; left: 81px; position: absolute; z-index: 10; text-size-adjust: none; display: none;">
+                                    <span _cid="1" style="display: inline;">
+                                        <span style="font-size:11px">© 2015 Baidu&nbsp;- Data ©
+                                            <a target="_blank" href="http://www.navinfo.com/" style="display:inline;">NavInfo</a>&amp;
+                                            <a target="_blank" href="http://www.cennavi.com.cn/" style="display:inline;">CenNavi</a>&amp;
+                                            <a target="_blank" href="http://www.365ditu.com/" style="display:inline;">道道通</a></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt10">
+                            <ul class="sh_subnav">
+                                <li method="seen" class="">
+                                    <i class="icon_seen"></i>浏览过的酒店</li>
+                                <li method="hot" class="on">
+                                    <i class="icon_hot"></i>本周热卖酒店</li>
+                            </ul>
+                            <ul data-name="seen" class="sh_list seen_list" style="display: none;">
+                                <li hotelid="51101001">
+                                    <span method="delSeen" hotelid="51101001" title="删除该记录" class="icon_close_sh"></span>
+                                    <span class="sh_pri">
+                                        <span class="c999">¥</span>626</span>
+                                    <a title="南京金陵饭店" href="#" target="_blank">南京金陵饭店</a></li>
+                            </ul>
+                            <ul data-name="hot" class="sh_list hot_list" style="">
+                                <li hotelid="01906017">
+                                    <i class="icon_sh_level0">1</i>
+                                    <span class="sh_pri">
+                                        <span class="c999">¥</span>132</span>
+                                    <a title="汉庭酒店(湘潭雨湖公园店)" href="#" target="_blank">汉庭酒店(湘潭雨湖公园店)</a></li>
+                                <li hotelid="01906011">
+                                    <i class="icon_sh_level0">2</i>
+                                    <span class="sh_pri">
+                                        <span class="c999">¥</span>123</span>
+                                    <a title="如家快捷酒店(湘潭河东大道建设路口店)" href="#" target="_blank">如家快捷酒店(湘潭河东大道建设路口店)</a></li>
+                                <li hotelid="01906037">
+                                    <i class="icon_sh_level0">3</i>
+                                    <span class="sh_pri">
+                                        <span class="c999">¥</span>108</span>
+                                    <a title="湘潭丽思商务酒店" href="#" target="_blank">湘潭丽思商务酒店</a></li>
+                                <li hotelid="31906017">
+                                    <i class="icon_sh_level1">4</i>
+                                    <span class="sh_pri">
+                                        <span class="c999">¥</span>114</span>
+                                    <a title="湘潭三湘大酒店" href="#" target="_blank">湘潭三湘大酒店</a></li>
+                                <li hotelid="90323413">
+                                    <i class="icon_sh_level1">5</i>
+                                    <span class="sh_pri">
+                                        <span class="c999">¥</span>208</span>
+                                    <a title="湘潭铭逸酒店" href="#" target="_blank">湘潭铭逸酒店</a></li>
+                                <li hotelid="51906005">
+                                    <i class="icon_sh_level1">6</i>
+                                    <span class="sh_pri">
+                                        <span class="c999">¥</span>254</span>
+                                    <a title="湘潭华天大酒店" href="#" target="_blank">湘潭华天大酒店</a></li>
+                                <li hotelid="90661026">
+                                    <i class="icon_sh_level1">7</i>
+                                    <span class="sh_pri">
+                                        <span class="c999">¥</span>346</span>
+                                    <a title="湘潭美高梅国际大酒店" href="#" target="_blank">湘潭美高梅国际大酒店</a></li>
+                                <li hotelid="31906012">
+                                    <i class="icon_sh_level1">8</i>
+                                    <span class="sh_pri"></span>
+                                    <a title="觅你酒店(湘潭城市盒子店)" href="#" target="_blank">觅你酒店(湘潭城市盒子店)</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clx"></div>
+            <a name="mapstop" id="mapstop"></a>
+            <!-- cms start -->
+            <!-- cms end -->
+            <div class="listSEO clearfix mt10 mb10" style="width: 100%;">
+                <h2>湘潭市酒店信息
+                    <i class="icon_SEO_e" id="showseodetail"></i></h2>
+                <div class="hotelsNearby link999" style="display:none;">
+                    <!-- 点评开始 -->
+                    <!--POI商圈-->
+                    <h3>湘潭市火车站周边酒店</h3>
+                    <p>
+                        <a title="湘乡站附近酒店" href="#">湘乡站</a>|
+                        <a title="易家湾站附近酒店" href="#">易家湾站</a>|
+                        <a title="湘潭站附近酒店" href="#">湘潭站</a>|
+                        <a title="湘潭站附近酒店" href="#">湘潭站</a>|
+                        <a title="韶山站附近酒店" href="#">韶山站</a>
+                        <br></p>
+                    <h3>湘潭市汽车站周边酒店</h3>
+                    <p>
+                        <a title="湘潭汽车东站附近酒店" href="#">湘潭汽车东站</a>|
+                        <a title="湘潭汽车站附近酒店" href="#">湘潭汽车站</a>
+                        <br></p>
+                    <!-- 星级酒店-->
+                    <h3>湘潭市星级/经济型酒店</h3>
+                    <p>
+                        <a title="湘潭市经济型酒店预订" href="#">湘潭市经济型酒店</a>|
+                        <a title="湘潭市三星级酒店预订" href="#">湘潭市三星级酒店</a>|
+                        <a title="湘潭市四星级酒店预订" href="#">湘潭市四星级酒店</a>|
+                        <a title="湘潭市五星级酒店预订" href="#">湘潭市五星级酒店</a>
+                        <br></p>
+                    <!-- 行政区附近酒店-->
+                    <h3>湘潭市各行政区内的酒店</h3>
+                    <p>
+                        <a title="酒店预订" href="#"></a>|
+                        <a title="长塘区酒店预订" href="#">长塘区</a>|
+                        <a title="湘潭酒店预订" href="#">湘潭</a>|
+                        <a title="岳塘区酒店预订" href="#">岳塘区</a>|
+                        <a title="雨湖区酒店预订" href="#">雨湖区</a>|
+                        <a title="湘潭县酒店预订" href="#">湘潭县</a>|
+                        <a title="湘乡市酒店预订" href="#">湘乡市</a>|
+                        <a title="酒店预订" href="#"></a></p>
+                    <!-- 商圈附近酒店-->
+                    <h3>湘潭市各商圈附近的酒店</h3>
+                    <p>
+                        <a title="基建营附近酒店预订" href="#">基建营</a>|
+                        <a title="市区附近酒店预订" href="#">市区</a>|
+                        <a title="建设路口附近酒店预订" href="#">建设路口</a>|
+                        <a title="板塘铺附近酒店预订" href="#">板塘铺</a>|
+                        <a title="易俗河附近酒店预订" href="#">易俗河</a></p>
+                    <!-- 酒店品牌-->
+                    <h3>湘潭市酒店品牌</h3>
+                    <p>
+                        <a title="湘潭市尚客优酒店预订" href="#">尚客优</a>|
+                        <a title="湘潭市今天酒店预订" href="#">今天</a>|
+                        <a title="湘潭市铂涛（7天）酒店预订" href="#">铂涛（7天）</a>|
+                        <a title="湘潭市海天酒店预订" href="#">海天</a>|
+                        <a title="湘潭市如家酒店预订" href="#">如家</a>|
+                        <a title="湘潭市汉庭酒店预订" href="#">汉庭</a>|
+                        <a title="湘潭市觅你酒店预订" href="#">觅你</a></p>
+                </div>
+            </div>
+        </div>
+        <div id="searchLoadingDiv" data-bindid="loadingContent" style="display:none">
+            <div class="ht-load">
+                <!--cms节点 start-->
+                <div class="ht-load">
+                    <!--中文内容部分 start-->
+                    <style>.hotel_loading{padding: 5px 0;} .loading_b { width: 75px; height: 80px; background: url(images/loading-pc.gif) no-repeat; }</style>
+                    <div class="mt20 mb20 tc t14">
+                        <p>
+                            <span class="loading_b vm mr10"></span>小艺正在努力为您加载中...</p>
+                    </div>
+                    <!--内容部分 end--></div>
+                <!--cms节点 end--></div>
+        </div>
+        <div class="fix_tool" id="right-box-list">
+            <ul>
+                <li class="cate_01" data-rightblock="1">
+                    <a href="#" target="_blank" style="display: block;"></a>
+                    <span style="display: none;">我的账户</span></li>
+                <li class="cate_02" data-rightblock="2">
+                    <a href="#" target="_blank" style="display: block;"></a>
+                    <span style="display: none;">我的钱包</span></li>
+                <li class="cate_03" data-rightblock="3">
+                    <a href="#" style="display: block;"></a>
+                    <span style="display: none;">我的收藏</span></li>
+                <!-- <li class="cate_04" data-rightblock="4"><a href="#" style="display: block;"></a><span style="display: none;">酒店对比</span></li>
+                -->
+                <li class="cate_05" data-rightblock="5">
+                    <a href="#" style="display: block;"></a>
+                    <span style="display: none;">在线客服</span></li>
+                <li class="cate_06" data-rightblock="6">
+                    <a href="#" style="display: block;"></a>
+                    <span style="display: none;">在线反馈</span></li>
+                <li class="cate_07" data-rightblock="7">
+                    <a href="#" style="display: block;"></a>
+                    <span style="display: none;">扫二维码</span></li>
+            </ul>
+            <div class="go_top" id="rightBoxGoTop" style="display: none;">
+                <a href="#"></a>
+            </div>
+        </div>
+        <div class="el-poptip el-poptip-shadow" id="scan-qr-code" style="display: none; width:107px;right: 55px;position: fixed;bottom: 75px;z-index: 999;">
+            <div class="">
+                <div class="el-poptip-container">
+                    <div class="el-poptip-arrow el-poptip-arrow-2" style="bottom: 30px;top: auto;">
+                        <em>◆</em>
+                        <span>◆</span></div>
+                    <div class="el-poptip-content">
+                        <!-- html内容 -->
+                        <div class="num_code_v">
+                            <span class="icon_close_sh" id="close-scan-qr-code"></span>
+                            <i class="icon_right_code"></i>
+                        </div>
+                        <!-- html内容结束 --></div>
+                </div>
+            </div>
+        </div>
+        <div style="width:275px; position: fixed;bottom: 30px;right: 55px;display: none;z-index: 500" class="com_dialog" id="myFavHotel">
+            <div class="com_dialog-titlebar">
+                <span class="com_dialog-title">我的收藏</span>
+                <a href="#" class="icon_close_sale"></a>
+            </div>
+            <div class="com_dialog-content com_widget-content">
+                <!--内容部分 start-->
+                <div class="t14">
+                    <div class="fav_tips">
+                        <div class="el-poptip-arrow el-poptip-arrow-2" style="top: 80px;">
+                            <em>◆</em>
+                            <span>◆</span></div>
+                        <div class="has_list">
+                            <ul class="hotelUl" id="favHotelListLoading" style="display: none;">
+                                <li class="h_loading">
+                                    <p>
+                                        <span class="loading_b vm mr10"></span>小艺正在努力为您加载中...</p>
+                                </li>
+                            </ul>
+                            <ul class="dsider_per_list" id="favHotelList">目前没有收藏，快去添加收藏吧！</ul>
+                            <div class="tr t12 link555 pt5" id="moreFavHotel" style="display: none">
+                                <a href="#" target="_blank">更多收藏
+                                    <span class="simsun">&gt;</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--内容部分 end--></div>
+        </div>
+        <script src="js/trave.js"></script>
+    </body>
+
+</html>

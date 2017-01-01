@@ -474,7 +474,7 @@ function chart_color($n)
  */
 function goods_type_list($selected)
 {
-    $sql = 'SELECT cat_id, cat_name FROM ' . $GLOBALS['ecs']->table('goods_type') . ' WHERE enabled = 1';
+    $sql = 'SELECT cat_id, cat_name FROM ' . $GLOBALS['ecs']->table('hotels_type') . ' WHERE enabled = 1';
     $res = $GLOBALS['db']->query($sql);
 
     $lst = '';
@@ -684,7 +684,7 @@ function return_bytes($val)
  */
 function get_attr_groups($cat_id)
 {
-    $sql = "SELECT attr_group FROM " . $GLOBALS['ecs']->table('goods_type') . " WHERE cat_id='$cat_id'";
+    $sql = "SELECT attr_group FROM " . $GLOBALS['ecs']->table('hotels_type') . " WHERE cat_id='$cat_id'";
     $grp = str_replace("\r", '', $GLOBALS['db']->getOne($sql));
 
     if ($grp)

@@ -124,6 +124,41 @@ class cls_template
     }
 
     /**
+     * 显示酒店页面函数,供酒店页面使用
+     *
+     * @access  public
+     * @param   string      $filename
+     * @param   sting      $cache_id
+     *
+     * @return  void
+     */
+    function display_hotel($filename, $cache_id = '')
+    {
+        $this->_seterror++;
+        error_reporting(E_ALL ^ E_NOTICE);
+
+        $this->_checkfile = false;
+        $out = $this->fetch_hotel($filename, $cache_id);
+
+        if (strpos($out, $this->_echash) !== false)
+        {
+            $k = explode($this->_echash, $out);
+            foreach ($k AS $key => $val)
+            {
+                if (($key % 2) == 1)
+                {
+                    $k[$key] = $this->insert_mod($val);
+                }
+            }
+            $out = implode('', $k);
+        }
+        error_reporting($this->_errorlevel);
+        $this->_seterror--;
+
+        echo $out;
+    }
+
+    /**
      * 处理模板文件
      *
      * @access  public
@@ -134,6 +169,7 @@ class cls_template
      */
     function fetch($filename, $cache_id = '')
     {
+
         if (!$this->_seterror)
         {
             error_reporting(E_ALL ^ E_NOTICE);
@@ -214,6 +250,33 @@ class cls_template
         }
 
         return $out; // 返回html数据
+    }
+
+    /**
+     * 处理酒店模板文件
+     *
+     * @access  public
+     * @param   string      $filename
+     * @param   sting      $cache_id
+     *
+     * @return  sring
+     */
+    function fetch_hotel($filename, $cache_id = '')
+    {
+        //$filename = $this->template_dir . '/' . $filename;
+        $filename = ROOT_PATH . 'themes/elong' . '/' . $filename;
+  
+
+        $this->_current_file = $filename;
+        $out = $this->_eval($this->fetch_str(file_get_contents($filename)));
+        $this->_seterror--;
+        if (!$this->_seterror)
+        {
+            error_reporting($this->_errorlevel);
+        }
+
+        return $out; // 返回html数据
+
     }
 
     /**
