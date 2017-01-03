@@ -53,9 +53,14 @@ if ($_REQUEST['act'] == 'list_edit')
     }
     @closedir($dir);
 
+    $group_list = get_settings(null, array('5'));
+    unset($group_list[911]);//去除微分销
+
+
+
     $smarty->assign('lang_list',    $lang_list);
     $smarty->assign('ur_here',      $_LANG['01_shop_config']);
-    $smarty->assign('group_list',   get_settings(null, array('5')));
+    $smarty->assign('group_list',   $group_list);
     $smarty->assign('countries',    get_regions());
 
     if (strpos(strtolower($_SERVER['SERVER_SOFTWARE']), 'iis') !== false)

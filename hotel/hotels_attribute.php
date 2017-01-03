@@ -511,6 +511,13 @@ elseif ($_REQUEST['act'] == 'add_hotel_attribute')
             $attr_list[$row['attr_id']] = $row['attr_index'];
         }
 
+        //获取hotels_type表的type字段
+        $sql = "SELECT `type` FROM " . $ecs->table('hotels_type') . " WHERE cat_id = '".addslashes($cat_id) . "'";
+        $type = $db->getOne($sql);
+        $type = $type['type'];
+
+
+        //获取属性值
         $sql = "SELECT g.*, a.attr_type FROM " . $ecs->table('hotels_attr') . " AS g
                     LEFT JOIN " . $ecs->table('hotels_attribute') . " AS a
                         ON a.attr_id = g.attr_id
@@ -520,8 +527,11 @@ elseif ($_REQUEST['act'] == 'add_hotel_attribute')
 
         while ($row = $db->fetchRow($res))
         {
+            //获取attr_value的全拼和首字母拼音
+            //use ROOT_PATH . 'includes/pinyin/src/Pinyin';
             $goods_attr_list[$row['attr_id']][$row['attr_value']] = array('sign' => 'delete', 'goods_attr_id' => $row['goods_attr_id']);
         }
+
         // 循环现有的，根据原有的做相应处理
         if(isset($_POST['attr_id_list']))
         {
@@ -567,8 +577,8 @@ elseif ($_REQUEST['act'] == 'add_hotel_attribute')
             {
                 if ($info['sign'] == 'insert')
                 {
-                    $sql = "INSERT INTO " .$ecs->table('hotels_attr'). " (attr_id, goods_id, attr_value, attr_price)".
-                        "VALUES ('$attr_id', '$supplier_id', '$attr_value', '$info[attr_price]')";
+                    $sql = "INSERT INTO " .$ecs->table('hotels_attr'). " (attr_id, goods_id, attr_value, attr_price,search_type,quanpin,shoupin)".
+                        "VALUES ('$attr_id', '$supplier_id', '$attr_value', '$info[attr_price]','$type',)";
                 }
                 elseif ($info['sign'] == 'update')
                 {
