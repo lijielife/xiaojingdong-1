@@ -33,4 +33,4 @@ function checkSearchForm()
 </script>
 <a href="catalog.php" class="top_bt"></a>
 <a href="flow.php" class='user_btn'></a>
-<span href="javascript:void(0)" class="logo">{$shop_name|truncate:10}</span>
+<span href="javascript:void(0)" class="logo">旅游人之家</span>
