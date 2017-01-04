@@ -1,5 +1,6 @@
 <?php
 
+
 /**
  * ECSHOP 属性规格管理
  * ============================================================================
@@ -15,8 +16,16 @@
 
 define('IN_ECS', true);
 
+
+
 require(dirname(__FILE__) . '/includes/init.php');
 require(dirname(__FILE__) . '/includes/lib_elong.php');
+
+
+/* 汉字转拼音所用插件 */
+include_once(ROOT_PATH . 'includes/vendor/autoload.php');
+use Overtrue\Pinyin\Pinyin;
+
 
 /* act操作项的初始化 */
 $_REQUEST['act'] = trim($_REQUEST['act']);
@@ -450,7 +459,6 @@ elseif ($_REQUEST['act'] == 'hotel_attribute_view')
 /* 代码增加 ry ,为指定酒店增加酒店类型 - 数据提交 */
 elseif ($_REQUEST['act'] == 'add_hotel_attribute')
 {
-    //print_r($_REQUEST);exit;
     $supplier_id = isset($_REQUEST['supplier_id']) ? $_REQUEST['supplier_id'] : 0;
     if(!$supplier_id)
     {
@@ -514,7 +522,7 @@ elseif ($_REQUEST['act'] == 'add_hotel_attribute')
         //获取hotels_type表的type字段
         $sql = "SELECT `type` FROM " . $ecs->table('hotels_type') . " WHERE cat_id = '".addslashes($cat_id) . "'";
         $type = $db->getOne($sql);
-        $type = $type['type'];
+
 
 
         //获取属性值
@@ -525,16 +533,22 @@ elseif ($_REQUEST['act'] == 'add_hotel_attribute')
 
         $res = $db->query($sql);
 
+
+
         while ($row = $db->fetchRow($res))
         {
-            //获取attr_value的全拼和首字母拼音
-            //use ROOT_PATH . 'includes/pinyin/src/Pinyin';
-            $goods_attr_list[$row['attr_id']][$row['attr_value']] = array('sign' => 'delete', 'goods_attr_id' => $row['goods_attr_id']);
+            $goods_attr_list[$row['attr_id']][$row['attr_value']] = array(
+                'sign'          => 'delete',
+                'goods_attr_id' => $row['goods_attr_id']
+            );
         }
+
+
 
         // 循环现有的，根据原有的做相应处理
         if(isset($_POST['attr_id_list']))
         {
+            $pinyin = new Pinyin();
             foreach ($_POST['attr_id_list'] AS $key => $attr_id)
             {
                 $attr_value = $_POST['attr_value_list'][$key];
@@ -542,15 +556,24 @@ elseif ($_REQUEST['act'] == 'add_hotel_attribute')
                 $attr_price = ($attr_price>=0) ? $attr_price : 0;
                 if (!empty($attr_value))
                 {
+                    //获取attr_value的全拼和首字母拼音
+                    $quanpin = $pinyin->sentence($attr_value); //全拼
+                    $shoupin = $pinyin->abbr($attr_value);//首字母拼音
+
+
                     if (isset($goods_attr_list[$attr_id][$attr_value]))
                     {
                         // 如果原来有，标记为更新
+                        $goods_attr_list[$attr_id][$attr_value]['quanpin'] = $quanpin;
+                        $goods_attr_list[$attr_id][$attr_value]['shoupin'] = $shoupin;
                         $goods_attr_list[$attr_id][$attr_value]['sign'] = 'update';
                         $goods_attr_list[$attr_id][$attr_value]['attr_price'] = $attr_price;
                     }
                     else
                     {
                         // 如果原来没有，标记为新增
+                        $goods_attr_list[$attr_id][$attr_value]['quanpin'] = $quanpin;
+                        $goods_attr_list[$attr_id][$attr_value]['shoupin'] = $shoupin;
                         $goods_attr_list[$attr_id][$attr_value]['sign'] = 'insert';
                         $goods_attr_list[$attr_id][$attr_value]['attr_price'] = $attr_price;
                     }
@@ -569,6 +592,7 @@ elseif ($_REQUEST['act'] == 'add_hotel_attribute')
         //todo 把关键字更新到酒店的shop_setting,方便以后检索
         //$sql = "UPDATE " .$ecs->table('goods'). " SET keywords = '$keywords' WHERE goods_id = '$goods_id' LIMIT 1";
         //$db->query($sql);
+        //print_r($goods_attr_list);exit;
 
         /* 插入、更新、删除数据 */
         foreach ($goods_attr_list as $attr_id => $attr_value_list)
@@ -578,11 +602,11 @@ elseif ($_REQUEST['act'] == 'add_hotel_attribute')
                 if ($info['sign'] == 'insert')
                 {
                     $sql = "INSERT INTO " .$ecs->table('hotels_attr'). " (attr_id, goods_id, attr_value, attr_price,search_type,quanpin,shoupin)".
-                        "VALUES ('$attr_id', '$supplier_id', '$attr_value', '$info[attr_price]','$type',)";
+                        "VALUES ('$attr_id', '$supplier_id', '$attr_value', '$info[attr_price]','$type','$info[quanpin]','$info[shoupin]')";
                 }
                 elseif ($info['sign'] == 'update')
                 {
-                    $sql = "UPDATE " .$ecs->table('hotels_attr'). " SET attr_price = '$info[attr_price]' WHERE goods_attr_id = '$info[goods_attr_id]' LIMIT 1";
+                    $sql = "UPDATE " .$ecs->table('hotels_attr'). " SET search_type='$type',attr_price = '$info[attr_price]',quanpin = '$info[quanpin]' , shoupin = '$info[shoupin]' WHERE goods_attr_id = '$info[goods_attr_id]' LIMIT 1";
                 }
                 else
                 {

@@ -1,8 +1,6 @@
 <!-- 城市热门推荐,用户关键词的推荐框,用于用户选择城市后的热门推荐，eg:首页的关键字-->
 
 <div id="h_contentend" style="display:none">
-    <img src="http://tj.elong.com/statistics.gif?TableName=FlowStatiData&amp;SessionGuid=414d27b0-5c5b-448f-9a35-dbb09df3f742&amp;ReferType=elong&amp;StatiData=elong&amp;ReferHost=&amp;ReferPage=&amp;CurrentHost=www.elong.com&amp;CurrentPage=/&amp;CookieGuid=98e1f49d-31cb-4e62-b4a1-743be183431b&amp;ReferQueryString=&amp;CurrentQueryString=">
-    <img src="http://tj.elongstatic.com/t.gif?g=05829&amp;cid=98e1f49d-31cb-4e62-b4a1-743be183431b&amp;sid=414d27b0-5c5b-448f-9a35-dbb09df3f742&amp;rf=&amp;bs=1920*1080&amp;ch=home&amp;pt=ElongIndexPage&amp;p1=50&amp;p88=1483004596693&amp;p89=1483004596705&amp;p90=1483004596709&amp;p91=1483004596709&amp;p92=1483004596744&amp;p93=1483004596744&amp;p94=1483004596872&amp;p95=1483004596972&amp;p96=1483004596892&amp;p97=1483004597524&amp;p98=1483004597176&amp;p99=1483004662177&amp;p100=0001f147c4568f00b204ffffffffe81b52dfba3374488dd1524afffffffff080d0798f00b204e1210589046621894c605f04&amp;p70=232&amp;p71=0&amp;p72=0&amp;p73=28&amp;p74=232&amp;p75=link&amp;p76=http://www.elongstatic.com/common/css/el_common.css?t=201612152209&amp;p77=0&amp;p78=0&amp;p79=0&amp;p80=261&amp;p81=0&amp;p82=0&amp;p83=0&amp;p84=0" style="display:none;">
     <div style="position: absolute; z-index: 2000; top: 365px; left: 241.5px;" winstyle="hot">
         <div style="width:300px;" class="com_hotresults">
             <div style="width:100%;">
@@ -67,6 +65,67 @@
     </div>
 </div>
 
+<div id="s_contentend" style="display:none">
+    <div style="position: absolute; z-index: 2000; top: 365px; left: 241.5px;" winstyle="data">
+        <div style="width:340px;position:relative;" class="com_results com_hotel_results">
+            <div style="width: 100%;">
+                <!-- <div class="tuijian">
+                    <p method="fromArea" keyword="xizhi">地点在<strong> xizhi</strong> 附近的酒店</p>
+                    <p method="fromName" keyword="xizhi">名称含 <strong>xizhi</strong> 的酒店</p>
+                </div> -->
+                <ul method="ulData">
+                    <!-- <li method="liData" data="0" class="ac_odd">
+                        <i class="hotel"></i>
+                        <span method="spanData" data="0" typeid="9">北京乐家服务式酒店(西直门店)</span>
+                    </li> 
+                    <li method="liData" data="1" class="ac_odd">
+                        <i></i>
+                        <span method="spanData" data="1" typeid="9">金泰之家(北京西直门店)</span>
+                    </li>
+                    <li method="liData" data="2" class="ac_odd">
+                        <i class="grass"></i>
+                        <span method="spanData" data="2" typeid="999">西直门-地铁站(2号线/4号线/13号线)</span>
+                    </li> 
+                    <li method="liData" data="3" class="ac_odd">
+                        <i></i>
+                        <span method="spanData" data="3" typeid="999">西直门</span>
+                    </li>
+                    <li method="liData" data="4" class="ac_odd">
+                        <i></i>
+                        <span method="spanData" data="4" typeid="999">西直门地铁站</span>
+                    </li> 
+                    <li method="liData" data="5" class="ac_odd">
+                        <i></i>
+                        <span method="spanData" data="5" typeid="999">西直门地铁</span>
+                    </li> 
+                    <li method="liData" data="6" class="ac_odd">
+                        <i></i>
+                        <span method="spanData" data="6" typeid="999">西直门汽车客运站</span>
+                    </li> 
+                    <li method="liData" data="7" class="ac_odd">
+                        <i></i>
+                        <span method="spanData" data="7" typeid="999">西直门国二招</span>
+                    </li> 
+                    <li method="liData" data="8" class="ac_odd">
+                        <i></i>
+                        <span method="spanData" data="8" typeid="999">西直门内大街</span>
+                    </li> 
+                    <li method="liData" data="9" class="ac_odd">
+                        <i></i>
+                        <span method="spanData" data="9" typeid="999">西直门站</span>
+                    </li> -->
+                </ul>
+            </div>
+            <div class="clear"></div>
+            <div class="com_cbox_b com_cbox_lt"></div>
+            <div class="com_cbox_b com_cbox_rt"></div>
+            <div class="com_cbox_b com_cbox_lb"></div>
+            <div class="com_cbox_b com_cbox_rb"></div>
+            <div class="clear"></div>
+        </div
+    div>
+</div>
+
 <script type="text/javascript">
     var is_show = false;
     $(function(){
@@ -76,7 +135,6 @@
                 url : 'http://openapi.elong.com/suggest/hotsuggest.html?language=cn&cityId=' + $('#hotelCity').attr('cityid'),
                 dataType : 'jsonp',
                 success : function(data){
-                    //console.log(data);
                     if(data.length > 0){
                         $(data).each(function(key,val){
                             html += '<p><tt class="t14 bold">' + val['Name'] + '</tt><br>';
@@ -121,15 +179,64 @@
         
     })
 
-    //关键此搜索
-    $('#keywords').keyup(function(){
-        var keyword = $(this).val();
-        keyword = $.trim(keyword);
-        if(keyword == ''){
-            $('#c_contentend').hide();
-            $('#m_contentend').show();
-        }else{
-            get_data(keyword); 
-        }
+    
+
+
+
+    //关键词手动搜索，自动补全
+    var str = '';  
+    var now = ''  
+    $('#keywords').bind('focus',function(){
+        var time = setInterval(filter_staff_from_exist, 100);  
+        $(this).bind('blur',function(){  
+            clearInterval(time);  
+        }); 
     })
+    function filter_staff_from_exist(){  
+        now = $.trim($('#keywords').val());  
+        if (now != '' && now != str) {
+            $.ajax({
+                url : 'hotel_tipwords.php?city=' + $('#hotelCity').val() + '&keywords=' + now,
+                dataType : 'json',
+                success : function(data){
+                    var data = data['msg'];
+                    if(data.length > 0){
+                        var html = '';
+                        $(data).each(function(k,v){
+                            html += '<li method="liData" class="ac_odd">';
+                            if(v['type'] == 'hotel_name'){
+                                html += '<i class="hotel"></i>';
+                            }else{
+                                html += '<i></i>';
+                            }
+
+                            var preg =  v['keywords'];
+                            var replace = '<b>' + v['keywords'] + '</b>';
+                            var name = v['name'].replace(preg,replace);
+                            html += '<span method="spanData">'+ name +'</span></li>';
+                        })
+                        
+                        $('#s_contentend ul').html(html);
+                        $('#h_contentend').hide();
+                        $('#s_contentend').show();
+                        $('#s_contentend ul li span').each(function(){
+                            $(this).click(function(){
+                                var t = $(this).text();
+                                $('#keywords').val(t);
+                                $('#s_contentend').hide();
+                            })
+                        })
+                    }else{
+                        $('#h_contentend').hide()
+                        $('#s_contentend ul').html('');
+                        $('#s_contentend').hide();
+                    }
+                },
+                error : function(){
+                    console.log('xxx');
+                }
+            })
+        }  
+        str = now;  
+    }  
 </script>

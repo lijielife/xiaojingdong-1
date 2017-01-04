@@ -213,6 +213,7 @@ else
         $replacef_www_68ecshop_com = explode(' ', $word_www_68ecshop_com);
 
 
+
         $keywords = 'AND (';
         $goods_ids = array();
         foreach ($replacef_www_68ecshop_com AS $key => $val)

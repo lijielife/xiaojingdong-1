@@ -1,85 +1,110 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>{$lang.cp_home}{if $ur_here} - {$ur_here}{/if}</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="styles/general.css" rel="stylesheet" type="text/css" />
-<link href="styles/main.css" rel="stylesheet" type="text/css" />
-{literal}
-{/literal}
-{insert_scripts files="../js/utils.js,validator.js"}
-<script language="JavaScript">
-<!--
-// 这里把JS用到的所有语言都赋值到这里
-{foreach from=$lang.js_languages key=key item=item}
-var {$key} = "{$item}";
-{/foreach}
-{literal}
-if (window.parent != window)
-{
-  window.top.location.href = location.href;
-}
-{/literal}
-//-->
-</script>
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>后台登录</title>
+    {insert_scripts files="../js/jquery-1.6.2.min.js,jquery.SuperSlide.2.1.2.js,../js/utils.js,validator.js"}
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
+    <script language="JavaScript">
+        <!--
+        // 这里把JS用到的所有语言都赋值到这里
+        {foreach from=$lang.js_languages key=key item=item}
+        var {$key} = "{$item}";
+        {/foreach}
+        {literal}
+        if (window.parent != window)
+        {
+            window.top.location.href = location.href;
+        }
+        {/literal}
+        //-->
+    </script>
+    <!--<link href="styles/general.css" rel="stylesheet" type="text/css" />-->
+    <!--<link href="styles/main.css" rel="stylesheet" type="text/css" />-->
+    <!--<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>-->
+    <!--<script type="text/javascript" src="js/jquery.SuperSlide.2.1.2.js"></script>-->
 </head>
-<body style="background:url(images/login_bg.png) repeat-x;padding:0px;">
-<div style="width:1210px;height:768px;margin:0 auto;background:url(images/login_dl.jpg) no-repeat; " >
-<form method="post" action="privilege.php" name='theForm' onsubmit="return validate()">
-  <table cellspacing="0" cellpadding="0" style=" padding-top:295px; " align="center" class="login_dl">
-  <tr>
-<td class="dl">
-      <table cellspacing="0" cellpadding="0" width="100%">
-      <tr>
-        <td class="dl_1" width="22%">{$lang.label_username}</td>
-        <td><input type="text" name="username" class="text_input1"/></td>
-      </tr>
-      <tr>
-        <td class="dl_2">{$lang.label_password}</td>
-        <td><input type="password" name="password"  class="text_input1"/></td>
-      </tr>
-      {if $gd_version > 0}
-      <tr>
-        <td class="dl_1">{$lang.label_captcha}</td>
-        <td><input type="text" name="captcha" class="capital text_input1" style="width:70px; margin-right:5px; float:left; "/><img src="index.php?act=captcha&{$random}" width="126" height="36" alt="CAPTCHA" border="0" onclick= this.src="index.php?act=captcha&"+Math.random() style="cursor: pointer; float:left " title="{$lang.click_for_another}" /></td>
-      </tr>
-      
-      {/if}
-     <tr class="low_height">
-        <td>&nbsp;</td>
-        <td><input type="checkbox" value="1" name="remember" id="remember" /><label for="remember" >{$lang.remember}</label></td></tr>
-      <tr>
-      	<td colspan="2" align="center"><input type="submit" value="登&nbsp;录" class="button2" /></td>
-      </tr>
-      <tr class="low_height1">
-        <td colspan="2" align="right">&raquo; <a href="../" >{$lang.back_home}</a> &raquo; <a href="get_password.php?act=forget_pwd">{$lang.forget_pwd}</a></td>
-      </tr>
-      </table>
-    </td>
-  </tr>
-  </table>
-  <input type="hidden" name="act" value="signin" />
-</form>
+<body class="loginbody">
+<div class="top_logo"></div>
+<div class="top_phone">400-652-0731</div>
+<div style="width:100%; height:100%; min-width:300px; min-height:260px;"></div>
+<div class="login-wrap">
+    <div class="login-logo">LOGO</div>
+    <form method="post" action="privilege.php" name='theForm' onsubmit="return validate()">
+        <div class="login-form">
+            <div class="col">
+                <input name="username" type="text" id="txtUserName" class="login-input" placeholder="Username" title="Username">
+                <label class="user" for="txtUserName">
+                    <img src="./img/user_icon.png" alt="">
+                </label>
+            </div>
+            <div class="col">
+                <input name="password" type="password" id="txtPassword" class="login-input" placeholder="Password" title="Password">
+                <label class="pwd" for="txtPassword">
+                    <img class="psd_icon" src="./img/psd_icon.png" alt="">
+                </label>
+            </div>
+
+            <!--<div class="col">-->
+            <!--<input type="checkbox" value="1" name="remember" id="remember" />-->
+            <!--<label for="remember" >{$lang.remember}</label>-->
+            <!--</div>-->
+
+
+            <a href="get_password.php?act=forget_pwd" class="gl_forget">忘记密码？</a>
+            <div class="col">
+                <input type="hidden" name="act" value="signin" />
+                <input type="submit" name="btnSubmit" value="登 录"  class="login-btn">
+            </div>
+            <p id="msgtip" style="font-weight:bold; font-size:14px;"></p>
+        </div>
+        <div class="login-tips">
+            <div class="innerBox">
+                <div class="news">
+                    <span>NEWS :</span>
+                    <a href="http://www.tryine.com/" title="更多文章动态" class="more" target="_blank">MORE&gt;&gt;</a>
+                    <div class="txtScroll-top">
+                        <div class="bd">
+                            <ul class="infoList">
+                                <li><a href="http://www.tryine.com/" target="_blank" title="网站建设客户湖南泰克能科技股份有限公司网站建设项目签与创研">网站建设客户湖南泰克能科技股份有限公司网站建设项...</a></li>
+                                <li><a href="http://www.tryine.com/" target="_blank" title="关于2016端午节放假的通知">关于2016端午节放假的通知</a></li>
+                                <li><a href="http://www.tryine.com/" target="_blank" title="喜报|今日创研科技与国防科大签订网站建设项目">喜报|今日创研科技与国防科大签订网站建设项目</a></li>
+                                <li><a href="http://www.tryine.com/" target="_blank" title="湖南网络营销第一股创研股份，一路走来经历了什么？！">湖南网络营销第一股创研股份，一路走来经历了什么？！</a></li>
+                                <li><a href="http://www.tryine.com/" target="_blank" title="湖南乡乡嘴食品有限公司网站建设项目签与创研科技">湖南乡乡嘴食品有限公司网站建设项目签与创研科技</a></li>
+                                <li><a href="http://www.tryine.com/" target="_blank" title="网站建设客户湖南泰克能科技股份有限公司网站建设项目签与创研">网站建设客户湖南泰克能科技股份有限公司网站建设项...</a></li>
+                                <li><a href="http://www.tryine.com/" target="_blank" title="关于2016端午节放假的通知">关于2016端午节放假的通知</a></li></ul></div>
+                    </div>
+                </div>
+                <div class="guide"><a class=""></a><a class="active"></a><a class=""></a><a class=""></a></div>
+                <a class="movedown"></a>
+            </div>
+        </div>
+    </form>
 </div>
-<script language="JavaScript">
-<!--
-  document.forms['theForm'].elements['username'].focus();
-  {literal}
-  /**
-   * 检查表单输入的内容
-   */
-  function validate()
-  {
-    var validator = new Validator('theForm');
-    validator.required('username', user_name_empty);
-    //validator.required('password', password_empty);
-    if (document.forms['theForm'].elements['captcha'])
-    {
-      validator.required('captcha', captcha_empty);
-    }
-    return validator.passed();
-  }
-  {/literal}
-//-->
+<div class="copy-right">
+    <p class="copy_border"></p>
+    <p>版权所有 湖南创研科技股份有限 Copyright © 2009 - 2015 dtsoft.net Inc. All Rights Reserved.</p>
+</div>
+<script>
+    jQuery(".txtScroll-top").slide({mainCell:".bd ul",autoPage:true,effect:"top",autoPlay:true,vis:1});
 </script>
-</body>
+<script language="JavaScript">
+    document.forms['theForm'].elements['username'].focus();
+    {literal}
+    /**
+     * 检查表单输入的内容
+     */
+    function validate()
+    {
+        var validator = new Validator('theForm');
+        validator.required('username', user_name_empty);
+        if (document.forms['theForm'].elements['captcha'])
+        {
+            validator.required('captcha', captcha_empty);
+        }
+        return validator.passed();
+    }
+    {/literal}
+
+</script>
+</body></html>

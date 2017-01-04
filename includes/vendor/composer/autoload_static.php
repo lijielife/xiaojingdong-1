@@ -16,7 +16,7 @@ class ComposerStaticInita6773a12bcc1aca4d241920293a8864e
     public static $prefixDirsPsr4 = array (
         'Overtrue\\Pinyin\\' => 
         array (
-            0 => __DIR__ . '/..' . '/overtrue/pinyin/src',
+            0 => __DIR__ . '/..',
         ),
     );
 
