@@ -19,7 +19,7 @@ define('IN_ECS', true);
 
 
 require(dirname(__FILE__) . '/includes/init.php');
-require(dirname(__FILE__) . '/includes/lib_elong.php');
+require(ROOT_PATH . '/includes/lib_elong.php');
 
 
 /* 汉字转拼音所用插件 */

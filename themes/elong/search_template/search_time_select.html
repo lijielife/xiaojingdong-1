@@ -1,0 +1,62 @@
+<!-- 搜索页入住时间、退房时间html -->
+<div class="search_item search_date">
+    <label class="left br" data-wrap="checkInWrap">
+        <span>入住</span>
+        <input data-bindid="checkIn" method="checkIn" type="input" value="{$checkin}" selectedvalue="{$checkin}" class="input_f16 input_date">
+        <span class="icon_date_s"></span>
+    </label>
+    <label class="left" data-wrap="checkOutWrap">
+        <span>离店</span>
+        <input data-bindid="checkOut" method="checkOut" type="input" value="{$checkout}" selectedvalue="{$checkout}" class="input_f16 input_date">
+        <span class="icon_date_e"></span>
+        <span class="total" data-bindid="dayCount">(共1晚)</span></label>
+</div>
+
+
+<script type="text/javascript">
+    $(function() {
+        
+        $('.form_date_checkin').datetimepicker({
+            language: 'zh',
+            // {format: 'yyyy-mm-dd hh:ii'}，
+            weekStart: 1,
+            todayBtn: 1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0
+        });
+        $('.form_date_checkout').datetimepicker({
+            language: 'zh',
+            weekStart: 1,
+            todayBtn: 1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0
+        });
+
+        /*
+        var mydate = new Date();
+        var default_start_date = mydate.getFullYear() + '-' + (mydate.getMonth()+1) + '-' + mydate.getDate();
+        $('#checkin').val(default_start_date);
+
+        var currentDate = new Date("yyyy-MM-dd hh:mm:ss");
+        var currentTime = currentDate.toLocaleString().substring(11);
+        var now = new Date();
+        now = new Date(now.getTime() + 86400000);
+        var yyyy = now.getFullYear(), mm = (now.getMonth() + 1).toString(), dd = now
+                .getDate().toString();
+        if (mm.length == 1) {
+            mm = '0' + mm;
+        }
+        if (dd.length == 1) {
+            dd = '0' + dd;
+        }
+        var nextDay = yyyy + '-' + mm  + '-' + dd;
+        $('#checkout').val(nextDay);
+        */
+    })
+</script>

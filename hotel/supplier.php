@@ -19,6 +19,10 @@ require(dirname(__FILE__) . '/includes/init.php');
 require(ROOT_PATH . 'languages/' .$_CFG['lang']. '/admin/hotel.php');
 $smarty->assign('lang', $_LANG);
 
+/* 汉字转拼音所用插件 */
+include_once(ROOT_PATH . 'includes/vendor/autoload.php');
+use Overtrue\Pinyin\Pinyin;
+
 
 /*------------------------------------------------------ */
 //-- 供货商列表
@@ -254,11 +258,18 @@ elseif ($_REQUEST['act']=='update')
 
         'system_fee'   => trim($_POST['system_fee']),
         'supplier_bond'   => trim($_POST['supplier_bond']),
+        'supplier_name'   => trim($_POST['supplier_name']),
         'supplier_rebate'   => trim($_POST['supplier_rebate']),
         'supplier_rebate_paytime'   => intval($_POST['supplier_rebate_paytime']),
         'supplier_remark'   => trim($_POST['supplier_remark']),
         'status'   => intval($_POST['status'])
     );
+    if(isset($_POST['supplier_name']) && $_POST['supplier_name'])
+    {
+        $pinyin = new Pinyin();
+        $supplier['supplier_quanpin'] = $pinyin->sentence($_POST['supplier_name']); //全拼
+        $supplier['supplier_shoupin'] = $pinyin->abbr($_POST['supplier_name']);//首字母拼音
+    }
     /* 代码增加_start  By  supplier.68ecshop.com */
     /* 取得供货商信息 */
     //$sql = "SELECT * FROM " . $ecs->table('supplier') . " WHERE supplier_id = '" . $supplier_id ."' ";

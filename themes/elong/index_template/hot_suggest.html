@@ -128,6 +128,8 @@
 
 <script type="text/javascript">
     var is_show = false;
+    var str = '';  
+    var now = ''  
     $(function(){
         $('#keywords').focus(function(){
             var html = '';
@@ -177,66 +179,91 @@
             is_show = false;
         })
         
+
+        //关键词手动搜索，自动补全
+        $('#keywords').bind('focus',function(){
+            var time = setInterval(filter_staff_from_exist, 100);  
+            $(this).bind('blur',function(){  
+                clearInterval(time);  
+            }); 
+        })
+        function filter_staff_from_exist(){  
+            now = $.trim($('#keywords').val());  
+            if (now != '' && now != str) {
+                $.ajax({
+                    url : 'hotel_tipwords.php?city=' + $('#hotelCity').val() + '&keywords=' + now,
+                    dataType : 'json',
+                    success : function(data){
+                        var data = data['msg'];
+                        if(data.length > 0){
+                            var html = '';
+                            $(data).each(function(k,v){
+                                html += '<li method="liData" class="ac_odd">';
+                                if(v['type'] == 'hotel_name'){
+                                    html += '<i class="hotel"></i>';
+                                }else{
+                                    html += '<i></i>';
+                                }
+                                var preg =  v['keywords'];
+                                var replace = '<b>' + v['keywords'] + '</b>';
+                                var name = v['name'].replace(preg,replace);
+                                html += '<span method="spanData">'+ name +'</span></li>';
+                            })
+                            $('#s_contentend ul').html(html);
+                            $('#h_contentend').hide();
+                            $('#s_contentend').show();
+                            $('#s_contentend ul li span').each(function(){
+                                $(this).click(function(){
+                                    var t = $(this).text();
+                                    $('#keywords').val(t);
+                                    $('#s_contentend').hide();
+                                })
+                            })
+                        }else{
+                            $('#h_contentend').hide()
+                            $('#s_contentend ul').html('');
+                            $('#s_contentend').hide();
+                        }
+                    },
+                    error : function(){
+                        console.log('xxx');
+                    }
+                })
+            }  
+            str = now;  
+        }  
+
+        //搜索按钮绑定
+        $('#search_btn1').bind('click',function(){
+            var city = $('#hotelCity').val();
+            var checkin = $('#checkin').val();
+            var checkout = $('#checkout').val();
+            var keywords = $('#keywords').val();
+            if(!city){
+                alert('请先选择入住城市');
+                return;
+            }
+            $(this).hide();
+            $(this).next().show();
+
+            $.ajax({
+                url : 'hotel_search.php?act=ajax_search_pre&city=' + encodeURI(city),
+                dataType : 'json',
+                success : function(data){
+                    if(data.err == 1){
+                        alert(data.msg)
+                    }else{
+                        //alert('success')
+                        var s_url = 'hotel_search.php?act=list&city='+ encodeURI(city) + '&cityid=' + $('#hotelCity').attr('cityid') + '&checkin=' + checkin + '&checkout=' + checkout + '&keywords=' + keywords;
+                        window.location.href = s_url;
+                    }
+                },
+                error : function(data){
+                    console.log(data);
+                }
+            })
+        })
     })
 
     
-
-
-
-    //关键词手动搜索，自动补全
-    var str = '';  
-    var now = ''  
-    $('#keywords').bind('focus',function(){
-        var time = setInterval(filter_staff_from_exist, 100);  
-        $(this).bind('blur',function(){  
-            clearInterval(time);  
-        }); 
-    })
-    function filter_staff_from_exist(){  
-        now = $.trim($('#keywords').val());  
-        if (now != '' && now != str) {
-            $.ajax({
-                url : 'hotel_tipwords.php?city=' + $('#hotelCity').val() + '&keywords=' + now,
-                dataType : 'json',
-                success : function(data){
-                    var data = data['msg'];
-                    if(data.length > 0){
-                        var html = '';
-                        $(data).each(function(k,v){
-                            html += '<li method="liData" class="ac_odd">';
-                            if(v['type'] == 'hotel_name'){
-                                html += '<i class="hotel"></i>';
-                            }else{
-                                html += '<i></i>';
-                            }
-
-                            var preg =  v['keywords'];
-                            var replace = '<b>' + v['keywords'] + '</b>';
-                            var name = v['name'].replace(preg,replace);
-                            html += '<span method="spanData">'+ name +'</span></li>';
-                        })
-                        
-                        $('#s_contentend ul').html(html);
-                        $('#h_contentend').hide();
-                        $('#s_contentend').show();
-                        $('#s_contentend ul li span').each(function(){
-                            $(this).click(function(){
-                                var t = $(this).text();
-                                $('#keywords').val(t);
-                                $('#s_contentend').hide();
-                            })
-                        })
-                    }else{
-                        $('#h_contentend').hide()
-                        $('#s_contentend ul').html('');
-                        $('#s_contentend').hide();
-                    }
-                },
-                error : function(){
-                    console.log('xxx');
-                }
-            })
-        }  
-        str = now;  
-    }  
 </script>

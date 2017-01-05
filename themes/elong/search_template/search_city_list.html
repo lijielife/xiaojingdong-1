@@ -1,0 +1,505 @@
+<!--  城市列表，首页搜索时目的地栏位展示 --> 
+<div id="m_contentend" style="display:none;position: absolute; z-index: 101; top: 208px; left: 130.5px;">
+	<div winstyle="hot">
+    	<div style="width:430px;display:block " class="com_hotrenew">
+			<div style="width:100%;">
+				<div class="ac_title">
+					<span>支持中文/拼音/简拼输入</span>
+					<dl>
+						<dt>最近搜索记录：</dt>
+						<dd><a method="historyData" data="" data-cid="0101" data-citynameen="Beijing" href="#">北京</a></dd>
+						<dd><a method="historyData" data="4|15" data-cid="1508" data-citynameen="Shangrao" href="#">上饶市</a></dd>
+						<dd><a method="historyData" data="" data-cid="1901" data-citynameen="changsha" href="#">长沙市</a></dd>
+						<dd><a method="historyData" data="2" data-cid="2103" data-citynameen="beihai" href="#">北海市</a></dd>
+					</dl>
+				</div>
+				<ul id="hotTab" class="AbcSearchnew clx">
+					<li method="liHotTab" index="0" class="action">热门</li>
+					<li method="liHotTab" index="1" class="">ABCDEF</li>
+					<li method="liHotTab" index="2" class="">GHJK</li>
+					<li method="liHotTab" index="3" class="">LMNPQ</li>
+					<li method="liHotTab" index="4" class="">RSTW</li>
+					<li method="liHotTab" index="5" class="">XYZ</li>
+				</ul>
+				<div id="hotData">
+					<ul id="hotData_0" class="popcitylistnew" style="display:block">
+						<li method="liHotData" data="0|0" title="北京" class="ac_even">北京</li>
+						<li method="liHotData" data="0|1" title="上海" class="ac_odd">上海</li>
+						<li method="liHotData" data="0|2" title="杭州" class="ac_even">杭州</li>
+						<li method="liHotData" data="0|3" title="广州" class="ac_odd">广州</li>
+						<li method="liHotData" data="0|4" title="深圳" class="ac_even ">深圳</li>
+						<li method="liHotData" data="0|5" title="厦门" class="ac_odd">厦门</li>
+						<li method="liHotData" data="0|6" title="南京" class="ac_even">南京</li>
+						<li method="liHotData" data="0|7" title="成都" class="ac_odd">成都</li>
+						<li method="liHotData" data="0|8" title="武汉" class="ac_even">武汉</li>
+						<li method="liHotData" data="0|9" title="青岛" class="ac_odd ">青岛</li>
+						<li method="liHotData" data="0|10" title="西安" class="ac_even ">西安</li>
+						<li method="liHotData" data="0|11" title="天津" class="ac_odd">天津</li>
+						<li method="liHotData" data="0|12" title="重庆" class="ac_even">重庆</li>
+						<li method="liHotData" data="0|13" title="苏州" class="ac_odd ">苏州</li>
+						<li method="liHotData" data="0|14" title="济南" class="ac_even">济南</li>
+						<li method="liHotData" data="0|15" title="长沙" class="ac_odd ">长沙</li>
+						<li method="liHotData" data="0|16" title="香港" class="ac_even">香港</li>
+						<li method="liHotData" data="0|17" title="大连" class="ac_odd ">大连</li>
+						<li method="liHotData" data="0|18" title="三亚" class="ac_even ">三亚</li>
+						<li method="liHotData" data="0|19" title="哈尔滨" class="ac_odd ">哈尔滨</li>
+					</ul>
+					<ul id="hotData_1" class="popcitylistnew" style="display:none">
+					    <li class="letter">A</li>
+					    <li title="澳门" method="liHotData" data="1|0">澳门</li>
+					    <li title="安顺市" method="liHotData" data="1|1">安顺市</li>
+					    <li title="鞍山" method="liHotData" data="1|2">鞍山</li>
+					    <li title="安庆" method="liHotData" data="1|3">安庆</li>
+					    <li title="安吉（湖州）" method="liHotData" data="1|4">安吉（湖州）</li>
+					    <li class="let_line"></li>
+					    <li class="letter">B</li>
+					    <li title="北京" method="liHotData" data="1|5" class="">北京</li>
+					    <li title="北戴河（秦皇岛）" method="liHotData" data="1|6">北戴河（秦皇岛）</li>
+					    <li title="北海" method="liHotData" data="1|7">北海</li>
+					    <li title="保定" method="liHotData" data="1|8">保定</li>
+					    <li title="蚌埠" method="liHotData" data="1|9">蚌埠</li>
+					    <li class="letter"></li>
+					    <li title="宝鸡" method="liHotData" data="1|10" class="">宝鸡</li>
+					    <li title="包头" method="liHotData" data="1|11">包头</li>
+					    <li title="滨州" method="liHotData" data="1|12">滨州</li>
+					    <li title="本溪" method="liHotData" data="1|13" class="">本溪</li>
+					    <li title="百色" method="liHotData" data="1|14">百色</li>
+					    <li class="let_line"></li>
+					    <li class="letter">C</li>
+					    <li title="成都" method="liHotData" data="1|15" class="">成都</li>
+					    <li title="重庆" method="liHotData" data="1|16">重庆</li>
+					    <li title="长沙" method="liHotData" data="1|17">长沙</li>
+					    <li title="长春" method="liHotData" data="1|18">长春</li>
+					    <li title="常州" method="liHotData" data="1|19">常州</li>
+					    <li class="letter"></li>
+					    <li title="承德" method="liHotData" data="1|20" class="">承德</li>
+					    <li title="常熟（苏州）" method="liHotData" data="1|21">常熟（苏州）</li>
+					    <li title="潮州" method="liHotData" data="1|22">潮州</li>
+					    <li title="沧州" method="liHotData" data="1|23">沧州</li>
+					    <li title="慈溪（宁波）" method="liHotData" data="1|24">慈溪（宁波）</li>
+					    <li class="letter"></li>
+					    <li title="郴州" method="liHotData" data="1|25">郴州</li>
+					    <li title="赤峰" method="liHotData" data="1|26">赤峰</li>
+					    <li title="长白山池北" method="liHotData" data="1|27">长白山池北</li>
+					    <li title="昌黎（秦皇岛）" method="liHotData" data="1|28">昌黎（秦皇岛）</li>
+					    <li title="长治" method="liHotData" data="1|29">长治</li>
+					    <li class="let_line"></li>
+					    <li class="letter">D</li>
+					    <li title="大连" method="liHotData" data="1|30" class="">大连</li>
+					    <li title="东莞" method="liHotData" data="1|31">东莞</li>
+					    <li title="大理" method="liHotData" data="1|32">大理</li>
+					    <li title="大同" method="liHotData" data="1|33">大同</li>
+					    <li title="丹东" method="liHotData" data="1|34">丹东</li>
+					    <li class="letter"></li>
+					    <li title="都江堰青城山（成都）" method="liHotData" data="1|35">都江堰青城山（成都）</li>
+					    <li title="敦煌" method="liHotData" data="1|36">敦煌</li>
+					    <li title="德州" method="liHotData" data="1|37">德州</li>
+					    <li title="东营" method="liHotData" data="1|38">东营</li>
+					    <li title="登封（郑州）" method="liHotData" data="1|39">登封（郑州）</li>
+					    <li class="letter"></li>
+					    <li title="德阳" method="liHotData" data="1|40">德阳</li>
+					    <li title="大庆" method="liHotData" data="1|41">大庆</li>
+					    <li title="大邑（成都）" method="liHotData" data="1|42">大邑（成都）</li>
+					    <li title="德清" method="liHotData" data="1|43">德清</li>
+					    <li title="达州" method="liHotData" data="1|44">达州</li>
+					    <li class="let_line"></li>
+					    <li class="letter">E</li>
+					    <li title="峨眉山" method="liHotData" data="1|45">峨眉山</li>
+					    <li title="恩施" method="liHotData" data="1|46">恩施</li>
+					    <li title="鄂尔多斯" method="liHotData" data="1|47">鄂尔多斯</li>
+					    <li title="恩平" method="liHotData" data="1|48">恩平</li>
+					    <li title="额尔古纳（呼伦贝尔）" method="liHotData" data="1|49">额尔古纳（呼伦贝尔）</li>
+					    <li class="let_line"></li>
+					    <li class="letter">F</li>
+					    <li title="福州" method="liHotData" data="1|50">福州</li>
+					    <li title="佛山" method="liHotData" data="1|51">佛山</li>
+					    <li title="凤凰（湘西）" method="liHotData" data="1|52">凤凰（湘西）</li>
+					    <li title="阜阳" method="liHotData" data="1|53">阜阳</li>
+					    <li title="抚顺" method="liHotData" data="1|54">抚顺</li>
+					</ul>
+					<ul id="hotData_2" class="popcitylistnew" style="display:none">
+					    <li class="letter">G</li>
+					    <li title="广州" method="liHotData" data="2|0" class="">广州</li>
+					    <li title="桂林" method="liHotData" data="2|1" class="">桂林</li>
+					    <li title="贵阳" method="liHotData" data="2|2">贵阳</li>
+					    <li title="赣州" method="liHotData" data="2|3">赣州</li>
+					    <li title="广元" method="liHotData" data="2|4">广元</li>
+					    <li class="let_line"></li>
+					    <li class="letter">H</li>
+					    <li title="杭州" method="liHotData" data="2|5">杭州</li>
+					    <li title="哈尔滨" method="liHotData" data="2|6" class="">哈尔滨</li>
+					    <li title="合肥" method="liHotData" data="2|7">合肥</li>
+					    <li title="海口" method="liHotData" data="2|8">海口</li>
+					    <li title="黄山" method="liHotData" data="2|9">黄山</li>
+					    <li class="letter"></li>
+					    <li title="惠州" method="liHotData" data="2|10">惠州</li>
+					    <li title="呼和浩特" method="liHotData" data="2|11">呼和浩特</li>
+					    <li title="衡阳" method="liHotData" data="2|12">衡阳</li>
+					    <li title="横店（金华）" method="liHotData" data="2|13">横店（金华）</li>
+					    <li title="淮安" method="liHotData" data="2|14">淮安</li>
+					    <li class="letter"></li>
+					    <li title="邯郸" method="liHotData" data="2|15">邯郸</li>
+					    <li title="湖州" method="liHotData" data="2|16">湖州</li>
+					    <li title="河源" method="liHotData" data="2|17">河源</li>
+					    <li title="海宁" method="liHotData" data="2|18">海宁</li>
+					    <li title="汉中" method="liHotData" data="2|19">汉中</li>
+					    <li class="letter"></li>
+					    <li title="宏村（黄山）" method="liHotData" data="2|20" class="">宏村（黄山）</li>
+					    <li title="葫芦岛" method="liHotData" data="2|21">葫芦岛</li>
+					    <li title="呼伦贝尔（海拉尔）" method="liHotData" data="2|22">呼伦贝尔（海拉尔）</li>
+					    <li title="衡水" method="liHotData" data="2|23">衡水</li>
+					    <li title="淮南" method="liHotData" data="2|24">淮南</li>
+					    <li class="let_line"></li>
+					    <li class="letter">J</li>
+					    <li title="济南" method="liHotData" data="2|25" class="">济南</li>
+					    <li title="九寨沟" method="liHotData" data="2|26">九寨沟</li>
+					    <li title="九江" method="liHotData" data="2|27">九江</li>
+					    <li title="嘉兴" method="liHotData" data="2|28">嘉兴</li>
+					    <li title="金华" method="liHotData" data="2|29">金华</li>
+					    <li class="letter"></li>
+					    <li title="锦州" method="liHotData" data="2|30">锦州</li>
+					    <li title="吉林" method="liHotData" data="2|31">吉林</li>
+					    <li title="焦作" method="liHotData" data="2|32">焦作</li>
+					    <li title="济宁" method="liHotData" data="2|33">济宁</li>
+					    <li title="景德镇" method="liHotData" data="2|34">景德镇</li>
+					    <li class="letter"></li>
+					    <li title="江门" method="liHotData" data="2|35">江门</li>
+					    <li title="九华山（池州）" method="liHotData" data="2|36">九华山（池州）</li>
+					    <li title="揭阳" method="liHotData" data="2|37">揭阳</li>
+					    <li title="荆州" method="liHotData" data="2|38">荆州</li>
+					    <li title="江阴（无锡）" method="liHotData" data="2|39">江阴（无锡）</li>
+					    <li class="letter"></li>
+					    <li title="嘉峪关" method="liHotData" data="2|40">嘉峪关</li>
+					    <li title="晋中" method="liHotData" data="2|41">晋中</li>
+					    <li title="晋城" method="liHotData" data="2|42">晋城</li>
+					    <li title="即墨（青岛）" method="liHotData" data="2|43">即墨（青岛）</li>
+					    <li title="晋江（泉州）" method="liHotData" data="2|44">晋江（泉州）</li>
+					    <li class="let_line"></li>
+					    <li class="letter">K</li>
+					    <li title="昆明" method="liHotData" data="2|45">昆明</li>
+					    <li title="开封" method="liHotData" data="2|46">开封</li>
+					    <li title="昆山（苏州）" method="liHotData" data="2|47">昆山（苏州）</li>
+					    <li title="凯里（黔东南州）" method="liHotData" data="2|48">凯里（黔东南州）</li>
+					    <li title="开平" method="liHotData" data="2|49">开平</li>
+					</ul>
+					<ul id="hotData_3" class="popcitylistnew" style="display:none">
+					    <li class="letter">L</li>
+					    <li title="丽江（含束河）" method="liHotData" data="3|0">丽江（含束河）</li>
+					    <li title="兰州" method="liHotData" data="3|1">兰州</li>
+					    <li title="洛阳" method="liHotData" data="3|2" class="">洛阳</li>
+					    <li title="拉萨" method="liHotData" data="3|3">拉萨</li>
+					    <li title="柳州" method="liHotData" data="3|4">柳州</li>
+					    <li class="letter"></li>
+					    <li title="临沂" method="liHotData" data="3|5" class="">临沂</li>
+					    <li title="连云港" method="liHotData" data="3|6">连云港</li>
+					    <li title="廊坊" method="liHotData" data="3|7" class="">廊坊</li>
+					    <li class="let_line"></li>
+					    <li class="letter">Z</li>
+					    <li title="溧阳市" method="liHotData" data="3|8">溧阳市</li>
+					    <li class="let_line"></li>
+					    <li class="letter">L</li>
+					    <li title="庐山（九江）" method="liHotData" data="3|9">庐山（九江）</li>
+					    <li title="乐山" method="liHotData" data="3|10" class="">乐山</li>
+					    <li title="泸沽湖" method="liHotData" data="3|11">泸沽湖</li>
+					    <li title="聊城" method="liHotData" data="3|12">聊城</li>
+					    <li title="泸州" method="liHotData" data="3|13">泸州</li>
+					    <li class="letter"></li>
+					    <li title="丽水" method="liHotData" data="3|14" class="">丽水</li>
+					    <li title="龙岩" method="liHotData" data="3|15">龙岩</li>
+					    <li title="六安" method="liHotData" data="3|16">六安</li>
+					    <li title="临汾" method="liHotData" data="3|17">临汾</li>
+					    <li title="阆中（南充）" method="liHotData" data="3|18">阆中（南充）</li>
+					    <li class="letter"></li>
+					    <li title="临安（杭州）" method="liHotData" data="3|19">临安（杭州）</li>
+					    <li class="let_line"></li>
+					    <li class="letter">M</li>
+					    <li title="绵阳" method="liHotData" data="3|20">绵阳</li>
+					    <li title="梅州" method="liHotData" data="3|21">梅州</li>
+					    <li title="马鞍山" method="liHotData" data="3|22">马鞍山</li>
+					    <li title="茂名" method="liHotData" data="3|23">茂名</li>
+					    <li title="牡丹江" method="liHotData" data="3|24">牡丹江</li>
+					    <li class="let_line"></li>
+					    <li class="letter">N</li>
+					    <li title="南京" method="liHotData" data="3|25">南京</li>
+					    <li title="宁波" method="liHotData" data="3|26">宁波</li>
+					    <li title="南昌" method="liHotData" data="3|27">南昌</li>
+					    <li title="南宁" method="liHotData" data="3|28">南宁</li>
+					    <li title="南通" method="liHotData" data="3|29">南通</li>
+					    <li class="letter"></li>
+					    <li title="南戴河（秦皇岛）" method="liHotData" data="3|30">南戴河（秦皇岛）</li>
+					    <li title="南充" method="liHotData" data="3|31">南充</li>
+					    <li title="南阳" method="liHotData" data="3|32">南阳</li>
+					    <li title="宁海（宁波）" method="liHotData" data="3|33">宁海（宁波）</li>
+					    <li title="南浔（湖州）" method="liHotData" data="3|34">南浔（湖州）</li>
+					    <li class="let_line"></li>
+					    <li class="letter">P</li>
+					    <li title="平遥（晋中）" method="liHotData" data="3|35">平遥（晋中）</li>
+					    <li title="蓬莱（烟台）" method="liHotData" data="3|36">蓬莱（烟台）</li>
+					    <li title="莆田" method="liHotData" data="3|37">莆田</li>
+					    <li title="盘锦" method="liHotData" data="3|38">盘锦</li>
+					    <li title="攀枝花" method="liHotData" data="3|39">攀枝花</li>
+					    <li class="let_line"></li>
+					    <li class="letter">Q</li>
+					    <li title="青岛" method="liHotData" data="3|40">青岛</li>
+					    <li title="秦皇岛" method="liHotData" data="3|41">秦皇岛</li>
+					    <li title="千岛湖（杭州）" method="liHotData" data="3|42">千岛湖（杭州）</li>
+					    <li title="泉州" method="liHotData" data="3|43">泉州</li>
+					    <li title="清远" method="liHotData" data="3|44">清远</li>
+					    <li class="letter"></li>
+					    <li title="曲阜（济宁）" method="liHotData" data="3|45">曲阜（济宁）</li>
+					    <li title="琼海（博鳌）" method="liHotData" data="3|46">琼海（博鳌）</li>
+					    <li title="齐齐哈尔" method="liHotData" data="3|47">齐齐哈尔</li>
+					    <li title="衢州" method="liHotData" data="3|48">衢州</li>
+					    <li title="钦州" method="liHotData" data="3|49">钦州</li>
+					</ul>
+					<ul id="hotData_4" class="popcitylistnew" style="display:none">
+					    <li class="letter">R</li>
+					    <li title="日照" method="liHotData" data="4|0" class="">日照</li>
+					    <li title="荣成（威海）" method="liHotData" data="4|1">荣成（威海）</li>
+					    <li title="瑞安（温州）" method="liHotData" data="4|2">瑞安（温州）</li>
+					    <li title="乳山（威海）" method="liHotData" data="4|3" class="">乳山（威海）</li>
+					    <li title="瑞丽（德宏州）" method="liHotData" data="4|4">瑞丽（德宏州）</li>
+					    <li class="let_line"></li>
+					    <li class="letter">S</li>
+					    <li title="上海" method="liHotData" data="4|5" class="">上海</li>
+					    <li title="深圳" method="liHotData" data="4|6">深圳</li>
+					    <li title="苏州" method="liHotData" data="4|7">苏州</li>
+					    <li title="三亚" method="liHotData" data="4|8">三亚</li>
+					    <li title="沈阳" method="liHotData" data="4|9">沈阳</li>
+					    <li class="letter"></li>
+					    <li title="石家庄" method="liHotData" data="4|10" class="">石家庄</li>
+					    <li title="绍兴" method="liHotData" data="4|11">绍兴</li>
+					    <li title="汕头" method="liHotData" data="4|12" class="">汕头</li>
+					    <li title="韶关" method="liHotData" data="4|13">韶关</li>
+					    <li title="十堰" method="liHotData" data="4|14">十堰</li>
+					    <li class="letter"></li>
+					    <li title="上饶市" method="liHotData" data="4|15" class="">上饶市</li>
+					    <li title="宿迁" method="liHotData" data="4|16">宿迁</li>
+					    <li title="商丘" method="liHotData" data="4|17" class="">商丘</li>
+					    <li title="汕尾" method="liHotData" data="4|18">汕尾</li>
+					    <li title="三清山（上饶）" method="liHotData" data="4|19">三清山（上饶）</li>
+					    <li class="let_line"></li>
+					    <li class="letter">T</li>
+					    <li title="天津" method="liHotData" data="4|20">天津</li>
+					    <li title="台北（台湾）" method="liHotData" data="4|21" class="">台北（台湾）</li>
+					    <li title="太原" method="liHotData" data="4|22">太原</li>
+					    <li title="泰安" method="liHotData" data="4|23">泰安</li>
+					    <li title="唐山" method="liHotData" data="4|24">唐山</li>
+					    <li class="letter"></li>
+					    <li title="台州" method="liHotData" data="4|25" class="">台州</li>
+					    <li title="台山" method="liHotData" data="4|26">台山</li>
+					    <li title="泰州" method="liHotData" data="4|27">泰州</li>
+					    <li title="腾冲" method="liHotData" data="4|28">腾冲</li>
+					    <li title="天水" method="liHotData" data="4|29">天水</li>
+					    <li class="letter"></li>
+					    <li title="同里（吴江）" method="liHotData" data="4|30">同里（吴江）</li>
+					    <li title="铜陵" method="liHotData" data="4|31">铜陵</li>
+					    <li title="太仓（苏州）" method="liHotData" data="4|32">太仓（苏州）</li>
+					    <li title="桐乡" method="liHotData" data="4|33">桐乡</li>
+					    <li title="桐庐（杭州）" method="liHotData" data="4|34">桐庐（杭州）</li>
+					    <li class="letter"></li>
+					    <li title="通辽" method="liHotData" data="4|35" class="">通辽</li>
+					    <li class="let_line"></li>
+					    <li class="letter">W</li>
+					    <li title="武汉" method="liHotData" data="4|36">武汉</li>
+					    <li title="无锡" method="liHotData" data="4|37">无锡</li>
+					    <li title="乌鲁木齐" method="liHotData" data="4|38">乌鲁木齐</li>
+					    <li title="乌镇（桐乡）" method="liHotData" data="4|39">乌镇（桐乡）</li>
+					    <li title="潍坊" method="liHotData" data="4|40">潍坊</li>
+					    <li class="letter"></li>
+					    <li title="威海" method="liHotData" data="4|41">威海</li>
+					    <li title="温州" method="liHotData" data="4|42">温州</li>
+					    <li title="芜湖" method="liHotData" data="4|43">芜湖</li>
+					    <li class="let_line"></li>
+					    <li class="letter">Z</li>
+					    <li title="婺源（上饶）" method="liHotData" data="4|44">婺源（上饶）</li>
+					    <li class="let_line"></li>
+					    <li class="letter">W</li>
+					    <li title="武夷山" method="liHotData" data="4|45" class="">武夷山</li>
+					    <li class="let_line"></li>
+					    <li class="letter">H</li>
+					    <li title="华山（渭南华阴市）" method="liHotData" data="4|46">华山（渭南华阴市）</li>
+					    <li class="let_line"></li>
+					    <li class="letter">W</li>
+					    <li title="五台山（忻州）" method="liHotData" data="4|47">五台山（忻州）</li>
+					    <li title="武当山（十堰）" method="liHotData" data="4|48">武当山（十堰）</li>
+					    <li title="吴江（苏州）" method="liHotData" data="4|49">吴江（苏州）</li>
+					    <li title="梧州" method="liHotData" data="4|50">梧州</li>
+					</ul>
+					<ul id="hotData_5" class="popcitylistnew" style="display:none">
+					    <li class="letter">X</li>
+					    <li title="厦门" method="liHotData" data="5|0">厦门</li>
+					    <li title="西安" method="liHotData" data="5|1">西安</li>
+					    <li title="香港" method="liHotData" data="5|2">香港</li>
+					    <li title="西塘（嘉善）" method="liHotData" data="5|3">西塘（嘉善）</li>
+					    <li title="徐州" method="liHotData" data="5|4">徐州</li>
+					    <li class="letter"></li>
+					    <li title="西宁" method="liHotData" data="5|5">西宁</li>
+					    <li title="西双版纳" method="liHotData" data="5|6">西双版纳</li>
+					    <li title="西昌（凉山州）" method="liHotData" data="5|7">西昌（凉山州）</li>
+					    <li title="襄阳" method="liHotData" data="5|8">襄阳</li>
+					    <li title="香格里拉（迪庆州）" method="liHotData" data="5|9">香格里拉（迪庆州）</li>
+					    <li class="letter"></li>
+					    <li title="新乡" method="liHotData" data="5|10">新乡</li>
+					    <li title="咸宁" method="liHotData" data="5|11">咸宁</li>
+					    <li title="象山（宁波）" method="liHotData" data="5|12">象山（宁波）</li>
+					    <li title="信阳" method="liHotData" data="5|13">信阳</li>
+					    <li title="咸阳" method="liHotData" data="5|14">咸阳</li>
+					    <li class="letter"></li>
+					    <li title="邢台" method="liHotData" data="5|15">邢台</li>
+					    <li title="湘潭" method="liHotData" data="5|16">湘潭</li>
+					    <li title="兴城" method="liHotData" data="5|17">兴城</li>
+					    <li title="许昌" method="liHotData" data="5|18" class="">许昌</li>
+					    <li title="西江苗寨（黔东南州）" method="liHotData" data="5|19">西江苗寨（黔东南州）</li>
+					    <li class="let_line"></li>
+					    <li class="letter">Y</li>
+					    <li title="扬州" method="liHotData" data="5|20">扬州</li>
+					    <li title="烟台" method="liHotData" data="5|21">烟台</li>
+					    <li title="阳朔（桂林）" method="liHotData" data="5|22">阳朔（桂林）</li>
+					    <li title="银川" method="liHotData" data="5|23">银川</li>
+					    <li title="宜昌" method="liHotData" data="5|24">宜昌</li>
+					    <li class="letter"></li>
+					    <li title="阳江" method="liHotData" data="5|25">阳江</li>
+					    <li title="营口" method="liHotData" data="5|26" class="">营口</li>
+					    <li title="宜宾" method="liHotData" data="5|27">宜宾</li>
+					    <li title="岳阳" method="liHotData" data="5|28" class="">岳阳</li>
+					    <li title="宜兴（无锡）" method="liHotData" data="5|29">宜兴（无锡）</li>
+					    <li class="letter"></li>
+					    <li title="盐城" method="liHotData" data="5|30">盐城</li>
+					    <li title="雅安" method="liHotData" data="5|31">雅安</li>
+					    <li title="余姚（宁波）" method="liHotData" data="5|32">余姚（宁波）</li>
+					    <li title="延安" method="liHotData" data="5|33">延安</li>
+					    <li title="延吉" method="liHotData" data="5|34">延吉</li>
+					    <li class="letter"></li>
+					    <li title="宜春" method="liHotData" data="5|35">宜春</li>
+					    <li title="玉林" method="liHotData" data="5|36">玉林</li>
+					    <li title="榆林" method="liHotData" data="5|37" class="">榆林</li>
+					    <li title="雁荡山（温州）" method="liHotData" data="5|38">雁荡山（温州）</li>
+					    <li title="运城" method="liHotData" data="5|39">运城</li>
+					    <li class="let_line"></li>
+					    <li class="letter">Z</li>
+					    <li title="郑州" method="liHotData" data="5|40">郑州</li>
+					    <li title="珠海" method="liHotData" data="5|41">珠海</li>
+					    <li title="舟山" method="liHotData" data="5|42" class="">舟山</li>
+					    <li title="张家界" method="liHotData" data="5|43">张家界</li>
+					    <li title="中山" method="liHotData" data="5|44">中山</li>
+					    <li class="letter"></li>
+					    <li title="肇庆" method="liHotData" data="5|45">肇庆</li>
+					    <li title="淄博" method="liHotData" data="5|46">淄博</li>
+					    <li title="镇江" method="liHotData" data="5|47">镇江</li>
+					    <li title="湛江" method="liHotData" data="5|48">湛江</li>
+					    <li title="周庄（昆山）" method="liHotData" data="5|49">周庄（昆山）</li>
+					    <li class="letter"></li>
+					    <li title="枣庄" method="liHotData" data="5|50">枣庄</li>
+					    <li title="张家口" method="liHotData" data="5|51" class="">张家口</li>
+					    <li title="株洲" method="liHotData" data="5|52">株洲</li>
+					    <li title="张家港（苏州）" method="liHotData" data="5|53">张家港（苏州）</li>
+					    <li title="遵义" method="liHotData" data="5|54">遵义</li>
+					    <li class="letter"></li>
+					    <li title="漳州" method="liHotData" data="5|55">漳州</li>
+					    <li title="镇远（黔东南州）" method="liHotData" data="5|56">镇远（黔东南州）</li>
+					    <li title="中卫" method="liHotData" data="5|57">中卫</li>
+					    <li title="自贡" method="liHotData" data="5|58">自贡</li>
+					    <li title="张掖" method="liHotData" data="5|59">张掖</li>
+					</ul>
+				</div>
+
+				
+				<div id="hotCityCMS">
+				  	<div class="recom">
+					    <img src="http://img.elongstatic.com/hotel/CitySuggesting/CitySug20151130.png" width="120" height="40" alt="温泉养生">
+					    <dl>
+					    	<dd>
+					    		<a href="http://hotel.elong.com/beijing/" target="_blank">北京</a>
+					    	</dd>
+					    	<dd>
+					        	<a href="http://hotel.elong.com/nanjing/" target="_blank">南京</a>
+					        </dd>
+					    	<dd>
+					        	<a href="http://hotel.elong.com/chibei/" target="_blank">长白山</a>
+					        </dd>
+					    	<dd>
+					    		<a href="http://hotel.elong.com/guangzhou/" target="_blank">广州</a>
+					    	</dd>
+					    	<dd>
+					    		<a href="http://hotel.elong.com/sanya/" target="_blank">三亚</a>
+					    	</dd>
+					    </dl>
+					</div>
+				</div>
+				
+			</div>
+			<div class="clear"></div>
+			<div class="clear"></div>
+		</div>
+  </div>
+</div>
+
+<script>
+	var is_show = false;
+	$(function(){
+		$('#hotTab li').click(function(){
+			var index = $(this).attr('index');
+			$('#hotTab li').each(function(k,v){
+				if(k == index){
+					$(this).addClass('action');
+				}else{
+					$(this).removeClass('action');
+				}
+			})
+			$('#hotData ul').each(function(k,v){
+				if(k == index){
+					$(this).show();
+				}else{
+					$(this).hide();
+				}
+			})
+		})
+		$('#hotelCity').focus(function(){
+			$('#hotelCity').val('');
+			if($('#c_contentend').is(':hidden')){
+				$('#m_contentend').show();
+			}
+			
+		})
+		$('#hotelCity').blur(function(){
+			if(!is_show){
+				$('#m_contentend').hide();
+			}
+		})
+
+		$('#m_contentend').mouseenter(function(){
+			is_show = true;
+		})
+		$('#m_contentend').mouseleave(function(){
+			is_show = false;
+		})
+
+		$('#hotData li').bind('click',function(){
+			var city_cn = $(this).text();
+			$('#keywords').val('');
+			$('#m_contentend').hide();
+			$('#hotelCity').val(city_cn);
+
+			//获取城市的cityid
+			$.ajax({
+				url : '/hotel.php?act=getCityId&city_cn=' + encodeURI(city_cn),
+				dataType : 'json',
+				success : function(data){
+					if(data['err'] == 0){
+						var cityid = data['msg']['cityid'];
+						$('#hotelCity').attr('cityid',cityid);
+					}
+				},
+				error : function(){
+					 console.log(url);
+				}
+			})
+			
+		})
+
+
+
+	})
+	
+</script>

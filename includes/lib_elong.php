@@ -24,6 +24,7 @@ function get_elong_data($city)
 
     //1、把艺龙网的城市编号抓下来
     $citys_info = get_city_info_from_yl();
+    //print_r($citys_info);exit;
 
     //2、查询前端传过来的城市属于对应艺龙网的页面url
     $yl_url = get_url_from_citys_info($city,$citys_info);
@@ -38,12 +39,20 @@ function get_elong_data($city)
     $goods_type['type'] = 'search';
     if ($GLOBALS['db']->autoExecute($GLOBALS['ecs']->table('hotels_type'), $goods_type) == false)
     {
-        sys_msg('新建酒店类型失败', 1);
+        //sys_msg('新建酒店类型失败', 1);
+        die('新建酒店类型失败');
     }
     $cat_id = $GLOBALS['db']->insert_id();
     $info = get_city_detail_from_yl($yl_url);
-    //print_r($info);exit;
     //4、插入具体属性值
+    if(!$info)
+    {
+        //艺龙获取数据失败
+        $sql = "DELETE FROM " . $GLOBALS['ecs']->table('hotels_type') . " WHERE cat_id = '$cat_id'";
+        $GLOBALS['db']->query($sql);
+        die('远端获取酒店数据失败');
+        //return false;
+    }
     foreach($info as $key => $val)
     {
         $type = trim($val['type']);
@@ -174,6 +183,7 @@ function get_url_from_citys_info($city,$citys_info)
         $cityList = $val['cityList'];
         foreach($cityList as $k => $v)
         {
+            //todo ,这样判断会有问题,比如九江,艺龙会有两个 ,九江、 庐山(九江),后者在数组位置靠前,这样的话反而出错,以后再修复
             if(stripos($v['cityNameCn'],$city) !== false)
             {
                 $url = 'http://hotel.elong.com/' . strtolower($v['cityNameEn']) . '/';
@@ -254,7 +264,7 @@ function get_city_detail_from_yl($yl_url)
     }
     */
 
-    include_once ('phpQuery.php');
+    include_once(ROOT_PATH . 'includes/phpQuery.php');
     phpQuery::newDocumentFile($yl_url);
 
     $info = array();

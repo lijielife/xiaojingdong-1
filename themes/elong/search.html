@@ -6,682 +6,183 @@
         <title></title>
         <meta name="keywords" content="">
         <meta name="description" content="">
-        <link rel="stylesheet" rev="stylesheet" href="css/new2015.min.css" type="text/css" media="all">
-        <link rel="stylesheet" rev="stylesheet" href="css/hotel-com.css" type="text/css" media="all">
-        <link rel="stylesheet" type="text/css" href="css/list-2015.css">
-        <script src="js/jquery-1.8.3.min.js"></script>
-        <style type="text/css">
-            .BMap_mask {
-                background:transparent url(about:blank);
-            }
-            .BMap_noscreen {
-                display:none;
-            }
-            .BMap_button {
-                cursor:pointer;
-            }
-            .BMap_zoomer {
-                background-image:url(http://api.map.baidu.com/images/mapctrls1d3.gif);
-                background-repeat:no-repeat;
-                overflow:hidden;
-                font-size:1px;
-                position:absolute;
-                width:7px;
-                height:7px;
-            }
-            .BMap_stdMpCtrl div {
-                position:absolute;
-            }
-            .BMap_stdMpPan {
-                width:44px;
-                height:44px;
-                overflow:hidden;
-                background:url(http://api.map.baidu.com/images/mapctrls2d0.png) no-repeat;
-            }
-            .BMap_ie6 .BMap_stdMpPan {
-                background:none;
-            }
-            .BMap_ie6 .BMap_smcbg {
-                left:0;
-                width:44px;
-                height:464px;
-                filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://api.map.baidu.com/images/mapctrls2d0.png');
-            }
-            .BMap_ie6 .BMap_stdMpPanBg {
-                z-index:-1;
-            }
-            .BMap_stdMpPan .BMap_button {
-                height:15px;
-                width:15px;
-            }
-            .BMap_panN,.BMap_panW,.BMap_panE,.BMap_panS {
-                overflow:hidden;
-            }
-            .BMap_panN {
-                left:14px;
-                top:0;
-            }
-            .BMap_panW {
-                left:1px;
-                top:12px;
-            }
-            .BMap_panE {
-                left:27px;
-                top:12px;
-            }
-            .BMap_panS {
-                left:14px;
-                top:25px;
-            }
-            .BMap_stdMpZoom {
-                top:45px;
-                overflow:hidden;
-            }
-            .BMap_stdMpZoom .BMap_button {
-                width:22px;
-                height:21px;
-                left:12px;
-                overflow:hidden;
-                background-image:url(http://api.map.baidu.com/images/mapctrls2d0.png);
-                background-repeat:no-repeat;
-                z-index:10;
-            }
-            .BMap_ie6 .BMap_stdMpZoom .BMap_button {
-                background:none;
-            }
-            .BMap_stdMpZoomIn {
-                background-position:0 -221px;
-            }
-            .BMap_stdMpZoomOut {
-                background-position:0 -265px;
-            }
-            .BMap_ie6 .BMap_stdMpZoomIn div {
-                left:0;
-                top:-221px;
-            }
-            .BMap_ie6 .BMap_stdMpZoomOut div {
-                left:0;
-                top:-265px;
-            }
-            .BMap_stdMpType4 .BMap_stdMpZoom .BMap_button {
-                left:0;
-                overflow:hidden;
-                background:-webkit-gradient(linear,50% 0,50% 100%,from(rgba(255,255,255,0.85)),to(rgba(217,217,217,0.85)));
-                z-index:10;
-                -webkit-border-radius:22px;
-                width:34px;
-                height:34px;
-                border:1px solid rgba(255,255,255,0.5);
-                -webkit-box-shadow:0 2px 3.6px #CCC;
-                display:-webkit-box;
-                -webkit-box-align:center;
-                -webkit-box-pack:center;
-                -webkit-box-sizing:border-box;
-            }
-            .BMap_stdMpType4 .BMap_smcbg {
-                position:static;
-                background:url(http://api.map.baidu.com/images/mapctrls2d0_mb.png) 0 0 no-repeat;
-                -webkit-background-size:24px 32px;
-            }
-            .BMap_stdMpType4 .BMap_stdMpZoomIn {
-                background-position:0 0;
-            }
-            .BMap_stdMpType4 .BMap_stdMpZoomIn .BMap_smcbg {
-                width:24px;
-                height:24px;
-                background-position:0 0;
-            }
-            .BMap_stdMpType4 .BMap_stdMpZoomOut {
-                background-position:0 0;
-            }
-            .BMap_stdMpType4 .BMap_stdMpZoomOut .BMap_smcbg {
-                width:24px;
-                height:6px;
-                background-position:0 -25px;
-            }
-            .BMap_stdMpSlider {
-                width:37px;
-                top:18px;
-            }
-            .BMap_stdMpSliderBgTop {
-                left:18px;
-                width:10px;
-                overflow:hidden;
-                background:url(http://api.map.baidu.com/images/mapctrls2d0.png) no-repeat -23px -226px;
-            }
-            .BMap_stdMpSliderBgBot {
-                left:19px;
-                height:8px;
-                width:10px;
-                top:124px;
-                overflow:hidden;
-                background:url(http://api.map.baidu.com/images/mapctrls2d0.png) no-repeat -33px bottom;
-            }
-            .BMap_ie6 .BMap_stdMpSliderBgTop,.BMap_ie6 .BMap_stdMpSliderBgBot {
-                background:none;
-            }
-            .BMap_ie6 .BMap_stdMpSliderBgTop div {
-                left:-23px;
-                top:-226px;
-            }
-            .BMap_ie6 .BMap_stdMpSliderBgBot div {
-                left:-33px;
-                bottom:0;
-            }
-            .BMap_stdMpSliderMask {
-                height:100%;
-                width:24px;
-                left:10px;
-                cursor:pointer;
-            }
-            .BMap_stdMpSliderBar {
-                height:11px;
-                width:19px;
-                left:13px;
-                top:80px;
-                overflow:hidden;
-                background:url(http://api.map.baidu.com/images/mapctrls2d0.png) no-repeat 0 -309px;
-            }
-            .BMap_stdMpSliderBar.h {
-                background:url(http://api.map.baidu.com/images/mapctrls2d0.png) no-repeat 0 -320px;
-            }
-            .BMap_ie6 .BMap_stdMpSliderBar,.BMap_ie6 .BMap_stdMpSliderBar.h {
-                background:none;
-            }
-            .BMap_ie6 .BMap_stdMpSliderBar div {
-                top:-309px;
-            }
-            .BMap_ie6 .BMap_stdMpSliderBar.h div {
-                top:-320px;
-            }
-            .BMap_zlSt,.BMap_zlCity,.BMap_zlProv,.BMap_zlCountry {
-                position:absolute;
-                left:34px;
-                height:21px;
-                width:28px;
-                background-image:url(http://api.map.baidu.com/images/mapctrls2d0.png);
-                background-repeat:no-repeat;
-                font-size:0;
-                cursor:pointer;
-            }
-            .BMap_ie6 .BMap_zlSt,.BMap_ie6 .BMap_zlCity,.BMap_ie6 .BMap_zlProv,.BMap_ie6 .BMap_zlCountry {
-                background:none;
-                overflow:hidden;
-            }
-            .BMap_zlHolder {
-                display:none;
-                position:absolute;
-                top:0;
-            }
-            .BMap_zlHolder.hvr {
-                display:block;
-            }
-            .BMap_zlSt {
-                background-position:0 -380px;
-                top:21px;
-            }
-            .BMap_zlCity {
-                background-position:0 -401px;
-                top:57px;
-            }
-            .BMap_zlProv {
-                background-position:0 -422px;
-                top:81px;
-            }
-            .BMap_zlCountry {
-                background-position:0 -443px;
-                top:105px;
-            }
-            .BMap_ie6 .BMap_zlSt div {
-                top:-380px;
-            }
-            .BMap_ie6 .BMap_zlCity div {
-                top:-401px;
-            }
-            .BMap_ie6 .BMap_zlProv div {
-                top:-422px;
-            }
-            .BMap_ie6 .BMap_zlCountry div {
-                top:-443px;
-            }
-            .BMap_stdMpType1 .BMap_stdMpSlider,.BMap_stdMpType2 .BMap_stdMpSlider,.BMap_stdMpType3 .BMap_stdMpSlider,.BMap_stdMpType4 .BMap_stdMpSlider,.BMap_stdMpType2 .BMap_stdMpZoom,.BMap_stdMpType3 .BMap_stdMpPan,.BMap_stdMpType4 .BMap_stdMpPan {
-                display:none;
-            }
-            .BMap_stdMpType3 .BMap_stdMpZoom {
-                top:0;
-            }
-            .BMap_stdMpType4 .BMap_stdMpZoom {
-                top:0;
-            }
-            .BMap_cpyCtrl a {
-                font-size:11px;
-                color:#7979CC;
-            }
-            .BMap_scaleCtrl {
-                height:23px;
-                overflow:hidden;
-            }
-            .BMap_scaleCtrl div.BMap_scaleTxt {
-                font-size:11px;
-                font-family:Arial,sans-serif;
-            }
-            .BMap_scaleCtrl div {
-                position:absolute;
-                overflow:hidden;
-            }
-            .BMap_scaleHBar img,.BMap_scaleLBar img,.BMap_scaleRBar img {
-                position:absolute;
-                width:37px;
-                height:442px;
-                left:0;
-            }
-            .BMap_scaleHBar {
-                width:100%;
-                height:5px;
-                font-size:0;
-                bottom:0;
-            }
-            .BMap_scaleHBar img {
-                top:-437px;
-                width:100%;
-            }
-            .BMap_scaleLBar,.BMap_scaleRBar {
-                width:3px;
-                height:9px;
-                bottom:0;
-                font-size:0;
-                z-index:1;
-            }
-            .BMap_scaleLBar img {
-                top:-427px;
-                left:0;
-            }
-            .BMap_scaleRBar img {
-                top:-427px;
-                left:-5px;
-            }
-            .BMap_scaleLBar {
-                left:0;
-            }
-            .BMap_scaleRBar {
-                right:0;
-            }
-            .BMap_scaleTxt {
-                text-align:center;
-                width:100%;
-                cursor:default;
-                line-height:18px;
-            }
-            .BMap_omCtrl {
-                background-color:#fff;
-                overflow:hidden;
-            }
-            .BMap_omOutFrame {
-                position:absolute;
-                width:100%;
-                height:100%;
-                left:0;
-                top:0;
-            }
-            .BMap_omInnFrame {
-                position:absolute;
-                border:1px solid #999;
-                background-color:#ccc;
-                overflow:hidden;
-            }
-            .BMap_omMapContainer {
-                position:absolute;
-                overflow:hidden;
-                width:100%;
-                height:100%;
-                left:0;
-                top:0;
-            }
-            .BMap_omViewMv {
-                border-width:1px;
-                border-style:solid;
-                border-left-color:#84b0df;
-                border-top-color:#adcff4;
-                border-right-color:#274b8b;
-                border-bottom-color:#274b8b;
-                position:absolute;
-                z-index:600;
-            }
-            .BMap_omViewInnFrame {
-                border:1px solid #3e6bb8;
-            }
-            .BMap_omViewMask {
-                width:1000px;
-                height:1000px;
-                position:absolute;
-                left:0;
-                top:0;
-                background-color:#68c;
-                opacity:.2;
-                filter:progid:DXImageTransform.Microsoft.Alpha(opacity=20);
-            }
-            .BMap_omBtn {
-                height:13px;
-                width:13px;
-                position:absolute;
-                cursor:pointer;
-                overflow:hidden;
-                background:url(http://api.map.baidu.com/images/mapctrls1d3.gif) no-repeat;
-                z-index:1210;
-            }
-            .anchorBR .BMap_omOutFrame {
-                border-top:1px solid #999;
-                border-left:1px solid #999;
-            }
-            .quad4 .BMap_omBtn {
-                background-position:-26px -27px;
-            }
-            .quad4 .BMap_omBtn.hover {
-                background-position:0 -27px;
-            }
-            .quad4 .BMap_omBtn.BMap_omBtnClosed {
-                background-position:-39px -27px;
-            }
-            .quad4 .BMap_omBtn.BMap_omBtnClosed.hover {
-                background-position:-13px -27px;
-            }
-            .anchorTR .BMap_omOutFrame {
-                border-bottom:1px solid #999;
-                border-left:1px solid #999;
-            }
-            .quad1 .BMap_omBtn {
-                background-position:-39px -41px;
-            }
-            .quad1 .BMap_omBtn.hover {
-                background-position:-13px -41px;
-            }
-            .quad1 .BMap_omBtn.BMap_omBtnClosed {
-                background-position:-26px -41px;
-            }
-            .quad1 .BMap_omBtn.BMap_omBtnClosed.hover {
-                background-position:0 -41px;
-            }
-            .anchorBL .BMap_omOutFrame {
-                border-top:1px solid #999;
-                border-right:1px solid #999;
-            }
-            .quad3 .BMap_omBtn {
-                background-position:-27px -40px;
-            }
-            .quad3 .BMap_omBtn.hover {
-                background-position:-1px -40px;
-            }
-            .quad3
-                        .BMap_omBtn.BMap_omBtnClosed {
-                background-position:-40px -40px;
-            }
-            .quad3 .BMap_omBtn.BMap_omBtnClosed.hover {
-                background-position:-14px -40px;
-            }
-            .anchorTL .BMap_omOutFrame {
-                border-bottom:1px solid #999;
-                border-right:1px solid #999;
-            }
-            .quad2 .BMap_omBtn {
-                background-position:-40px -28px;
-            }
-            .quad2 .BMap_omBtn.hover {
-                background-position:-14px -28px;
-            }
-            .quad2 .BMap_omBtn.BMap_omBtnClosed {
-                background-position:-27px -28px;
-            }
-            .quad2 .BMap_omBtn.BMap_omBtnClosed.hover {
-                background-position:-1px -28px;
-            }
-            .anchorR .BMap_omOutFrame {
-                border-bottom:1px solid #999;
-                border-left:1px solid #999;
-                border-top:1px solid #999;
-            }
-            .anchorL .BMap_omOutFrame {
-                border-bottom:1px solid #999;
-                border-right:1px solid #999;
-                border-top:1px solid #999;
-            }
-            .anchorB .BMap_omOutFrame {
-                border-top:1px solid #999;
-                border-left:1px solid #999;
-                border-right:1px solid #999;
-            }
-            .anchorT .BMap_omOutFrame {
-                border-bottom:1px solid #999;
-                border-right:1px solid #999;
-                border-left:1px solid #999;
-            }
-            .anchorNon .BMap_omOutFrame,.withOffset .BMap_omOutFrame {
-                border:1px solid #999;
-            }
-            .BMap_zoomMask0,.BMap_zoomMask1 {
-                position:absolute;
-                left:0;
-                top:0;
-                width:100%;
-                height:100%;
-                background:transparent url(http://api.map.baidu.com/images/blank.gif);
-                z-index:1000;
-            }
-            .BMap_contextMenu {
-                position:absolute;
-                border-top:1px solid #adbfe4;
-                border-left:1px solid #adbfe4;
-                border-right:1px solid #8ba4d8;
-                border-bottom:1px solid #8ba4d8;
-                padding:0;
-                margin:0;
-                width:auto;
-                visibility:hidden;
-                background:#fff;
-                z-index:10000000;
-            }
-            .BMap_cmShadow {
-                position:absolute;
-                background:#000;
-                opacity:.3;
-                filter:alpha(opacity=30);
-                visibility:hidden;
-                z-index:9000000;
-            }
-            div.BMap_cmDivider {
-                border-bottom:1px solid #adbfe4;
-                font-size:0;
-                padding:1px;
-                margin:0 6px;
-            }
-            div.BMap_cmFstItem {
-                margin-top:2px;
-            }
-            div.BMap_cmLstItem {
-                margin-bottom:2px;
-            }
-            .BMap_shadow img {
-                border:0 none;
-                margin:0;
-                padding:0;
-                position:absolute;
-                height:370px;
-                width:1144px;
-            }
-            .BMap_pop .BMap_top {
-                border-top:1px solid #ababab;
-                background-color:#fff;
-            }
-            .BMap_pop .BMap_center {
-                border-left:1px solid #ababab;
-                border-right:1px solid #ababab;
-                background-color:#fff;
-            }
-            .BMap_pop .BMap_bottom {
-                border-bottom:1px solid #ababab;
-                background-color:#fff;
-            }
-            .BMap_shadow,.BMap_shadow img,.BMap_shadow div {
-                -moz-user-select:none;
-                -webkit-user-select:none;
-            }
-            .BMap_checkbox {
-                background:url(http://api.map.baidu.com/images/mapctrls1d3.gif);
-                vertical-align:middle;
-                display:inline-block;
-                width:11px;
-                height:11px;
-                margin-right:4px;
-                background-position:-14px 90px;
-            }
-            .BMap_checkbox.checked {
-                background-position:-2px 90px;
-            }
-            .BMap_pop .BMap_top img,.BMap_pop .BMap_center img,.BMap_pop .BMap_bottom img {
-                display:none;
-            }
-            @media print {
-                .BMap_noprint {
-                display:none;
-            }
-            .BMap_noscreen {
-                display:block;
-            }
-            .BMap_mask {
-                background:none;
-            }
-            .BMap_pop .BMap_top img,.BMap_pop .BMap_center img,.BMap_pop .BMap_bottom img {
-                display:block;
-            }
-            }.BMap_vectex {
-                cursor:pointer;
-                width:11px;
-                height:11px;
-                position:absolute;
-                background-repeat:no-repeat;
-                background-position:0 0;
-            }
-            .BMap_vectex_nodeT {
-                background-image:url(http://api.map.baidu.com/images/nodeT.gif);
-            }
-            .BMap_vectex_node {
-                background-image:url(http://api.map.baidu.com/images/node.gif);
-            }
-        </style>
+        <link rel="stylesheet" rev="stylesheet" href="themes/elong/css/new2015.min.css" type="text/css" media="all">
+        <link rel="stylesheet" rev="stylesheet" href="themes/elong/css/hotel-com.css" type="text/css" media="all">
+        <link rel="stylesheet" type="text/css" href="themes/elong/css/list-2015.css">
+        <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript" src="themes/elong/js/search_index.js"></script>
+
+        <!-- 时间选址，采用bootstrip-datetimepicker -->
+        <script type="text/javascript" src="themes/elong/js/bootstrap-datetimepicker.js"></script>
+        <!-- <link rel="stylesheet" type="text/css" href="themes/elong/css/bootstrap.css" > -->
+        <link rel="stylesheet" type="text/css" href="themes/elong/css/bootstrap-datetimepicker.css" />
+        <!-- 时间选址，采用bootstrip -->
+
+        <style type="text/css">.BMap_mask{background:transparent url(about:blank);}.BMap_noscreen{display:none;}.BMap_button{cursor:pointer;}.BMap_zoomer{background-image:url(http://api.map.baidu.com/images/mapctrls1d3.gif);background-repeat:no-repeat;overflow:hidden;font-size:1px;position:absolute;width:7px;height:7px;}.BMap_stdMpCtrl div{position:absolute;}.BMap_stdMpPan{width:44px;height:44px;overflow:hidden;background:url(http://api.map.baidu.com/images/mapctrls2d0.png) no-repeat;}.BMap_ie6 .BMap_stdMpPan{background:none;}.BMap_ie6 .BMap_smcbg{left:0;width:44px;height:464px;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://api.map.baidu.com/images/mapctrls2d0.png');}.BMap_ie6 .BMap_stdMpPanBg{z-index:-1;}.BMap_stdMpPan .BMap_button{height:15px;width:15px;}.BMap_panN,.BMap_panW,.BMap_panE,.BMap_panS{overflow:hidden;}.BMap_panN{left:14px;top:0;}.BMap_panW{left:1px;top:12px;}.BMap_panE{left:27px;top:12px;}.BMap_panS{left:14px;top:25px;}.BMap_stdMpZoom{top:45px;overflow:hidden;}.BMap_stdMpZoom .BMap_button{width:22px;height:21px;left:12px;overflow:hidden;background-image:url(http://api.map.baidu.com/images/mapctrls2d0.png);background-repeat:no-repeat;z-index:10;}.BMap_ie6 .BMap_stdMpZoom .BMap_button{background:none;}.BMap_stdMpZoomIn{background-position:0 -221px;}.BMap_stdMpZoomOut{background-position:0 -265px;}.BMap_ie6 .BMap_stdMpZoomIn div{left:0;top:-221px;}.BMap_ie6 .BMap_stdMpZoomOut div{left:0;top:-265px;}.BMap_stdMpType4 .BMap_stdMpZoom .BMap_button{left:0;overflow:hidden;background:-webkit-gradient(linear,50% 0,50% 100%,from(rgba(255,255,255,0.85)),to(rgba(217,217,217,0.85)));z-index:10;-webkit-border-radius:22px;width:34px;height:34px;border:1px solid rgba(255,255,255,0.5);-webkit-box-shadow:0 2px 3.6px #CCC;display:-webkit-box;-webkit-box-align:center;-webkit-box-pack:center;-webkit-box-sizing:border-box;}.BMap_stdMpType4 .BMap_smcbg{position:static;background:url(http://api.map.baidu.com/images/mapctrls2d0_mb.png) 0 0 no-repeat;-webkit-background-size:24px 32px;}.BMap_stdMpType4 .BMap_stdMpZoomIn{background-position:0 0;}.BMap_stdMpType4 .BMap_stdMpZoomIn .BMap_smcbg{width:24px;height:24px;background-position:0 0;}.BMap_stdMpType4 .BMap_stdMpZoomOut{background-position:0 0;}.BMap_stdMpType4 .BMap_stdMpZoomOut .BMap_smcbg{width:24px;height:6px;background-position:0 -25px;}.BMap_stdMpSlider{width:37px;top:18px;}.BMap_stdMpSliderBgTop{left:18px;width:10px;overflow:hidden;background:url(http://api.map.baidu.com/images/mapctrls2d0.png) no-repeat -23px -226px;}.BMap_stdMpSliderBgBot{left:19px;height:8px;width:10px;top:124px;overflow:hidden;background:url(http://api.map.baidu.com/images/mapctrls2d0.png) no-repeat -33px bottom;}.BMap_ie6 .BMap_stdMpSliderBgTop,.BMap_ie6 .BMap_stdMpSliderBgBot{background:none;}.BMap_ie6 .BMap_stdMpSliderBgTop div{left:-23px;top:-226px;}.BMap_ie6 .BMap_stdMpSliderBgBot div{left:-33px;bottom:0;}.BMap_stdMpSliderMask{height:100%;width:24px;left:10px;cursor:pointer;}.BMap_stdMpSliderBar{height:11px;width:19px;left:13px;top:80px;overflow:hidden;background:url(http://api.map.baidu.com/images/mapctrls2d0.png) no-repeat 0 -309px;}.BMap_stdMpSliderBar.h{background:url(http://api.map.baidu.com/images/mapctrls2d0.png) no-repeat 0 -320px;}.BMap_ie6 .BMap_stdMpSliderBar,.BMap_ie6 .BMap_stdMpSliderBar.h{background:none;}.BMap_ie6 .BMap_stdMpSliderBar div{top:-309px;}.BMap_ie6 .BMap_stdMpSliderBar.h div{top:-320px;}.BMap_zlSt,.BMap_zlCity,.BMap_zlProv,.BMap_zlCountry{position:absolute;left:34px;height:21px;width:28px;background-image:url(http://api.map.baidu.com/images/mapctrls2d0.png);background-repeat:no-repeat;font-size:0;cursor:pointer;}.BMap_ie6 .BMap_zlSt,.BMap_ie6 .BMap_zlCity,.BMap_ie6 .BMap_zlProv,.BMap_ie6 .BMap_zlCountry{background:none;overflow:hidden;}.BMap_zlHolder{display:none;position:absolute;top:0;}.BMap_zlHolder.hvr{display:block;}.BMap_zlSt{background-position:0 -380px;top:21px;}.BMap_zlCity{background-position:0 -401px;top:57px;}.BMap_zlProv{background-position:0 -422px;top:81px;}.BMap_zlCountry{background-position:0 -443px;top:105px;}.BMap_ie6 .BMap_zlSt div{top:-380px;}.BMap_ie6 .BMap_zlCity div{top:-401px;}.BMap_ie6 .BMap_zlProv div{top:-422px;}.BMap_ie6 .BMap_zlCountry div{top:-443px;}.BMap_stdMpType1 .BMap_stdMpSlider,.BMap_stdMpType2 .BMap_stdMpSlider,.BMap_stdMpType3 .BMap_stdMpSlider,.BMap_stdMpType4 .BMap_stdMpSlider,.BMap_stdMpType2 .BMap_stdMpZoom,.BMap_stdMpType3 .BMap_stdMpPan,.BMap_stdMpType4 .BMap_stdMpPan{display:none;}.BMap_stdMpType3 .BMap_stdMpZoom{top:0;}.BMap_stdMpType4 .BMap_stdMpZoom{top:0;}.BMap_cpyCtrl a{font-size:11px;color:#7979CC;}.BMap_scaleCtrl{height:23px;overflow:hidden;}.BMap_scaleCtrl div.BMap_scaleTxt{font-size:11px;font-family:Arial,sans-serif;}.BMap_scaleCtrl div{position:absolute;overflow:hidden;}.BMap_scaleHBar img,.BMap_scaleLBar img,.BMap_scaleRBar img{position:absolute;width:37px;height:442px;left:0;}.BMap_scaleHBar{width:100%;height:5px;font-size:0;bottom:0;}.BMap_scaleHBar img{top:-437px;width:100%;}.BMap_scaleLBar,.BMap_scaleRBar{width:3px;height:9px;bottom:0;font-size:0;z-index:1;}.BMap_scaleLBar img{top:-427px;left:0;}.BMap_scaleRBar img{top:-427px;left:-5px;}.BMap_scaleLBar{left:0;}.BMap_scaleRBar{right:0;}.BMap_scaleTxt{text-align:center;width:100%;cursor:default;line-height:18px;}.BMap_omCtrl{background-color:#fff;overflow:hidden;}.BMap_omOutFrame{position:absolute;width:100%;height:100%;left:0;top:0;}.BMap_omInnFrame{position:absolute;border:1px solid #999;background-color:#ccc;overflow:hidden;}.BMap_omMapContainer{position:absolute;overflow:hidden;width:100%;height:100%;left:0;top:0;}.BMap_omViewMv{border-width:1px;border-style:solid;border-left-color:#84b0df;border-top-color:#adcff4;border-right-color:#274b8b;border-bottom-color:#274b8b;position:absolute;z-index:600;}.BMap_omViewInnFrame{border:1px solid #3e6bb8;}.BMap_omViewMask{width:1000px;height:1000px;position:absolute;left:0;top:0;background-color:#68c;opacity:.2;filter:progid:DXImageTransform.Microsoft.Alpha(opacity=20);}.BMap_omBtn{height:13px;width:13px;position:absolute;cursor:pointer;overflow:hidden;background:url(http://api.map.baidu.com/images/mapctrls1d3.gif) no-repeat;z-index:1210;}.anchorBR .BMap_omOutFrame{border-top:1px solid #999;border-left:1px solid #999;}.quad4 .BMap_omBtn{background-position:-26px -27px;}.quad4 .BMap_omBtn.hover{background-position:0 -27px;}.quad4 .BMap_omBtn.BMap_omBtnClosed{background-position:-39px -27px;}.quad4 .BMap_omBtn.BMap_omBtnClosed.hover{background-position:-13px -27px;}.anchorTR .BMap_omOutFrame{border-bottom:1px solid #999;border-left:1px solid #999;}.quad1 .BMap_omBtn{background-position:-39px -41px;}.quad1 .BMap_omBtn.hover{background-position:-13px -41px;}.quad1 .BMap_omBtn.BMap_omBtnClosed{background-position:-26px -41px;}.quad1 .BMap_omBtn.BMap_omBtnClosed.hover{background-position:0 -41px;}.anchorBL .BMap_omOutFrame{border-top:1px solid #999;border-right:1px solid #999;}.quad3 .BMap_omBtn{background-position:-27px -40px;}.quad3 .BMap_omBtn.hover{background-position:-1px -40px;}.quad3 .BMap_omBtn.BMap_omBtnClosed{background-position:-40px -40px;}.quad3 .BMap_omBtn.BMap_omBtnClosed.hover{background-position:-14px -40px;}.anchorTL .BMap_omOutFrame{border-bottom:1px solid #999;border-right:1px solid #999;}.quad2 .BMap_omBtn{background-position:-40px -28px;}.quad2 .BMap_omBtn.hover{background-position:-14px -28px;}.quad2 .BMap_omBtn.BMap_omBtnClosed{background-position:-27px -28px;}.quad2 .BMap_omBtn.BMap_omBtnClosed.hover{background-position:-1px -28px;}.anchorR .BMap_omOutFrame{border-bottom:1px solid #999;border-left:1px solid #999;border-top:1px solid #999;}.anchorL .BMap_omOutFrame{border-bottom:1px solid #999;border-right:1px solid #999;border-top:1px solid #999;}.anchorB .BMap_omOutFrame{border-top:1px solid #999;border-left:1px solid #999;border-right:1px solid #999;}.anchorT .BMap_omOutFrame{border-bottom:1px solid #999;border-right:1px solid #999;border-left:1px solid #999;}.anchorNon .BMap_omOutFrame,.withOffset .BMap_omOutFrame{border:1px solid #999;}.BMap_zoomMask0,.BMap_zoomMask1{position:absolute;left:0;top:0;width:100%;height:100%;background:transparent url(http://api.map.baidu.com/images/blank.gif);z-index:1000;}.BMap_contextMenu{position:absolute;border-top:1px solid #adbfe4;border-left:1px solid #adbfe4;border-right:1px solid #8ba4d8;border-bottom:1px solid #8ba4d8;padding:0;margin:0;width:auto;visibility:hidden;background:#fff;z-index:10000000;}.BMap_cmShadow{position:absolute;background:#000;opacity:.3;filter:alpha(opacity=30);visibility:hidden;z-index:9000000;}div.BMap_cmDivider{border-bottom:1px solid #adbfe4;font-size:0;padding:1px;margin:0 6px;}div.BMap_cmFstItem{margin-top:2px;}div.BMap_cmLstItem{margin-bottom:2px;}.BMap_shadow img{border:0 none;margin:0;padding:0;position:absolute;height:370px;width:1144px;}.BMap_pop .BMap_top{border-top:1px solid #ababab;background-color:#fff;}.BMap_pop .BMap_center{border-left:1px solid #ababab;border-right:1px solid #ababab;background-color:#fff;}.BMap_pop .BMap_bottom{border-bottom:1px solid #ababab;background-color:#fff;}.BMap_shadow,.BMap_shadow img,.BMap_shadow div{-moz-user-select:none;-webkit-user-select:none;}.BMap_checkbox{background:url(http://api.map.baidu.com/images/mapctrls1d3.gif);vertical-align:middle;display:inline-block;width:11px;height:11px;margin-right:4px;background-position:-14px 90px;}.BMap_checkbox.checked{background-position:-2px 90px;}.BMap_pop .BMap_top img,.BMap_pop .BMap_center img,.BMap_pop .BMap_bottom img{display:none;}@media print{.BMap_noprint{display:none;}.BMap_noscreen{display:block;}.BMap_mask{background:none;}.BMap_pop .BMap_top img,.BMap_pop .BMap_center img,.BMap_pop .BMap_bottom img{display:block;}}.BMap_vectex{cursor:pointer;width:11px;height:11px;position:absolute;background-repeat:no-repeat;background-position:0 0;}.BMap_vectex_nodeT{background-image:url(http://api.map.baidu.com/images/nodeT.gif);}.BMap_vectex_node{background-image:url(http://api.map.baidu.com/images/node.gif);}</style>
     </head>
     
     <body>
-        <!--=====================h eader 2016-12-20 start=====================- -> <div id="header" class="header" v="20161220" b="hotels" g="NaN" lg="f"> <div class="header_top response_wrap3 clearfix" style="width: 1200px;"> <div class="logo"> <a href="#" title="艺龙旅行网">艺龙旅行网</a></div>  <div class="right mt5"> <div class="branch_menu left mr10"> <span><a href="#" rel="nofollow">积分商城</a></span> <b></b> <span><a href="#" rel="nofollow">礼品卡</a></span> <b></b> <span class="online-customer"><a target="_blank" href="#" rel="nofollow">在线客服</a></span> <b></b> <span><a target="_blank" href="http://help.elong.com/">帮助中心</a></span> <b></b> <span class="language" method="newSpanLang"> <a href="#" method="eng">English</a><i class="com_icon04 left"></i><p><a href="#" title="简体版" rel="nofollow">简体版</a> <a href="#" rel="nofollow" title="繁體版">繁体版</a></p> </span> </div> <a class="one_panic mr10 left" href="http://promotion.elong.com/index/cn/2016/elong_app_down/index.html" rel="nofollow" target="_blank"><i class="com_icon01 left"></i><em>手机版</em><em method="newPromotion">专享五折起</em> <div class="only_phone" method="onlyPhoneDiv" style="display: none"> <i class="com_arrow_tl"></i> </div> </a> <span class="online_phone left"> <i class="com_icon02 left"></i> <em>7×24 客服电话</em><b class="" method="newPhoneNo"><i class="com_icon03 right"></i>4009-333-333</b> <div class="on_phonnum" method="newPhoneDiv"> <i class="com_arrow_tl"></i> <ul> <!--当鼠标移入时显示-->
-        <li>
-            <p>国内：4009-333-333</p>
-        </li>
-        <li>
-            <p>香港：852-8131-8883</p>
-            <p class="ti3">852-8131-8983</p></li>
-        <li>
-            <p>台湾：886-2-7717-8123</p>
-        </li>
-        <li class="last">
-            <p>海外：86-10-6432-9999</p>
-        </li>
-        </ul>
-        </div>
-        </span>
-        </div>
-        </div>
-        <!--导航-->
-        <div class="nav_box">
-            <div id="nav" class="response_wrap3" style="width: 1200px;">
-                <ul class="link" id="channelMenu">
-                    <li sid="28632">
-                        <a href="#" title="艺龙旅行网" id="nav_home">首页</a></li>
-                    <li sid="28639" class="on">
-                        <a title="酒店预订" href="#" id="nav_hotels">国内酒店
-                            <span class="rslide"></span></a>
-                    </li>
-                    <li style="display:none;" sid="41493">
-                        <a href="#" id="A1" title="酒店团购">团购</a></li>
-                    <li sid="28642">
-                        <a href="#" id="nav_hotelsw" title="国际酒店">国际酒店
-                            <span class="icon_coupon" style="background: url(http://img.elongstatic.com/index/fixed/icon2015-0.png) no-repeat; background-position: -259px 0;"></span></a>
-                    </li>
-                    <li sid="">
-                        <a href="#" id="nav_apartment" title="短租公寓">短租公寓
-                            <span class="icon_apart" style="background: url(http://img.elongstatic.com/index/fixed/icon2015-0.png) no-repeat; background-position: -307px 0;"></span></a>
-                    </li>
-                    <li style="display:none;" sid="52756">
-                        <a href="#" title="限时抢">限时抢</a></li>
-                    <li sid="28640">
-                        <a href="#" title="机票预订">机票
-                            <span class="icon_air"></span></a>
-                    </li>
-                    <li sid="28640">
-                        <a href="#" title="火车票">火车票</a></li>
-                    <li sid="28640">
-                        <a href="#" title="汽车票">汽车票
-                            <span class="icon_reserve" style="background: url(http://img.elongstatic.com/index/fixed/icon2015-0.png) no-repeat; background-position: -540px 0;"></span></a>
-                    </li>
-                    <li class="" sid="">
-                        <a title="用车" href="http://car.elong.com/">用车</a>
-                        <span class="icon_new" style="background: url(http://img.elongstatic.com/index/fixed/icon2015-0.png) no-repeat; background-position: -490px 0;"></span>
-                    </li>
-                    <li>
-                        <a href="#" title="旅游指南">旅游指南</a></li>
-                </ul>
-                <div class="account" method="dvAccount">
-                    <input type="hidden" id="hidden_memberid_user" value="">
-                    <input type="hidden" id="hidden_user_name" value="">
-                    <div class="log" id="user_display_login">
+        
+        <div id="header" class="header" v="20161220" b="hotels" g="NaN" lg="f">
+            <div class="header_top response_wrap3 clearfix" style="width: 1200px;">
+                <div class="logo">
+                    <a href="#" title="艺龙旅行网">艺龙旅行网</a></div>
+                <div class="right mt5">
+                    <div class="branch_menu left mr10">
                         <span>
-                            <a href="#" rel="nofollow">登录</a></span>|
+                            <a href="#" rel="nofollow">积分商城</a></span>
+                        <b>
+                        </b>
                         <span>
-                            <a href="#" rel="nofollow">注册</a></span>
+                            <a href="#" rel="nofollow">礼品卡</a></span>
+                        <b>
+                        </b>
+                        <span class="online-customer">
+                            <a target="_blank" href="#" rel="nofollow">在线客服</a></span>
+                        <b>
+                        </b>
+                        <span>
+                            <a target="_blank" href="http://help.elong.com/">帮助中心</a></span>
+                        <b>
+                        </b>
+                        <span class="language" method="newSpanLang">
+                            <a href="#" method="eng">English</a>
+                            <i class="com_icon04 left"></i>
+                            <p>
+                                <a href="#" title="简体版" rel="nofollow">简体版</a>
+                                <a href="#" rel="nofollow" title="繁體版">繁体版</a></p>
+                        </span>
                     </div>
-                    <!--弹出-->
-                    <div class="drop_box_log pt" style="display: none" id="div_user_center">
-                        <div class="new_btnLogin">
-                            <a href="#" rel="nofollow">登录</a></div>
-                        <ul class="clx">
-                            <li class="icon_d1">
-                                <b>
-                                </b>
-                                <a href="#" rel="nofollow">酒店订单</a></li>
-                            <li class="icon_d2" style="display:none;">
-                                <b>
-                                </b>
-                                <a href="#" rel="nofollow">团购订单</a></li>
-                            <li class="icon_d3">
-                                <a href="#" rel="nofollow">机票订单</a></li>
-                            <li class="icon_d4">
-                                <a href="#" rel="nofollow">火车票订单</a></li>
-                            <li class="icon_d5">
-                                <b>
-                                </b>
-                                <a href="#" rel="nofollow">现金账户</a></li>
-                            <li class="icon_d6">
-                                <b>
-                                </b>
-                                <a href="#" rel="nofollow">汽车票订单</a></li>
-                            <li class="icon_d7">
-                                <b>
-                                </b>
-                                <a href="#" rel="nofollow">酒店收藏</a></li>
-                            <li class="icon_d8">
-                                <b style="display: none;" id="comment_notice">9</b>
-                                <a id="n_comment_a" href="#" rel="nofollow">我的点评</a></li>
-                            <li class="icon_d9">
-                                <b>
-                                </b>
-                                <a href="#" rel="nofollow">个人设置</a></li>
-                        </ul>
-                    </div>
-                    <!--弹出 end--></div>
+                    <a class="one_panic mr10 left" href="http://promotion.elong.com/index/cn/2016/elong_app_down/index.html" rel="nofollow" target="_blank">
+                        <i class="com_icon01 left"></i>
+                        <em>手机版</em>
+                        <em method="newPromotion">专享五折起</em>
+                        <div class="only_phone" method="onlyPhoneDiv" style="display: none">
+                            <i class="com_arrow_tl"></i>
+                        </div>
+                    </a>
+                    <span class="online_phone left">
+                        <i class="com_icon02 left"></i>
+                        <em>7×24 客服电话</em>
+                        <b class="" method="newPhoneNo">
+                            <i class="com_icon03 right"></i>4009-333-333</b>
+                        <div class="on_phonnum" method="newPhoneDiv">
+                            <i class="com_arrow_tl"></i>
+                            <ul>
+                                <!--当鼠标移入时显示-->
+                                <li>
+                                    <p>国内：4009-333-333</p>
+                                </li>
+                                <li>
+                                    <p>香港：852-8131-8883</p>
+                                    <p class="ti3">852-8131-8983</p></li>
+                                <li>
+                                    <p>台湾：886-2-7717-8123</p>
+                                </li>
+                                <li class="last">
+                                    <p>海外：86-10-6432-9999</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </span>
+                </div>
             </div>
+            <!--导航-->
+            <div class="nav_box">
+                <div id="nav" class="response_wrap3" style="width: 1200px;">
+                    <ul class="link" id="channelMenu">
+                        <li sid="28632">
+                            <a href="#" title="艺龙旅行网" id="nav_home">首页</a></li>
+                        <li sid="28639" class="on">
+                            <a title="酒店预订" href="#" id="nav_hotels">国内酒店
+                                <span class="rslide"></span></a>
+                        </li>
+                        <li style="display:none;" sid="41493">
+                            <a href="#" id="A1" title="酒店团购">团购</a></li>
+                        <li sid="28642">
+                            <a href="#" id="nav_hotelsw" title="国际酒店">国际酒店
+                                <span class="icon_coupon" style="background: url(http://img.elongstatic.com/index/fixed/icon2015-0.png) no-repeat; background-position: -259px 0;"></span></a>
+                        </li>
+                        <li sid="">
+                            <a href="#" id="nav_apartment" title="短租公寓">短租公寓
+                                <span class="icon_apart" style="background: url(http://img.elongstatic.com/index/fixed/icon2015-0.png) no-repeat; background-position: -307px 0;"></span></a>
+                        </li>
+                        <li style="display:none;" sid="52756">
+                            <a href="#" title="限时抢">限时抢</a></li>
+                        <li sid="28640">
+                            <a href="#" title="机票预订">机票
+                                <span class="icon_air"></span></a>
+                        </li>
+                        <li sid="28640">
+                            <a href="#" title="火车票">火车票</a></li>
+                        <li sid="28640">
+                            <a href="#" title="汽车票">汽车票
+                                <span class="icon_reserve" style="background: url(http://img.elongstatic.com/index/fixed/icon2015-0.png) no-repeat; background-position: -540px 0;"></span></a>
+                        </li>
+                        <li class="" sid="">
+                            <a title="用车" href="http://car.elong.com/">用车</a>
+                            <span class="icon_new" style="background: url(http://img.elongstatic.com/index/fixed/icon2015-0.png) no-repeat; background-position: -490px 0;"></span>
+                        </li>
+                        <li>
+                            <a href="#" title="旅游指南">旅游指南</a></li>
+                    </ul>
+                    <div class="account" method="dvAccount">
+                        <input type="hidden" id="hidden_memberid_user" value="">
+                        <input type="hidden" id="hidden_user_name" value="">
+                        <div class="log" id="user_display_login">
+                            <span>
+                                <a href="#" rel="nofollow">登录</a></span>|
+                            <span>
+                                <a href="#" rel="nofollow">注册</a></span>
+                        </div>
+                        <!--弹出-->
+                        <div class="drop_box_log pt" style="display: none" id="div_user_center">
+                            <div class="new_btnLogin">
+                                <a href="#" rel="nofollow">登录</a></div>
+                            <ul class="clx">
+                                <li class="icon_d1">
+                                    <b>
+                                    </b>
+                                    <a href="#" rel="nofollow">酒店订单</a></li>
+                                <li class="icon_d2" style="display:none;">
+                                    <b>
+                                    </b>
+                                    <a href="#" rel="nofollow">团购订单</a></li>
+                                <li class="icon_d3">
+                                    <a href="#" rel="nofollow">机票订单</a></li>
+                                <li class="icon_d4">
+                                    <a href="#" rel="nofollow">火车票订单</a></li>
+                                <li class="icon_d5">
+                                    <b>
+                                    </b>
+                                    <a href="#" rel="nofollow">现金账户</a></li>
+                                <li class="icon_d6">
+                                    <b>
+                                    </b>
+                                    <a href="#" rel="nofollow">汽车票订单</a></li>
+                                <li class="icon_d7">
+                                    <b>
+                                    </b>
+                                    <a href="#" rel="nofollow">酒店收藏</a></li>
+                                <li class="icon_d8">
+                                    <b style="display: none;" id="comment_notice">9</b>
+                                    <a id="n_comment_a" href="#" rel="nofollow">我的点评</a></li>
+                                <li class="icon_d9">
+                                    <b>
+                                    </b>
+                                    <a href="#" rel="nofollow">个人设置</a></li>
+                            </ul>
+                        </div>
+                        <!--弹出 end--></div>
+                </div>
+            </div>
+            <style type="text/css">.appWrap { background: url(themes/elong/images/app-com.png) no-repeat 0 -483px } .appBox .close { background: url(themes/elong/images/app-com.png) no-repeat -328px -182px; _background-image: url(themes/elong/images/app-com-ie6.png); } .appBox .close:hover { background-position: -358px -182px; } .appBox .intro { width: 480px; height: 210px; background: url(http://img.elongstatic.com/index/other/fx_btm.png) no-repeat 0 0px; font-size: 0; line-height: 0; overflow: hidden; position: absolute; top: 27px; left: 33px; } .appBox .way i { display: inline-block; width: 43px; height: 43px; margin-right: 5px; background: url(themes/elong/images/app-com.png) no-repeat 0 -334px; _background-image: url(themes/elong/images/app-com-ie6.png); vertical-align: middle; } .appBox .way .but { width: 170px; height: 30px; background: url(themes/elong/images/app-com.png) no-repeat -181px -334px; _background-image: url(themes/elong/images/app-com-ie6.png); border: 0; text-align: center; color: #fff; font: 16px "Microsoft Yahei", Simsun, sans-serif; cursor: pointer; } .appBox .way .but:hover { background-position: -181px -364px; } .appBox .way .success i { width: 20px; height: 16px; margin-right: 5px; background: url(themes/elong/images/app-com.png) no-repeat -181px -394px; _background-image: url(themes/elong/images/app-com-ie6.png); vertical-align: middle; }</style>
+            <div class="clear"></div>
         </div>
-        <style type="text/css">.appWrap { background: url(images/app-com.png) no-repeat 0 -483px } .appBox .close { background: url(images/app-com.png) no-repeat -328px -182px; _background-image: url(images/app-com-ie6.png); } .appBox .close:hover { background-position: -358px -182px; } .appBox .intro { width: 480px; height: 210px; background: url(http://img.elongstatic.com/index/other/fx_btm.png) no-repeat 0 0px; font-size: 0; line-height: 0; overflow: hidden; position: absolute; top: 27px; left: 33px; } .appBox .way i { display: inline-block; width: 43px; height: 43px; margin-right: 5px; background: url(images/app-com.png) no-repeat 0 -334px; _background-image: url(images/app-com-ie6.png); vertical-align: middle; } .appBox .way .but { width: 170px; height: 30px; background: url(images/app-com.png) no-repeat -181px -334px; _background-image: url(images/app-com-ie6.png); border: 0; text-align: center; color: #fff; font: 16px "Microsoft Yahei", Simsun, sans-serif; cursor: pointer; } .appBox .way .but:hover { background-position: -181px -364px; } .appBox .way .success i { width: 20px; height: 16px; margin-right: 5px; background: url(images/app-com.png) no-repeat -181px -394px; _background-image: url(images/app-com-ie6.png); vertical-align: middle; }</style>
-        <div class="clear"></div>
-        </div>
-        <!--=====================h eader end=====================- -> 
+        
+        
         <!-- 城市列表start -->
+
         <div class="cont_box response_wrap3" method="listPageContainer">
             <!-- cms start -->
             <!-- cms end -->
@@ -700,9 +201,9 @@
                 <div data-wrap="cityWrap" class="search_item search_termini">
                     <label>
                         <span>目的地</span>
-                        <input data-bindid="city" method="city" type="input" class="input_f16 input_termini" value="湘潭市" cityname="湘潭市" citynameen="Xiangtan" citynamecn="湘潭市" cityid="1906"></label>
+                        <input data-bindid="city" id="hotelCity" method="city" type="input" class="input_f16 input_termini" value="{$city}" cityname="{$city}" citynameen="Xiangtan" citynamecn="{$city}" cityid="{$cityid}"></label>
                 </div>
-                <div class="search_item search_date">
+                <!-- <div class="search_item search_date">
                     <label class="left br" data-wrap="checkInWrap">
                         <span>入住</span>
                         <input data-bindid="checkIn" method="checkIn" type="input" value="2016-12-27" selectedvalue="2016-12-27" class="input_f16 input_date">
@@ -713,11 +214,16 @@
                         <input data-bindid="checkOut" method="checkOut" type="input" value="2016-12-28" selectedvalue="2016-12-28" class="input_f16 input_date">
                         <span class="icon_date_e"></span>
                         <span class="total" data-bindid="dayCount">(共1晚)</span></label>
-                </div>
+                </div> -->
+                {include file="search_template/search_time_select.html"}
                 <div class="search_item search_keywords" data-wrap="allInOneWrap">
                     <label>
                         <span>关键词</span>
-                        <input data-bindid="allInOne" method="allInOne" type="input" class="input_f16 input_termini" value="如位置\酒店名\品牌"></label>
+                        {if $keywords}
+                            <input data-bindid="allInOne" method="allInOne" type="input" id="keywords" class="input_f16 input_termini"  value="{$keywords}"></label>
+                        {else}
+                             <input data-bindid="allInOne" method="allInOne" type="input" id="keywords" class="input_f16 input_termini c999" value="如位置\酒店名\品牌"></label>
+                        {/if}
                 </div>
                 <div class="btn_search_w1 right" data-bindid="search" method="search">
                     <span class="icon_search mr10"></span>搜索</div>
@@ -729,466 +235,13 @@
                     <div class="filter_title">
                         <span class="icon_filter_posi"></span>位置
                         <i class="b-line"></i></div>
-                    <div class="filter_option_box">
-                        <div class="filter_option">
-                            <div class="filter_unlimited" data-id="-1" method="location">不限</div>
-                            <ul class="filter_posi_type">
-                                <li class="" method="locationTab" data-typeid="5">商圈
-                                    <i class="icon_triangle_8b"></i></li>
-                                <li method="locationTab" data-typeid="4">行政区
-                                    <i class="icon_triangle_8b"></i></li>
-                                <li method="locationTab" data-typeid="601">地铁站
-                                    <i class="icon_triangle_8b"></i></li>
-                                <li method="locationTab" data-typeid="60" class="on">机场/车站
-                                    <i class="icon_triangle_8b"></i></li>
-                                <li method="locationTab" data-typeid="61">医院
-                                    <i class="icon_triangle_8b"></i></li>
-                                <li method="locationTab" data-typeid="62">大学
-                                    <i class="icon_triangle_8b"></i></li>
-                                <li method="locationTab" data-typeid="63">市内景点
-                                    <i class="icon_triangle_8b"></i></li>
-                                <li method="locationTab" data-typeid="64">市外景点
-                                    <i class="icon_triangle_8b"></i></li>
-                            </ul>
-                            <div class="filter_posi_show">
-                                <ul class="filter_posi_list" method="locationArr" data-typeid="5" style="display: none;">
-                                    <li class="" title="基建营" method="location" data-id="100759772" data-name="基建营" data-typeid="5">
-                                        <i class="icon_radio1"></i>
-                                        <span>基建营</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="市区" method="location" data-id="100756246" data-name="市区" data-typeid="5">
-                                        <i class="icon_radio1"></i>
-                                        <span>市区</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="建设路口" method="location" data-id="100756247" data-name="建设路口" data-typeid="5">
-                                        <i class="icon_radio1"></i>
-                                        <span>建设路口</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="板塘铺" method="location" data-id="100758283" data-name="板塘铺" data-typeid="5">
-                                        <i class="icon_radio1"></i>
-                                        <span>板塘铺</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="易俗河" method="location" data-id="100756248" data-name="易俗河" data-typeid="5">
-                                        <i class="icon_radio1"></i>
-                                        <span>易俗河</span>
-                                        <input type="radio"></li>
-                                </ul>
-                                <ul class="filter_posi_list" method="locationArr" data-typeid="4" style="display:none">
-                                    <li class="" title="雨湖区" method="location" data-id="100323805" data-name="雨湖区" data-typeid="4">
-                                        <i class="icon_radio1"></i>
-                                        <span>雨湖区</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="岳塘区" method="location" data-id="100324038" data-name="岳塘区" data-typeid="4">
-                                        <i class="icon_radio1"></i>
-                                        <span>岳塘区</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="湘潭县" method="location" data-id="100322341" data-name="湘潭县" data-typeid="4">
-                                        <i class="icon_radio1"></i>
-                                        <span>湘潭县</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="湘乡市" method="location" data-id="100323034" data-name="湘乡市" data-typeid="4">
-                                        <i class="icon_radio1"></i>
-                                        <span>湘乡市</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="韶山市" method="location" data-id="100322258" data-name="韶山市" data-typeid="4">
-                                        <i class="icon_radio1"></i>
-                                        <span>韶山市</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="长塘区" method="location" data-id="100759484" data-name="长塘区" data-typeid="4">
-                                        <i class="icon_radio1"></i>
-                                        <span>长塘区</span>
-                                        <input type="radio"></li>
-                                </ul>
-                                <!--如果为地铁的-->
-                                <ul class="filter_posi_list" method="locationArr" data-typeid="601" style="">
-                                    <li class="subway_num_wrap">
-                                        <div class="subway_num">
-                                            <div class="subway_num_list">
-                                                <ul class="clearfix">
-                                                    <!-- -- 需要中英文 ---->
-                                                    <li data-subwaykey="Line 1" class="check" method="subwayName">
-                                                        <a href="javascript:void(0);">1号线</a></li>
-                                                    <!-- -- 需要中英文 ---->
-                                                    <li data-subwaykey="Line 2" class="" method="subwayName">
-                                                        <a href="javascript:void(0);">2号线</a></li>
-                                                    <!-- -- 需要中英文 ---->
-                                                    <li data-subwaykey="Line 3" class="" method="subwayName">
-                                                        <a href="javascript:void(0);">3号线</a></li>
-                                                    <!-- -- 需要中英文 ---->
-                                                    <li data-subwaykey="Line 4" class="" method="subwayName">
-                                                        <a href="javascript:void(0);">4号线</a></li>
-                                                    <!-- -- 需要中英文 ---->
-                                                    <li data-subwaykey="Line 5" class="" method="subwayName">
-                                                        <a href="javascript:void(0);">5号线</a></li>
-                                                    <!-- -- 需要中英文 ---->
-                                                    <li data-subwaykey="Line 6" class="" method="subwayName">
-                                                        <a href="javascript:void(0);">6号线</a></li>
-                                                    <!-- -- 需要中英文 ---->
-                                                    <li data-subwaykey="Line 7" class="" method="subwayName">
-                                                        <a href="javascript:void(0);">7号线</a></li>
-                                                    <!-- -- 需要中英文 ---->
-                                                    <li data-subwaykey="Line 8" class="" method="subwayName">
-                                                        <a href="javascript:void(0);">8号线</a></li>
-                                                    <!-- -- 需要中英文 ---->
-                                                    <li data-subwaykey="Line 9" class="" method="subwayName">
-                                                        <a href="javascript:void(0);">9号线</a></li>
-                                                    <!-- -- 需要中英文 ---->
-                                                    <li data-subwaykey="Line 10" class="" method="subwayName">
-                                                        <a href="javascript:void(0);">10号线</a></li>
-                                                    <!-- -- 需要中英文 ---->
-                                                    <li data-subwaykey="Line 11" class="" method="subwayName">
-                                                        <a href="javascript:void(0);">11号线</a></li>
-                                                    <!-- -- 需要中英文 ---->
-                                                    <li data-subwaykey="Line 12" class="" method="subwayName">
-                                                        <a href="javascript:void(0);">12号线</a></li>
-                                                    <!-- -- 需要中英文 ---->
-                                                    <li data-subwaykey="Line 13" class="" method="subwayName">
-                                                        <a href="javascript:void(0);">13号线</a></li>
-                                                    <!-- -- 需要中英文 ---->
-                                                    <li data-subwaykey="Line 16" class="" method="subwayName">
-                                                        <a href="javascript:void(0);">16号线</a></li>
-                                                    <!-- -- 需要中英文 ---->
-                                                    <li data-subwaykey="cixuanfu" class="" method="subwayName">
-                                                        <a href="javascript:void(0);">磁悬浮</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="subway_station">
-                                                <ul class="clearfix" method="subwayContainer" id="subwaycontainer">
-                                                    <li class="first">
-                                                        <a title="莘庄" href="javascript:void(0);" method="location" data-id="60000390" data-name="莘庄" data-typeid="601">
-                                                            <span class="fist"></span>
-                                                            <span class="secd">莘庄</span></a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a title="外环路" href="javascript:void(0);" method="location" data-id="60000379" data-name="外环路" data-typeid="601">
-                                                            <span class="fist"></span>
-                                                            <span class="secd">外环路</span></a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a title="莲花路" href="javascript:void(0);" method="location" data-id="60000391" data-name="莲花路" data-typeid="601">
-                                                            <span class="fist"></span>
-                                                            <span class="secd">莲花路</span></a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a title="锦江乐园" href="javascript:void(0);" method="location" data-id="60000394" data-name="锦江乐园" data-typeid="601" class="on" data-selected="1">
-                                                            <span class="fist"></span>
-                                                            <span class="secd">锦江乐园</span></a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a title="上海南站" href="javascript:void(0);" method="location" data-id="60000370" data-name="上海南站" data-typeid="601">
-                                                            <span class="fist"></span>
-                                                            <span class="secd">上海南站</span></a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a title="漕宝路" href="javascript:void(0);" method="location" data-id="60000389" data-name="漕宝路" data-typeid="601">
-                                                            <span class="fist"></span>
-                                                            <span class="secd">漕宝路</span></a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a title="上海体育馆" href="javascript:void(0);" method="location" data-id="60000369" data-name="上海体育馆" data-typeid="601">
-                                                            <span class="fist"></span>
-                                                            <span class="secd">上海体育馆</span></a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a title="徐家汇" href="javascript:void(0);" method="location" data-id="60000385" data-name="徐家汇" data-typeid="601">
-                                                            <span class="fist"></span>
-                                                            <span class="secd">徐家汇</span></a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a title="衡山路" href="javascript:void(0);" method="location" data-id="60000392" data-name="衡山路" data-typeid="601">
-                                                            <span class="fist"></span>
-                                                            <span class="secd">衡山路</span></a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a title="常熟路" href="javascript:void(0);" method="location" data-id="60000382" data-name="常熟路" data-typeid="601">
-                                                            <span class="fist"></span>
-                                                            <span class="secd">常熟路</span></a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a title="陕西南路" href="javascript:void(0);" method="location" data-id="60000395" data-name="陕西南路" data-typeid="601">
-                                                            <span class="fist"></span>
-                                                            <span class="secd">陕西南路</span></a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a title="黄陂南路" href="javascript:void(0);" method="location" data-id="60000396" data-name="黄陂南路" data-typeid="601">
-                                                            <span class="fist"></span>
-                                                            <span class="secd">黄陂南路</span></a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a title="人民广场" href="javascript:void(0);" method="location" data-id="60000374" data-name="人民广场" data-typeid="601">
-                                                            <span class="fist"></span>
-                                                            <span class="secd">人民广场</span></a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a title="新闸路" href="javascript:void(0);" method="location" data-id="60000386" data-name="新闸路" data-typeid="601">
-                                                            <span class="fist"></span>
-                                                            <span class="secd">新闸路</span></a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a title="汉中路" href="javascript:void(0);" method="location" data-id="60000387" data-name="汉中路" data-typeid="601">
-                                                            <span class="fist"></span>
-                                                            <span class="secd">汉中路</span></a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a title="上海火车站" href="javascript:void(0);" method="location" data-id="60000371" data-name="上海火车站" data-typeid="601">
-                                                            <span class="fist"></span>
-                                                            <span class="secd">上海火车站</span></a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a title="中山北路" href="javascript:void(0);" method="location" data-id="60000373" data-name="中山北路" data-typeid="601">
-                                                            <span class="fist"></span>
-                                                            <span class="secd">中山北路</span></a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a title="延长路" href="javascript:void(0);" method="location" data-id="60000383" data-name="延长路" data-typeid="601">
-                                                            <span class="fist"></span>
-                                                            <span class="secd">延长路</span></a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a title="上海马戏城" href="javascript:void(0);" method="location" data-id="60000372" data-name="上海马戏城" data-typeid="601">
-                                                            <span class="fist"></span>
-                                                            <span class="secd">上海马戏城</span></a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a title="汶水路" href="javascript:void(0);" method="location" data-id="60000388" data-name="汶水路" data-typeid="601">
-                                                            <span class="fist"></span>
-                                                            <span class="secd">汶水路</span></a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a title="彭浦新村" href="javascript:void(0);" method="location" data-id="60000384" data-name="彭浦新村" data-typeid="601">
-                                                            <span class="fist"></span>
-                                                            <span class="secd">彭浦新村</span></a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a title="共康路" href="javascript:void(0);" method="location" data-id="60000376" data-name="共康路" data-typeid="601">
-                                                            <span class="fist"></span>
-                                                            <span class="secd">共康路</span></a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a title="通河新村" href="javascript:void(0);" method="location" data-id="60000393" data-name="通河新村" data-typeid="601">
-                                                            <span class="fist"></span>
-                                                            <span class="secd">通河新村</span></a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a title="呼兰路" href="javascript:void(0);" method="location" data-id="60000378" data-name="呼兰路" data-typeid="601">
-                                                            <span class="fist"></span>
-                                                            <span class="secd">呼兰路</span></a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a title="共富新村" href="javascript:void(0);" method="location" data-id="60000375" data-name="共富新村" data-typeid="601">
-                                                            <span class="fist"></span>
-                                                            <span class="secd">共富新村</span></a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a title="宝安公路" href="javascript:void(0);" method="location" data-id="60000380" data-name="宝安公路" data-typeid="601">
-                                                            <span class="fist"></span>
-                                                            <span class="secd">宝安公路</span></a>
-                                                    </li>
-                                                    <li class="">
-                                                        <a title="友谊西路" href="javascript:void(0);" method="location" data-id="60000377" data-name="友谊西路" data-typeid="601">
-                                                            <span class="fist"></span>
-                                                            <span class="secd">友谊西路</span></a>
-                                                    </li>
-                                                    <li class="last">
-                                                        <a title="富锦路" href="javascript:void(0);" method="location" data-id="60000381" data-name="富锦路" data-typeid="601">
-                                                            <span class="fist"></span>
-                                                            <span class="secd">富锦路</span></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <!-- 机场 车站判断id-->
-                                <div class="filter_lis_pos" method="locationArr" data-typeid="60" style="">
-                                    <!-- -- 需要中英文 ---->
-                                    <div class="lis_pos">
-                                        <div class="filter_lis_tit">
-                                            <span class="icons-train"></span>火车站</div>
-                                        <ul class="filter_posi_list">
-                                            <li class="" title="湘潭站" method="location" data-id="60001279" data-name="湘潭站" data-typeid="60">
-                                                <i class="icon_radio1"></i>
-                                                <span>湘潭站</span>
-                                                <input type="radio"></li>
-                                            <li class="" title="湘乡站" method="location" data-id="14387964" data-name="湘乡站" data-typeid="60">
-                                                <i class="icon_radio1"></i>
-                                                <span>湘乡站</span>
-                                                <input type="radio"></li>
-                                        </ul>
-                                    </div>
-                                    <!-- -- 需要中英文 ---->
-                                    <div class="lis_pos">
-                                        <div class="filter_lis_tit">
-                                            <span class="icons-car"></span>汽车客运站</div>
-                                        <ul class="filter_posi_list">
-                                            <li class="" title="湘潭汽车站" method="location" data-id="14387033" data-name="湘潭汽车站" data-typeid="60">
-                                                <i class="icon_radio1"></i>
-                                                <span>湘潭汽车站</span>
-                                                <input type="radio"></li>
-                                            <li class="" title="湘潭西站" method="location" data-id="51185775" data-name="湘潭西站" data-typeid="60">
-                                                <i class="icon_radio1"></i>
-                                                <span>湘潭西站</span>
-                                                <input type="radio"></li>
-                                            <li class="" title="湘潭汽车东站" method="location" data-id="14391974" data-name="湘潭汽车东站" data-typeid="60">
-                                                <i class="icon_radio1"></i>
-                                                <span>湘潭汽车东站</span>
-                                                <input type="radio"></li>
-                                            <li class="" title="湘潭天易汽车站" method="location" data-id="60632370" data-name="湘潭天易汽车站" data-typeid="60">
-                                                <i class="icon_radio1"></i>
-                                                <span>湘潭天易汽车站</span>
-                                                <input type="radio"></li>
-                                            <li class="" title="湘潭县汽车站" method="location" data-id="60632371" data-name="湘潭县汽车站" data-typeid="60">
-                                                <i class="icon_radio1"></i>
-                                                <span>湘潭县汽车站</span>
-                                                <input type="radio"></li>
-                                            <li class="" title="湘潭客运汽车南站" method="location" data-id="60632372" data-name="湘潭客运汽车南站" data-typeid="60">
-                                                <i class="icon_radio1"></i>
-                                                <span>湘潭客运汽车南站</span>
-                                                <input type="radio"></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <ul class="filter_posi_list" method="locationArr" data-typeid="61" style="display:none">
-                                    <li class="" title="湘潭市中心医院" method="location" data-id="14384940" data-name="湘潭市中心医院" data-typeid="61">
-                                        <i class="icon_radio1"></i>
-                                        <span>湘潭市中心医院</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="湘潭市第一人民医院" method="location" data-id="14387535" data-name="湘潭市第一人民医院" data-typeid="61">
-                                        <i class="icon_radio1"></i>
-                                        <span>湘潭市第一人民医院</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="湘潭市第二人民医院" method="location" data-id="14392144" data-name="湘潭市第二人民医院" data-typeid="61">
-                                        <i class="icon_radio1"></i>
-                                        <span>湘潭市第二人民医院</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="湘潭市第三人民医院" method="location" data-id="60158070" data-name="湘潭市第三人民医院" data-typeid="61">
-                                        <i class="icon_radio1"></i>
-                                        <span>湘潭市第三人民医院</span>
-                                        <input type="radio"></li>
-                                </ul>
-                                <ul class="filter_posi_list" method="locationArr" data-typeid="62" style="display:none">
-                                    <li class="" title="湘潭大学" method="location" data-id="51139341" data-name="湘潭大学" data-typeid="62">
-                                        <i class="icon_radio1"></i>
-                                        <span>湘潭大学</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="湖南科技大学" method="location" data-id="60003864" data-name="湖南科技大学" data-typeid="62">
-                                        <i class="icon_radio1"></i>
-                                        <span>湖南科技大学</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="湖南工程学院" method="location" data-id="60003865" data-name="湖南工程学院" data-typeid="62">
-                                        <i class="icon_radio1"></i>
-                                        <span>湖南工程学院</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="湖南工学院" method="location" data-id="60003866" data-name="湖南工学院" data-typeid="62">
-                                        <i class="icon_radio1"></i>
-                                        <span>湖南工学院</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="湖南吉利汽车职业技术学院" method="location" data-id="60003869" data-name="湖南吉利汽车职业技术学院" data-typeid="62">
-                                        <i class="icon_radio1"></i>
-                                        <span>湖南吉利汽车职业技术学院</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="湘潭职业技术学院" method="location" data-id="51139482" data-name="湘潭职业技术学院" data-typeid="62">
-                                        <i class="icon_radio1"></i>
-                                        <span>湘潭职业技术学院</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="湖南理工职业技术学院" method="location" data-id="14377661" data-name="湖南理工职业技术学院" data-typeid="62">
-                                        <i class="icon_radio1"></i>
-                                        <span>湖南理工职业技术学院</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="湖南软件职业学院" method="location" data-id="60003870" data-name="湖南软件职业学院" data-typeid="62">
-                                        <i class="icon_radio1"></i>
-                                        <span>湖南软件职业学院</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="湖南电气职业技术学院" method="location" data-id="14391254" data-name="湖南电气职业技术学院" data-typeid="62" style="display:none" data-mark="1">
-                                        <i class="icon_radio1"></i>
-                                        <span>湖南电气职业技术学院</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="湖南科技工业职业技术学院" method="location" data-id="60003871" data-name="湖南科技工业职业技术学院" data-typeid="62" style="display:none" data-mark="1">
-                                        <i class="icon_radio1"></i>
-                                        <span>湖南科技工业职业技术学院</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="湖南工程学院应用技术学院" method="location" data-id="14377881" data-name="湖南工程学院应用技术学院" data-typeid="62" style="display:none" data-mark="1">
-                                        <i class="icon_radio1"></i>
-                                        <span>湖南工程学院应用技术学院</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="湖南科技大学潇湘学院" method="location" data-id="14389853" data-name="湖南科技大学潇湘学院" data-typeid="62" style="display:none" data-mark="1">
-                                        <i class="icon_radio1"></i>
-                                        <span>湖南科技大学潇湘学院</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="湘潭大学兴湘学院" method="location" data-id="14385072" data-name="湘潭大学兴湘学院" data-typeid="62" style="display:none" data-mark="1">
-                                        <i class="icon_radio1"></i>
-                                        <span>湘潭大学兴湘学院</span>
-                                        <input type="radio"></li>
-                                    <li class="filter_more on icon_hl_more1" style="display: block;" method="showAllOps" data-typeid="62" data-showall="0"></li>
-                                </ul>
-                                <ul class="filter_posi_list" method="locationArr" data-typeid="63" style="display:none">
-                                    <li class="" title="湘潭文庙" method="location" data-id="60520241" data-name="湘潭文庙" data-typeid="63">
-                                        <i class="icon_radio1"></i>
-                                        <span>湘潭文庙</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="齐白石纪念馆" method="location" data-id="60520243" data-name="齐白石纪念馆" data-typeid="63">
-                                        <i class="icon_radio1"></i>
-                                        <span>齐白石纪念馆</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="湘潭秋瑾故居" method="location" data-id="60521906" data-name="湘潭秋瑾故居" data-typeid="63">
-                                        <i class="icon_radio1"></i>
-                                        <span>湘潭秋瑾故居</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="上屋场" method="location" data-id="14398441" data-name="上屋场" data-typeid="63">
-                                        <i class="icon_radio1"></i>
-                                        <span>上屋场</span>
-                                        <input type="radio"></li>
-                                </ul>
-                                <ul class="filter_posi_list" method="locationArr" data-typeid="64" style="display:none">
-                                    <li class="" title="韶山毛泽东故居" method="location" data-id="60520239" data-name="韶山毛泽东故居" data-typeid="64">
-                                        <i class="icon_radio1"></i>
-                                        <span>韶山毛泽东故居</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="滴水洞风景区" method="location" data-id="60520240" data-name="滴水洞风景区" data-typeid="64">
-                                        <i class="icon_radio1"></i>
-                                        <span>滴水洞风景区</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="彭德怀纪念馆" method="location" data-id="14388200" data-name="彭德怀纪念馆" data-typeid="64">
-                                        <i class="icon_radio1"></i>
-                                        <span>彭德怀纪念馆</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="湘潭农博园" method="location" data-id="14384738" data-name="湘潭农博园" data-typeid="64">
-                                        <i class="icon_radio1"></i>
-                                        <span>湘潭农博园</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="韶峰" method="location" data-id="60521903" data-name="韶峰" data-typeid="64">
-                                        <i class="icon_radio1"></i>
-                                        <span>韶峰</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="茅浒水乡" method="location" data-id="60521904" data-name="茅浒水乡" data-typeid="64">
-                                        <i class="icon_radio1"></i>
-                                        <span>茅浒水乡</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="毛氏宗祠" method="location" data-id="60521907" data-name="毛氏宗祠" data-typeid="64">
-                                        <i class="icon_radio1"></i>
-                                        <span>毛氏宗祠</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="韶山烈士陵园" method="location" data-id="14387954" data-name="韶山烈士陵园" data-typeid="64">
-                                        <i class="icon_radio1"></i>
-                                        <span>韶山烈士陵园</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="毛泽东诗词碑林" method="location" data-id="60521908" data-name="毛泽东诗词碑林" data-typeid="64" style="display:none" data-mark="1">
-                                        <i class="icon_radio1"></i>
-                                        <span>毛泽东诗词碑林</span>
-                                        <input type="radio"></li>
-                                    <li class="" title="昭山" method="location" data-id="51139269" data-name="昭山" data-typeid="64" style="display:none" data-mark="1">
-                                        <i class="icon_radio1"></i>
-                                        <span>昭山</span>
-                                        <input type="radio"></li>
-                                    <li class="filter_more on icon_hl_more1" style="display: block;" method="showAllOps" data-typeid="64" data-showall="0"></li>
-                                </ul>
-                            </div>
-                        </div>
+                    <div class="filter_option_box" id="position">
+                        {$position_html}
                     </div>
                 </div>
                 <!-- location end -->
                 <!-- price start -->
-                <div class="filter_item" method="priceFilterPart" data-multi="1">
+                <div class="filter_item" id="price" method="priceFilterPart" data-multi="1">
                     <div class="filter_title">
                         <span class="icon_filter_pri"></span>房价
                         <i class="b-line"></i></div>
@@ -1198,11 +251,11 @@
                             <div class="filter_custom">
                                 <span class="mr5">自定义</span>
                                 <span class="mr5">
-                                    <input method="lowPrice" type="input" class="input_f12"></span>
+                                    <input id="lowPrice" method="lowPrice" type="input" class="input_f12" onkeyup="value=value.replace(/[^\d]/g,'')" ></span>
                                 <span class="mr5 cddd">—</span>
                                 <span class="mr5">
-                                    <input method="highPrice" type="input" class="input_f12"></span>
-                                <span method="priceConfirm" data-id="999" class="btn_filter_sure">确定</span></div>
+                                    <input id="highPrice" method="highPrice" type="input" class="input_f12" onkeyup="value=value.replace(/[^\d]/g,'')" ></span>
+                                <span id= "priceConfirm" method="priceConfirm" data-id="999" class="btn_filter_sure">确定</span></div>
                             <ul class="filter_cb_list filter_cb_list1">
                                 <li method="price" data-id="1" data-low="0" data-high="150" data-name="150元以下">
                                     <i class="icon_radio1"></i>
@@ -1548,11 +601,11 @@
                 <div class="cont_total left">
                     <span class="t24 mr5" id="hotelCount">2</span>家酒店满足条件</div>
                 <div class="cond-list" method="conditionList">
-                    <span method="delCondition" data-type="allInOne" data-id="1" title="删除此条件">华天
+                    <!-- <span method="delCondition" data-type="allInOne" data-id="1" title="删除此条件">华天
                         <i class="icon_close_hl"></i></span>
                     <span method="delCondition" data-type="allInOne" data-id="1" title="删除此条件">如家
-                        <i class="icon_close_hl"></i></span>
-                    <a title="清空条件" href="javascript:void(0);" method="cleanCondition">清空条件</a></div>
+                        <i class="icon_close_hl"></i></span> -->
+                    <a style="display:none" title="清空条件" href="javascript:void(0);" method="cleanCondition">清空条件</a></div>
             </div>
             <div class="hlist_box">
                 <!--左侧内容 start-->
@@ -1603,7 +656,7 @@
                             <li method="hotelNode" class="h_sale_item" data-index="0">
                                 <div class="h_sale_pic left">
                                     <a href="#" target="_blank">
-                                        <img src="images/0004T1ws.jpg" alt="湘潭华都国际大酒店" height="100"></a>
+                                        <img src="themes/elong/images/0004T1ws.jpg" alt="湘潭华都国际大酒店" height="100"></a>
                                 </div>
                                 <div class="h_sale_text">
                                     <a href="#" target="_blank">湘潭华都国际大酒店
@@ -1617,7 +670,7 @@
                             <li method="hotelNode" class="h_sale_item" data-index="0">
                                 <div class="h_sale_pic left">
                                     <a href="#" target="_blank">
-                                        <img src="images/0004KWlE.jpg" alt="湘潭湘江之星酒店" height="100"></a>
+                                        <img src="themes/elong/images/0004KWlE.jpg" alt="湘潭湘江之星酒店" height="100"></a>
                                 </div>
                                 <div class="h_sale_text">
                                     <a href="#" target="_blank">湘潭湘江之星酒店
@@ -1631,7 +684,7 @@
                             <li method="hotelNode" class="h_sale_item" data-index="1" style="display:none">
                                 <div class="h_sale_pic left">
                                     <a href="#" target="_blank">
-                                        <img src="images/0004UsB0.jpg" alt="湘潭贰盟苹果酒店" height="100"></a>
+                                        <img src="themes/elong/images/0004UsB0.jpg" alt="湘潭贰盟苹果酒店" height="100"></a>
                                 </div>
                                 <div class="h_sale_text">
                                     <a href="#" target="_blank">湘潭贰盟苹果酒店
@@ -1645,7 +698,7 @@
                             <li method="hotelNode" class="h_sale_item" data-index="1" style="display:none">
                                 <div class="h_sale_pic left">
                                     <a href="#" target="_blank">
-                                        <img src="images/0005Sfji.jpg" alt="湘潭铭逸酒店" height="100"></a>
+                                        <img src="themes/elong/images/0005Sfji.jpg" alt="湘潭铭逸酒店" height="100"></a>
                                 </div>
                                 <div class="h_sale_text">
                                     <a href="#" target="_blank">湘潭铭逸酒店
@@ -1659,7 +712,7 @@
                             <li method="hotelNode" class="h_sale_item" data-index="2" style="display:none">
                                 <div class="h_sale_pic left">
                                     <a href="#" target="_blank">
-                                        <img src="images/0003mVdw.jpg" alt="湘潭铂廷大酒店" height="100"></a>
+                                        <img src="themes/elong/images/0003mVdw.jpg" alt="湘潭铂廷大酒店" height="100"></a>
                                 </div>
                                 <div class="h_sale_text">
                                     <a href="#" target="_blank">湘潭铂廷大酒店
@@ -1673,7 +726,7 @@
                             <li method="hotelNode" class="h_sale_item" data-index="2" style="display:none">
                                 <div class="h_sale_pic left">
                                     <a href="#" target="_blank">
-                                        <img src="images/00006Z70.jpg" alt="湘潭角色大酒店" height="100"></a>
+                                        <img src="themes/elong/images/00006Z70.jpg" alt="湘潭角色大酒店" height="100"></a>
                                 </div>
                                 <div class="h_sale_text">
                                     <a href="#" target="_blank">湘潭角色大酒店
@@ -1697,7 +750,7 @@
                                 <div class="h_info">
                                     <div class="h_info_pic" data-mark="img_51906005_container" method="imgContainer">
                                         <a href="#" target="_blank">
-                                            <img method="bigImg" data-mark="img_51906005" src="images/0000bhGr.jpg" data-src="http://pavo.elongstatic.com/i/Hotel480_350/0000bhGr.jpg" alt="湘潭华天大酒店" width="180" height="130"></a>
+                                            <img method="bigImg" data-mark="img_51906005" src="themes/elong/images/0000bhGr.jpg" data-src="http://pavo.elongstatic.com/i/Hotel480_350/0000bhGr.jpg" alt="湘潭华天大酒店" width="180" height="130"></a>
                                     </div>
                                     <div class="h_info_text">
                                         <!---------------->
@@ -1773,7 +826,7 @@
                                 <div class="h_info">
                                     <div class="h_info_pic" data-mark="img_90203905_container" method="imgContainer">
                                         <a href="#" target="_blank">
-                                            <img method="bigImg" data-mark="img_90203905" src="images/0003mnvD.jpg" data-src="http://pavo.elongstatic.com/i/Hotel480_350/0003mnvD.jpg" alt="湘乡华龙华天大酒店" width="180" height="130"></a>
+                                            <img method="bigImg" data-mark="img_90203905" src="themes/elong/images/0003mnvD.jpg" data-src="http://pavo.elongstatic.com/i/Hotel480_350/0003mnvD.jpg" alt="湘乡华龙华天大酒店" width="180" height="130"></a>
                                     </div>
                                     <div class="h_info_text">
                                         <!---------------->
@@ -1836,11 +889,7 @@
                                     <div id="h_map_wrap90203905" style="display:none; height: 410px;"></div>
                                     <!-- 地图 end-->
                                     <div id="soso_map_wrap90203905" style="display:none" class="mt10"></div>
-                                    <!--------------------------Map End------------------------------------------->
-                                    <!--------------------------Review Start----------------------------------------->
-                                    <!--------------------------Review End------------------------------------------->
-                                    <!--------------------------psgRecommend start------------------------------------------->
-                                    <!--------------------------psgRecommend End-------------------------------------------></div>
+     
                             </div>
                         </div>
                         <div class="h_nore_recom mb10" method="recommendedInfo" style="">
@@ -1851,10 +900,10 @@
                                 <div class="h_info">
                                     <div class="h_info_pic" data-mark="img_51906005_container" method="imgContainer">
                                         <a href="#" target="_blank">
-                                            <img method="bigImg" data-mark="img_51906005" src="images/0000bhGr.jpg" data-src="http://pavo.elongstatic.com/i/Hotel480_350/0000bhGr.jpg" alt="湘潭华天大酒店" width="180" height="130"></a>
+                                            <img method="bigImg" data-mark="img_51906005" src="themes/elong/images/0000bhGr.jpg" data-src="http://pavo.elongstatic.com/i/Hotel480_350/0000bhGr.jpg" alt="湘潭华天大酒店" width="180" height="130"></a>
                                     </div>
                                     <div class="h_info_text">
-                                        <!---------------->
+         
                                         <div class="h_info_pri">
                                             <p>
                                                 <a href="#" target="_blank">
@@ -1875,7 +924,7 @@
                                                     <em class="add_collect_1">+1</em></span>
                                             </div>
                                         </div>
-                                        <!---------------->
+                                       
                                         <div class="h_info_comt">
                                             <a href="#" target="_blank" class="h_comt_data">
                                                 <span method="review" class="h_info_comt_bg">
@@ -1911,8 +960,8 @@
                                                     <i class="icon_land_street"></i>街景</span>
                                             </p>
                                         </div>
-                                        <!----------------></div>
-                                    <!--------------------------Map Start--------------------------------------->
+                                       </div>
+                                   
                                     <!-- 地图 start-->
                                     <div id="h_map_wrap51906005" style="display:none; height: 410px;"></div>
                                     <!-- 地图 end-->
@@ -1923,7 +972,7 @@
                                 <div class="h_info">
                                     <div class="h_info_pic" data-mark="img_90203905_container" method="imgContainer">
                                         <a href="#" target="_blank">
-                                            <img method="bigImg" data-mark="img_90203905" src="images/0003mnvD.jpg" data-src="http://pavo.elongstatic.com/i/Hotel480_350/0003mnvD.jpg" alt="湘乡华龙华天大酒店" width="180" height="130"></a>
+                                            <img method="bigImg" data-mark="img_90203905" src="themes/elong/images/0003mnvD.jpg" data-src="http://pavo.elongstatic.com/i/Hotel480_350/0003mnvD.jpg" alt="湘乡华龙华天大酒店" width="180" height="130"></a>
                                     </div>
                                     <div class="h_info_text">
                    
@@ -1980,8 +1029,8 @@
                                                     <i class="icon_land_street"></i>街景</span>
                                             </p>
                                         </div>
-                                        <!----------------></div>
-                                    <!--------------------------Map Start--------------------------------------->
+                                    </div>
+
                                     <!-- 地图 start-->
                                     <div id="h_map_wrap90203905" style="display:none; height: 410px;"></div>
                                     <!-- 地图 end-->
@@ -2005,7 +1054,7 @@
                         <a method="page" data-index="2" href="javascript:void(0)" class="page_next" title="下一页">下一页</a></div>
                     <!--分页 end--></div>
                 <!-- 右侧内容 -->
-                <div id="rightSpanDiv">
+               <!--  <div id="rightSpanDiv">
                     <div class="hlist_sider right">
                         <div method="stayWhere" class="r_where mb10" style="display:none">
                             <i class="icon_where left"></i>
@@ -2059,7 +1108,7 @@
                                 </div>
                                 <div class=" anchorBL" style="height: 32px; position: absolute; z-index: 10; text-size-adjust: none; bottom: 0px; right: auto; top: auto; left: 1px; display: none;">
                                     <a title="到百度地图查看此区域" target="_blank" href="http://map.baidu.com/?sr=1" style="outline: none;">
-                                        <img style="border:none;width:77px;height:32px" src="images/copyright_logo.png"></a>
+                                        <img style="border:none;width:77px;height:32px" src="themes/elong/images/copyright_logo.png"></a>
                                 </div>
                                 <div id="zoomer" style="position:absolute;z-index:0;top:0px;left:0px;overflow:hidden;visibility:hidden;cursor:default">
                                     <div class="BMap_zoomer" style="top:0;left:0;"></div>
@@ -2111,11 +1160,11 @@
                                 <div unselectable="on" class=" BMap_scaleCtrl BMap_noprint anchorBL" style="bottom: 18px; right: auto; top: auto; left: 81px; width: 93px; position: absolute; z-index: 10; text-size-adjust: none; display: block;">
                                     <div class="BMap_scaleTxt" unselectable="on" style="background-color: transparent; color: black;">10&nbsp;公里</div>
                                     <div class="BMap_scaleBar BMap_scaleHBar" style="background-color: black;">
-                                        <img style="border:none" src="images/mapctrls.png"></div>
+                                        <img style="border:none" src="themes/elong/images/mapctrls.png"></div>
                                     <div class="BMap_scaleBar BMap_scaleLBar" style="background-color: black;">
-                                        <img style="border:none" src="images/mapctrls.png"></div>
+                                        <img style="border:none" src="themes/elong/images/mapctrls.png"></div>
                                     <div class="BMap_scaleBar BMap_scaleRBar" style="background-color: black;">
-                                        <img style="border:none" src="images/mapctrls.png"></div>
+                                        <img style="border:none" src="themes/elong/images/mapctrls.png"></div>
                                 </div>
                                 <div unselectable="on" class=" BMap_cpyCtrl BMap_noprint anchorBL" style="cursor: default; white-space: nowrap; color: black; background: none; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 11px; line-height: 15px; font-family: arial, sans-serif; bottom: 2px; right: auto; top: auto; left: 81px; position: absolute; z-index: 10; text-size-adjust: none; display: none;">
                                     <span _cid="1" style="display: inline;">
@@ -2127,6 +1176,8 @@
                                 </div>
                             </div>
                         </div>
+
+
                         <div class="mt10">
                             <ul class="sh_subnav">
                                 <li method="seen" class="">
@@ -2184,7 +1235,7 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="clx"></div>
             <a name="mapstop" id="mapstop"></a>
@@ -2254,7 +1305,7 @@
                 <!--cms节点 start-->
                 <div class="ht-load">
                     <!--中文内容部分 start-->
-                    <style>.hotel_loading{padding: 5px 0;} .loading_b { width: 75px; height: 80px; background: url(images/loading-pc.gif) no-repeat; }</style>
+                    <style>.hotel_loading{padding: 5px 0;} .loading_b { width: 75px; height: 80px; background: url(themes/elong/images/loading-pc.gif) no-repeat; }</style>
                     <div class="mt20 mb20 tc t14">
                         <p>
                             <span class="loading_b vm mr10"></span>小艺正在努力为您加载中...</p>
@@ -2273,8 +1324,7 @@
                 <li class="cate_03" data-rightblock="3">
                     <a href="#" style="display: block;"></a>
                     <span style="display: none;">我的收藏</span></li>
-                <!-- <li class="cate_04" data-rightblock="4"><a href="#" style="display: block;"></a><span style="display: none;">酒店对比</span></li>
-                -->
+
                 <li class="cate_05" data-rightblock="5">
                     <a href="#" style="display: block;"></a>
                     <span style="display: none;">在线客服</span></li>
@@ -2334,7 +1384,68 @@
                 </div>
                 <!--内容部分 end--></div>
         </div>
-        <script src="js/trave.js"></script>
+
+        <div class="clear"></div>
+        <div class="footer" r="3">
+            <div class="footer_info">
+                <dl>
+                    <dt>加盟合作</dt>
+                    <dd>
+                        <a href="#" title="酒店加盟" rel="nofollow">酒店加盟</a></dd>
+                    <dd>
+                        <a href="#" title="机票酒店分销联盟" rel="nofollow">分销联盟</a></dd>
+                    <dd>
+                        <a href="#" title="旅游产品代理合作" rel="nofollow">代理合作</a></dd>
+                    <dd>
+                        <a href="#" title="在线广告服务" rel="nofollow">广告服务</a></dd>
+                    <dd>
+                        <a href="#" title="艺龙商家中心" rel="nofollow">商家中心</a></dd>
+                </dl>
+                <dl>
+                    <dt>关于艺龙</dt>
+                    <dd>
+                        <a href="#" title="关于艺龙旅行网" rel="nofollow">关于艺龙</a></dd>
+                    <dd>
+                        <a href="#" title="酒店大全">酒店大全</a></dd>
+                    <dd>
+                        <a href="#" title="国际酒店">国际酒店</a></dd>
+                    <dd>
+                        <a href="#" title="校园招聘" rel="nofollow">校园招聘</a></dd>
+                    <dd>
+                        <a href="#" title="联系艺龙旅行网" rel="nofollow">联系我们</a></dd>
+                </dl>
+                <dl>
+                    <dt>艺龙APP下载</dt>
+                    <dd class="pt10">
+                        <i class="cm_icon footer_info_app"></i>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>艺龙官方微信</dt>
+                    <dd class="pt10">
+                        <i class="cm_icon footer_info_wx"></i>
+                    </dd>
+                </dl>
+            </div>
+            <div class="clx"></div>
+            <div class="footer_copy">© 1999 - 2016 eLong, Inc or its affiliates. All Rights Reserved.
+                <a href="#">京ICP证010011号</a>京公网安备
+                <a href="#">11010502026059号</a>
+                <i class="cm_icon"></i>
+            </div>
+            <div class="footer_safe">
+                <a class="cm_icon qua-1" href="#" rel="nofollow" target="_blank" alt="SSL加密认证" title="SSL加密认证">SSL加密认证</a>
+                <a class="cm_icon qua-3" href="#" rel="nofollow" target="_blank" alt="信赖商业计划" title="信赖商业计划">信用评级</a>
+                <a class="cm_icon qua-5" href="#" rel="nofollow" onclick="CNNIC_change(&#39;urlknet&#39;)" tabindex="-1" id="urlknet" target="_blank" title="可信用网站身份验证" alt="可信用网站身份验证">可信用网站身份验证</a>
+                <a class="cm_icon qua-4" href="#" rel="nofollow" target="_blank" title="诚信示范企业" alt="诚信示范企业">诚信示范企业</a>
+            </div>
+        </div>
+        <script src="themes/elong/js/trave.js"></script>
+        
+        {include file="search_template/search_city_list.html"}
+        {include file="search_template/search_city_search.html"}
+        {include file="search_template/search_hot_suggest.html"}
+        
     </body>
 
 </html>
