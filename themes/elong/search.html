@@ -241,7 +241,7 @@
                 </div>
                 <!-- location end -->
                 <!-- price start -->
-                <div class="filter_item" id="price" method="priceFilterPart" data-multi="1">
+                <div class="filter_item" id="price" attrid='1002' method="priceFilterPart" data-multi="1">
                     <div class="filter_title">
                         <span class="icon_filter_pri"></span>房价
                         <i class="b-line"></i></div>
@@ -283,14 +283,14 @@
                 </div>
                 <!-- price end -->
                 <!-- star start -->
-                <div class="filter_item" method="starFilterPart" data-multi="1">
+                <div class="filter_item" id="star" attrid='1001' method="starFilterPart" data-multi="1">
                     <div class="filter_title">
                         <span class="icon_filter_star"></span>星级
                         <i class="b-line"></i></div>
                     <div class="filter_option_box">
                         <div class="filter_option">
                             <div method="star" data-id="-1" class="filter_unlimited filter_unlimited_on">不限</div>
-                            <ul class="filter_cb_list">
+                            <ul class="filter_cb_list" >
                                 <li method="star" data-id="2" data-name="经济/客栈" data-selected="0">
                                     <i class="icon_checkbox1"></i>
                                     <span>经济/客栈</span>
@@ -318,7 +318,7 @@
                 <!-- star end -->
                 <!--1010.人数 1011.设施 1012.主题 3.品牌 -->
                 <!-- 3.品牌 -->
-                <div class="filter_item" method="brandFilterPart" data-typeid="3" data-multi="1">
+                <div class="filter_item" id="brand" attrid="1005" method="brandFilterPart" data-typeid="3" data-multi="1">
                     <div class="filter_title">
                         <span class="icon_filter_prod"></span>品牌
                         <i class="b-line"></i></div>
@@ -390,7 +390,7 @@
                 </div>
                 <!--1010.人数 1011.设施 1012.主题 3.品牌 -->
                 <!--1010.人数 1011.设施 1012.主题 -->
-                <div class="filter_item" method="themeFilterPart" data-typeid="1012" data-multi="1">
+                <div class="filter_item" id="theme" attrid="1009" method="themeFilterPart" data-typeid="1012" data-multi="1">
                     <div class="filter_title">
                         <span class="icon_filter_theme"></span>主题
                         <i class="b-line"></i></div>
@@ -489,7 +489,7 @@
                 </div>
                 <!--1010.人数 1011.设施 1012.主题 3.品牌 -->
                 <!--1010.人数 1011.设施 1012.主题 -->
-                <div class="filter_item " method="facilityFilterPart" data-typeid="1011" data-multi="1" style="">
+                <div class="filter_item " id="service" attrid="1010" method="facilityFilterPart" data-typeid="1011" data-multi="1" style="">
                     <div class="filter_title">
                         <span class="icon_filter_serv"></span>服务
                         <i class="b-line"></i></div>
@@ -1310,8 +1310,8 @@
                         <p>
                             <span class="loading_b vm mr10"></span>小艺正在努力为您加载中...</p>
                     </div>
-                    <!--内容部分 end--></div>
-                <!--cms节点 end--></div>
+                </div>
+            </div>
         </div>
         <div class="fix_tool" id="right-box-list">
             <ul>
@@ -1445,7 +1445,28 @@
         {include file="search_template/search_city_list.html"}
         {include file="search_template/search_city_search.html"}
         {include file="search_template/search_hot_suggest.html"}
-        
+
+        <!-- 搜索时的页面浮层 -->
+        <div id="loading" style="z-index: 101;display:none"">
+            <div class="com_dialog com_widget com_widget-content com_corner-all com_draggable" style="width: 480px; overflow: hidden; background: rgb(255, 255, 255); z-index: 1001; display: block; position: fixed; left: 50%; top: 50%; margin-top: -67px; margin-left: -241px;">
+            <div class="com_dialog-content com_widget-content">
+                <div class="ht-load">           
+                    <div class="ht-load">
+                        <style>
+                            .hotel_loading{padding: 5px 0;}
+                            .loading_b {  width: 75px;  height: 80px; background: url(http://img.elongstatic.com/other/loading/loading-pc.gif) no-repeat; }
+                        </style>
+                        <div class="mt20 mb20 tc t14">
+                            <p><span class="loading_b vm mr10"></span>小艺正在努力为您加载中...</p>
+                        </div>
+
+                    </div>
+
+                 </div>
+            </div>
+            <div style="display: block; z-index: 1000; top: 0px; left: 0px; position: fixed; height: 100%; width: 100%; background-color: rgb(204, 204, 204); opacity: 0.5;">
+            </div>
+        </div>
     </body>
 
 </html>

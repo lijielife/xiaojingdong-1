@@ -59,6 +59,8 @@ if ($_REQUEST['act'] == 'list')
 
     //todo 房价、星级、品牌、主题、服务、人数这些属性取出来,并附值给页面
 
+    //todo 获取酒店的类型中的服务、星级、主题的attr_id,并赋值给页面
+
     $smarty->display('search.html');
 
 }
@@ -103,6 +105,12 @@ elseif ($_REQUEST['act'] == 'ajax_search_pre')
         }
     }
     die(json_encode($response));
+}
+
+elseif ($_REQUEST['act'] == 'ajax_search')
+{
+    sleep(3);
+    print_r(json_encode($_POST));exit;
 }
 
 
@@ -256,11 +264,11 @@ function create_position_html($position_info)
     {
         if($key == 0)
         {
-            $html .= '<ul class="filter_posi_list" attr_id="'.$val['attr_id'].'" method="locationArr" data-typeid="5">';
+            $html .= '<ul class="filter_posi_list" attrid="'.$val['attr_id'].'" method="locationArr" data-typeid="5">';
         }
         else
         {
-            $html .= '<ul class="filter_posi_list" attr_id="'.$val['attr_id'].'" method="locationArr" data-typeid="5" style="display: none;">';
+            $html .= '<ul class="filter_posi_list" attrid="'.$val['attr_id'].'" method="locationArr" data-typeid="5" style="display: none;">';
         }
 
         foreach($val['attr_values'] as $v)
@@ -334,11 +342,11 @@ function create_position_html($position_info)
             $id = 'subwaycontainer_' . $key;
             if($key == 0)
             {
-                $html .= '<ul class="clearfix" attr_id="'.$val['attr_id'].'" method="subwayContainer" id="'.$id.'">';
+                $html .= '<ul class="clearfix" attrid="'.$val['attr_id'].'" method="subwayContainer" id="'.$id.'">';
             }
             else
             {
-                $html .= '<ul class="clearfix" attr_id="'.$val['attr_id'].'" style="display:none" method="subwayContainer" id="'.$id.'">';
+                $html .= '<ul class="clearfix" attrid="'.$val['attr_id'].'" style="display:none" method="subwayContainer" id="'.$id.'">';
             }
 
 
@@ -385,7 +393,7 @@ function create_position_html($position_info)
             {
                 $class = 'icons-airport';
             }
-            $html .= '<div class="lis_pos"><div class="filter_lis_tit"><span class="'.$class.'"></span>'.$val['attr_name'].'</div><ul class="filter_posi_list" attr_id="'.$val['attr_id'].'" type="airport">';
+            $html .= '<div class="lis_pos"><div class="filter_lis_tit"><span class="'.$class.'"></span>'.$val['attr_name'].'</div><ul class="filter_posi_list" attrid="'.$val['attr_id'].'" type="airport">';
             foreach($val['attr_values'] as $v)
             {
                 $v = trim($v);
