@@ -104,10 +104,19 @@ window.onerror = killerrors;
       </div>
       <div class="allnav fl" id="nav">
         <ul>
-          <li><a class="nav" href="index.php" title="首页">首页</a></li>
-          <!-- {foreach name=nav_middle_list from=$navigator_list.middle item=nav } -->
-          <li><a class="nav {if $nav.active eq 1}current{/if}" href="{$nav.url}" title="{$nav.name}" {if $nav.opennew eq 1}target="_blank" {/if}>{$nav.name}</a></li>
-          <!-- {/foreach} -->
+            <!-- {if $supplier_id} -->
+              <li><a class="nav" href="{$supplier_index}" title="店铺首页">店铺首页</a></li>
+              <!--{foreach from=$navigator_list_supplier.middle item=mall_get_navigator name=mall_get_navigator}-->
+                <li>
+                     <A title="{$mall_get_navigator.name|escape:html}" href="{$mall_get_navigator.url}" {if $mall_get_navigator.opennew}target="_blank"{/if}>{$mall_get_navigator.name|escape:html}</A>
+                </li>
+              <!-- {/foreach} -->
+          <!-- {else} -->
+                <li><a class="nav" href="index.php" title="首页">首页</a></li>
+                              <!-- {foreach name=nav_middle_list from=$navigator_list.middle item=nav } -->
+                              <li><a class="nav {if $nav.active eq 1}current{/if}" href="{$nav.url}" title="{$nav.name}" {if $nav.opennew eq 1}target="_blank" {/if}>{$nav.name}</a></li>
+                <!-- {/foreach} -->
+          <!-- {/if} -->
         </ul>
       </div>
   </div>

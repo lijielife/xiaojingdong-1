@@ -37,7 +37,7 @@ $modules['02_cat_and_goods']['11_goods_trash'] = 'goods.php?act=trash'; // 商�
 //$modules['02_cat_and_goods']['13_batch_add'] = 'goods_batch.php?act=add'; // 商品批量上传
 //$modules['02_cat_and_goods']['14_goods_export'] = 'goods_export.php?act=goods_export';
 //$modules['02_cat_and_goods']['15_batch_edit'] = 'goods_batch.php?act=select'; // 商品批量修改
-$modules['02_cat_and_goods']['16_goods_script'] = 'gen_goods_script.php?act=setup';
+//$modules['02_cat_and_goods']['16_goods_script'] = 'gen_goods_script.php?act=setup'; //生成商品代码
 $modules['02_cat_and_goods']['17_tag_manage'] = 'tag_manage.php?act=list';
 /*
  * $modules['02_cat_and_goods']['50_virtual_card_list'] =
@@ -48,7 +48,7 @@ $modules['02_cat_and_goods']['17_tag_manage'] = 'tag_manage.php?act=list';
  * 'virtual_card.php?act=change';
  */
 $modules['02_cat_and_goods']['goods_auto'] = 'goods_auto.php?act=list';
-$modules['02_cat_and_goods']['scan_store'] = 'scan.php?act=insert';
+//$modules['02_cat_and_goods']['scan_store'] = 'scan.php?act=insert'; //出入库管理
 
 /* $modules['03_promotion']['02_snatch_list'] = 'snatch.php?act=list'; */
 $modules['03_promotion']['04_bonustype_list'] = 'bonus.php?act=list';
@@ -88,7 +88,7 @@ $modules['04_order']['11_kuaidi_order'] = 'kuaidi_order.php?act=list';
 $modules['04_order']['12_kuaidi_order2'] = 'kuaidi_order.php?act=list&order_status=4&is_finish=1';
 // ecshop add end
 /* 增值税发票_添加_START_www.68ecshop.com */
-$modules['04_order']['12_invoice_list'] = 'order.php?act=invoice_list';
+//$modules['04_order']['12_invoice_list'] = 'order.php?act=invoice_list';
 /* 增值税发票_添加_START_www.68ecshop.com */
 
 /* 虚拟卷订单列表_添加_START_www.68ecshop.com */
@@ -154,24 +154,24 @@ $modules['08_members']['09_postman_list'] = 'postman.php?act=list';
 $modules['10_priv_admin']['admin_logs'] = 'admin_logs.php?act=list';
 $modules['10_priv_admin']['admin_list'] = 'privilege.php?act=list';
 $modules['10_priv_admin']['admin_role'] = 'role.php?act=list';
-$modules['10_priv_admin']['agency_list'] = 'agency.php?act=list';
-$modules['10_priv_admin']['suppliers_list'] = 'suppliers.php?act=list'; // 供货商
+//$modules['10_priv_admin']['agency_list'] = 'agency.php?act=list'; //办事处列表
+//$modules['10_priv_admin']['suppliers_list'] = 'suppliers.php?act=list'; // 供货商
 
 $modules['11_system']['01_shop_config'] = 'shop_config.php?act=list_edit';
 $modules['11_system']['02_payment_list'] = 'payment.php?act=list';
 $modules['11_system']['03_shipping_list'] = 'shipping.php?act=list';
-$modules['11_system']['04_mail_settings'] = 'shop_config.php?act=mail_settings';
+//$modules['11_system']['04_mail_settings'] = 'shop_config.php?act=mail_settings'; // 邮件服务器设置
 $modules['11_system']['05_area_list'] = 'area_manage.php?act=list';
 // $modules['11_system']['06_plugins'] = 'plugins.php?act=list';
 $modules['11_system']['07_cron_schcron'] = 'cron.php?act=list';
 $modules['11_system']['08_friendlink_list'] = 'friend_link.php?act=list';
 $modules['11_system']['sitemap'] = 'sitemap.php';
-$modules['11_system']['check_file_priv'] = 'check_file_priv.php?act=check';
+//$modules['11_system']['check_file_priv'] = 'check_file_priv.php?act=check'; // 文件权限检测
 $modules['11_system']['captcha_manage'] = 'captcha_manage.php?act=main';
 $modules['11_system']['ucenter_setup'] = 'integrate.php?act=setup&code=ucenter';
 $modules['11_system']['flashplay'] = 'flashplay.php?act=list';
 $modules['11_system']['navigator'] = 'navigator.php?act=list';
-$modules['11_system']['file_check'] = 'filecheck.php';
+//$modules['11_system']['file_check'] = 'filecheck.php'; //文件校验
 // $modules['11_system']['fckfile_manage'] = 'fckfile_manage.php?act=list';
 $modules['11_system']['021_reg_fields'] = 'reg_fields.php?act=list';
 
@@ -182,13 +182,15 @@ $modules['11_system']['021_reg_fields'] = 'reg_fields.php?act=list';
 //$modules['12_template']['06_template_backup'] = 'template.php?act=backup_setting';
 //$modules['12_template']['mail_template_manage'] = 'mail_template.php?act=list';
 
-$modules['13_backup']['02_db_manage'] = 'database.php?act=backup';
-$modules['13_backup']['03_db_optimize'] = 'database.php?act=optimize';
-$modules['13_backup']['04_sql_query'] = 'sql.php?act=main';
+//数据库权限管理
+//$modules['13_backup']['02_db_manage'] = 'database.php?act=backup';
+//$modules['13_backup']['03_db_optimize'] = 'database.php?act=optimize';
+//$modules['13_backup']['04_sql_query'] = 'sql.php?act=main';
+
 // $modules['13_backup']['05_synchronous'] = 'integrate.php?act=sync';
 
 // $modules['14_sms']['02_sms_my_info'] = 'sms.php?act=display_my_info';
-$modules['14_sms']['03_sms_send'] = 'sms.php?act=display_send_ui';
+//$modules['14_sms']['03_sms_send'] = 'sms.php?act=display_send_ui'; //发送短信
 // $modules['14_sms']['04_sms_charge'] = 'sms.php?act=display_charge_ui';
 // $modules['14_sms']['05_sms_send_history'] =
 // 'sms.php?act=display_send_history_ui';
@@ -208,7 +210,7 @@ $modules['16_email_manage']['view_sendlist'] = 'view_sendlist.php?act=list';
 
 /* 代码增加_start By www.68ecshop.com */
 $modules['02_supplier']['06_supplier_tag'] = 'supplier_tag.php?act=list';
-$modules['02_supplier']['05_supplier_rank'] = 'supplier_rank.php?act=list';
+//$modules['02_supplier']['05_supplier_rank'] = 'supplier_rank.php?act=list'; 入驻商等级
 $modules['02_supplier']['01_supplier_reg'] = 'supplier.php?act=list';
 $modules['02_supplier']['02_supplier_list'] = 'supplier.php?act=list&status=1';
 $modules['02_supplier']['03_rebate_nopay'] = 'supplier_rebate.php?act=list';
@@ -272,7 +274,7 @@ $purview['19_valuecard_list'] = 'bonus_manage';
 $modules['11_system']['website'] = 'website.php?act=list';
 /* 代码增加_end By www.68ecshop.com */
 
-$modules['20_chat']['chat_settings'] = 'chat_settings.php'; // 聊天服务设置
-$modules['20_chat']['customer'] = 'customer.php?act=list'; // 客服管理
+//$modules['20_chat']['chat_settings'] = 'chat_settings.php'; // 聊天服务设置
+//$modules['20_chat']['customer'] = 'customer.php?act=list'; // 客服管理
 $modules['20_chat']['third_customer'] = 'third_customer.php?act=list'; // 三方客服
 ?>

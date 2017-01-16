@@ -402,17 +402,28 @@ if (!$smarty->is_cached('goods.dwt', $cache_id))
             $goods['goods_brand_url'] = build_uri('brand', array('bid'=>$goods['brand_id']), $goods['goods_brand']);
         }
 
-		/* 代码增加_start  By  www.68ecshop.com */
+
 		$goods['supplier_name'] ="网站自营";
-		 if ($goods['supplier_id'] > 0)
-         {
-			 $sql_supplier = "SELECT s.supplier_id,s.supplier_name,s.add_time,sr.rank_name FROM ". $ecs->table("supplier") . " as s left join ". $ecs->table("supplier_rank") ." as sr ON s.rank_id=sr.rank_id
- WHERE s.supplier_id=".$goods[supplier_id]." AND s.status=1";
-			 $shopuserinfo = $db->getRow($sql_supplier);
-			 $goods['supplier_name']= $shopuserinfo['supplier_name'];
-			 get_dianpu_baseinfo($goods['supplier_id'],$shopuserinfo);
-		 }
-		/* 代码增加_end  By  www.68ecshop.com */
+		if ($goods['supplier_id'] > 0)
+		{
+			$sql_supplier = "SELECT s.supplier_id,s.supplier_name,s.add_time,sr.rank_name FROM ". $ecs->table("supplier") . " as s left join ". $ecs->table("supplier_rank") ." as sr ON s.rank_id=sr.rank_id
+				WHERE s.supplier_id=".$goods[supplier_id]." AND s.status=1";
+			$shopuserinfo = $db->getRow($sql_supplier);
+			$goods['supplier_name']= $shopuserinfo['supplier_name'];
+			get_dianpu_baseinfo($goods['supplier_id'],$shopuserinfo);
+
+			$supplier_id = $goods['supplier_id'];
+			$smarty->assign('supplier_id',$supplier_id);
+			$smarty->assign('supplier_index','supplier.php?suppId='.$supplier_id);
+
+			$navigator_list_supplier = get_navigator_supplier($supplier_id);
+			$smarty->assign('navigator_list_supplier',$navigator_list_supplier);
+		}
+		else
+		{
+			$smarty->assign('supplier_id',0);
+		}
+
 
         $shop_price   = $goods['shop_price'];
         $linked_goods = get_linked_goods($goods_id);
@@ -1456,4 +1467,83 @@ function get_goods_volume($goods_id)
 /* 代码增加_start  By  www.68ecshop.com */
 make_html();
 /* 代码增加_end   By  www.68ecshop.com */
+
+/**
+ * 取得自定义导航栏列表
+ * @param   string      $type    位置，如top、bottom、middle
+ * @return  array         列表
+ */
+function get_navigator_supplier($supplier_id,$ctype = '', $catlist = array())
+{
+	$sql = 'SELECT * FROM '. $GLOBALS['ecs']->table('supplier_nav') . '
+            WHERE ifshow = \'1\' AND supplier_id='.$supplier_id.' ORDER BY type, vieworder';
+	$res = $GLOBALS['db']->query($sql);
+
+	$cur_url = substr(strrchr($_SERVER['REQUEST_URI'],'/'),1);
+
+	if (intval($GLOBALS['_CFG']['rewrite']))
+	{
+		if(strpos($cur_url, '-'))
+		{
+			preg_match('/([a-z]*)-([0-9]*)/',$cur_url,$matches);
+			$cur_url = $matches[1].'.php?id='.$matches[2];
+		}
+	}
+	else
+	{
+		$cur_url = substr(strrchr($_SERVER['REQUEST_URI'],'/'),1);
+	}
+
+	$noindex = false;
+	$active = 0;
+	$navlist = array(
+		'top' => array(),
+		'middle' => array(),
+		'bottom' => array()
+	);
+	while ($row = $GLOBALS['db']->fetchRow($res))
+	{
+		$navlist[$row['type']][] = array(
+			'name'      =>  $row['name'],
+			'opennew'   =>  $row['opennew'],
+			'url'       =>  $row['url'],
+			'ctype'     =>  $row['ctype'],
+			'cid'       =>  $row['cid'],
+		);
+	}
+
+	/*遍历自定义是否存在currentPage*/
+	foreach($navlist['middle'] as $k=>$v)
+	{
+		$condition = empty($ctype) ? (strpos($cur_url, $v['url']) === 0) : (strpos($cur_url, $v['url']) === 0 && strlen($cur_url) == strlen($v['url']));
+		if ($condition)
+		{
+			$navlist['middle'][$k]['active'] = 1;
+			$noindex = true;
+			$active += 1;
+		}
+	}
+
+	if(!empty($ctype) && $active < 1)
+	{
+		foreach($catlist as $key => $val)
+		{
+			foreach($navlist['middle'] as $k=>$v)
+			{
+				if(!empty($v['ctype']) && $v['ctype'] == $ctype && $v['cid'] == $val && $active < 1)
+				{
+					$navlist['middle'][$k]['active'] = 1;
+					$noindex = true;
+					$active += 1;
+				}
+			}
+		}
+	}
+
+	if ($noindex == false) {
+		$navlist['config']['index'] = 1;
+	}
+	
+	return $navlist;
+}
 ?>

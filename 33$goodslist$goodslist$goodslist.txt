@@ -21,7 +21,7 @@ array (
     'url' => 'goods.php?id=183',
     'comment_count' => '1',
     'count' => 15,
-    'click_count' => '25',
+    'click_count' => '26',
     'is_collet' => 0,
   ),
   203 => 

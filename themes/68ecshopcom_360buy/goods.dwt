@@ -380,6 +380,7 @@
                         <a class="btn-reduce" href="javascript:;" onclick="goods_cut();changePrice();">减少数量</a>
                         <input name="number" type="text" class="text"  id="number" value="1" onblur="changePrice();"/>
                         <a class="btn-add" href="javascript:;" onclick="goods_add();changePrice();">增加数量</a> 
+                        <!--
                         <!-- {if $cfg.show_goodsnumber} -->
                           （库存<font id="shows_number">{$goods.goods_number} </font>）
                         <!-- {else} -->
@@ -389,6 +390,18 @@
                                 &nbsp;&nbsp;有货
                             <!-- {/if} -->
                         <!-- {/if} -->
+                        -->
+                        <!-- {if $cfg.show_goodsnumber} -->
+                            &nbsp;&nbsp;有货
+                        <!-- {else} -->
+                            <!-- {if $goods.goods_number eq 0} -->
+                                &nbsp;&nbsp;缺货
+                            <!-- {else} -->
+                                &nbsp;&nbsp;有货
+                            <!-- {/if} -->
+                        <!-- {/if} -->
+
+
                       </div>
                     </div>
                   </li>
@@ -487,6 +500,8 @@
               <li>上架时间：{$goods.add_time}</li>
               <li>商品毛重：{$goods.goods_weight}</li>
               <!-- {if $cfg.show_goodsnumber} -->
+
+              <!--
               <li>库存： 
                 <!-- {if $goods.goods_number eq 0} --> 
                 {$lang.stock_up} 
@@ -494,6 +509,7 @@
                 {$goods.goods_number} {$goods.measure_unit} 
                 <!-- {/if} --> 
               </li>
+              -->
               <!-- {/if} -->
               <!-- {if $properties} --> 
               <!-- {foreach from=$properties item=property_group key=key} --> 
