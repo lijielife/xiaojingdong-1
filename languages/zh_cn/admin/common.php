@@ -198,6 +198,7 @@ $_LANG['05_question_manage'] = '用户咨询';
 $_LANG['05_shaidan_manage'] = '用户晒单';
 $_LANG['05_goods_tags'] = '标签审核';
 $_LANG['06_goods_brand_list'] = '商品品牌';
+$_LANG['06_hotels_brand_list'] = '酒店品牌';
 $_LANG['07_brand_add'] = '添加品牌';
 $_LANG['08_goods_type'] = '商品类型';
 $_LANG['09_attribute_list'] = '商品属性';

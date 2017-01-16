@@ -129,7 +129,8 @@ linkss = links.split("|");
 textss = texts.split("|");
 var picstr = '<ul>';
 $.each(picss, function (index, tx) { 
-	picstr += '<li style="background:url('+tx+') no-repeat center top;width:'+swf_width+'px; height:'+swf_height+'px;"><a href="'+decodeURIComponent(linkss[index])+'" target="_blank" title="'+textss[index]+'"></a></li>';
+	//picstr += '<li style="background:url('+tx+') no-repeat center top;width:'+swf_width+'px; height:'+swf_heightpicstr += '<li style="background:url('+tx+') no-repeat center top;width:'+swf_width+'px; height:'+swf_height+'px;"><a href="'+decodeURIComponent(linkss[index])+'" target="_blank" title="'+textss[index]+'"></a></li>';
+	picstr += '<li style="background:url('+tx+') no-repeat center top;width:'+swf_width+'px; height:'+swf_heightpicstr += '<li style="background:url('+tx+') no-repeat center top;width:'+swf_width+'px; height:'+swf_height+'px;"><a href="'+decodeURIComponent(linkss[index])+'" target="_blank" title="'+textss[index]+'"></a></li>';
 });
 picstr += '</ul>';
 $('#focus').css('width',swf_width);

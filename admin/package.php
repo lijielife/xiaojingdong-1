@@ -103,7 +103,7 @@ elseif ($_REQUEST['act'] == 'edit')
 
     $package            = get_package_info($_REQUEST['id']);
     $package_goods_list = get_package_goods($_REQUEST['id']); // 礼包商品
-
+    
     $smarty->assign('package',           $package);
     $smarty->assign('ur_here',           $_LANG['package_edit']);
     $smarty->assign('action_link',       array('text' => $_LANG['14_package_list'], 'href'=>'package.php?act=list&' . list_link_postfix()));
@@ -439,7 +439,7 @@ function get_packagelist()
                " FROM " . $GLOBALS['ecs']->table('goods_activity') .
                " WHERE act_type = " . GAT_PACKAGE . $where .
                " ORDER by $filter[sort_by] $filter[sort_order] LIMIT ". $filter['start'] .", " . $filter['page_size'];
-
+        //die($sql);
         $filter['keywords'] = stripslashes($filter['keywords']);
         set_filter($filter, $sql);
     }

@@ -123,24 +123,23 @@
                     if(data.length > 0){
                         $(data).each(function(key,val){
                             var class_name = '';
-                            if(val.Type == 1){
+                            if(val.Type != 5){//热门品牌不展示
+                                if(val.Type == 1){
                                 class_name = 'cairport';
-                            }
-                            else if(val.Type == 3){
-                                class_name = 'caddress';
-                            }
-                            else if(val.Type == 5){
-                                class_name = 'cbrand_hotel';
-                            }
-                            else{
-                                class_name = 'csubway';
-                            }
-                            html += '<dl><dt><span class="' +class_name +  '"></span>' + val['Name'] + '</dt><dd><p>';
+                                }
+                                else if(val.Type == 3){
+                                    class_name = 'caddress';
+                                }
+                                else{
+                                    class_name = 'csubway';
+                                }
+                                html += '<dl><dt><span class="' +class_name +  '"></span>' + val['Name'] + '</dt><dd><p>';
 
-                            $(val['TypeNameList']).each(function(k,v){
-                                html += '<a method="hotData">' + v['Name'] + '</a>';
-                            })
-                            html += '</p></dd></dl>';
+                                $(val['TypeNameList']).each(function(k,v){
+                                    html += '<a method="hotData">' + v['Name'] + '</a>';
+                                })
+                                html += '</p></dd></dl>';
+                            }
                         })
                     }
                     if(html != ''){
@@ -150,6 +149,7 @@
                             var keyword = $(this).text();
                             $(this).click(function(){
                                 $('#keywords').val(keyword);
+                                $('#keywords').attr('kwtype','position'); //关键词的类型
                                 $('#h_contentend').hide();
                             })
                         })
@@ -204,7 +204,16 @@
                                 var preg =  v['keywords'];
                                 var replace = '<b>' + v['keywords'] + '</b>';
                                 var name = v['name'].replace(preg,replace);
-                                html += '<span method="spanData">'+ name +'</span></li>';
+                                // html += '<span method="spanData">'+ name +'</span></li>';
+                                if(v['type'] == 'hotel_name'){
+                                    html += '<span method="spanData" kwtype="hotel_name">'+ name +'</span></li>';
+                                }
+                                else if(v['type'] == 'position'){
+                                    html += '<span method="spanData" kwtype="position">'+ name +'</span></li>';
+                                }
+                                else{
+                                    html += '<span method="spanData" kwtype="brand">'+ name +'</span></li>';
+                                }
                             })
                             $('#s_contentend ul').html(html);
                             $('#h_contentend').hide();
@@ -213,6 +222,7 @@
                                 $(this).click(function(){
                                     var t = $(this).text();
                                     $('#keywords').val(t);
+                                    $('#keywords').attr('kwtype',$(this).attr('kwtype'));
                                     $('#s_contentend').hide();
                                 })
                             })
@@ -251,7 +261,7 @@
                         alert(data.msg)
                     }else{
                         //alert('success')
-                        var s_url = 'hotel_search.php?act=list&city='+ encodeURI(city) + '&checkin=' + checkin + '&checkout=' + checkout + '&keywords=' + keywords;
+                        var s_url = 'hotel_search.php?act=list&city='+ encodeURI(city) + '&checkin=' + checkin + '&checkout=' + checkout + '&keywords=' + keywords + '&kwtype=' + kwtype;;
                         window.location.href = s_url;
                     }
                 },

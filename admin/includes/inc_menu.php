@@ -33,10 +33,10 @@ $modules['02_cat_and_goods']['05_goods_tags'] = 'goods_tags.php?act=list';
 $modules['02_cat_and_goods']['06_goods_brand_list'] = 'brand.php?act=list';
 $modules['02_cat_and_goods']['08_goods_type'] = 'goods_type.php?act=manage';
 $modules['02_cat_and_goods']['11_goods_trash'] = 'goods.php?act=trash'; // 商品回收站
-$modules['02_cat_and_goods']['12_batch_pic'] = 'picture_batch.php';
-$modules['02_cat_and_goods']['13_batch_add'] = 'goods_batch.php?act=add'; // 商品批量上传
-$modules['02_cat_and_goods']['14_goods_export'] = 'goods_export.php?act=goods_export';
-$modules['02_cat_and_goods']['15_batch_edit'] = 'goods_batch.php?act=select'; // 商品批量修改
+//$modules['02_cat_and_goods']['12_batch_pic'] = 'picture_batch.php';
+//$modules['02_cat_and_goods']['13_batch_add'] = 'goods_batch.php?act=add'; // 商品批量上传
+//$modules['02_cat_and_goods']['14_goods_export'] = 'goods_export.php?act=goods_export';
+//$modules['02_cat_and_goods']['15_batch_edit'] = 'goods_batch.php?act=select'; // 商品批量修改
 $modules['02_cat_and_goods']['16_goods_script'] = 'gen_goods_script.php?act=setup';
 $modules['02_cat_and_goods']['17_tag_manage'] = 'tag_manage.php?act=list';
 /*
@@ -175,12 +175,12 @@ $modules['11_system']['file_check'] = 'filecheck.php';
 // $modules['11_system']['fckfile_manage'] = 'fckfile_manage.php?act=list';
 $modules['11_system']['021_reg_fields'] = 'reg_fields.php?act=list';
 
-$modules['12_template']['02_template_select'] = 'template.php?act=list';
-$modules['12_template']['03_template_setup'] = 'template.php?act=setup';
-$modules['12_template']['04_template_library'] = 'template.php?act=library';
-$modules['12_template']['05_edit_languages'] = 'edit_languages.php?act=list';
-$modules['12_template']['06_template_backup'] = 'template.php?act=backup_setting';
-$modules['12_template']['mail_template_manage'] = 'mail_template.php?act=list';
+//$modules['12_template']['02_template_select'] = 'template.php?act=list';
+//$modules['12_template']['03_template_setup'] = 'template.php?act=setup';
+//$modules['12_template']['04_template_library'] = 'template.php?act=library';
+//$modules['12_template']['05_edit_languages'] = 'edit_languages.php?act=list';
+//$modules['12_template']['06_template_backup'] = 'template.php?act=backup_setting';
+//$modules['12_template']['mail_template_manage'] = 'mail_template.php?act=list';
 
 $modules['13_backup']['02_db_manage'] = 'database.php?act=backup';
 $modules['13_backup']['03_db_optimize'] = 'database.php?act=optimize';
@@ -236,9 +236,11 @@ $modules['02_supplier']['05_shop_street'] = 'supplier_street.php?act=list';
 // $modules['17_weixin_manage']['weixin_qiandao'] = 'weixin.php?act=qiandao';
 // $modules['17_weixin_manage']['weixin_addkey'] = 'weixin.php?act=addkey';
 $modules['11_system']['website'] = 'website.php?act=list';
+
+
 /* 代码增加_start By www.68ecshop.com */
-$modules['03_promotion']['16_takegoods_list'] = 'takegoods.php?act=list';
-$modules['03_promotion']['16_takegoods_order'] = 'takegoods.php?act=order_list';
+//$modules['03_promotion']['16_takegoods_list'] = 'takegoods.php?act=list';
+//$modules['03_promotion']['16_takegoods_order'] = 'takegoods.php?act=order_list';
 
 
 /* 代码增加_end By www.68ecshop.com */
@@ -264,6 +266,7 @@ $modules['17_pickup_point_manage']['pickup_point_batch_add'] = 'pickup_point.php
 
 /* 代码增加_start By www.68ecshop.com */
 $modules['03_promotion']['19_valuecard_list'] = 'valuecard.php?act=list';
+
 $_LANG['19_valuecard_list'] = '储值卡管理';
 $purview['19_valuecard_list'] = 'bonus_manage';
 $modules['11_system']['website'] = 'website.php?act=list';

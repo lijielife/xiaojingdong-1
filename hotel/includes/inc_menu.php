@@ -30,7 +30,7 @@ $modules['02_1_cat_and_goods']['05_goods_tags'] = 'goods_tags.php?act=list';
 /* 晒单插件 增加 by www.68ecshop.com */
 // $modules['02_cat_and_goods']['05_question_manage'] =
 // 'question_manage.php?act=list';
-$modules['02_1_cat_and_goods']['06_goods_brand_list'] = 'brand.php?act=list';
+//$modules['02_1_cat_and_goods']['06_goods_brand_list'] = 'brand.php?act=list';
 $modules['02_1_cat_and_goods']['08_goods_type'] = 'hotels_type.php?act=manage';
 $modules['02_1_cat_and_goods']['11_goods_trash'] = 'goods.php?act=trash'; // 商品回收站
 $modules['02_1_cat_and_goods']['12_batch_pic'] = 'picture_batch.php';
@@ -212,6 +212,7 @@ $modules['02_1_supplier']['01_1_supplier_reg'] = 'supplier.php?act=list';
 $modules['02_1_supplier']['02_1_supplier_list'] = 'supplier.php?act=list&status=1';
 $modules['02_1_supplier']['03_1_rebate_nopay'] = 'supplier_rebate.php?act=list';
 $modules['02_1_supplier']['08_hotel_type'] = 'hotels_type.php?act=manage';
+$modules['02_1_supplier']['06_hotels_brand_list'] = 'brand.php?act=list';
 //$modules['02_supplier']['03_rebate_pay'] = 'supplier_rebate.php?act=list&is_pay_ok=1';
 //$modules['02_1_supplier']['04_1_shop_category'] = 'supplier_street_category.php?act=list';
 //$modules['02_1_supplier']['05_1_shop_street'] = 'supplier_street.php?act=list';

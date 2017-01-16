@@ -81,8 +81,8 @@ if($type == 'zh')
         //从该城市的酒店名、酒店品牌、酒店位置组成的词库中寻找可能类似的数据
         $positon_info = get_arr_values($cat_id);
         $hotels_name = get_city_hotels($city);
-        //todo 酒店所属品牌查找
-
+        $brand_list = get_brandlist();
+        
         //开始对比
         $result = array();
         foreach($positon_info as $p_info)
@@ -113,6 +113,20 @@ if($type == 'zh')
                 );
             }
         }
+
+        foreach($brand_list as $name)
+        {
+            //酒店名字对比
+            $hname = $name['brand_name'];
+            if(strpos($hname,$keywords) !== FALSE)
+            {
+                $result[] = array(
+                    'type' => 'brand',
+                    'keywords' => $keywords,
+                    'name' => $hname,
+                );
+            }
+        }
         $response['msg'] = $result;
         die(json_encode($response));
     }
@@ -130,7 +144,7 @@ elseif($type == 'cn')
         //从该城市的酒店名、酒店品牌、酒店位置组成的词库中寻找可能类似的数据
         $positon_info = get_arr_values($cat_id);
         $hotels_name = get_city_hotels($city);
-        //todo 酒店所属品牌查找
+        $brand_list = get_brandlist();
 
         //开始对比
         $result = array();
@@ -141,7 +155,7 @@ elseif($type == 'cn')
             if(strpos($quanpin,$keywords) !== FALSE)
             {
                 $result[] = array(
-                    'type' => 'postion',
+                    'type' => 'position',
                     'name' => $p_info['attr_value'],
                     'keywords' => $keywords,
                     'postion_type' => $p_info['position']
@@ -153,7 +167,7 @@ elseif($type == 'cn')
             if(strpos($shoupin,$keywords) !== FALSE)
             {
                 $result[] = array(
-                    'type' => 'postion',
+                    'type' => 'position',
                     'name' => $p_info['attr_value'],
                     'keywords' => $keywords,
                     'postion_type' => $p_info['position']
@@ -169,7 +183,7 @@ elseif($type == 'cn')
             {
                 $result[] = array(
                     'type' => 'hotel_name',
-                    'keywords' => $keywords,
+
                     'name' => $name['supplier_name']
                 );
             }
@@ -180,8 +194,30 @@ elseif($type == 'cn')
             {
                 $result[] = array(
                     'type' => 'hotel_name',
-                    'keywords' => $keywords,
                     'name' => $name['supplier_name']
+                );
+            }
+        }
+
+        foreach($brand_list as $name)
+        {
+            //全拼对比
+            $quanpin = str_replace(' ','',$name['quanpin']);
+            if(strpos($quanpin,$keywords) !== FALSE)
+            {
+                $result[] = array(
+                    'type' => 'brand',
+                    'name' => $name['brand_name']
+                );
+            }
+
+            //首字母拼音
+            $shoupin = str_replace(' ','',$name['shoupin']);
+            if(strpos($shoupin,$keywords) !== FALSE)
+            {
+                $result[] = array(
+                    'type' => 'brand',
+                    'name' => $name['brand_name']
                 );
             }
         }
@@ -231,6 +267,19 @@ function get_city_hotels($city)
     }
     return $result;
 
+}
+
+
+/**
+ * 获取品牌列表
+ *
+ * @access  public
+ * @return  array
+ */
+function get_brandlist()
+{
+    $sql = "SELECT * FROM ".$GLOBALS['ecs']->table('hotels_brand');
+    return $GLOBALS['db']->getAll($sql);
 }
 
 ?>

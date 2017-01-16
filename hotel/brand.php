@@ -19,7 +19,11 @@ require(dirname(__FILE__) . '/includes/init.php');
 include_once(ROOT_PATH . 'includes/cls_image.php');
 $image = new cls_image($_CFG['bgcolor']);
 
-$exc = new exchange($ecs->table("brand"), $db, 'brand_id', 'brand_name');
+/* 汉字转拼音所用插件 */
+include_once(ROOT_PATH . 'includes/vendor/autoload.php');
+use Overtrue\Pinyin\Pinyin;
+
+$exc = new exchange($ecs->table("hotels_brand"), $db, 'brand_id', 'brand_name');
 
 /*------------------------------------------------------ */
 //-- 品牌列表
@@ -83,10 +87,16 @@ elseif ($_REQUEST['act'] == 'insert')
      /*处理URL*/
     $site_url = sanitize_url( $_POST['site_url'] );
 
+
+    $pinyin = new Pinyin();
+    $brand_name = $_POST['brand_name'];
+    $quanpin = $pinyin->sentence($brand_name); //全拼
+    $shoupin = $pinyin->abbr($brand_name);//首字母拼音
+
     /*插入数据*/
 
-    $sql = "INSERT INTO ".$ecs->table('brand')."(brand_name, site_url, brand_desc, brand_logo, is_show, sort_order) ".
-           "VALUES ('$_POST[brand_name]', '$site_url', '$_POST[brand_desc]', '$img_name', '$is_show', '$_POST[sort_order]')";
+    $sql = "INSERT INTO ".$ecs->table('hotels_brand')."(brand_name,quanpin,shoupin, site_url, brand_desc, brand_logo, is_show, sort_order) ".
+           "VALUES ('$brand_name','$quanpin','$shoupin', '$site_url', '$_POST[brand_desc]', '$img_name', '$is_show', '$_POST[sort_order]')";
     $db->query($sql);
 
     admin_log($_POST['brand_name'],'add','brand');
@@ -111,7 +121,7 @@ elseif ($_REQUEST['act'] == 'edit')
     /* 权限判断 */
     admin_priv('brand_manage');
     $sql = "SELECT brand_id, brand_name, site_url, brand_logo, brand_desc, brand_logo, is_show, sort_order ".
-            "FROM " .$ecs->table('brand'). " WHERE brand_id='$_REQUEST[id]'";
+            "FROM " .$ecs->table('hotels_brand'). " WHERE brand_id='$_REQUEST[id]'";
     $brand = $db->GetRow($sql);
 
     $smarty->assign('ur_here',     $_LANG['brand_edit']);
@@ -148,7 +158,12 @@ elseif ($_REQUEST['act'] == 'updata')
 
     /* 处理图片 */
     $img_name = basename($image->upload_image($_FILES['brand_logo'],'brandlogo'));
-    $param = "brand_name = '$_POST[brand_name]',  site_url='$site_url', brand_desc='$_POST[brand_desc]', is_show='$is_show', sort_order='$_POST[sort_order]' ";
+
+    $pinyin = new Pinyin();
+    $brand_name = $_POST['brand_name'];
+    $quanpin = $pinyin->sentence($brand_name); //全拼
+    $shoupin = $pinyin->abbr($brand_name);//首字母拼音
+    $param = "brand_name = '$brand_name',  quanpin='$quanpin',shoupin='$shoupin',site_url='$site_url', brand_desc='$_POST[brand_desc]', is_show='$is_show', sort_order='$_POST[sort_order]' ";
     if (!empty($img_name))
     {
         //有图片上传
@@ -212,8 +227,13 @@ elseif($_REQUEST['act'] == 'add_brand')
     }
     else
     {
-        $sql = "INSERT INTO " . $ecs->table('brand') . "(brand_name)" .
-               "VALUES ( '$brand')";
+        $pinyin = new Pinyin();
+        $brand_name = $_REQUEST['brand'];
+        $quanpin = $pinyin->sentence($brand_name); //全拼
+        $shoupin = $pinyin->abbr($brand_name);//首字母拼音
+        //echo $brand_name .'|' . $quanpin .'|'. $shoupin;exit;
+        $sql = "INSERT INTO " . $ecs->table('hotels_brand') . "(brand_name,quanpin,shoupin)" .
+               "VALUES ( '$brand','$quanpin','$shoupin')";
 
         $db->query($sql);
         $brand_id = $db->insert_id();
@@ -271,7 +291,7 @@ elseif ($_REQUEST['act'] == 'remove')
     $id = intval($_GET['id']);
 
     /* 删除该品牌的图标 */
-    $sql = "SELECT brand_logo FROM " .$ecs->table('brand'). " WHERE brand_id = '$id'";
+    $sql = "SELECT brand_logo FROM " .$ecs->table('hotels_brand'). " WHERE brand_id = '$id'";
     $logo_name = $db->getOne($sql);
     if (!empty($logo_name))
     {
@@ -281,6 +301,7 @@ elseif ($_REQUEST['act'] == 'remove')
     $exc->drop($id);
 
     /* 更新商品的品牌编号 */
+    //todo 更新酒店room编号
     $sql = "UPDATE " .$ecs->table('goods'). " SET brand_id=0 WHERE brand_id='$id'";
     $db->query($sql);
 
@@ -303,7 +324,7 @@ elseif ($_REQUEST['act'] == 'batch_drop')
         foreach ($_POST['checkboxes'] AS $key => $id)
         {
             /* 删除该品牌的图标 */
-            $sql = "SELECT brand_logo FROM " .$ecs->table('brand'). " WHERE brand_id = '$id'";
+            $sql = "SELECT brand_logo FROM " .$ecs->table('hotels_brand'). " WHERE brand_id = '$id'";
             $logo_name = $db->getOne($sql);
             if (!empty($logo_name))
             {
@@ -313,6 +334,7 @@ elseif ($_REQUEST['act'] == 'batch_drop')
             $exc->drop($id);
 
             /* 更新商品的品牌编号 */
+            //todo 更新酒店room编号
             $sql = "UPDATE " .$ecs->table('goods'). " SET brand_id=0 WHERE brand_id='$id'";
             $db->query($sql);
 
@@ -341,13 +363,13 @@ elseif ($_REQUEST['act'] == 'export')
     if (isset($_REQUEST['keyword']) && !empty($_REQUEST['keyword']))
     {
         $sql = "SELECT brand_name, brand_logo, site_url, brand_desc, sort_order, is_show FROM "
-            .$GLOBALS['ecs']->table('brand')." WHERE brand_name LIKE '%{$_REQUEST['keyword']}%' ORDER BY sort_order ASC";
+            .$GLOBALS['ecs']->table('hotels_brand')." WHERE brand_name LIKE '%{$_REQUEST['keyword']}%' ORDER BY sort_order ASC";
     }
     // 不存在搜索关键字时搜索全部
     else
     {
         $sql = "SELECT brand_name, brand_logo, site_url, brand_desc, sort_order, is_show FROM "
-            .$GLOBALS['ecs']->table('brand')." ORDER BY sort_order ASC";
+            .$GLOBALS['ecs']->table('hotels_brand')." ORDER BY sort_order ASC";
     }
     // 取得导出数据
     $brands = $db->getAll($sql);
@@ -454,13 +476,13 @@ elseif ($_REQUEST['act'] == 'drop_logo')
     $brand_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
     /* 取得logo名称 */
-    $sql = "SELECT brand_logo FROM " .$ecs->table('brand'). " WHERE brand_id = '$brand_id'";
+    $sql = "SELECT brand_logo FROM " .$ecs->table('hotels_brand'). " WHERE brand_id = '$brand_id'";
     $logo_name = $db->getOne($sql);
 
     if (!empty($logo_name))
     {
         @unlink(ROOT_PATH . DATA_DIR . '/brandlogo/' .$logo_name);
-        $sql = "UPDATE " .$ecs->table('brand'). " SET brand_logo = '' WHERE brand_id = '$brand_id'";
+        $sql = "UPDATE " .$ecs->table('hotels_brand'). " SET brand_logo = '' WHERE brand_id = '$brand_id'";
         $db->query($sql);
     }
     $link= array(array('text' => $_LANG['brand_edit_lnk'], 'href' => 'brand.php?act=edit&id=' . $brand_id), array('text' => $_LANG['brand_list_lnk'], 'href' => 'brand.php?act=list'));
@@ -502,11 +524,11 @@ function get_brandlist()
         if (isset($_POST['brand_name']) && !empty($_POST['brand_name']))
         /* 代码修改 By  www.68ecshop.com End */
         {
-            $sql = "SELECT COUNT(*) FROM ".$GLOBALS['ecs']->table('brand') .' WHERE brand_name = \''.$_POST['brand_name'].'\'';
+            $sql = "SELECT COUNT(*) FROM ".$GLOBALS['ecs']->table('hotels_brand') .' WHERE brand_name = \''.$_POST['brand_name'].'\'';
         }
         else
         {
-            $sql = "SELECT COUNT(*) FROM ".$GLOBALS['ecs']->table('brand');
+            $sql = "SELECT COUNT(*) FROM ".$GLOBALS['ecs']->table('hotels_brand');
         }
 
         $filter['record_count'] = $GLOBALS['db']->getOne($sql);
@@ -524,11 +546,11 @@ function get_brandlist()
             {
                 $keyword = $_POST['brand_name'];
             }
-            $sql = "SELECT * FROM ".$GLOBALS['ecs']->table('brand')." WHERE brand_name like '%{$keyword}%' ORDER BY sort_order ASC";
+            $sql = "SELECT * FROM ".$GLOBALS['ecs']->table('hotels_brand')." WHERE brand_name like '%{$keyword}%' ORDER BY sort_order ASC";
         }
         else
         {
-            $sql = "SELECT * FROM ".$GLOBALS['ecs']->table('brand')." ORDER BY sort_order ASC";
+            $sql = "SELECT * FROM ".$GLOBALS['ecs']->table('hotels_brand')." ORDER BY sort_order ASC";
         }
 
         set_filter($filter, $sql);

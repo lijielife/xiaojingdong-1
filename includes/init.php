@@ -87,6 +87,7 @@ require(ROOT_PATH . 'includes/lib_insert.php');
 require(ROOT_PATH . 'includes/lib_goods.php');
 require(ROOT_PATH . 'includes/lib_article.php');
 require(ROOT_PATH . 'themes/68ecshopcom_360buy/php/init.php');
+require(ROOT_PATH . 'includes/lib_hotels.php');
 
 /* 对用户传入的变量进行转义操作。*/
 if (!get_magic_quotes_gpc())

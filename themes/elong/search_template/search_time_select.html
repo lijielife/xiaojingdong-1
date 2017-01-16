@@ -1,24 +1,56 @@
 <!-- 搜索页入住时间、退房时间html -->
+<style type="text/css">
+    /* 时间选择样式  */
+    .datetimepicker {
+        padding: 4px;
+        margin-top: 1px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        direction: ltr;
+    }
+    .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1000;
+        display: none;
+        float: left;
+        min-width: 160px;
+        padding: 5px 0;
+        margin: 2px 0 0;
+        font-size: 14px;
+        list-style: none;
+        background-color: #ffffff;
+        border: 1px solid #cccccc;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 4px;
+        -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+        background-clip: padding-box;
+    }
+</style>
+
 <div class="search_item search_date">
     <label class="left br" data-wrap="checkInWrap">
         <span>入住</span>
-        <input data-bindid="checkIn" id="checkin" type="input" value="{$checkin}" selectedvalue="{$checkin}" class="input_f16 input_date">
+        <input data-bindid="checkIn" id="checkin" type="input" value="{$checkin}" selectedvalue="{$checkin}" class="input_f16 input_date"  data-date-format='yyyy-mm-dd'>
         <span class="icon_date_s"></span>
     </label>
     <label class="left" data-wrap="checkOutWrap">
         <span>离店</span>
-        <input data-bindid="checkOut" id="checkout" type="input" value="{$checkout}" selectedvalue="{$checkout}" class="input_f16 input_date">
+        <input data-bindid="checkOut" id="checkout" type="input" value="{$checkout}" selectedvalue="{$checkout}" class="input_f16 input_date" data-date-format='yyyy-mm-dd'>
         <span class="icon_date_e"></span>
-        <span class="total" data-bindid="dayCount">(共1晚)</span></label>
+        <!-- <span class="total" data-bindid="dayCount">(共1晚)</span></label> -->
 </div>
 
 
 <script type="text/javascript">
     $(function() {
         
-        $('.form_date_checkin').datetimepicker({
+        $('#checkin').datetimepicker({
             language: 'zh',
-            // {format: 'yyyy-mm-dd hh:ii'}，
+            //format: 'yyyy-mm-dd'，
             weekStart: 1,
             todayBtn: 1,
             autoclose: 1,
@@ -27,7 +59,7 @@
             minView: 2,
             forceParse: 0
         });
-        $('.form_date_checkout').datetimepicker({
+        $('#checkout').datetimepicker({
             language: 'zh',
             weekStart: 1,
             todayBtn: 1,

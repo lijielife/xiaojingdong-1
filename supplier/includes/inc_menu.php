@@ -21,11 +21,11 @@ $modules['02_rebate_manage']['03_rebate_nopay']       = 'supplier_rebate.php?act
 $modules['02_rebate_manage']['03_rebate_pay']       = 'supplier_rebate.php?act=list&is_pay_ok=1';
 */
 
-$modules['03_promotion']['04_bonustype_list']       = 'bonus.php?act=list';
+//$modules['03_promotion']['04_bonustype_list']       = 'bonus.php?act=list';
 //$modules['03_promotion']['08_group_buy']            = 'group_buy.php?act=list';
-$modules['03_promotion']['10_auction']              = 'auction.php?act=list';
-$modules['03_promotion']['12_favourable']           = 'favourable.php?act=list';
-$modules['03_promotion']['13_pre_sale']           = 'pre_sale.php?act=list';//预售活动
+//$modules['03_promotion']['10_auction']              = 'auction.php?act=list';
+//$modules['03_promotion']['12_favourable']           = 'favourable.php?act=list';
+//$modules['03_promotion']['13_pre_sale']           = 'pre_sale.php?act=list';//预售活动
 
 
 $modules['04_order']['01_order_list']               = 'order.php?act=list';

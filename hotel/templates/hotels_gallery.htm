@@ -1,0 +1,71 @@
+{include file="pageheader_iframe.htm"}
+<table width="100%" id="gallery-table" style="display: table;" align="center">
+  <!-- 图片列表 -->
+  <tbody><tr>
+    <td>
+      <style>
+        .attr-color-div {
+          width: 100%;
+          background: #BBDDE5;
+          text-indent: 10px;
+          height: 26px;
+          padding-top: 1px;
+        }
+
+        .attr-front {
+          background: #CCFF99;
+          line-height: 24px;
+          font-weight: bold;
+          padding: 6px 15px 6px 18px;
+        }
+
+        .attr-back {
+          color: #FF0000;
+          font-weight: bold;
+          line-height: 24px;
+          padding: 6px 15px 6px 18px;
+          border-right: 1px solid #FFF;
+        }
+      </style>
+      <script>
+
+        function changeCurrentColor(n)
+        {
+          for(i=1;i<=2;i++)
+          {
+            document.getElementById("color_" + i).className = "attr-back";
+          }
+          document.getElementById("color_" + n).className = "attr-front";
+        }
+
+      </script>
+      <font color="#ff3300">请选择图片分类</font>
+      （点击下面不同分类切换到该分类对应的相册）
+      <br>
+      <br>
+      <div class="attr-color-div">
+        {foreach from=$gallery_list name=color_list item=color_qq}
+            <span class="{if $smarty.foreach.color_list.iteration eq 1}attr-front{else}attr-back{/if}" id="color_{$smarty.foreach.color_list.iteration}">
+                <a href="hotel_attr_img_upload.php?goods_id={$supplier_id}&goods_attr_id={$color_qq.attr_id}" onclick="javascript:changeCurrentColor({$smarty.foreach.color_list.iteration})" target="attr_upload">{$color_qq.attr_value}</a>
+            </span>
+        {/foreach}
+      </div>
+      <iframe name="attr_upload" src="hotel_attr_img_upload.php?goods_id={$supplier_id}&amp;goods_attr_id={$gallery_list.0.attr_id}" frameborder="1" scrolling="no" width="100%" height="auto" style="min-height:630px; border:1px #eee solid; margin-top:5px;"> </iframe>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  </tbody>
+</table>
+<script>
+  function changeCurrentColor(n)
+  {
+    for(i=1;i<={$gallery_count};i++)
+    {
+      $("#color_" + i).className = "attr-back";
+    }
+    $("#color_" + n).className = "attr-front";
+  }
+</script>
+{include file="pagefooter.htm"}

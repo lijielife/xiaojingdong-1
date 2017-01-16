@@ -148,12 +148,31 @@ elseif ($_REQUEST['act']== 'supplier_base_info')
     }
 
     $smarty->assign('form_action', 'update');
+
+    //获取酒店所属的品牌
+    if($supplier['brand_id'])
+    {
+        $supplier['brand_name'] = $GLOBALS['db']->getOne("SELECT brand_name FROM " . $GLOBALS['ecs']->table('hotels_brand') . "WHERE brand_id='$supplier[brand_id]'");
+    }
+    else
+    {
+        $supplier['brand_name'] = '';
+    }
     $smarty->assign('supplier', $supplier);
     /* 代码增加 By  www.68ecshop.com Start */
     // 商品等级
     $smarty->assign('rank_id', $supplier['rank_id']);
     $smarty->assign('supplier_rank_list', get_supplier_rank_list());
     /* 代码增加 By  www.68ecshop.com End */
+
+    //获取酒店列表
+    $smarty->assign('brand_list', get_hotel_brand_list());
+
+    $smarty->assign('brand_list_new', get_hotel_brand_list(true));
+
+
+
+
 
     assign_query_info();
 
@@ -216,6 +235,7 @@ elseif ($_REQUEST['act']=='update')
     /* 检查权限 */
     admin_priv('supplier_manage');
 
+
     //审核通过，必须要填写的项目
     /* 代码删除 By www.68ecshop.com Start */
 //    if(intval($_POST['status']) == 1){
@@ -234,6 +254,11 @@ elseif ($_REQUEST['act']=='update')
         'province'   => intval($_POST['province']),
         'city'   => intval($_POST['city']),
         'district'   => intval($_POST['district']),
+        'brand_id' => intval($_POST['brand_id']),
+        'supplier_tel'    => trim($_POST['tel']),
+        'supplier_desc'    => trim($_POST['desc']),
+        'longitude' => trim($_POST['jingdu']),
+        'latitude' => trim($_POST['weidu']),
         //'address'   => trim($_POST['address']),
         //'tel'   => trim($_POST['tel']),
         //'email'   => trim($_POST['email']),
@@ -267,8 +292,8 @@ elseif ($_REQUEST['act']=='update')
     if(isset($_POST['supplier_name']) && $_POST['supplier_name'])
     {
         $pinyin = new Pinyin();
-        $supplier['supplier_quanpin'] = $pinyin->sentence($_POST['supplier_name']); //全拼
-        $supplier['supplier_shoupin'] = $pinyin->abbr($_POST['supplier_name']);//首字母拼音
+        $quanpin = $pinyin->sentence($_POST['supplier_name']); //全拼
+        $shoupin = $pinyin->abbr($_POST['supplier_name']);//首字母拼音
     }
     /* 代码增加_start  By  supplier.68ecshop.com */
     /* 取得供货商信息 */
@@ -759,4 +784,35 @@ function get_supplier_rank_list()
     return $rank_list;
 }
 /* 代码增加 By  www.68ecshop.com End */
+
+/**
+ * 取得酒店品牌列表
+ * @return array 品牌列表 id => name
+ */
+function get_hotel_brand_list($t = false)
+{
+    include_once(ROOT_PATH . '/includes/Pinyin.php');
+    $sql = 'SELECT brand_id, brand_name FROM ' . $GLOBALS['ecs']->table('hotels_brand') . ' ORDER BY sort_order';
+    $res = $GLOBALS['db']->getAll($sql);
+
+    $brand_list = array();
+    foreach ($res AS $row)
+    {
+        // 代码修改_start_derek20150129admin_goods  www.68ecshop.com
+
+        if ($t == true)
+        {
+            $brand_list[$row['brand_id']]['name'] = addslashes($row['brand_name']);
+            $brand_list[$row['brand_id']]['name_pinyin'] = Pinyin($brand_list[$row['brand_id']]['name'],1,1);
+            $brand_list[$row['brand_id']]['name_p'] = substr($brand_list[$row['brand_id']]['name_pinyin'],0,1);
+        }
+        else
+        {
+            $brand_list[$row['brand_id']] = addslashes($row['brand_name']);
+        }
+        // 代码修改_end_derek20150129admin_goods  www.68ecshop.com
+    }
+
+    return $brand_list;
+}
 ?>

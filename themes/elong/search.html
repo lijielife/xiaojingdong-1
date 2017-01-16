@@ -10,7 +10,10 @@
         <link rel="stylesheet" rev="stylesheet" href="themes/elong/css/hotel-com.css" type="text/css" media="all">
         <link rel="stylesheet" type="text/css" href="themes/elong/css/list-2015.css">
         <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=QIZwfxpjGmOEolvcosjoudgK1C9EXBbm"></script>
         <script type="text/javascript" src="themes/elong/js/search_index.js"></script>
+        <script type="text/javascript" src="js/transport.js"></script>
+        
 
         <!-- 时间选址，采用bootstrip-datetimepicker -->
         <script type="text/javascript" src="themes/elong/js/bootstrap-datetimepicker.js"></script>
@@ -220,34 +223,34 @@
                     <label>
                         <span>关键词</span>
                         {if $keywords}
-                            <input data-bindid="allInOne" method="allInOne" type="input" id="keywords" class="input_f16 input_termini"  value="{$keywords}"></label>
+                            <input data-bindid="allInOne" method="allInOne" type="input" id="keywords" class="input_f16 input_termini"  value="{$keywords}" kwtype="{$kwtype}"></label>
                         {else}
-                             <input data-bindid="allInOne" method="allInOne" type="input" id="keywords" class="input_f16 input_termini c999" value="如位置\酒店名\品牌"></label>
+                             <input data-bindid="allInOne" method="allInOne" type="input" id="keywords" class="input_f16 input_termini c999" value="如位置/酒店名/品牌"></label>
                         {/if}
                 </div>
-                <div class="btn_search_w1 right" data-bindid="search" method="search">
+                <div class="btn_search_w1 right" id="research" data-bindid="search" method="search">
                     <span class="icon_search mr10"></span>搜索</div>
             </div>
             <div class="filter_box beee mb20 z10" id="filterZone" method="filterZone">
-                <div class="filter_btn" method="showOrHideFilter" data-show="1">收起服务设施&amp;房型人数</div>
+                <div class="filter_btn" method="showOrHideFilter" data-show="1">展开服务设施</div>
                 <!-- location start -->
-                <div class="filter_item z10" method="locationFilterPart" data-multi="0">
+                <div class="filter_item z10" method="locationFilterPart" data-multi="0" id="position">
                     <div class="filter_title">
                         <span class="icon_filter_posi"></span>位置
                         <i class="b-line"></i></div>
-                    <div class="filter_option_box" id="position">
+                    <div class="filter_option_box" id="position1">
                         {$position_html}
                     </div>
                 </div>
                 <!-- location end -->
                 <!-- price start -->
-                <div class="filter_item" id="price" attrid='1002' method="priceFilterPart" data-multi="1">
+                <!-- <div class="filter_item" id="price" attrid='1002' method="priceFilterPart" data-multi="1">
                     <div class="filter_title">
                         <span class="icon_filter_pri"></span>房价
                         <i class="b-line"></i></div>
                     <div class="filter_option_box">
                         <div class="filter_option">
-                            <div method="price" data-id="-1" data-low="0" data-high="0" class="filter_unlimited filter_unlimited_on">不限</div>
+                            <div method="price"  data-low="0" data-high="0" class="filter_unlimited filter_unlimited_on">不限</div>
                             <div class="filter_custom">
                                 <span class="mr5">自定义</span>
                                 <span class="mr5">
@@ -280,16 +283,17 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> -->
+                {$price_html}
                 <!-- price end -->
                 <!-- star start -->
-                <div class="filter_item" id="star" attrid='1001' method="starFilterPart" data-multi="1">
+               <!--  <div class="filter_item" id="star" attrid='1001' method="starFilterPart" data-multi="1">
                     <div class="filter_title">
                         <span class="icon_filter_star"></span>星级
                         <i class="b-line"></i></div>
                     <div class="filter_option_box">
                         <div class="filter_option">
-                            <div method="star" data-id="-1" class="filter_unlimited filter_unlimited_on">不限</div>
+                            <div method="star"  class="filter_unlimited filter_unlimited_on">不限</div>
                             <ul class="filter_cb_list" >
                                 <li method="star" data-id="2" data-name="经济/客栈" data-selected="0">
                                     <i class="icon_checkbox1"></i>
@@ -314,17 +318,18 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> -->
+                {$star_html}
                 <!-- star end -->
                 <!--1010.人数 1011.设施 1012.主题 3.品牌 -->
                 <!-- 3.品牌 -->
-                <div class="filter_item" id="brand" attrid="1005" method="brandFilterPart" data-typeid="3" data-multi="1">
+                <!-- <div class="filter_item" id="brand" attrid="1005" method="brandFilterPart" data-typeid="3" data-multi="1">
                     <div class="filter_title">
                         <span class="icon_filter_prod"></span>品牌
                         <i class="b-line"></i></div>
                     <div class="filter_option_box">
                         <div class="filter_option">
-                            <div method="brand" data-id="-1" class="filter_unlimited filter_unlimited_on">不限</div>
+                            <div method="brand"  class="filter_unlimited filter_unlimited_on">不限</div>
                             <ul class="filter_cb_list" method="brandList">
                                 <li method="brand" data-typeid="3" data-id="56" data-name="汉庭" data-selected="0">
                                     <i class="icon_checkbox1"></i>
@@ -349,7 +354,7 @@
                             </ul>
                             <div class="filter_cb_more" method="showAllBrand" data-showall="0">舒适/高档/豪华品牌</div>
                             <div class="filter_more icon_hl_more1" method="showAllBrand" data-showall="0" data-btn="brand"></div>
-                            <!-- allbrand start -->
+                            
                             <div id="allBrandDiv" method="allBrand" class="more_finfo" style="display: none;">
                                 <div class="filter_layer">
                                     <h4 class="filter_close">
@@ -385,18 +390,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- allbrand end --></div>
+                            </div>
                     </div>
-                </div>
+                </div> -->
+                {$brand_html}
                 <!--1010.人数 1011.设施 1012.主题 3.品牌 -->
                 <!--1010.人数 1011.设施 1012.主题 -->
-                <div class="filter_item" id="theme" attrid="1009" method="themeFilterPart" data-typeid="1012" data-multi="1">
+                <!-- <div class="filter_item" id="theme" attrid="1009" method="themeFilterPart" data-typeid="1012" data-multi="1">
                     <div class="filter_title">
                         <span class="icon_filter_theme"></span>主题
                         <i class="b-line"></i></div>
                     <div class="filter_option_box">
                         <div class="filter_option">
-                            <div method="theme" data-id="-1" class="filter_unlimited filter_unlimited_on">不限</div>
+                            <div method="theme"  class="filter_unlimited filter_unlimited_on">不限</div>
                             <ul class="filter_cb_list" method="themeList">
                                 <li method="theme" data-typeid="1012" data-id="100000270" data-name="商旅之家" data-selected="0">
                                     <i class="icon_checkbox1"></i>
@@ -486,16 +492,17 @@
                             <div class="icon_hl_more1 filter_more" method="showAllOps" data-showall="0"></div>
                         </div>
                     </div>
-                </div>
+                </div> -->
+                {$theme_html}
                 <!--1010.人数 1011.设施 1012.主题 3.品牌 -->
                 <!--1010.人数 1011.设施 1012.主题 -->
-                <div class="filter_item " id="service" attrid="1010" method="facilityFilterPart" data-typeid="1011" data-multi="1" style="">
+               <!--  <div class="filter_item filter_last" id="service" attrid="1010" method="facilityFilterPart" data-typeid="1011" data-multi="1" style="">
                     <div class="filter_title">
                         <span class="icon_filter_serv"></span>服务
                         <i class="b-line"></i></div>
                     <div class="filter_option_box">
                         <div class="filter_option">
-                            <div method="facility" data-id="-1" class="filter_unlimited filter_unlimited_on">不限</div>
+                            <div method="facility"  class="filter_unlimited filter_unlimited_on">不限</div>
                             <ul class="filter_cb_list" method="facilityList">
                                 <li method="facility" data-typeid="1011" data-id="100000010" data-name="叫醒服务" data-selected="0">
                                     <i class="icon_checkbox1"></i>
@@ -553,10 +560,11 @@
                             <div class="icon_hl_more1 filter_more" method="showAllOps" data-showall="0"></div>
                         </div>
                     </div>
-                </div>
+                </div> -->
+                {$service_html}
                 <!--1010.人数 1011.设施 1012.主题 3.品牌 -->
                 <!--1010.人数 1011.设施 1012.主题 -->
-                <div class="filter_item filter_last" method="personFilterPart" data-typeid="1010" data-multi="0" style="">
+             <!--    <div class="filter_item filter_last" method="personFilterPart" data-typeid="1010" data-multi="0" style="">
                     <div class="filter_title">
                         <span class="icon_filter_per"></span>人数
                         <i class="b-line"></i></div>
@@ -595,11 +603,11 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="condition mb10" id="conditionZone" method="conditionZone">
                 <div class="cont_total left">
-                    <span class="t24 mr5" id="hotelCount">2</span>家酒店满足条件</div>
+                    <span class="t24 mr5" id="hotelCount">{$hotels_num}</span>家酒店满足条件</div>
                 <div class="cond-list" method="conditionList">
                     <!-- <span method="delCondition" data-type="allInOne" data-id="1" title="删除此条件">华天
                         <i class="icon_close_hl"></i></span>
@@ -745,152 +753,97 @@
                     <!-- cms start -->
                     <!-- cms end -->
                     <div id="hotelContainer">
-                        <div class="h_list" method="hotelList">
-                            <div class="h_item" id="hotel51906005" method="hotelItem" data-hotelid="51906005" style="background: rgb(255, 255, 255);">
-                                <div class="h_info">
-                                    <div class="h_info_pic" data-mark="img_51906005_container" method="imgContainer">
-                                        <a href="#" target="_blank">
-                                            <img method="bigImg" data-mark="img_51906005" src="themes/elong/images/0000bhGr.jpg" data-src="http://pavo.elongstatic.com/i/Hotel480_350/0000bhGr.jpg" alt="湘潭华天大酒店" width="180" height="130"></a>
-                                    </div>
-                                    <div class="h_info_text">
-                                        <!---------------->
-                                        <div class="h_info_pri">
-                                            <p>
-                                                <a href="#" target="_blank">
-                                                    <span class="c666">¥</span>
-                                                    <span class="h_pri_num ">254</span>
-                                                    <span class="cf55">起</span></a>
-                                            </p>
-                                            <p class="mt5"></p>
-                                            <div class="to_detail">
-                                                <a class="t14" href="#" target="_blank">查看详情</a></div>
-                                            <div class="h_add_cc">
-                                                <!--<span class="add_compare" method="comparison" data-hotelid="51906005">
-                                                <i class="icon_add_comp"></i>对比
-                                                </span>-->
-                                                <span class="add_collect ml20" method="collectable" data-hotelid="51906005">
-                                                    <i class="icon_add_coll" locationforfav="favcount"></i>
-                                                    <b>144人</b>收藏
-                                                    <em class="add_collect_1">+1</em></span>
+                        <div class="h_list" id="hotelList" method="hotelList">
+                        {if $hotels_num > 0}
+                            {foreach from=$hotels_info key=id item=hotel}
+                                <div class="h_item" id="{$key}" method="hotelItem"  style="background: rgb(255, 255, 255);">
+                                    <div class="h_info">
+                                        <div class="h_info_pic" data-mark="" method="imgContainer">
+                                            <!-- todo 图片点击后跳转到酒店地址 -->
+                                            <a href="#" target="_blank">
+                                                <img method="bigImg" data-mark="" src="{$hotel.photos.0.thumb_url}" data-src="{$hotel.photos.0.img_url}" alt="{$hotel.supplier_name}" width="180" height="130">
+                                            </a>
+                                            <div class="float_pic" data-mark="" style="display: none;">
+                                                <div>
+                                                    <img src="{$hotel.photos.0.img_original}" alt="{$hotel.supplier_name}">
+                                                </div>
                                             </div>
                                         </div>
-                                        <!---------------->
-                                        <div class="h_info_comt">
-                                            <a href="#" target="_blank" class="h_comt_data">
-                                                <span method="review" class="h_info_comt_bg">
-                                                    <i class="t18">97%</i>
-                                                    <i class="c555">好评</i></span>
-                                                <span class="c555 block mt5">来自
-                                                    <b>1778</b>条点评</span>
-                                            </a>
-                                            <p class="lastt_book mt10" id="recentOrder_51906005">最新预订:33分钟前</p></div>
-                                        <!---------------->
-                                        <div class="h_info_base">
-                                            <p class="h_info_b1">
-                                                <a href="#" target="_blank" title="湘潭华天大酒店">
-                                                    <span class="icon_nmb" id="icon_nmb_id">1</span>湘潭华天大酒店</a>
-                                                <i class="icon_crown" title="艺龙皇冠级合作酒店"></i>
-                                                <b class="icon_stars icon_elevel5" title="艺龙用户评定为豪华型酒店"></b>
-                                            </p>
-                                            <p class="h_info_b2">
-                                                <a href="#">[建设路口]</a>岳塘区建设路口 国际金融大厦(近步步高广场)</p>
-                                            <div class="hotel_inf_sale clearfix mt5">
-                                                <p class="h_comt_other">
-                                                    <span class="icon_faci_s1" title="WiFi上网"></span>
-                                                    <span class="icon_faci_s3" title="宽带上网"></span>
-                                                    <span class="icon_faci_s2" title="停车场"></span>
-                                                    <span class="icon_faci_s6" title="餐厅"></span>
-                                                    <span class="icon_faci_s7" title="健身房"></span>
+                                        <div class="h_info_text">
+                                            <div class="h_info_pri">
+                                                <p>
+                                                    <a href="#" target="_blank">
+                                                        <span class="c666">¥</span>
+                                                        <span class="h_pri_num ">{$hotel.lowprice}</span>
+                                                        <span class="cf55">起</span></a>
+                                                </p>
+                                                <p class="mt5"></p>
+                                                <div class="to_detail">
+                                                    <a class="t14" href="#" target="_blank">查看详情</a></div>
+                                                <div class="h_add_cc">
+                        
+                                                    <!-- <span class="add_collect ml20" method="collectable" data-hotelid="51906005">
+                                                        <i class="icon_add_coll" locationforfav="favcount"></i>
+                                                        <b>144人</b>收藏
+                                                        <em class="add_collect_1">+1</em></span> -->
+                                                </div>
+                                            </div>
+                    
+                                            <div class="h_info_comt">
+                                                <a href="#" target="_blank" class="h_comt_data">
+                                                    <span method="review" class="h_info_comt_bg">
+                                                        <i class="t18">{$hotel.good_dianpin}</i>
+                                                        <i class="c555">好评</i></span>
+                                                    <span class="c555 block mt5">来自
+                                                        <b>{$hotel.dianpin}</b>条点评</span>
+                                                </a>
+                                                <p class="lastt_book mt10" id="recentOrder_51906005">最新预订:{$hotel.lastest_buy}</p></div>
+                         
+                                            <div class="h_info_base">
+                                                <p class="h_info_b1">
+                                                    <a href="#" target="_blank" title="{$hotel.supplier_name}">
+                                                        <span class="icon_nmb" id="icon_nmb_id">1</span>{$hotel.supplier_name}</a>
+                                                    <i class="icon_crown" title="艺龙皇冠级合作酒店"></i>
+                                                    <b class="icon_stars icon_elevel5" title="艺龙用户评定为豪华型酒店"></b>
+                                                </p>
+                                                <p class="h_info_b2">
+                                                    <a href="#"></a>{$hotel.hotel_address}</p>
+                                                <div class="hotel_inf_sale clearfix mt5">
+                                                    <p class="h_comt_other">
+                                                        <span class="icon_faci_s1" title="WiFi上网"></span>
+                                                        <span class="icon_faci_s3" title="宽带上网"></span>
+                                                        <span class="icon_faci_s2" title="停车场"></span>
+                                                        <span class="icon_faci_s6" title="餐厅"></span>
+                                                        <span class="icon_faci_s7" title="健身房"></span>
+                                                    </p>
+                                                </div>
+                                                <p class="h_info_b4">
+                                                    <span class="l1" title="{$hotels.supplier_name}地图" method="showMap" data-lng="{$hotel.longitude}" data-lat="{$hotel.latitude}" mapid="{$id}" data-maptype="0" data-hotelid="51906005" data-hotelname="{$hotels.supplier_name}" data-hoteladdress="{$hotel.hotel_address}">
+                                                        <i class="icon_land_map"></i>地图</span>
+                                                   <!--  <span class="l2" title="湘潭华天大酒店街景" method="showSoSoMap" data-svid="25031048130919165039700" data-heading="0" data-pitch="0" data-zoom="0" data-maptype="2" data-hotelid="51906005">
+                                                        <i class="icon_land_street"></i>街景</span> -->
                                                 </p>
                                             </div>
-                                            <p class="h_info_b4">
-                                                <span class="l1" title="湘潭华天大酒店地图" method="showMap" data-lng="112.926070" data-lat="27.840593" data-maptype="0" data-hotelid="51906005" data-hotelname="湘潭华天大酒店" data-hoteladdress="岳塘区建设路口 国际金融大厦(近步步高广场)">
-                                                    <i class="icon_land_map"></i>地图</span>
-                                                <span class="l2" title="湘潭华天大酒店街景" method="showSoSoMap" data-svid="25031048130919165039700" data-heading="0" data-pitch="0" data-zoom="0" data-maptype="2" data-hotelid="51906005">
-                                                    <i class="icon_land_street"></i>街景</span>
-                                            </p>
-                                        </div>
-                                        <!----------------></div>
-                                    <!--------------------------Map Start--------------------------------------->
-                                    <!-- 地图 start-->
-                                    <div id="h_map_wrap51906005" style="display:none; height: 410px;"></div>
-                                    <!-- 地图 end-->
-                                    <div id="soso_map_wrap51906005" style="display:none" class="mt10"></div>
-                                    <!--------------------------Map End------------------------------------------->
-                                    <!--------------------------Review Start----------------------------------------->
-                                    <!--------------------------Review End------------------------------------------->
-                                    <!--------------------------psgRecommend start------------------------------------------->
-                                    <!--------------------------psgRecommend End-------------------------------------------></div>
-                            </div>
-                            <div class="h_item" id="hotel90203905" method="hotelItem" data-hotelid="90203905" style="background: rgb(255, 255, 255);">
-                                <div class="h_info">
-                                    <div class="h_info_pic" data-mark="img_90203905_container" method="imgContainer">
-                                        <a href="#" target="_blank">
-                                            <img method="bigImg" data-mark="img_90203905" src="themes/elong/images/0003mnvD.jpg" data-src="http://pavo.elongstatic.com/i/Hotel480_350/0003mnvD.jpg" alt="湘乡华龙华天大酒店" width="180" height="130"></a>
+                                            </div>
+                                        
+                                        <!-- 地图 start-->
+                                        <div id="h_map_{$id}" style="display:none; height: 410px; width : 726px"></div>
+                                        <!-- 地图 end-->
+                                        <!-- <div id="soso_map_{$id}}" style="display:none" class="mt10"></div> -->
                                     </div>
-                                    <div class="h_info_text">
-                                        <!---------------->
-                                        <div class="h_info_pri">
-                                            <p>
-                                                <a href="#" target="_blank">
-                                                    <span class="c666">¥</span>
-                                                    <span class="h_pri_num ">228</span>
-                                                    <span class="cf55">起</span></a>
-                                            </p>
-                                            <p class="mt5"></p>
-                                            <div class="to_detail">
-                                                <a class="t14" href="#" target="_blank">查看详情</a></div>
-                                            <div class="h_add_cc">
-                                                <!--<span class="add_compare" method="comparison" data-hotelid="90203905">
-                                                <i class="icon_add_comp"></i>对比
-                                                </span>-->
-                                                <span class="add_collect ml20" method="collectable" data-hotelid="90203905">
-                                                    <i class="icon_add_coll" locationforfav="favcount"></i>
-                                                    <b>13人</b>收藏
-                                                    <em class="add_collect_1">+1</em></span>
-                                            </div>
-                                        </div>
-                                        <!---------------->
-                                        <div class="h_info_comt">
-                                            <a href="#" target="_blank" class="h_comt_data">
-                                                <span method="review" class="h_info_comt_bg">
-                                                    <i class="t18">88%</i>
-                                                    <i class="c555">好评</i></span>
-                                                <span class="c555 block mt5">来自
-                                                    <b>24</b>条点评</span>
-                                            </a>
-                                            <p class="lastt_book mt10" id="recentOrder_90203905">最新预订:56分钟前</p></div>
-                                        <!---------------->
-                                        <div class="h_info_base">
-                                            <p class="h_info_b1">
-                                                <a href="#" target="_blank" title="湘乡华龙华天大酒店">
-                                                    <span class="icon_nmb" id="icon_nmb_id">2</span>湘乡华龙华天大酒店</a>
-                                                <b class="icon_stars icon_elevel3" title="艺龙用户评定为舒适型酒店"></b>
-                                            </p>
-                                            <p class="h_info_b2">
-                                                <a href="#">[市中心]</a>湘潭市湘乡市桑梅路138号</p>
-                                            <div class="hotel_inf_sale clearfix mt5">
-                                                <p class="h_comt_other">
-                                                    <span class="icon_faci_s1" title="WiFi上网"></span>
-                                                    <span class="icon_faci_s3" title="宽带上网"></span>
-                                                    <span class="icon_faci_s2" title="停车场"></span>
-                                                </p>
-                                            </div>
-                                            <p class="h_info_b4">
-                                                <span class="l1" title="湘乡华龙华天大酒店地图" method="showMap" data-lng="112.546014" data-lat="27.748804" data-maptype="0" data-hotelid="90203905" data-hotelname="湘乡华龙华天大酒店" data-hoteladdress="湘潭市湘乡市桑梅路138号">
-                                                    <i class="icon_land_map"></i>地图</span>
-                                                <span class="l2 no">
-                                                    <i class="icon_land_street"></i>街景</span>
-                                            </p>
-                                        </div>
-                                        <!----------------></div>
-                                    <!--------------------------Map Start--------------------------------------->
-                                    <!-- 地图 start-->
-                                    <div id="h_map_wrap90203905" style="display:none; height: 410px;"></div>
-                                    <!-- 地图 end-->
-                                    <div id="soso_map_wrap90203905" style="display:none" class="mt10"></div>
-     
+                                </div>
+                            {/foreach}
+                        {else}
+                            <div class="h_noresults mt10 mb10 clearfix">
+                                <span class="icon_noresu3 left"></span>
+                                <div class="h_noresults_text">
+                                    <p class="t14 mb5">
+                                        <span class="bold">很抱歉，没有找到符合您条件的酒店</span>
+                                    </p>
+                                    <!-- <p class="" method="noHotelDesc">建议您适当减少已选择的</p> -->
+                                </div>
                             </div>
+                        {/if}
                         </div>
                         <div class="h_nore_recom mb10" method="recommendedInfo" style="">
                             <i class="icon_recom3" style="float:left"></i>

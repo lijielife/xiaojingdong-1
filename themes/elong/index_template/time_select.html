@@ -1,13 +1,46 @@
 <!-- 首页入住时间、退房时间html -->
+
+<style type="text/css">
+    /* 时间选择样式  */
+    .datetimepicker {
+        padding: 4px;
+        margin-top: 1px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        direction: ltr;
+    }
+    .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1000;
+        display: none;
+        float: left;
+        min-width: 160px;
+        padding: 5px 0;
+        margin: 2px 0 0;
+        font-size: 14px;
+        list-style: none;
+        background-color: #ffffff;
+        border: 1px solid #cccccc;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 4px;
+        -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+        background-clip: padding-box;
+    }
+</style>
 <dl class="date_picker clearfix">
     <dt class="w60">入住</dt>
     <dd>
         <label>
             <div class="input-group date form_date_checkin" data-date="" width="100%" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                <input class="form-control" size="16" id="checkin" type="text" value="" readonly>
-                <span class="input-group-addon">
+                <input class="form-control" size="16" id="checkin" type="text" value="" data-date-format="yyyy-mm-dd" readonly >
+                <i class="com_icondate"></i>
+              <!--   <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
-                </span>
+                </span> -->
             </div>
         </label>
     </dd>
@@ -15,10 +48,11 @@
     <dd>
         <label>
             <div class="input-group date form_date_checkout" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                <input class="form-control" size="16" id="checkout" type="text" value="" readonly>
-                <span class="input-group-addon">
+                <input class="form-control" size="16" id="checkout" type="text" value="" data-date-format="yyyy-mm-dd" readonly \>
+                <i class="com_icondate"></i>
+               <!--  <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
-                </span>
+                </span> -->
             </div>
         </label>
     </dd>
@@ -26,7 +60,7 @@
 <script type="text/javascript">
     $(function() {
         
-        $('.form_date_checkin').datetimepicker({
+        $('#checkin').datetimepicker({
             language: 'zh',
             // {format: 'yyyy-mm-dd hh:ii'}，
             weekStart: 1,
@@ -37,7 +71,7 @@
             minView: 2,
             forceParse: 0
         });
-        $('.form_date_checkout').datetimepicker({
+        $('#checkout').datetimepicker({
             language: 'zh',
             weekStart: 1,
             todayBtn: 1,
@@ -65,5 +99,9 @@
         }
         var nextDay = yyyy + '-' + mm  + '-' + dd;
         $('#checkout').val(nextDay);
+
+
+
+        $('.datetimepicker datetimepicker-dropdown-bottom-right dropdown-menu').hide();
     })
 </script>

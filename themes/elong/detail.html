@@ -3,19 +3,25 @@
     
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>详情页</title>
+        <title>{$info.supplier_name}</title>
         <meta name="keywords" content="">
         <meta name="description" content="">
         <link rel="stylesheet" rev="stylesheet" href="themes/elong/css/new2015.min.css" type="text/css" media="all">
         <link rel="stylesheet" rev="stylesheet" href="themes/elong/css/hotel-com.css" type="text/css" media="all">
         <link rel="stylesheet" type="text/css" href="themes/elong/css/details-2015.css">
         <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=QIZwfxpjGmOEolvcosjoudgK1C9EXBbm"></script>
+        <script type="text/javascript" src="themes/elong/js/detail.js"></script>
         <style type="text/css">.BMap_mask{background:transparent url(about:blank);}.BMap_noscreen{display:none;}.BMap_button{cursor:pointer;}.BMap_zoomer{background-image:url(http://api.map.baidu.com/images/mapctrls1d3.gif);background-repeat:no-repeat;overflow:hidden;font-size:1px;position:absolute;width:7px;height:7px;}.BMap_stdMpCtrl div{position:absolute;}.BMap_stdMpPan{width:44px;height:44px;overflow:hidden;background:url(http://api.map.baidu.com/images/mapctrls2d0.png) no-repeat;}.BMap_ie6 .BMap_stdMpPan{background:none;}.BMap_ie6 .BMap_smcbg{left:0;width:44px;height:464px;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://api.map.baidu.com/images/mapctrls2d0.png');}.BMap_ie6 .BMap_stdMpPanBg{z-index:-1;}.BMap_stdMpPan .BMap_button{height:15px;width:15px;}.BMap_panN,.BMap_panW,.BMap_panE,.BMap_panS{overflow:hidden;}.BMap_panN{left:14px;top:0;}.BMap_panW{left:1px;top:12px;}.BMap_panE{left:27px;top:12px;}.BMap_panS{left:14px;top:25px;}.BMap_stdMpZoom{top:45px;overflow:hidden;}.BMap_stdMpZoom .BMap_button{width:22px;height:21px;left:12px;overflow:hidden;background-image:url(http://api.map.baidu.com/images/mapctrls2d0.png);background-repeat:no-repeat;z-index:10;}.BMap_ie6 .BMap_stdMpZoom .BMap_button{background:none;}.BMap_stdMpZoomIn{background-position:0 -221px;}.BMap_stdMpZoomOut{background-position:0 -265px;}.BMap_ie6 .BMap_stdMpZoomIn div{left:0;top:-221px;}.BMap_ie6 .BMap_stdMpZoomOut div{left:0;top:-265px;}.BMap_stdMpType4 .BMap_stdMpZoom .BMap_button{left:0;overflow:hidden;background:-webkit-gradient(linear,50% 0,50% 100%,from(rgba(255,255,255,0.85)),to(rgba(217,217,217,0.85)));z-index:10;-webkit-border-radius:22px;width:34px;height:34px;border:1px solid rgba(255,255,255,0.5);-webkit-box-shadow:0 2px 3.6px #CCC;display:-webkit-box;-webkit-box-align:center;-webkit-box-pack:center;-webkit-box-sizing:border-box;}.BMap_stdMpType4 .BMap_smcbg{position:static;background:url(http://api.map.baidu.com/images/mapctrls2d0_mb.png) 0 0 no-repeat;-webkit-background-size:24px 32px;}.BMap_stdMpType4 .BMap_stdMpZoomIn{background-position:0 0;}.BMap_stdMpType4 .BMap_stdMpZoomIn .BMap_smcbg{width:24px;height:24px;background-position:0 0;}.BMap_stdMpType4 .BMap_stdMpZoomOut{background-position:0 0;}.BMap_stdMpType4 .BMap_stdMpZoomOut .BMap_smcbg{width:24px;height:6px;background-position:0 -25px;}.BMap_stdMpSlider{width:37px;top:18px;}.BMap_stdMpSliderBgTop{left:18px;width:10px;overflow:hidden;background:url(http://api.map.baidu.com/images/mapctrls2d0.png) no-repeat -23px -226px;}.BMap_stdMpSliderBgBot{left:19px;height:8px;width:10px;top:124px;overflow:hidden;background:url(http://api.map.baidu.com/images/mapctrls2d0.png) no-repeat -33px bottom;}.BMap_ie6 .BMap_stdMpSliderBgTop,.BMap_ie6 .BMap_stdMpSliderBgBot{background:none;}.BMap_ie6 .BMap_stdMpSliderBgTop div{left:-23px;top:-226px;}.BMap_ie6 .BMap_stdMpSliderBgBot div{left:-33px;bottom:0;}.BMap_stdMpSliderMask{height:100%;width:24px;left:10px;cursor:pointer;}.BMap_stdMpSliderBar{height:11px;width:19px;left:13px;top:80px;overflow:hidden;background:url(http://api.map.baidu.com/images/mapctrls2d0.png) no-repeat 0 -309px;}.BMap_stdMpSliderBar.h{background:url(http://api.map.baidu.com/images/mapctrls2d0.png) no-repeat 0 -320px;}.BMap_ie6 .BMap_stdMpSliderBar,.BMap_ie6 .BMap_stdMpSliderBar.h{background:none;}.BMap_ie6 .BMap_stdMpSliderBar div{top:-309px;}.BMap_ie6 .BMap_stdMpSliderBar.h div{top:-320px;}.BMap_zlSt,.BMap_zlCity,.BMap_zlProv,.BMap_zlCountry{position:absolute;left:34px;height:21px;width:28px;background-image:url(http://api.map.baidu.com/images/mapctrls2d0.png);background-repeat:no-repeat;font-size:0;cursor:pointer;}.BMap_ie6 .BMap_zlSt,.BMap_ie6 .BMap_zlCity,.BMap_ie6 .BMap_zlProv,.BMap_ie6 .BMap_zlCountry{background:none;overflow:hidden;}.BMap_zlHolder{display:none;position:absolute;top:0;}.BMap_zlHolder.hvr{display:block;}.BMap_zlSt{background-position:0 -380px;top:21px;}.BMap_zlCity{background-position:0 -401px;top:57px;}.BMap_zlProv{background-position:0 -422px;top:81px;}.BMap_zlCountry{background-position:0 -443px;top:105px;}.BMap_ie6 .BMap_zlSt div{top:-380px;}.BMap_ie6 .BMap_zlCity div{top:-401px;}.BMap_ie6 .BMap_zlProv div{top:-422px;}.BMap_ie6 .BMap_zlCountry div{top:-443px;}.BMap_stdMpType1 .BMap_stdMpSlider,.BMap_stdMpType2 .BMap_stdMpSlider,.BMap_stdMpType3 .BMap_stdMpSlider,.BMap_stdMpType4 .BMap_stdMpSlider,.BMap_stdMpType2 .BMap_stdMpZoom,.BMap_stdMpType3 .BMap_stdMpPan,.BMap_stdMpType4 .BMap_stdMpPan{display:none;}.BMap_stdMpType3 .BMap_stdMpZoom{top:0;}.BMap_stdMpType4 .BMap_stdMpZoom{top:0;}.BMap_cpyCtrl a{font-size:11px;color:#7979CC;}.BMap_scaleCtrl{height:23px;overflow:hidden;}.BMap_scaleCtrl div.BMap_scaleTxt{font-size:11px;font-family:Arial,sans-serif;}.BMap_scaleCtrl div{position:absolute;overflow:hidden;}.BMap_scaleHBar img,.BMap_scaleLBar img,.BMap_scaleRBar img{position:absolute;width:37px;height:442px;left:0;}.BMap_scaleHBar{width:100%;height:5px;font-size:0;bottom:0;}.BMap_scaleHBar img{top:-437px;width:100%;}.BMap_scaleLBar,.BMap_scaleRBar{width:3px;height:9px;bottom:0;font-size:0;z-index:1;}.BMap_scaleLBar img{top:-427px;left:0;}.BMap_scaleRBar img{top:-427px;left:-5px;}.BMap_scaleLBar{left:0;}.BMap_scaleRBar{right:0;}.BMap_scaleTxt{text-align:center;width:100%;cursor:default;line-height:18px;}.BMap_omCtrl{background-color:#fff;overflow:hidden;}.BMap_omOutFrame{position:absolute;width:100%;height:100%;left:0;top:0;}.BMap_omInnFrame{position:absolute;border:1px solid #999;background-color:#ccc;overflow:hidden;}.BMap_omMapContainer{position:absolute;overflow:hidden;width:100%;height:100%;left:0;top:0;}.BMap_omViewMv{border-width:1px;border-style:solid;border-left-color:#84b0df;border-top-color:#adcff4;border-right-color:#274b8b;border-bottom-color:#274b8b;position:absolute;z-index:600;}.BMap_omViewInnFrame{border:1px solid #3e6bb8;}.BMap_omViewMask{width:1000px;height:1000px;position:absolute;left:0;top:0;background-color:#68c;opacity:.2;filter:progid:DXImageTransform.Microsoft.Alpha(opacity=20);}.BMap_omBtn{height:13px;width:13px;position:absolute;cursor:pointer;overflow:hidden;background:url(http://api.map.baidu.com/images/mapctrls1d3.gif) no-repeat;z-index:1210;}.anchorBR .BMap_omOutFrame{border-top:1px solid #999;border-left:1px solid #999;}.quad4 .BMap_omBtn{background-position:-26px -27px;}.quad4 .BMap_omBtn.hover{background-position:0 -27px;}.quad4 .BMap_omBtn.BMap_omBtnClosed{background-position:-39px -27px;}.quad4 .BMap_omBtn.BMap_omBtnClosed.hover{background-position:-13px -27px;}.anchorTR .BMap_omOutFrame{border-bottom:1px solid #999;border-left:1px solid #999;}.quad1 .BMap_omBtn{background-position:-39px -41px;}.quad1 .BMap_omBtn.hover{background-position:-13px -41px;}.quad1 .BMap_omBtn.BMap_omBtnClosed{background-position:-26px -41px;}.quad1 .BMap_omBtn.BMap_omBtnClosed.hover{background-position:0 -41px;}.anchorBL .BMap_omOutFrame{border-top:1px solid #999;border-right:1px solid #999;}.quad3 .BMap_omBtn{background-position:-27px -40px;}.quad3 .BMap_omBtn.hover{background-position:-1px -40px;}.quad3
             .BMap_omBtn.BMap_omBtnClosed{background-position:-40px -40px;}.quad3 .BMap_omBtn.BMap_omBtnClosed.hover{background-position:-14px -40px;}.anchorTL .BMap_omOutFrame{border-bottom:1px solid #999;border-right:1px solid #999;}.quad2 .BMap_omBtn{background-position:-40px -28px;}.quad2 .BMap_omBtn.hover{background-position:-14px -28px;}.quad2 .BMap_omBtn.BMap_omBtnClosed{background-position:-27px -28px;}.quad2 .BMap_omBtn.BMap_omBtnClosed.hover{background-position:-1px -28px;}.anchorR .BMap_omOutFrame{border-bottom:1px solid #999;border-left:1px solid #999;border-top:1px solid #999;}.anchorL .BMap_omOutFrame{border-bottom:1px solid #999;border-right:1px solid #999;border-top:1px solid #999;}.anchorB .BMap_omOutFrame{border-top:1px solid #999;border-left:1px solid #999;border-right:1px solid #999;}.anchorT .BMap_omOutFrame{border-bottom:1px solid #999;border-right:1px solid #999;border-left:1px solid #999;}.anchorNon .BMap_omOutFrame,.withOffset .BMap_omOutFrame{border:1px solid #999;}.BMap_zoomMask0,.BMap_zoomMask1{position:absolute;left:0;top:0;width:100%;height:100%;background:transparent url(http://api.map.baidu.com/images/blank.gif);z-index:1000;}.BMap_contextMenu{position:absolute;border-top:1px solid #adbfe4;border-left:1px solid #adbfe4;border-right:1px solid #8ba4d8;border-bottom:1px solid #8ba4d8;padding:0;margin:0;width:auto;visibility:hidden;background:#fff;z-index:10000000;}.BMap_cmShadow{position:absolute;background:#000;opacity:.3;filter:alpha(opacity=30);visibility:hidden;z-index:9000000;}div.BMap_cmDivider{border-bottom:1px solid #adbfe4;font-size:0;padding:1px;margin:0 6px;}div.BMap_cmFstItem{margin-top:2px;}div.BMap_cmLstItem{margin-bottom:2px;}.BMap_shadow img{border:0 none;margin:0;padding:0;position:absolute;height:370px;width:1144px;}.BMap_pop .BMap_top{border-top:1px solid #ababab;background-color:#fff;}.BMap_pop .BMap_center{border-left:1px solid #ababab;border-right:1px solid #ababab;background-color:#fff;}.BMap_pop .BMap_bottom{border-bottom:1px solid #ababab;background-color:#fff;}.BMap_shadow,.BMap_shadow img,.BMap_shadow div{-moz-user-select:none;-webkit-user-select:none;}.BMap_checkbox{background:url(http://api.map.baidu.com/images/mapctrls1d3.gif);vertical-align:middle;display:inline-block;width:11px;height:11px;margin-right:4px;background-position:-14px 90px;}.BMap_checkbox.checked{background-position:-2px 90px;}.BMap_pop .BMap_top img,.BMap_pop .BMap_center img,.BMap_pop .BMap_bottom img{display:none;}@media print{.BMap_noprint{display:none;}.BMap_noscreen{display:block;}.BMap_mask{background:none;}.BMap_pop .BMap_top img,.BMap_pop .BMap_center img,.BMap_pop .BMap_bottom img{display:block;}}.BMap_vectex{cursor:pointer;width:11px;height:11px;position:absolute;background-repeat:no-repeat;background-position:0 0;}.BMap_vectex_nodeT{background-image:url(http://api.map.baidu.com/images/nodeT.gif);}.BMap_vectex_node{background-image:url(http://api.map.baidu.com/images/node.gif);}</style>
     </head>
     
     <body>
-        <!--=====================h eader 2016-12-20 start=====================- -> <div id="header" class="header" v="20161220" b="hotels" g="NaN" lg="f"> <div class="header_top response_wrap3 clearfix" style="width: 1200px;"> <div class="logo"> <a href="#" title="艺龙旅行网">艺龙旅行网</a></div>  <div class="right mt5"> <div class="branch_menu left mr10"> <span><a href="#" rel="nofollow">积分商城</a></span> <b></b> <span><a href="#" rel="nofollow">礼品卡</a></span> <b></b> <span class="online-customer"><a target="_blank" href="#" rel="nofollow">在线客服</a></span> <b></b> <span><a target="_blank" href="#">帮助中心</a></span> <b></b> <span class="language" method="newSpanLang"> <a href="#" method="eng">English</a><i class="com_icon04 left"></i><p><a href="#" title="简体版" rel="nofollow">简体版</a> <a href="#" rel="nofollow" title="繁體版">繁体版</a></p> </span> </div> <a class="one_panic mr10 left" href="#" rel="nofollow" target="_blank"><i class="com_icon01 left"></i><em>手机版</em><em method="newPromotion">专享五折起</em> <div class="only_phone" method="onlyPhoneDiv" style="display: none"> <i class="com_arrow_tl"></i> </div> </a> <span class="online_phone left"> <i class="com_icon02 left"></i> <em>7×24 客服电话</em><b class="" method="newPhoneNo"><i class="com_icon03 right"></i>4009-333-333</b> <div class="on_phonnum" method="newPhoneDiv"> <i class="com_arrow_tl"></i> <ul> <!--当鼠标移入时显示-->
+        <!--=====================h eader 2016-12-20 start=====================- -->
+
+         <div id="header" class="header" v="20161220" b="hotels" g="NaN" lg="f"> <div class="header_top response_wrap3 clearfix" style="width: 1200px;"> <div class="logo"> <a href="#" title="艺龙旅行网">艺龙旅行网</a></div>  <div class="right mt5"> <div class="branch_menu left mr10"> <span><a href="#" rel="nofollow">积分商城</a></span> <b></b> <span><a href="#" rel="nofollow">礼品卡</a></span> <b></b> <span class="online-customer"><a target="_blank" href="#" rel="nofollow">在线客服</a></span> <b></b> <span><a target="_blank" href="#">帮助中心</a></span> <b></b> <span class="language" method="newSpanLang"> <a href="#" method="eng">English</a><i class="com_icon04 left"></i><p><a href="#" title="简体版" rel="nofollow">简体版</a> <a href="#" rel="nofollow" title="繁體版">繁体版</a></p> </span> </div> <a class="one_panic mr10 left" href="#" rel="nofollow" target="_blank"><i class="com_icon01 left"></i><em>手机版</em><em method="newPromotion">专享五折起</em> <div class="only_phone" method="onlyPhoneDiv" style="display: none"> <i class="com_arrow_tl"></i> </div> </a> <span class="online_phone left"> <i class="com_icon02 left"></i> <em>7×24 客服电话</em><b class="" method="newPhoneNo"><i class="com_icon03 right"></i>4009-333-333</b> <div class="on_phonnum" method="newPhoneDiv"> <i class="com_arrow_tl"></i> <ul> 
+
+         <!--当鼠标移入时显示-->
         <li>
             <p>国内：4009-333-333</p>
         </li>
@@ -125,33 +131,31 @@
         <style type="text/css">.appWrap { background: url(http://www.elongstatic.com/images/other/app-com.png) no-repeat 0 -483px } .appBox .close { background: url(http://www.elongstatic.com/images/other/app-com.png) no-repeat -328px -182px; _background-image: url(http://www.elongstatic.com/images/other/app-com-ie6.png); } .appBox .close:hover { background-position: -358px -182px; } .appBox .intro { width: 480px; height: 210px; background: url(http://img.elongstatic.com/index/other/fx_btm.png) no-repeat 0 0px; font-size: 0; line-height: 0; overflow: hidden; position: absolute; top: 27px; left: 33px; } .appBox .way i { display: inline-block; width: 43px; height: 43px; margin-right: 5px; background: url(http://www.elongstatic.com/images/other/app-com.png) no-repeat 0 -334px; _background-image: url(http://www.elongstatic.com/images/other/app-com-ie6.png); vertical-align: middle; } .appBox .way .but { width: 170px; height: 30px; background: url(http://www.elongstatic.com/images/other/app-com.png) no-repeat -181px -334px; _background-image: url(http://www.elongstatic.com/images/other/app-com-ie6.png); border: 0; text-align: center; color: #fff; font: 16px "Microsoft Yahei", Simsun, sans-serif; cursor: pointer; } .appBox .way .but:hover { background-position: -181px -364px; } .appBox .way .success i { width: 20px; height: 16px; margin-right: 5px; background: url(http://www.elongstatic.com/images/other/app-com.png) no-repeat -181px -394px; _background-image: url(http://www.elongstatic.com/images/other/app-com-ie6.png); vertical-align: middle; }</style>
         <div class="clear"></div>
         </div>
-        <!--=====================h eader end=====================- -> 
+        <!--=====================h eader end=====================- --> 
         <div class="cont_box response_wrap3">
         <!--面包屑 start-->
         <div class="mt10 mb10">
             <div class="link555 t12">
-                <a title="首页" href="#">首页</a>
+                <a title="首页" href="hotel.php">首页</a>
                 <span class="simsun">&gt;</span>
-                <a title="酒店" href="#">酒店</a>
+                <a title="{$city}酒店" href="{$city_hotels_url}">{$city}酒店</a>
                 <span class="simsun">&gt;</span>
-                <a title="湘潭市酒店" href="#">湘潭市酒店</a>
-                <span class="simsun">&gt;</span>
-                <h1 class="breadcrumb" style="display:inline" id="lastbread">湘乡青瓦屋大酒店</h1></div>
+                <h1 class="breadcrumb" style="display:inline" id="lastbread">{$info.supplier_name}</h1></div>
         </div>
         </div>
         <div class="hdetail_rela_wrap">
             <div class="cont_box response_wrap3" style="position:relative;">
                 <div class="hrela_ns_wrap clearfix">
                     <div class="hdetail_main hrela_name">
-                        <div class="t24 yahei" title="湘乡青瓦屋大酒店">
-                            <i data-handle="hotelGrade" class="mr5" title=""></i>湘乡青瓦屋大酒店</div>
+                        <div class="t24 yahei" title="{$info.supplier_name}">
+                            <i data-handle="hotelGrade" class="mr5" title=""></i>{$info.supplier_name}</div>
                         <p class="clearfix">
                             <span class="mr5 left">
-                                <a href="#">[市区]</a>桑梅东路36号(湘乡汽车站对面)</span>
+                                <a href="#">[市区]</a>{$info.hotel_address}</span>
                             <span class="l1 left mt5" method="traffic" id="traffictopmap" title="地图">
                                 <i class="icon_land_map"></i>地图</span>
-                            <span class="l2 no left mt5">
-                                <i class="icon_land_street"></i>街景</span>
+                            <!-- <span class="l2 no left mt5">
+                                <i class="icon_land_street"></i>街景</span> -->
                         </p>
                     </div>
                     <div id="divWarmTips" class="hdetail_sider hrela_say hdetail_sider_none" style="display:none">
@@ -162,86 +166,39 @@
                 <div class="hrela_pi_wrap">
                     <div class="hdetail_main left">
                         <div class="hrela_pic">
-                            <div class="hrela_pic_w">
+                            <!-- <div class="hrela_pic_w">
                                 <div class="wac" style="display: block;">
-                                    <img src="images/0000vVLT.jpg" onerror="this.src=&#39;http://www.elongstatic.com/web/hotel/pic/no-pic-b.jpg?t=20161212115214&#39;" height="325"></div>
+                                    <img src="themes/elong/images/0000vVLT.jpg" onerror="this.src='http://www.elongstatic.com/web/hotel/pic/no-pic-b.jpg?t=20161212115214';" height="325"></div>
                                 <div id="360pano" class="wbc" style="display: none;"></div>
                                 <div id="headSosofullview" class="wcc" style="position:absolute;display:none;width:100%;height:400px;"></div>
-                            </div>
+                            </div> -->
+                            {$hotel_big_pic_html}
                             <!--价格-->
                             <div class="hrela_price_wrap" id="divHotelLowestProduct">
                                 <div class="hrela_price">
                                     <p>
                                         <span class="vt">¥</span>
-                                        <span class="cf55">55</span>
+                                        <span class="cf55">{$info.lowprice}</span>
                                         <span class="t12">起</span></p>
                                 </div>
                             </div>
                             <!--信息-->
-                            <div class="hrela_picinfo">
+                            {$hotel_pic_type_html}
+                            <!-- <div class="hrela_picinfo">
                                 <ul id="hotelDetailTabHandle" class="hrela_pinfo_list">
                                     <li class="cur on" data-handle="allImage">全部图片(22)</li>
                                     <li>|</li>
                                     <li class="cur" data-handle="hotelLobbys">外观/大堂(1)</li></ul>
-                            </div>
+                            </div> -->
                         </div>
-                        <div class="hrela_spic mt5">
+                        <div class="hrela_spic mt5" id="hrela_spic">
                             <span class="hrela_spic_prev" id="small_img_prev">
                                 <i class="icon_prev_b9"></i>
                             </span>
                             <span class="hrela_spic_next" id="small_img_next">
                                 <i class="icon_next_b9"></i>
                             </span>
-                            <ul data-handle="container" data="allImage" class="hrela_spic_list" style="width: 1980px; margin-left: 0px;">
-                                <li class="">
-                                    <img onerror="this.src=&#39;http://www.elongstatic.com/web/hotel/pic/no-pic-s.jpg?t=20161212115214&#39;" src="images/0000vVL4.jpg" title="客房" width="80" height="80" data-panorama="" data-ispanorama="" data-midd="http://pavo.elongstatic.com/i/Hotel795_325/0000vVL4.jpg" data-big="http://pavo.elongstatic.com/i/Hotel870_470/0000vVL4.jpg"></li>
-                                <li>
-                                    <img onerror="this.src=&#39;http://www.elongstatic.com/web/hotel/pic/no-pic-s.jpg?t=20161212115214&#39;" src="images/0000vVL1.jpg" title="酒店外观" width="80" height="80" data-panorama="" data-ispanorama="" data-midd="http://pavo.elongstatic.com/i/Hotel795_325/0000vVL1.jpg" data-big="http://pavo.elongstatic.com/i/Hotel870_470/0000vVL1.jpg"></li>
-                                <li class="on">
-                                    <img onerror="this.src=&#39;http://www.elongstatic.com/web/hotel/pic/no-pic-s.jpg?t=20161212115214&#39;" src="images/0000vVLT(1).jpg" title="客房" width="80" height="80" data-panorama="" data-ispanorama="" data-midd="http://pavo.elongstatic.com/i/Hotel795_325/0000vVLT.jpg" data-big="http://pavo.elongstatic.com/i/Hotel870_470/0000vVLT.jpg"></li>
-                                <li>
-                                    <img onerror="this.src=&#39;http://www.elongstatic.com/web/hotel/pic/no-pic-s.jpg?t=20161212115214&#39;" src="images/0000vVLP.jpg" title="客房" width="80" height="80" data-panorama="" data-ispanorama="" data-midd="http://pavo.elongstatic.com/i/Hotel795_325/0000vVLP.jpg" data-big="http://pavo.elongstatic.com/i/Hotel870_470/0000vVLP.jpg"></li>
-                                <li>
-                                    <img onerror="this.src=&#39;http://www.elongstatic.com/web/hotel/pic/no-pic-s.jpg?t=20161212115214&#39;" src="images/0000vVLK.jpg" title="客房" width="80" height="80" data-panorama="" data-ispanorama="" data-midd="http://pavo.elongstatic.com/i/Hotel795_325/0000vVLK.jpg" data-big="http://pavo.elongstatic.com/i/Hotel870_470/0000vVLK.jpg"></li>
-                                <li>
-                                    <img onerror="this.src=&#39;http://www.elongstatic.com/web/hotel/pic/no-pic-s.jpg?t=20161212115214&#39;" src="images/0000vVLH.jpg" title="客房" width="80" height="80" data-panorama="" data-ispanorama="" data-midd="http://pavo.elongstatic.com/i/Hotel795_325/0000vVLH.jpg" data-big="http://pavo.elongstatic.com/i/Hotel870_470/0000vVLH.jpg"></li>
-                                <li>
-                                    <img onerror="this.src=&#39;http://www.elongstatic.com/web/hotel/pic/no-pic-s.jpg?t=20161212115214&#39;" src="images/0000vVL8.jpg" title="客房" width="80" height="80" data-panorama="" data-ispanorama="" data-midd="http://pavo.elongstatic.com/i/Hotel795_325/0000vVL8.jpg" data-big="http://pavo.elongstatic.com/i/Hotel870_470/0000vVL8.jpg"></li>
-                                <li>
-                                    <img onerror="this.src=&#39;http://www.elongstatic.com/web/hotel/pic/no-pic-s.jpg?t=20161212115214&#39;" src="images/0000vVLx.jpg" title="其他" width="80" height="80" data-panorama="" data-ispanorama="" data-midd="http://pavo.elongstatic.com/i/Hotel795_325/0000vVLx.jpg" data-big="http://pavo.elongstatic.com/i/Hotel870_470/0000vVLx.jpg"></li>
-                                <li>
-                                    <img onerror="this.src=&#39;http://www.elongstatic.com/web/hotel/pic/no-pic-s.jpg?t=20161212115214&#39;" src="images/nw_0005HJly.jpg" title="客房" width="80" height="80" data-panorama="" data-ispanorama="" data-midd="http://pavo.elongstatic.com/i/Hotel795_325/nw_0005HJly.jpg" data-big="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJly.jpg"></li>
-                                <li>
-                                    <img onerror="this.src=&#39;http://www.elongstatic.com/web/hotel/pic/no-pic-s.jpg?t=20161212115214&#39;" src2="http://pavo.elongstatic.com/i/Hotel120_120/nw_0005HJlx.jpg" src="images/no-pic-s.jpg" title="客房" width="80" height="80" data-panorama="" data-ispanorama="" data-midd="http://pavo.elongstatic.com/i/Hotel795_325/nw_0005HJlx.jpg" data-big="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJlx.jpg"></li>
-                                <li>
-                                    <img onerror="this.src=&#39;http://www.elongstatic.com/web/hotel/pic/no-pic-s.jpg?t=20161212115214&#39;" src2="http://pavo.elongstatic.com/i/Hotel120_120/nw_0005HJlu.jpg" src="images/no-pic-s.jpg" title="客房" width="80" height="80" data-panorama="" data-ispanorama="" data-midd="http://pavo.elongstatic.com/i/Hotel795_325/nw_0005HJlu.jpg" data-big="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJlu.jpg"></li>
-                                <li>
-                                    <img onerror="this.src=&#39;http://www.elongstatic.com/web/hotel/pic/no-pic-s.jpg?t=20161212115214&#39;" src2="http://pavo.elongstatic.com/i/Hotel120_120/nw_0005HJls.jpg" src="images/no-pic-s.jpg" title="客房" width="80" height="80" data-panorama="" data-ispanorama="" data-midd="http://pavo.elongstatic.com/i/Hotel795_325/nw_0005HJls.jpg" data-big="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJls.jpg"></li>
-                                <li>
-                                    <img onerror="this.src=&#39;http://www.elongstatic.com/web/hotel/pic/no-pic-s.jpg?t=20161212115214&#39;" src2="http://pavo.elongstatic.com/i/Hotel120_120/nw_0005HJlo.jpg" src="images/no-pic-s.jpg" title="客房" width="80" height="80" data-panorama="" data-ispanorama="" data-midd="http://pavo.elongstatic.com/i/Hotel795_325/nw_0005HJlo.jpg" data-big="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJlo.jpg"></li>
-                                <li>
-                                    <img onerror="this.src=&#39;http://www.elongstatic.com/web/hotel/pic/no-pic-s.jpg?t=20161212115214&#39;" src2="http://pavo.elongstatic.com/i/Hotel120_120/nw_0005HGOO.jpg" src="images/no-pic-s.jpg" title="客房" width="80" height="80" data-panorama="" data-ispanorama="" data-midd="http://pavo.elongstatic.com/i/Hotel795_325/nw_0005HGOO.jpg" data-big="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HGOO.jpg"></li>
-                                <li>
-                                    <img onerror="this.src=&#39;http://www.elongstatic.com/web/hotel/pic/no-pic-s.jpg?t=20161212115214&#39;" src2="http://pavo.elongstatic.com/i/Hotel120_120/nw_0005HGOL.jpg" src="images/no-pic-s.jpg" title="客房" width="80" height="80" data-panorama="" data-ispanorama="" data-midd="http://pavo.elongstatic.com/i/Hotel795_325/nw_0005HGOL.jpg" data-big="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HGOL.jpg"></li>
-                                <li>
-                                    <img onerror="this.src=&#39;http://www.elongstatic.com/web/hotel/pic/no-pic-s.jpg?t=20161212115214&#39;" src2="http://pavo.elongstatic.com/i/Hotel120_120/nw_0005HJlc.jpg" src="images/no-pic-s.jpg" title="客房" width="80" height="80" data-panorama="" data-ispanorama="" data-midd="http://pavo.elongstatic.com/i/Hotel795_325/nw_0005HJlc.jpg" data-big="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJlc.jpg"></li>
-                                <li>
-                                    <img onerror="this.src=&#39;http://www.elongstatic.com/web/hotel/pic/no-pic-s.jpg?t=20161212115214&#39;" src2="http://pavo.elongstatic.com/i/Hotel120_120/nw_0005HGOE.jpg" src="images/no-pic-s.jpg" title="客房" width="80" height="80" data-panorama="" data-ispanorama="" data-midd="http://pavo.elongstatic.com/i/Hotel795_325/nw_0005HGOE.jpg" data-big="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HGOE.jpg"></li>
-                                <li>
-                                    <img onerror="this.src=&#39;http://www.elongstatic.com/web/hotel/pic/no-pic-s.jpg?t=20161212115214&#39;" src2="http://pavo.elongstatic.com/i/Hotel120_120/nw_0005HGOB.jpg" src="images/no-pic-s.jpg" title="客房" width="80" height="80" data-panorama="" data-ispanorama="" data-midd="http://pavo.elongstatic.com/i/Hotel795_325/nw_0005HGOB.jpg" data-big="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HGOB.jpg"></li>
-                                <li>
-                                    <img onerror="this.src=&#39;http://www.elongstatic.com/web/hotel/pic/no-pic-s.jpg?t=20161212115214&#39;" src2="http://pavo.elongstatic.com/i/Hotel120_120/nw_0005HJl3.jpg" src="images/no-pic-s.jpg" title="客房" width="80" height="80" data-panorama="" data-ispanorama="" data-midd="http://pavo.elongstatic.com/i/Hotel795_325/nw_0005HJl3.jpg" data-big="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJl3.jpg"></li>
-                                <li>
-                                    <img onerror="this.src=&#39;http://www.elongstatic.com/web/hotel/pic/no-pic-s.jpg?t=20161212115214&#39;" src2="http://pavo.elongstatic.com/i/Hotel120_120/nw_0005HJkY.jpg" src="images/no-pic-s.jpg" title="客房" width="80" height="80" data-panorama="" data-ispanorama="" data-midd="http://pavo.elongstatic.com/i/Hotel795_325/nw_0005HJkY.jpg" data-big="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJkY.jpg"></li>
-                                <li>
-                                    <img onerror="this.src=&#39;http://www.elongstatic.com/web/hotel/pic/no-pic-s.jpg?t=20161212115214&#39;" src2="http://pavo.elongstatic.com/i/Hotel120_120/nw_0005HGOp.jpg" src="images/no-pic-s.jpg" title="客房" width="80" height="80" data-panorama="" data-ispanorama="" data-midd="http://pavo.elongstatic.com/i/Hotel795_325/nw_0005HGOp.jpg" data-big="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HGOp.jpg"></li>
-                                <li>
-                                    <img onerror="this.src=&#39;http://www.elongstatic.com/web/hotel/pic/no-pic-s.jpg?t=20161212115214&#39;" src2="http://pavo.elongstatic.com/i/Hotel120_120/nw_0005HJkR.jpg" src="images/no-pic-s.jpg" title="客房" width="80" height="80" data-panorama="" data-ispanorama="" data-midd="http://pavo.elongstatic.com/i/Hotel795_325/nw_0005HJkR.jpg" data-big="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJkR.jpg"></li>
-                            </ul>
-                            <ul data-handle="container" data="hotelLobbys" class="hrela_spic_list" style="width: 2880px; margin-left: 0px;display: none;">
-                                <li class="on">
-                                    <img onerror="this.src=&#39;http://www.elongstatic.com/web/hotel/pic/no-pic-s.jpg?t=20161212115214&#39;" src="images/no-pic-s.jpg" src2="http://pavo.elongstatic.com/i/Hotel120_120/0000vVL1.jpg" title="酒店外观" width="80" height="80" data-panorama="" data-ispanorama="" data-midd="http://pavo.elongstatic.com/i/Hotel795_325/0000vVL1.jpg" data-big="http://pavo.elongstatic.com/i/Hotel870_470/0000vVL1.jpg"></li>
-                            </ul>
+                            {$hotel_image_detail_html}
                         </div>
                     </div>
                     <!-- 图片浮层 -->
@@ -252,15 +209,17 @@
                                 <div id="bg101" class="percentBox_bg"></div>
                                 <div id="bg1"></div>
                                 <div class="pertxt" id="headCommentRate">
-                                    <div id="txt1" class="pertxt_num" data-rate="0.63">63%</div>
+                                    <div id="txt1" class="pertxt_num" data-rate="0.63">{$info.good_dianpin}</div>
                                     <div class="pertxt_com">好评率</div></div>
                             </div>
+
                             <!------------------圆形进度条 end -------------------->
+
                             <div class="hrela_comt_total">共
-                                <a href="#">8条</a>点评</div>
+                                <a href="#">{$info.dianpin}条</a>点评</div>
                             <div class="hrela_service" serviceindex="4.4" confirmrate="0" successrate="100" complaintsrate="0">
                                 <i class="icon_service"></i>服务指数：
-                                <span class="cf55 t18" id="hrela_serviceid">4.4</span>/5分</div></div>
+                                <span class="cf55 t18" id="hrela_serviceid">{$info.service_fen}</span>/5分</div></div>
                         <div class="hrela_comt bbddd hrela_comt2">
                             <div class="hrela_comt_per mb10">
                                 <i class="icon_next_c20  right ml5"></i>
@@ -336,23 +295,23 @@
                 <div class="hdetail_main left">
                     <div id="tabMenu" class="hdetail_subnav bbddd">
                         <ul class="subnav_list left">
-                            <li method="roomTypes" class="">房型</li>
+                            <li method="roomTypes" class="on">房型</li>
                             <li method="content" class="">酒店信息</li>
                             <li method="traffic" class="">交通</li>
-                            <li method="review" class="on">点评
+                            <li method="review" class="">点评
                                 <!-- <li method="hotelAsk">酒店问答</li>--></li></ul>
                         <div class="hdetail_subnav_time mt15" id="divRecentOrder" style="">
                             <i class="icon_time24 mr5"></i>最新预订:12月25日</div>
                     </div>
-                    <div id="searchTabHandler" class="subnav_fixed none" style="display: block;">
+                    <div id="searchTabHandler" class="subnav_fixed none" style="display: none;">
                         <div class="response_wrap3">
                             <div class="hdetail_main left">
                                 <div class="hdetail_subnav">
                                     <ul class="subnav_list left" data-handle="ulTabNav">
-                                        <li method="roomTypes" class="">房型</li>
+                                        <li method="roomTypes" class="on">房型</li>
                                         <li method="content" class="">酒店信息</li>
                                         <li method="traffic" class="">交通</li>
-                                        <li method="review" class="on">点评</li>
+                                        <li method="review" class="">点评</li>
                                         <!-- <li method="hotelAsk">酒店问答</li>--></ul>
                                     <div class="date_change right">
                                         <div class="search_item search_date">
@@ -372,7 +331,7 @@
                             </div>
                             <div class="hdetail_sider right hdetail_sider_none">
                                 <i data-handle="hotelGrade" class="mr5"></i>
-                                <span class="vm">湘乡青瓦屋大酒店</span></div>
+                                <span class="vm">{$info.supplier_name}</span></div>
                         </div>
                     </div>
                     <div class="date_change mt15 mb15">
@@ -632,8 +591,8 @@
                             <dl class="dview_info_item">
                                 <dt>
                                     <i class="icon_view_s1"></i>酒店电话</dt>
-                                <dd>13327321593
-                                    <span class="ml20">艺龙电话预订：4009-333-333</span></dd>
+                                <dd>{$info.supplier_tel}
+                                    <!-- <span class="ml20">艺龙电话预订：4009-333-333</span></dd> -->
                             </dl>
                             <dl class="dview_info_item" id="netAndwifi" style="">
                                 <dt>
@@ -659,7 +618,7 @@
                                     <i class="icon_view_s8"></i>酒店简介</dt>
                                 <dd>
                                     <i class="icon_hl_more1" method="showMore"></i>
-                                    <p>本酒店拥有各式房间，宽敞明亮，内部环境干净整洁。设有免费高速上网，电视，24小时热水等标准服务设施，服务态度好，亲和力强，是理想居停之所。</p>
+                                    <p>{$info.supplier_desc}</p>
                                 </dd>
                             </dl>
                         </div>
@@ -668,943 +627,24 @@
                     <div id="trafficMap" style="height:497px;">
                         <div class="hdetail_map">
                             <h2 class="hdetail_tit2">位置及周边</h2>
+
+
                             <div class="left hdetail_map_tool">
                                 <div id="mapLoading" class="com_dialog" style="width: 300px; position: absolute; left: 50%; top: 50%; background: rgb(255, 255, 255); margin: -57px -150px; display: none;">
                                     <div class="com_dialog-content com_widget-content">
                                         <div class="mt20 mb20 tc t14">
                                             <p>
-                                                <span class="loading_b vm mr10"></span>小艺正在努力为您加载中...</p>
+                                                <span class="loading_b vm mr10"></span>正在努力为您加载中...</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div id="map" class="hdetail_map_con" style="width: 94%; height: 497px; opacity: 1; overflow: hidden; background-color: rgb(243, 241, 236); color: rgb(0, 0, 0); text-align: left;">
-                                    <div style="overflow: visible; position: absolute; z-index: 0; left: 0px; top: 0px; cursor: default;">
-                                        <div class="BMap_mask" style="position: absolute; left: 0px; top: 0px; z-index: 9; overflow: hidden; user-select: none; width: 874px; height: 497px;"></div>
-                                        <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 200;">
-                                            <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 800;"></div>
-                                            <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 700;"></div>
-                                            <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 600;"></div>
-                                            <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 500;"></div>
-                                            <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 400;"></div>
-                                            <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 300;"></div>
-                                            <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 201;"></div>
-                                            <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 200;"></div>
-                                        </div>
-                                        <div style="position: absolute; overflow: visible; top: 0px; left: 0px; z-index: 1;">
-                                            <div style="position: absolute; overflow: visible; z-index: -100; left: 437px; top: 249px;">
-                                                <img src="" style="position: absolute; border: none; width: 256px; height: 256px; left: -46px; top: -38px; max-width: none; opacity: 1;">
-                                                <img src="" style="position: absolute; border: none; width: 256px; height: 256px; left: 210px; top: -38px; max-width: none; opacity: 1;">
-                                                <img src="" style="position: absolute; border: none; width: 256px; height: 256px; left: -302px; top: -38px; max-width: none; opacity: 1;">
-                                                <img src="" style="position: absolute; border: none; width: 256px; height: 256px; left: -46px; top: 218px; max-width: none; opacity: 1;">
-                                                <img src="" style="position: absolute; border: none; width: 256px; height: 256px; left: -46px; top: -294px; max-width: none; opacity: 1;">
-                                                <img src="" style="position: absolute; border: none; width: 256px; height: 256px; left: -558px; top: -38px; max-width: none; opacity: 1;">
-                                                <img src="" style="position: absolute; border: none; width: 256px; height: 256px; left: -302px; top: 218px; max-width: none; opacity: 1;">
-                                                <img src="" style="position: absolute; border: none; width: 256px; height: 256px; left: 210px; top: -294px; max-width: none; opacity: 1;">
-                                                <img src="" style="position: absolute; border: none; width: 256px; height: 256px; left: -302px; top: -294px; max-width: none; opacity: 1;">
-                                                <img src="" style="position: absolute; border: none; width: 256px; height: 256px; left: 210px; top: 218px; max-width: none; opacity: 1;">
-                                                <img src="" style="position: absolute; border: none; width: 256px; height: 256px; left: -558px; top: -294px; max-width: none; opacity: 1;">
-                                                <img src="" style="position: absolute; border: none; width: 256px; height: 256px; left: -558px; top: 218px; max-width: none; opacity: 1;"></div>
-                                        </div>
-                                        <div style="position: absolute; overflow: visible; top: 0px; left: 0px; z-index: 2;"></div>
-                                    </div>
-                                    <div class=" anchorBL" style="height: 32px; position: absolute; z-index: 10; text-size-adjust: none; bottom: 0px; right: auto; top: auto; left: 1px;">
-                                        <a title="到百度地图查看此区域" target="_blank" href="#" style="outline: none;">
-                                            <img style="border:none;width:77px;height:32px" src="images/copyright_logo.png"></a>
-                                    </div>
-                                    <div id="zoomer" style="position:absolute;z-index:0;top:0px;left:0px;overflow:hidden;visibility:hidden;cursor:default">
-                                        <div class="BMap_zoomer" style="top:0;left:0;"></div>
-                                        <div class="BMap_zoomer" style="top:0;right:0;"></div>
-                                        <div class="BMap_zoomer" style="bottom:0;left:0;"></div>
-                                        <div class="BMap_zoomer" style="bottom:0;right:0;"></div>
-                                    </div>
-                                    <div unselectable="on" class=" BMap_stdMpCtrl BMap_stdMpType0 BMap_noprint anchorTL" style="width: 62px; height: 192px; bottom: auto; right: auto; top: 10px; left: 10px; position: absolute; z-index: 1100; text-size-adjust: none;">
-                                        <div class="BMap_stdMpPan">
-                                            <div class="BMap_button BMap_panN" title="向上平移"></div>
-                                            <div class="BMap_button BMap_panW" title="向左平移"></div>
-                                            <div class="BMap_button BMap_panE" title="向右平移"></div>
-                                            <div class="BMap_button BMap_panS" title="向下平移"></div>
-                                            <div class="BMap_stdMpPanBg BMap_smcbg"></div>
-                                        </div>
-                                        <div class="BMap_stdMpZoom" style="height: 147px; width: 62px;">
-                                            <div class="BMap_button BMap_stdMpZoomIn" title="放大一级">
-                                                <div class="BMap_smcbg"></div>
-                                            </div>
-                                            <div class="BMap_button BMap_stdMpZoomOut" title="缩小一级" style="top: 126px;">
-                                                <div class="BMap_smcbg"></div>
-                                            </div>
-                                            <div class="BMap_stdMpSlider" style="height: 108px;">
-                                                <div class="BMap_stdMpSliderBgTop" style="height: 108px;">
-                                                    <div class="BMap_smcbg"></div>
-                                                </div>
-                                                <div class="BMap_stdMpSliderBgBot" style="top: 25px; height: 87px;"></div>
-                                                <div class="BMap_stdMpSliderMask" title="放置到此级别"></div>
-                                                <div class="BMap_stdMpSliderBar" title="拖动缩放" style="cursor:default; top: 25px;">
-                                                    <div class="BMap_smcbg"></div>
-                                                </div>
-                                            </div>
-                                            <div class="BMap_zlHolder">
-                                                <div class="BMap_zlSt">
-                                                    <div class="BMap_smcbg"></div>
-                                                </div>
-                                                <div class="BMap_zlCity">
-                                                    <div class="BMap_smcbg"></div>
-                                                </div>
-                                                <div class="BMap_zlProv">
-                                                    <div class="BMap_smcbg"></div>
-                                                </div>
-                                                <div class="BMap_zlCountry">
-                                                    <div class="BMap_smcbg"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div unselectable="on" class=" BMap_scaleCtrl BMap_noprint anchorBL" style="bottom: 18px; right: auto; top: auto; left: 81px; width: 74px; position: absolute; z-index: 10; text-size-adjust: none;">
-                                        <div class="BMap_scaleTxt" unselectable="on" style="background-color: transparent; color: black;">500&nbsp;米</div>
-                                        <div class="BMap_scaleBar BMap_scaleHBar" style="background-color: black;">
-                                            <img style="border:none" src="images/mapctrls.png"></div>
-                                        <div class="BMap_scaleBar BMap_scaleLBar" style="background-color: black;">
-                                            <img style="border:none" src="images/mapctrls.png"></div>
-                                        <div class="BMap_scaleBar BMap_scaleRBar" style="background-color: black;">
-                                            <img style="border:none" src="images/mapctrls.png"></div>
-                                    </div>
-                                    <div unselectable="on" class=" BMap_omCtrl BMap_ieundefined BMap_noprint anchorBR quad4" style="width: 13px; height: 13px; bottom: 0px; right: 0px; top: auto; left: auto; position: absolute; z-index: 10; text-size-adjust: none;">
-                                        <div class="BMap_omOutFrame" style="width: 149px; height: 149px;">
-                                            <div class="BMap_omInnFrame" style="bottom: auto; right: auto; top: 5px; left: 5px; width: 142px; height: 142px;">
-                                                <div class="BMap_omMapContainer"></div>
-                                                <div class="BMap_omViewMv" style="cursor:default;">
-                                                    <div class="BMap_omViewInnFrame">
-                                                        <div></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="BMap_omBtn BMap_omBtnClosed" style="bottom: 0px; right: 0px; top: auto; left: auto;"></div>
-                                    </div>
-                                    <div unselectable="on" class=" BMap_cpyCtrl BMap_noprint anchorBL" style="cursor: default; white-space: nowrap; color: black; background: none; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 11px; line-height: 15px; font-family: arial, sans-serif; bottom: 2px; right: auto; top: auto; left: 81px; position: absolute; z-index: 10; text-size-adjust: none;">
-                                        <span _cid="1" style="display: inline;">
-                                            <span style="font-size:11px">© 2015 Baidu&nbsp;- Data ©
-                                                <a target="_blank" href="#" style="display:inline;">NavInfo</a>&amp;
-                                                <a target="_blank" href="#" style="display:inline;">CenNavi</a>&amp;
-                                                <a target="_blank" href="#" style="display:inline;">道道通</a></span>
-                                        </span>
-                                    </div>
-                                </div>
-                                <ul class="hmap_nav">
-                                    <li method="tab" filter="0" data-name="jt" class="">
-                                        <i class="icon_mapnav_tra"></i>
-                                        <p>交通</p>
-                                        <span>◆</span></li>
-                                    <li method="tab" filter="1" data-name="jd">
-                                        <i class="icon_mapnav_spo"></i>
-                                        <p>景点</p>
-                                        <span>◆</span></li>
-                                    <li method="tab" filter="2" data-name="gw">
-                                        <i class="icon_mapnav_shop"></i>
-                                        <p>购物</p>
-                                        <span>◆</span></li>
-                                    <li method="tab" filter="3" data-name="ms">
-                                        <i class="icon_mapnav_fod"></i>
-                                        <p>美食</p>
-                                        <span>◆</span></li>
-                                    <li method="tab" filter="4" data-name="yl">
-                                        <i class="icon_mapnav_ent"></i>
-                                        <p>娱乐</p>
-                                        <span>◆</span></li>
-                                    <li method="tab" filter="5" data-name="zc">
-                                        <i class="icon_mapnav_car"></i>
-                                        <p>租车</p>
-                                        <span>◆</span></li>
-                                </ul>
-                                <div class="hdetail_sider hmap_info_none">
-                                    <div class="hmap_info_wrap">
-                                        <span id="closeBtn" class="hmap_info_close">
-                                            <i class="icon_close_gray"></i>
-                                        </span>
-                                        <div method="tabs" data-name="jt" class="hmap_info_item">
-                                            <div class="hmap_info_pic hmap_pic_tra">周边交通信息</div>
-                                            <div class="hmap_info_list hmap_info_tra">
-                                                <dl class="hmap_tra_list">
-                                                    <dt>
-                                                        <i class="icon_map_t2"></i>
-                                                    </dt>
-                                                    <dd>
-                                                        <table border="0" cellspacing="0" cellpadding="0" class="hmap_table_spo">
-                                                            <tbody>
-                                                                <tr method="route" data-type="train" title="湘潭站" lng="112.9189432" lat="27.88210371" distance="40402.11" address="">
-                                                                    <td class="map_td_num">
-                                                                        <span class="icon_mark_blue">1</span></td>
-                                                                    <td class="map_td_name">
-                                                                        <p>湘潭站</p>
-                                                                    </td>
-                                                                    <td class="map_td_km">
-                                                                        <p>直线40.4km</p>
-                                                                    </td>
-                                                                    <td>
-                                                                        <i class="icon_sort_arrr5"></i>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr method="route" data-type="train" title="湘乡站" lng="112.535593" lat="27.751046" distance="914.54" address="">
-                                                                    <td class="map_td_num">
-                                                                        <span class="icon_mark_blue">2</span></td>
-                                                                    <td class="map_td_name">
-                                                                        <p>湘乡站</p>
-                                                                    </td>
-                                                                    <td class="map_td_km">
-                                                                        <p>直线914.54m</p>
-                                                                    </td>
-                                                                    <td>
-                                                                        <i class="icon_sort_arrr5"></i>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </dd>
-                                                </dl>
-                                                <dl class="hmap_tra_list">
-                                                    <dt>
-                                                        <i class="icon_map_t3"></i>
-                                                    </dt>
-                                                    <dd>
-                                                        <table border="0" cellspacing="0" cellpadding="0" class="hmap_table_spo">
-                                                            <tbody>
-                                                                <tr method="route" data-type="bus" title="湘乡汽车站" lng="112.527796" lat="27.752224" distance="1505" address="湘潭市湘乡市">
-                                                                    <td class="map_td_num">
-                                                                        <span class="icon_mark_blue">3</span></td>
-                                                                    <td class="map_td_name">
-                                                                        <p>湘乡汽车站</p>
-                                                                    </td>
-                                                                    <td class="map_td_km">
-                                                                        <p>直线1.5km</p>
-                                                                    </td>
-                                                                    <td>
-                                                                        <i class="icon_sort_arrr5"></i>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </dd>
-                                                </dl>
-                                            </div>
-                                            <div method="routeDetail" class="hmap_info_list hmap_info_tra hmap_info_traer"></div>
-                                        </div>
-                                        <div method="tabs" data-name="jd" class="hmap_info_item none">
-                                            <div class="hmap_info_pic hmap_pic_spo">周边热门景点</div>
-                                            <div class="hmap_info_list">
-                                                <table border="0" cellspacing="0" cellpadding="0" class="hmap_table_spo">
-                                                    <tbody>
-                                                        <tr method="route" title="韶山" lat="27.915274" lng="112.526345" address="韶山市乡景区" distance="19128">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">1</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>韶山</p>
-                                                            </td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约19.1km</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="韶山毛泽东同志纪念馆" lat="27.914" lng="112.501786" address="湖南省湘潭市韶山市韶山冲路" distance="19304">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">2</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>韶山毛泽东同志纪念馆</p>
-                                                            </td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约19.3km</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="湘潭市湘乡东山书院旅游区" lat="27.736048" lng="112.558688" address="湖南省湘潭市湘乡市书院路1号" distance="2057">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">3</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>湘潭市湘乡东山书院旅游区</p>
-                                                            </td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约2.1km</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="彭德怀同志故居" lat="27.66632" lng="112.65937" address="湖南省湘潭县乌石镇彭德怀纪念馆" distance="14590">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">4</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>彭德怀同志故居</p>
-                                                            </td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约14.6km</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="东台山国家森林公园" lat="27.730026" lng="112.568871" address="湖南省湘潭湘乡市城郊东隅" distance="3252">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">5</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>东台山国家森林公园</p>
-                                                            </td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约3.3km</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="韶山毛泽东纪念园" lat="27.919343" lng="112.50006" address="湘潭市韶山市中国韶山风景名胜区故居景区内" distance="19919">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">6</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>韶山毛泽东纪念园</p>
-                                                            </td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约19.9km</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="云门寺" lat="27.741975" lng="112.538884" address="东风路" distance="200">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">7</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>云门寺</p>
-                                                            </td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约200m</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="毛泽东铜像" lat="27.910588" lng="112.497037" address="湖南省湘潭市韶山风景区毛泽东纪念馆内" distance="19029">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">8</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>毛泽东铜像</p>
-                                                            </td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约19km</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="故居景区" lat="27.914741" lng="112.49946" address="湘潭市韶山市中国韶山风景名胜区内" distance="19430">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">9</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>故居景区</p>
-                                                            </td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约19.4km</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="清水塘毛泽东旧居" lat="27.919419" lng="112.501625" address="湘潭市韶山市中国韶山风景名胜区故居景区韶山毛泽东纪念园内" distance="19898">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">10</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>清水塘毛泽东旧居</p>
-                                                            </td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约19.9km</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="paging1">
-                                                <a href="javascript:void(0)" data-index="1" filter="1" class="on" method="pageturn">1</a>
-                                                <a href="javascript:void(0)" data-index="2" filter="1" method="pageturn">2</a>
-                                                <a href="javascript:void(0)" data-index="3" filter="1" method="pageturn">3</a>
-                                                <a href="javascript:void(0)" data-index="4" filter="1" method="pageturn">4</a>
-                                                <a href="javascript:void(0)" data-index="5" filter="1" method="pageturn">5</a>
-                                                <a href="javascript:void(0)" data-index="2" filter="1" class="page_next" method="pageturn">下一页</a></div>
-                                            <div method="routeDetail" class="hmap_info_list hmap_info_tra hmap_info_traer"></div>
-                                        </div>
-                                        <div method="tabs" data-name="gw" class="hmap_info_item none">
-                                            <div class="hmap_info_pic hmap_pic_shop">周边购物</div>
-                                            <div class="hmap_info_list">
-                                                <table border="0" cellspacing="0" cellpadding="0" class="hmap_table_spo hmap_table_shop">
-                                                    <tbody>
-                                                        <tr method="route" title="步步高(东风路)" lat="27.742159" lng="112.537918" address="桑梅东路与东风路交叉口南" distance="236">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">1</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>步步高(东风路)</p>
-                                                                <p class="op"></p>
-                                                            </td>
-                                                            <td class="map_td_level"></td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约236m</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="东风市场" lat="27.741252" lng="112.538107" address="东风路东" distance="305">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">2</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>东风市场</p>
-                                                                <p class="op"></p>
-                                                            </td>
-                                                            <td class="map_td_level"></td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约305m</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="云门寺商城" lat="27.743165" lng="112.534972" address="湘潭市湘乡市向红路" distance="461">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">3</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>云门寺商城</p>
-                                                                <p class="op"></p>
-                                                            </td>
-                                                            <td class="map_td_level"></td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约461m</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="湘乡金海市场" lat="27.741413" lng="112.533187" address="湖南省湘潭市湘乡市壕塘路65号" distance="681">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">4</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>湘乡金海市场</p>
-                                                                <p class="op"></p>
-                                                            </td>
-                                                            <td class="map_td_level"></td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约681m</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="华泰商业广场" lat="27.742817" lng="112.536694" address="桑梅中路" distance="303">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">5</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>华泰商业广场</p>
-                                                                <p class="op"></p>
-                                                            </td>
-                                                            <td class="map_td_level"></td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约303m</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="新华书店(新湘东路店)" lat="27.739469" lng="112.536788" address="北正街与新湘东路交叉口" distance="542">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">6</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>新华书店(新湘东路店)</p>
-                                                                <p class="op"></p>
-                                                            </td>
-                                                            <td class="map_td_level"></td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约542m</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="东昇农贸市场" lat="27.745697" lng="112.546655" address="夏梓桥街" distance="727">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">7</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>东昇农贸市场</p>
-                                                                <p class="op"></p>
-                                                            </td>
-                                                            <td class="map_td_level"></td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约727m</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="湘乡市振兴连锁超市南门店" lat="27.737742" lng="112.537951" address="湘乡市昆仑桥办事处南正街湘房大楼（大正街）" distance="677">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">8</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>湘乡市振兴连锁超市南门店</p>
-                                                                <p class="op"></p>
-                                                            </td>
-                                                            <td class="map_td_level"></td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约677m</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="都尚百货" lat="27.739012" lng="112.53598" address="湖南省湘乡市新湘东路23号" distance="628">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">9</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>都尚百货</p>
-                                                                <p class="op"></p>
-                                                            </td>
-                                                            <td class="map_td_level"></td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约628m</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="步行街国庆超市" lat="27.747922" lng="112.536358" address="东风路中国移动对面" distance="574">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">10</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>步行街国庆超市</p>
-                                                                <p class="op"></p>
-                                                            </td>
-                                                            <td class="map_td_level"></td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约574m</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="paging1">
-                                                <a href="javascript:void(0)" data-index="1" filter="2" class="on" method="pageturn">1</a>
-                                                <a href="javascript:void(0)" data-index="2" filter="2" method="pageturn">2</a>
-                                                <a href="javascript:void(0)" data-index="3" filter="2" method="pageturn">3</a>
-                                                <a href="javascript:void(0)" data-index="4" filter="2" method="pageturn">4</a>
-                                                <a href="javascript:void(0)" data-index="5" filter="2" method="pageturn">5</a>
-                                                <a href="javascript:void(0)" data-index="2" filter="2" class="page_next" method="pageturn">下一页</a></div>
-                                            <div method="routeDetail" class="hmap_info_list hmap_info_tra hmap_info_traer"></div>
-                                        </div>
-                                        <div method="tabs" data-name="ms" class="hmap_info_item none">
-                                            <div class="hmap_info_pic hmap_pic_fod">周边美食</div>
-                                            <div class="hmap_info_list">
-                                                <table border="0" cellspacing="0" cellpadding="0" class="hmap_table_spo  hmap_table_shop">
-                                                    <tbody>
-                                                        <tr method="route" title="德克士(湘乡步步高店)" lat="27.742313" lng="112.537888" address="湘乡市东风路23号步步高超市一楼" distance="227">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">1</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>德克士(湘乡步步高店)
-                                                                    <i class="icon_hot_org ml5"></i></p>
-                                                                <p class="op">
-                                                                    <span class="c999 mr5">人均</span>
-                                                                    <span class="cf55">¥25.0</span></p>
-                                                            </td>
-                                                            <td class="map_td_level">
-                                                                <i class="icon_stars icon_star4"></i>
-                                                            </td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约227m</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="湘乡一家美食城" lat="27.74228" lng="112.533568" address="湘潭湘乡市桑梅中路" distance="615">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">2</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>湘乡一家美食城
-                                                                    <i class="icon_hot_org ml5"></i></p>
-                                                                <p class="op">
-                                                                    <span class="c999 mr5">人均</span>
-                                                                    <span class="cf55">¥42.0</span></p>
-                                                            </td>
-                                                            <td class="map_td_level">
-                                                                <i class="icon_stars icon_star5"></i>
-                                                            </td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约615m</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="江南公社" lat="27.742795" lng="112.533767" address="桑梅中路海岸假日酒店正对面" distance="584">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">3</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>江南公社
-                                                                    <i class="icon_hot_org ml5"></i></p>
-                                                                <p class="op">
-                                                                    <span class="c999 mr5">人均</span>
-                                                                    <span class="cf55">¥17.0</span></p>
-                                                            </td>
-                                                            <td class="map_td_level">
-                                                                <i class="icon_stars icon_star5"></i>
-                                                            </td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约584m</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="旺角清粥" lat="27.737824" lng="112.538879" address="湘乡市大正街龙城宾馆对面" distance="651">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">4</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>旺角清粥</p>
-                                                                <p class="op">
-                                                                    <span class="c999 mr5">人均</span>
-                                                                    <span class="cf55">¥14.0</span></p>
-                                                            </td>
-                                                            <td class="map_td_level">
-                                                                <i class="icon_stars icon_star4"></i>
-                                                            </td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约651m</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="旺角美食休闲" lat="27.742459" lng="112.532333" address="湘乡市其他桑梅中路上路口(鼎龙大厦对面)" distance="730">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">5</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>旺角美食休闲</p>
-                                                                <p class="op">
-                                                                    <span class="c999 mr5">人均</span>
-                                                                    <span class="cf55">¥20.0</span></p>
-                                                            </td>
-                                                            <td class="map_td_level">
-                                                                <i class="icon_stars icon_star4"></i>
-                                                            </td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约730m</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="旺角火锅" lat="27.737734" lng="112.538293" address="大正街广客隆商贸城2楼" distance="670">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">6</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>旺角火锅</p>
-                                                                <p class="op"></p>
-                                                            </td>
-                                                            <td class="map_td_level">
-                                                                <i class="icon_stars icon_star5"></i>
-                                                            </td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约670m</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="哈特波波" lat="27.73977" lng="112.53908" address="新湘东路东风广场嘉亨茂商业购物中心4楼" distance="434">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">7</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>哈特波波</p>
-                                                                <p class="op">
-                                                                    <span class="c999 mr5">人均</span>
-                                                                    <span class="cf55">¥65.0</span></p>
-                                                            </td>
-                                                            <td class="map_td_level">
-                                                                <i class="icon_stars icon_star4"></i>
-                                                            </td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约434m</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="小肥羊(湘乡店)" lat="27.738042" lng="112.532549" address="湘潭湘乡市新湘路58号" distance="935">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">8</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>小肥羊(湘乡店)</p>
-                                                                <p class="op">
-                                                                    <span class="c999 mr5">人均</span>
-                                                                    <span class="cf55">¥17.0</span></p>
-                                                            </td>
-                                                            <td class="map_td_level">
-                                                                <i class="icon_stars icon_star4"></i>
-                                                            </td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约935m</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="鱼游天下" lat="27.739485" lng="112.538406" address="东风广场嘉亨茂购物中心4楼(近东风广场)" distance="478">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">9</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>鱼游天下</p>
-                                                                <p class="op"></p>
-                                                            </td>
-                                                            <td class="map_td_level">
-                                                                <i class="icon_stars icon_star5"></i>
-                                                            </td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约478m</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="乡味缘大酒店" lat="27.748385" lng="112.536628" address="湘潭湘乡东风路88号（火车站旁）" distance="603">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">10</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>乡味缘大酒店</p>
-                                                                <p class="op"></p>
-                                                            </td>
-                                                            <td class="map_td_level">
-                                                                <i class="icon_stars icon_star4"></i>
-                                                            </td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约603m</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="paging1">
-                                                <a href="javascript:void(0)" data-index="1" filter="3" class="on" method="pageturn">1</a>
-                                                <a href="javascript:void(0)" data-index="2" filter="3" method="pageturn">2</a>
-                                                <a href="javascript:void(0)" data-index="3" filter="3" method="pageturn">3</a>
-                                                <a href="javascript:void(0)" data-index="4" filter="3" method="pageturn">4</a>
-                                                <a href="javascript:void(0)" data-index="5" filter="3" method="pageturn">5</a>
-                                                <a href="javascript:void(0)" data-index="2" filter="3" class="page_next" method="pageturn">下一页</a></div>
-                                            <div method="routeDetail" class="hmap_info_list hmap_info_tra hmap_info_traer"></div>
-                                        </div>
-                                        <div method="tabs" data-name="yl" class="hmap_info_item none">
-                                            <div class="hmap_info_pic hmap_pic_ent">周边娱乐</div>
-                                            <div class="hmap_info_list">
-                                                <table border="0" cellspacing="0" cellpadding="0" class="hmap_table_spo  hmap_table_shop">
-                                                    <tbody>
-                                                        <tr method="route" title="水立方足浴养生会所" lat="27.737685" lng="112.539429" address="大正街新三和电影院旁巷子七里香北20米" distance="663">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">1</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>水立方足浴养生会所</p>
-                                                                <p class="op"></p>
-                                                            </td>
-                                                            <td class="map_td_level">
-                                                                <i class="icon_stars icon_star4"></i>
-                                                            </td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约663m</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="大地影院(湘潭湘乡万隆店）" lat="27.740282" lng="112.538291" address="湘潭市湘乡市万隆中央广场嘉亨茂购物中心5楼" distance="396">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">2</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>大地影院(湘潭湘乡万隆店）</p>
-                                                                <p class="op">
-                                                                    <span class="c999 mr5">人均</span>
-                                                                    <span class="cf55">¥15.8</span></p>
-                                                            </td>
-                                                            <td class="map_td_level"></td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约396m</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="天娱KTV" lat="27.738619" lng="112.53913" address="望春门办事处解放路10号工人文化宫03栋2楼" distance="561">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">3</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>天娱KTV</p>
-                                                                <p class="op"></p>
-                                                            </td>
-                                                            <td class="map_td_level">
-                                                                <i class="icon_stars icon_star4"></i>
-                                                            </td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约561m</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="湘乡新三和电影城（大正店）" lat="27.737686" lng="112.539435" address="湘乡市大正街35号原老电影院处" distance="663">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">4</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>湘乡新三和电影城（大正店）</p>
-                                                                <p class="op">
-                                                                    <span class="c999 mr5">人均</span>
-                                                                    <span class="cf55">¥15.5</span></p>
-                                                            </td>
-                                                            <td class="map_td_level">
-                                                                <i class="icon_stars icon_star4"></i>
-                                                            </td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约663m</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="锦绣巴渝保健" lat="27.742406" lng="112.532143" address="桑梅中路附近" distance="749">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">5</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>锦绣巴渝保健</p>
-                                                                <p class="op"></p>
-                                                            </td>
-                                                            <td class="map_td_level">
-                                                                <i class="icon_stars icon_star4"></i>
-                                                            </td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约749m</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="金牛广场" lat="27.747556" lng="112.533876" address="车站路" distance="713">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">6</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>金牛广场</p>
-                                                                <p class="op"></p>
-                                                            </td>
-                                                            <td class="map_td_level"></td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约713m</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="糖果果量贩式KTV" lat="27.737545" lng="112.538871" address="大正街21号（龙城宾馆2、3楼）" distance="682">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">7</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>糖果果量贩式KTV</p>
-                                                                <p class="op"></p>
-                                                            </td>
-                                                            <td class="map_td_level">
-                                                                <i class="icon_stars icon_star5"></i>
-                                                            </td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约682m</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="尚格餐饮娱乐会所ktv量贩" lat="27.73806" lng="112.53692" address="湘乡市其他大正街70号" distance="676">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">8</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>尚格餐饮娱乐会所ktv量贩</p>
-                                                                <p class="op"></p>
-                                                            </td>
-                                                            <td class="map_td_level">
-                                                                <i class="icon_stars icon_star3"></i>
-                                                            </td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约676m</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="湘乡剧院" lat="27.738697" lng="112.534481" address="湘乡市其他新湘路中国联通旁" distance="748">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">9</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>湘乡剧院</p>
-                                                                <p class="op"></p>
-                                                            </td>
-                                                            <td class="map_td_level"></td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约748m</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                        <tr method="route" title="好友娱乐会所" lat="27.738857" lng="112.536453" address="新湘东路附近" distance="617">
-                                                            <td class="map_td_num">
-                                                                <span class="icon_mark_blue">10</span></td>
-                                                            <td class="map_td_name">
-                                                                <p>好友娱乐会所</p>
-                                                                <p class="op">
-                                                                    <span class="c999 mr5">人均</span>
-                                                                    <span class="cf55">¥188</span></p>
-                                                            </td>
-                                                            <td class="map_td_level">
-                                                                <i class="icon_stars icon_star5"></i>
-                                                            </td>
-                                                            <td class="map_td_km">
-                                                                <p>直线约617m</p>
-                                                            </td>
-                                                            <td>
-                                                                <i class="icon_sort_arrr5"></i>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="paging1">
-                                                <a href="javascript:void(0)" data-index="1" filter="4" class="on" method="pageturn">1</a>
-                                                <a href="javascript:void(0)" data-index="2" filter="4" method="pageturn">2</a>
-                                                <a href="javascript:void(0)" data-index="3" filter="4" method="pageturn">3</a>
-                                                <a href="javascript:void(0)" data-index="4" filter="4" method="pageturn">4</a>
-                                                <a href="javascript:void(0)" data-index="5" filter="4" method="pageturn">5</a>
-                                                <a href="javascript:void(0)" data-index="2" filter="4" class="page_next" method="pageturn">下一页</a></div>
-                                            <div method="routeDetail" class="hmap_info_list hmap_info_tra hmap_info_traer"></div>
-                                        </div>
-                                        <div method="tabs" data-name="zc" class="hmap_info_item none">
-                                            <div class="hmap_info_pic hmap_pic_car">周边租车</div>
-                                            <div class="hmap_info_list">
-                                                <table border="0" cellspacing="0" cellpadding="0" class="hmap_table_spo">
-                                                    <tbody></tbody>
-                                                </table>
-                                            </div>
-                                            <div class="paging1"></div>
-                                            <div method="routeDetail" class="hmap_info_list hmap_info_tra hmap_info_traer"></div>
-                                        </div>
-                                    </div>
+                                <div id="mymap" class="hdetail_map_con" lat="{$info.latitude}" lng="{$info.longitude}" style="width: 100%; height: 497px; opacity: 1; overflow: hidden; background-color: rgb(243, 241, 236); color: rgb(0, 0, 0); text-align: left;">
                                 </div>
                             </div>
+
+                        
+
+             
                         </div>
                     </div>
                     <div class="clx"></div>
@@ -1621,10 +661,11 @@
                                     <div id="bg102" class="percentBox_bg"></div>
                                     <div id="bg2"></div>
                                     <div class="pertxt">
-                                        <div id="txt2" class="pertxt_num" data-rate="0.63">63%</div>
+                                        <div id="txt2" class="pertxt_num" data-rate="0.63">{$info.good_dianpin}</div>
                                         <div class="pertxt_com">好评率</div></div>
                                 </div>
                                 <!------------------圆形进度条 end -------------------->
+                                <!-- <p class="t12 tc">共{$info.dianpin}人评价</p></div> -->
                                 <p class="t12 tc">共8人评价</p></div>
                             <div class="dcomt_sum_btn right">
                                 <a class="btn_blue_w1" href="#" target="_blank">我来点评</a></div>
@@ -1898,7 +939,7 @@
                         <div class="recommend_bg">
                             <div class="recommend_con clearfix">
                                 <div class="recommend_pic">
-                                    <img src="images/user.png" alt="艺龙推荐头像" id="imgElongRecomm">
+                                    <img src="http://img.elongstatic.com/hotel/other/user.png" alt="艺龙推荐头像" id="imgElongRecomm">
                                     <p>艺龙推荐</p>
                                 </div>
                                 <div class="recommend_ac">
@@ -1909,11 +950,12 @@
                     </div>
                     <!--地图入口 start-->
                     <div class="dsider_map mt15">
-                        <a href="#">
+                        <a href="#mapLocation">
                             <div class="map_enter t14 right">
                                 <b class="icon_seemap"></b>查看大地图
                                 <i class="icon_sort_arrr3 ml5"></i></div>
-                            <img src="" width="425" height="210"></a>
+                            <!-- <img src="" width="425" height="210"></a> -->
+                            <img src="http://api.map.baidu.com/staticimage?width=426&height=204&zoom=14&markers={$info.longitude},{$info.latitude}&markerStyles=-1,http://www.elongstatic.com/hotels/pic/markers_icon.png" onerror="this.src='http://www.elongstatic.com/hotels/pic/detailmap_no.png'" width="425" height="210">
                     </div>
                     <!--地图入口 end-->
                     <div id="surroundingHotelContainer">
@@ -1925,7 +967,7 @@
                                 <li>
                                     <div class="dsider_per_pic">
                                         <a target="_blank" href="#" title="湘乡市简宁宾馆">
-                                            <img src="images/0000vVVU.jpg" onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" width="110" height="70"></a>
+                                            <img src="themes/elong/images/0000vVVU.jpg" onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" width="110" height="70"></a>
                                     </div>
                                     <div class="dsider_per_text">
                                         <h3 class="link555">
@@ -1940,7 +982,7 @@
                                 <li>
                                     <div class="dsider_per_pic">
                                         <a target="_blank" href="#" title="湘乡稳得福公寓">
-                                            <img src="images/0000vRox.jpg" onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" width="110" height="70"></a>
+                                            <img src="themes/elong/images/0000vRox.jpg" onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" width="110" height="70"></a>
                                     </div>
                                     <div class="dsider_per_text">
                                         <h3 class="link555">
@@ -1955,7 +997,7 @@
                                 <li>
                                     <div class="dsider_per_pic">
                                         <a target="_blank" href="#" title="湘乡市惜福豪华公寓">
-                                            <img src="images/0000vViM.jpg" onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" width="110" height="70"></a>
+                                            <img src="themes/elong/images/0000vViM.jpg" onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" width="110" height="70"></a>
                                     </div>
                                     <div class="dsider_per_text">
                                         <h3 class="link555">
@@ -1970,7 +1012,7 @@
                                 <li>
                                     <div class="dsider_per_pic">
                                         <a target="_blank" href="#" title="湘乡鸿泰楼住宿">
-                                            <img src="images/nw_0004xdGH.jpg" onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" width="110" height="70"></a>
+                                            <img src="themes/elong/images/nw_0004xdGH.jpg" onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" width="110" height="70"></a>
                                     </div>
                                     <div class="dsider_per_text">
                                         <h3 class="link555">
@@ -1985,7 +1027,7 @@
                                 <li>
                                     <div class="dsider_per_pic">
                                         <a target="_blank" href="#" title="湘乡星旺宾馆">
-                                            <img src="images/0000vxje.jpg" onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" width="110" height="70"></a>
+                                            <img src="themes/elong/images/0000vxje.jpg" onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" width="110" height="70"></a>
                                     </div>
                                     <div class="dsider_per_text">
                                         <h3 class="link555">
@@ -2033,8 +1075,8 @@
                 <i class="icon_next_c38" method="nextImg"></i>
                 <div class="float_rpic">
                     <div id="imgContainer" class="dffc">
-                        <img data-handle="img" class="show_imgzz" src="images/0000vVL4(1).jpg" onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;">
-                        <img class="alpha_imgzz" src="images/pixel.gif"></div>
+                        <img data-handle="img" class="show_imgzz" src="themes/elong/images/0000vVL4(1).jpg" onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'">
+                        <img class="alpha_imgzz" src="http://img.elongstatic.com/index/bannerwrap/pixel.gif"></div>
                     <div id="fullview" style="position:absolute;display:none;width:100%;height:400px;"></div>
                     <div id="sosofullview" style="position:absolute;display:none;width:100%;height:400px;"></div>
                     <h2 id="hImageName">客房</h2></div>
@@ -2058,95 +1100,95 @@
                         </span>
                         <ul data-handle="allImage" class="hrela_spic_list" id="layerimagegroup" style="position:absolute;left:0px;">
                             <li class="on" method="showBigImg" ispanorama="" data-name="客房" data-type="pano">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/0000vVL4.jpg" width="80" height="80" src="images/0000vVL4.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/0000vVL4.jpg" width="80" height="80" src="themes/elong/images/0000vVL4.jpg"></li>
                             <li class="" method="showBigImg" ispanorama="" data-name="酒店外观" data-type="pano">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/0000vVL1.jpg" width="80" height="80" src="images/0000vVL1.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/0000vVL1.jpg" width="80" height="80" src="themes/elong/images/0000vVL1.jpg"></li>
                             <li class="" method="showBigImg" ispanorama="" data-name="客房" data-type="pano">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/0000vVLT.jpg" width="80" height="80" src="images/0000vVLT(1).jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/0000vVLT.jpg" width="80" height="80" src="themes/elong/images/0000vVLT(1).jpg"></li>
                             <li class="" method="showBigImg" ispanorama="" data-name="客房" data-type="pano">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/0000vVLP.jpg" width="80" height="80" src="images/0000vVLP.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/0000vVLP.jpg" width="80" height="80" src="themes/elong/images/0000vVLP.jpg"></li>
                             <li class="" method="showBigImg" ispanorama="" data-name="客房" data-type="pano">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/0000vVLK.jpg" width="80" height="80" src="images/0000vVLK.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/0000vVLK.jpg" width="80" height="80" src="themes/elong/images/0000vVLK.jpg"></li>
                             <li class="" method="showBigImg" ispanorama="" data-name="客房" data-type="pano">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/0000vVLH.jpg" width="80" height="80" src="images/0000vVLH.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/0000vVLH.jpg" width="80" height="80" src="themes/elong/images/0000vVLH.jpg"></li>
                             <li class="" method="showBigImg" ispanorama="" data-name="客房" data-type="pano">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/0000vVL8.jpg" width="80" height="80" src="images/0000vVL8.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/0000vVL8.jpg" width="80" height="80" src="themes/elong/images/0000vVL8.jpg"></li>
                             <li class="" method="showBigImg" ispanorama="" data-name="其他" data-type="pano">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/0000vVLx.jpg" width="80" height="80" src="images/0000vVLx.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/0000vVLx.jpg" width="80" height="80" src="themes/elong/images/0000vVLx.jpg"></li>
                             <li class="" method="showBigImg" ispanorama="" data-name="客房" data-type="pano">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJly.jpg" width="80" height="80" src="images/nw_0005HJly.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJly.jpg" width="80" height="80" src="themes/elong/images/nw_0005HJly.jpg"></li>
                             <li class="" method="showBigImg" ispanorama="" data-name="客房" data-type="pano">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJlx.jpg" width="80" height="80" src="images/nw_0005HJlx.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJlx.jpg" width="80" height="80" src="themes/elong/images/nw_0005HJlx.jpg"></li>
                             <li class="" method="showBigImg" ispanorama="" data-name="客房" data-type="pano">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJlu.jpg" width="80" height="80" src="images/nw_0005HJlu.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJlu.jpg" width="80" height="80" src="themes/elong/images/nw_0005HJlu.jpg"></li>
                             <li class="" method="showBigImg" ispanorama="" data-name="客房" data-type="pano">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJls.jpg" width="80" height="80" src="images/nw_0005HJls.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJls.jpg" width="80" height="80" src="themes/elong/images/nw_0005HJls.jpg"></li>
                             <li class="" method="showBigImg" ispanorama="" data-name="客房" data-type="pano">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJlo.jpg" width="80" height="80" src="images/nw_0005HJlo.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJlo.jpg" width="80" height="80" src="themes/elong/images/nw_0005HJlo.jpg"></li>
                             <li class="" method="showBigImg" ispanorama="" data-name="客房" data-type="pano">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HGOO.jpg" width="80" height="80" src="images/nw_0005HGOO.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HGOO.jpg" width="80" height="80" src="themes/elong/images/nw_0005HGOO.jpg"></li>
                             <li class="" method="showBigImg" ispanorama="" data-name="客房" data-type="pano">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HGOL.jpg" width="80" height="80" src="images/nw_0005HGOL.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HGOL.jpg" width="80" height="80" src="themes/elong/images/nw_0005HGOL.jpg"></li>
                             <li class="" method="showBigImg" ispanorama="" data-name="客房" data-type="pano">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJlc.jpg" width="80" height="80" src="images/nw_0005HJlc.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJlc.jpg" width="80" height="80" src="themes/elong/images/nw_0005HJlc.jpg"></li>
                             <li class="" method="showBigImg" ispanorama="" data-name="客房" data-type="pano">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HGOE.jpg" width="80" height="80" src="images/nw_0005HGOE.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HGOE.jpg" width="80" height="80" src="themes/elong/images/nw_0005HGOE.jpg"></li>
                             <li class="" method="showBigImg" ispanorama="" data-name="客房" data-type="pano">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HGOB.jpg" width="80" height="80" src="images/nw_0005HGOB.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HGOB.jpg" width="80" height="80" src="themes/elong/images/nw_0005HGOB.jpg"></li>
                             <li class="" method="showBigImg" ispanorama="" data-name="客房" data-type="pano">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJl3.jpg" width="80" height="80" src="images/nw_0005HJl3.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJl3.jpg" width="80" height="80" src="themes/elong/images/nw_0005HJl3.jpg"></li>
                             <li class="" method="showBigImg" ispanorama="" data-name="客房" data-type="pano">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJkY.jpg" width="80" height="80" src="images/nw_0005HJkY.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJkY.jpg" width="80" height="80" src="themes/elong/images/nw_0005HJkY.jpg"></li>
                             <li class="" method="showBigImg" ispanorama="" data-name="客房" data-type="pano">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HGOp.jpg" width="80" height="80" src="images/nw_0005HGOp.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HGOp.jpg" width="80" height="80" src="themes/elong/images/nw_0005HGOp.jpg"></li>
                             <li class="" method="showBigImg" ispanorama="" data-name="客房" data-type="pano">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJkR.jpg" width="80" height="80" src="images/nw_0005HJkR.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJkR.jpg" width="80" height="80" src="themes/elong/images/nw_0005HJkR.jpg"></li>
                         </ul>
                         <ul data-handle="hotelLobbys" style="display:none;position:absolute;left:0px;" class="hrela_spic_list" id="layerimagegroup">
                             <li method="showBigImg" ispanorama="" data-name="酒店外观">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/0000vVL1.jpg" width="80" height="80" src="images/0000vVL1.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/0000vVL1.jpg" width="80" height="80" src="themes/elong/images/0000vVL1.jpg"></li>
                         </ul>
                         <ul data-handle="roomImages" style="display:none;position:absolute;left:0px;" class="hrela_spic_list" id="layerimagegroup">
                             <li method="showBigImg" ispanorama="" data-name="客房">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/0000vVL4.jpg" width="80" height="80" src="images/0000vVL4.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/0000vVL4.jpg" width="80" height="80" src="themes/elong/images/0000vVL4.jpg"></li>
                             <li method="showBigImg" ispanorama="" data-name="客房">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/0000vVLT.jpg" width="80" height="80" src="images/0000vVLT(1).jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/0000vVLT.jpg" width="80" height="80" src="themes/elong/images/0000vVLT(1).jpg"></li>
                             <li method="showBigImg" ispanorama="" data-name="客房">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/0000vVLP.jpg" width="80" height="80" src="images/0000vVLP.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/0000vVLP.jpg" width="80" height="80" src="themes/elong/images/0000vVLP.jpg"></li>
                             <li method="showBigImg" ispanorama="" data-name="客房">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/0000vVLK.jpg" width="80" height="80" src="images/0000vVLK.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/0000vVLK.jpg" width="80" height="80" src="themes/elong/images/0000vVLK.jpg"></li>
                             <li method="showBigImg" ispanorama="" data-name="客房">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/0000vVLH.jpg" width="80" height="80" src="images/0000vVLH.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/0000vVLH.jpg" width="80" height="80" src="themes/elong/images/0000vVLH.jpg"></li>
                             <li method="showBigImg" ispanorama="" data-name="客房">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/0000vVL8.jpg" width="80" height="80" src="images/0000vVL8.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/0000vVL8.jpg" width="80" height="80" src="themes/elong/images/0000vVL8.jpg"></li>
                             <li method="showBigImg" ispanorama="" data-name="客房">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJly.jpg" width="80" height="80" src="images/nw_0005HJly.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJly.jpg" width="80" height="80" src="themes/elong/images/nw_0005HJly.jpg"></li>
                             <li method="showBigImg" ispanorama="" data-name="客房">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJlx.jpg" width="80" height="80" src="images/nw_0005HJlx.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJlx.jpg" width="80" height="80" src="themes/elong/images/nw_0005HJlx.jpg"></li>
                             <li method="showBigImg" ispanorama="" data-name="客房">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJlu.jpg" width="80" height="80" src="images/nw_0005HJlu.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJlu.jpg" width="80" height="80" src="themes/elong/images/nw_0005HJlu.jpg"></li>
                             <li method="showBigImg" ispanorama="" data-name="客房">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJls.jpg" width="80" height="80" src="images/nw_0005HJls.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJls.jpg" width="80" height="80" src="themes/elong/images/nw_0005HJls.jpg"></li>
                             <li method="showBigImg" ispanorama="" data-name="客房">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJlo.jpg" width="80" height="80" src="images/nw_0005HJlo.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJlo.jpg" width="80" height="80" src="themes/elong/images/nw_0005HJlo.jpg"></li>
                             <li method="showBigImg" ispanorama="" data-name="客房">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HGOO.jpg" width="80" height="80" src="images/nw_0005HGOO.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HGOO.jpg" width="80" height="80" src="themes/elong/images/nw_0005HGOO.jpg"></li>
                             <li method="showBigImg" ispanorama="" data-name="客房">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HGOL.jpg" width="80" height="80" src="images/nw_0005HGOL.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HGOL.jpg" width="80" height="80" src="themes/elong/images/nw_0005HGOL.jpg"></li>
                             <li method="showBigImg" ispanorama="" data-name="客房">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJlc.jpg" width="80" height="80" src="images/nw_0005HJlc.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJlc.jpg" width="80" height="80" src="themes/elong/images/nw_0005HJlc.jpg"></li>
                             <li method="showBigImg" ispanorama="" data-name="客房">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HGOE.jpg" width="80" height="80" src="images/nw_0005HGOE.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HGOE.jpg" width="80" height="80" src="themes/elong/images/nw_0005HGOE.jpg"></li>
                             <li method="showBigImg" ispanorama="" data-name="客房">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HGOB.jpg" width="80" height="80" src="images/nw_0005HGOB.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HGOB.jpg" width="80" height="80" src="themes/elong/images/nw_0005HGOB.jpg"></li>
                             <li method="showBigImg" ispanorama="" data-name="客房">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJl3.jpg" width="80" height="80" src="images/nw_0005HJl3.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJl3.jpg" width="80" height="80" src="themes/elong/images/nw_0005HJl3.jpg"></li>
                             <li method="showBigImg" ispanorama="" data-name="客房">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJkY.jpg" width="80" height="80" src="images/nw_0005HJkY.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJkY.jpg" width="80" height="80" src="themes/elong/images/nw_0005HJkY.jpg"></li>
                             <li method="showBigImg" ispanorama="" data-name="客房">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HGOp.jpg" width="80" height="80" src="images/nw_0005HGOp.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HGOp.jpg" width="80" height="80" src="themes/elong/images/nw_0005HGOp.jpg"></li>
                             <li method="showBigImg" ispanorama="" data-name="客房">
-                                <img onerror="this.src=&#39;http://www.elongstatic.com/hotels/pic/no_pics_CN.gif&#39;" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJkR.jpg" width="80" height="80" src="images/nw_0005HJkR.jpg"></li>
+                                <img onerror="this.src='http://www.elongstatic.com/hotels/pic/no_pics_CN.gif'" bigimgurl="http://pavo.elongstatic.com/i/Hotel870_470/nw_0005HJkR.jpg" width="80" height="80" src="themes/elong/images/nw_0005HJkR.jpg"></li>
                         </ul>
                         <ul data-handle="memberImages" style="display:none;position:absolute;left:0px;" class="hrela_spic_list" id="layerimagegroup"></ul>
                         <ul data-handle="panoramaImages" style="display:none;position:absolute;left:0px;" class="hrela_spic_list" id="layerimagegroup"></ul>
@@ -2227,136 +1269,16 @@
                 </div>
                 <!--内容部分 end--></div>
         </div>
-        <script type="text/javascript">var HotelDetailController = {
-                Resource: {
-                    "hoteldetail": {
-                        "crown": "艺龙皇冠级合作酒店",
-                        "script_CheckInDate_error": "请输入有效的入住日期。",
-                        "hidesomeproduct": "收起",
-                        "script_CheckOutDate_validator": "离店日期必须晚于或者等于入住日期。",
-                        "script_need_end": "天以上，请致电：{0}，我们会竭诚为您服务。",
-                        "dragon": "艺龙龙冠级合作酒店",
-                        "showmoreproduct": "查看更多产品报价",
-                        "script_CheckOutDate_validator2": "入住日期必须早于离店日期。",
-                        "specialoffers": "温馨提示",
-                        "script_if_head": "如果您需要预订",
-                        "script_CheckInDate_validator": "入住日期必须晚于或者等于当天日期。",
-                        "diamond": "艺龙钻石级合作酒店",
-                        "publicwifi": "公共区域提供WiFi",
-                        "internet": "上网服务",
-                        "script_CheckOutDate_error": "请输入有效的离店日期。",
-                        "script_if_end": "的酒店，请致电：{0}，我们会竭诚为您服务。",
-                        "script_need_head": "如果您需要在酒店入住"
-                    }
-                },
-                sosoId: "",
-                svId: "",
-                heading: "",
-                zoom: "",
-                stas: "",
-                pitch: "",
-                isLogin: null,
-                memberLevel: 0,
-                detailRequest: {
-                    "bookingChannel": 1,
-                    "cardNo": 192928,
-                    "checkInDate": "2016-12-27 00:00:00",
-                    "checkOutDate": "2016-12-28 00:00:00",
-                    "cityId": "1906",
-                    "citySeoNameEn": "xiangtan",
-                    "customerLevel": 11,
-                    "hotelIDs": "90864703",
-                    "isAfterCouponPrice": true,
-                    "isDebug": false,
-                    "isLogin": false,
-                    "isMobileOnly": false,
-                    "isNeed5Discount": false,
-                    "isTrace": false,
-                    "language": "cn",
-                    "needDataFromCache": true,
-                    "orderFromID": 50,
-                    "productType": 0,
-                    "promotionChannelCode": "0000",
-                    "proxyID": "ZD",
-                    "sellChannel": 1,
-                    "settlementType": 0,
-                    "updateOrder": false
-                },
-                script_CheckInDate_validator: "\u5165\u4F4F\u65E5\u671F\u5FC5\u987B\u665A\u4E8E\u6216\u8005\u7B49\u4E8E\u5F53\u5929\u65E5\u671F\u3002",
-                afterDays: 180,
-                inDays: 30,
-                webTel: "4009-333-333",
-                language: "cn",
-                cityId: "1906",
-                googleLat: 27.737649,
-                googleLng: 112.533132,
-                baiduLat: 27.743649,
-                baiduLng: 112.539632,
-                cityNameEn: "xiangtan",
-                cityNameCn: "\u6E58\u6F6D\u5E02",
-                hotelAddress: "\u6851\u6885\u4E1C\u8DEF36\u53F7(\u6E58\u4E61\u6C7D\u8F66\u7AD9\u5BF9\u9762)",
-                hotelNameCn: "\u6E58\u4E61\u9752\u74E6\u5C4B\u5927\u9152\u5E97",
-                hotelNameEn: "",
-                <!--hotelId: "90864703",
-                -->starLevel: 2,
-                cityServiceIndex: {
-                    "complaintsRate": 0,
-                    "confirmRate": 74,
-                    "index": 4.5,
-                    "successRate": 97
-                },
-                isTaiwan: false,
-                isNeedOpenAPIBind: false,
-                absoluteUri: "http:\/\/hotel.elong.com\/xiangtan\/90864703\/",
-                hasWifi: true,
-                resourceMap: {
-                    "list.search.aiotext": "\u5982\u4F4D\u7F6E\\\u9152\u5E97\u540D\\\u54C1\u724C"
-                },
-                orderNo: 0,
-                cancelUrl: null,
-                shareComment: {
-                    "AppID": 0,
-                    "CommentExt": {
-                        "Order": {
-                            "CheckInTime": "1900-01-01 00:00:00",
-                            "RoomTypeId": "",
-                            "RoomTypeName": ""
-                        },
-                        "TravelType": 4
-                    },
-                    "CommentId": 70460189,
-                    "CommentUser": {
-                        "CommentCount": 1,
-                        "NickName": "\u4F1A\u54582893",
-                        "Rank": 1
-                    },
-                    "Content": "\u623F\u95F4\u6BD4\u8F83\u5927\uFF0C\u9152\u5E97\u9760\u9A6C\u8DEF\uFF0C\u6709\u70B9\u513F\u5435",
-                    "CreateTime": "2016-11-04 09:11:16",
-                    "Images": [],
-                    "IsMarrow": false,
-                    "ObjectId": "90864703",
-                    "Recommend": 1,
-                    "Replys": [],
-                    "Source": 4,
-                    "UsefulCount": 0,
-                    "auditStatus": 1,
-                    "createTimeString": "2016-11-04 09:11:16"
-                },
-                sharebigImagUrl: "http:\/\/pavo.elongstatic.com\/i\/Hotel600_320\/0000vVL4.jpg",
-                enabledYesterday: false,
-                serverTime: "2016-12-27",
-                serverTimeHour: "2016-12-27 09:20:10",
-                urlVersion: "20161212115214",
-                jsPath: "..\/..\/..\/web\/hotel\/views\/",
-                basePath: "",
-                curDate: "2016-12-27",
-            };
-            var pageController = HotelDetailController;</script>
-        <script data-main="http://www.elongstatic.com/web/hotel/views/HotelDetailB/hoteldetail.js?20161212115214" src="js/require.js"></script>
-        <!--=====================f ooter 15 47 start=====================- -> <div class="clear"></div> <div class="footer" r="3"> <div class="footer_info"> <dl> <dt>加盟合作</dt> <dd> <a href="#" title="酒店加盟" rel="nofollow">酒店加盟</a> </dd> <dd> <a href="#" title="机票酒店分销联盟" rel="nofollow">分销联盟</a> </dd> <dd> <a href="#" title="旅游产品代理合作" rel="nofollow">代理合作</a> </dd> <dd> <a href="#" title="在线广告服务" rel="nofollow">广告服务</a> </dd> <dd> <a href="#" title="艺龙商家中心" rel="nofollow">商家中心</a> </dd> </dl> <dl> <dt>关于艺龙</dt> <dd> <a href="#" title="关于艺龙旅行网" rel="nofollow">关于艺龙</a> </dd> <dd> <a href="#" title="酒店大全">酒店大全</a> </dd> <dd> <a href="#" title="国际酒店">国际酒店</a> </dd><dd> <a href="#" title="校园招聘" rel="nofollow">校园招聘</a> </dd> <dd> <a href="#" title="联系艺龙旅行网" rel="nofollow">联系我们</a> </dd> </dl> <dl> <dt>艺龙APP下载</dt> <dd class="pt10"> <i class="cm_icon footer_info_app"></i> </dd> </dl> <dl> <dt>艺龙官方微信</dt> <dd class="pt10"> <i class="cm_icon footer_info_wx"></i> </dd> </dl> </div> <div class="clx"></div> <div class="footer_copy"> © 1999 - 2016 eLong, Inc or its affiliates. All Rights Reserved. <a href="#">京ICP证010011号</a> 京公网安备<a href="#">11010502026059号</a><i class="cm_icon"></i> </div> <div class="footer_safe"> <a class="cm_icon qua-1" href="https://seal.verisign.com/splash?form_file=fdf/splash.fdf&amp;dn=SECURE.ELONG.COM&amp;lang=zh_cn" rel="nofollow" target="_blank" alt="SSL加密认证" title="SSL加密认证">SSL加密认证</a>  <a class="cm_icon qua-3" href="#" rel="nofollow" target="_blank" alt="信赖商业计划" title="信赖商业计划">信用评级</a> <a class="cm_icon qua-5" href="https://ss.knet.cn/verifyseal.dll?sn=e14021111010646180fggu000000&amp;ct=df&amp;a=1&amp;pa=500267" rel="nofollow" onclick="CNNIC_change(&#39;urlknet&#39;)" tabindex="-1" id="urlknet" target="_blank" title="可信用网站身份验证" alt="可信用网站身份验证">可信用网站身份验证</a> <a class="cm_icon qua-4" href="#" rel="nofollow" target="_blank" title="诚信示范企业" alt="诚信示范企业">诚信示范企业</a> </div></div> <!-- ===================== footer end ===================== -->
-        <script type="text/javascript">$(document).ready(function() {
-                $("#searchTabHandler").hide();
-            });</script>
+       
+        <!--=====================f ooter 15 47 start=====================- --> 
+
+        <div class="clear"></div> <div class="footer" r="3"> <div class="footer_info"> <dl> <dt>加盟合作</dt> <dd> <a href="#" title="酒店加盟" rel="nofollow">酒店加盟</a> </dd> <dd> <a href="#" title="机票酒店分销联盟" rel="nofollow">分销联盟</a> </dd> <dd> <a href="#" title="旅游产品代理合作" rel="nofollow">代理合作</a> </dd> <dd> <a href="#" title="在线广告服务" rel="nofollow">广告服务</a> </dd> <dd> <a href="#" title="艺龙商家中心" rel="nofollow">商家中心</a> </dd> </dl> <dl> <dt>关于艺龙</dt> <dd> <a href="#" title="关于艺龙旅行网" rel="nofollow">关于艺龙</a> </dd> <dd> <a href="#" title="酒店大全">酒店大全</a> </dd> <dd> <a href="#" title="国际酒店">国际酒店</a> </dd><dd> <a href="#" title="校园招聘" rel="nofollow">校园招聘</a> </dd> <dd> <a href="#" title="联系艺龙旅行网" rel="nofollow">联系我们</a> </dd> </dl> <dl> <dt>艺龙APP下载</dt> <dd class="pt10"> <i class="cm_icon footer_info_app"></i> </dd> </dl> <dl> <dt>艺龙官方微信</dt> <dd class="pt10"> <i class="cm_icon footer_info_wx"></i> </dd> </dl> </div> <div class="clx"></div> <div class="footer_copy"> © 1999 - 2016 eLong, Inc or its affiliates. All Rights Reserved. <a href="#">京ICP证010011号</a> 京公网安备<a href="#">11010502026059号</a><i class="cm_icon"></i> </div> <div class="footer_safe"> <a class="cm_icon qua-1" href="https://seal.verisign.com/splash?form_file=fdf/splash.fdf&amp;dn=SECURE.ELONG.COM&amp;lang=zh_cn" rel="nofollow" target="_blank" alt="SSL加密认证" title="SSL加密认证">SSL加密认证</a>  <a class="cm_icon qua-3" href="#" rel="nofollow" target="_blank" alt="信赖商业计划" title="信赖商业计划">信用评级</a> <a class="cm_icon qua-5" href="https://ss.knet.cn/verifyseal.dll?sn=e14021111010646180fggu000000&amp;ct=df&amp;a=1&amp;pa=500267" rel="nofollow" onclick="CNNIC_change('urlknet')" tabindex="-1" id="urlknet" target="_blank" title="可信用网站身份验证" alt="可信用网站身份验证">可信用网站身份验证</a> <a class="cm_icon qua-4" href="#" rel="nofollow" target="_blank" title="诚信示范企业" alt="诚信示范企业">诚信示范企业</a> </div></div> 
+
+
+    
+
+
+
     </body>
 
 </html>

@@ -474,7 +474,7 @@ function chart_color($n)
  */
 function goods_type_list($selected)
 {
-    $sql = 'SELECT cat_id, cat_name FROM ' . $GLOBALS['ecs']->table('hotels_type') . ' WHERE enabled = 1';
+    $sql = 'SELECT cat_id, cat_name FROM ' . $GLOBALS['ecs']->table('hotels_type') . ' WHERE enabled = 1 AND type="service"';
     $res = $GLOBALS['db']->query($sql);
 
     $lst = '';

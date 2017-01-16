@@ -9,7 +9,7 @@ $goods_id = $_REQUEST['goods_id'] ? $_REQUEST['goods_id'] : 0;
 $goods_attr_id = isset($_REQUEST['goods_attr_id']) ? intval($_REQUEST['goods_attr_id']) : '-1';
 if(!$goods_id or $goods_attr_id=='-1' )
 {
-	echo '<center><br>错误操作！</center>';
+    echo '<center><br>请先保存商品,然后 1、选择编辑商品,2、再上传图片</center>';
 	exit;
 }
 //echo $goods_attr_id;
