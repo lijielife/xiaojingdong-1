@@ -7,41 +7,42 @@
         <img src="images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH" />
         {if $smarty.get.act neq "trash"}
         <!-- 分类 -->
-        <input type="text" id="cat_name" name="cat_name" nowvalue="{$goods_cat_name}" value="{$goods_cat_name}" >
-        <input type="hidden" id="cat_id" name="cat_id" value="{$goods_cat_id}">
-        <!-- 品牌 -->
-        <select  class="chzn-select" name="brand_id"><option value="0">{$lang.goods_brand}</option>{html_options options=$brand_list}</select>
-        <!-- 推荐 -->
-        {if $suppliers_exists == 0}
-        {if $intro_list neq ''}
-        <select class="chzn-select" name="intro_type"><option value="0">{$lang.intro_type}</option>
-            {html_options options=$intro_list selected=$smarty.get.intro_type}
-        </select>
-        {/if}
-        {/if}
-        {if $suppliers_exists eq 1}
-        <!-- 供货商 -->
-        <select class="chzn-select" name="suppliers_id" style="height:100;"><option value="0">{$lang.intro_type}</option>{html_options options=$suppliers_list_name selected=$smarty.get.suppliers_id}</select>
+        <!--<input type="text" id="cat_name" name="cat_name" nowvalue="{$goods_cat_name}" value="{$goods_cat_name}" >-->
+        <!--<input type="hidden" id="cat_id" name="cat_id" value="{$goods_cat_id}">-->
 
-        {* 代码增加_start  By  www.68ecshop.com *}
-        <select class="chzn-select" name="supplier_status"><option value="">审核状态</option>
-            {foreach from=$supplier_status_list key=supplier_key item=supplier_status}
-            <option value="{$supplier_key}" {if $supplier_key neq ''  and $supplier_key eq $smarty.get.supplier_status}selected{/if}>{$supplier_status}</option>
-            {/foreach}
-        </select>
-        {* 代码增加_end  By  www.68ecshop.com *}
-        {/if}
-        <!-- 上架 -->
-        {if $lang.intro_type neq ''}
-        <select class="chzn-select" name="is_on_sale"><option value=''>{$lang.intro_type}</option><option value="1">{$lang.on_sale}</option><option value="0">{$lang.not_on_sale}</option></select>
-        {/if}
-        {/if}
+        <!-- 品牌 -->
+        <select  class="chzn-select" name="supplier_id"><option value="0">所有酒店</option>{html_options options=$hotel_list}</select>
+        <!-- 推荐 -->
+        <!--{if $suppliers_exists == 0}-->
+        <!--{if $intro_list neq ''}-->
+        <!--<select class="chzn-select" name="intro_type"><option value="0">{$lang.intro_type}</option>-->
+            <!--{html_options options=$intro_list selected=$smarty.get.intro_type}-->
+        <!--</select>-->
+        <!--{/if}-->
+        <!--{/if}-->
+        <!--{if $suppliers_exists eq 1}-->
+        <!--&lt;!&ndash; 供货商 &ndash;&gt;-->
+        <!--<select class="chzn-select" name="suppliers_id" style="height:100;"><option value="0">{$lang.intro_type}</option>{html_options options=$suppliers_list_name selected=$smarty.get.suppliers_id}</select>-->
+
+        <!--{* 代码增加_start  By  www.68ecshop.com *}-->
+        <!--<select class="chzn-select" name="supplier_status"><option value="">审核状态</option>-->
+            <!--{foreach from=$supplier_status_list key=supplier_key item=supplier_status}-->
+            <!--<option value="{$supplier_key}" {if $supplier_key neq ''  and $supplier_key eq $smarty.get.supplier_status}selected{/if}>{$supplier_status}</option>-->
+            <!--{/foreach}-->
+        <!--</select>-->
+        <!--{* 代码增加_end  By  www.68ecshop.com *}-->
+        <!--{/if}-->
+        <!--&lt;!&ndash; 上架 &ndash;&gt;-->
+        <!--{if $lang.intro_type neq ''}-->
+        <!--<select class="chzn-select" name="is_on_sale"><option value=''>{$lang.intro_type}</option><option value="1">{$lang.on_sale}</option><option value="0">{$lang.not_on_sale}</option></select>-->
+        <!--{/if}-->
+        <!--{/if}-->
         <!-- 关键字 -->
-        关键字 <input type="text" name="keyword" size="15" />
+        <!--关键字 <input type="text" name="keyword" size="15" />-->
         <input type="submit" value="{$lang.button_search}" class="button" />
-         {if $is_pre_sale neq '1'}
-        <input type="button" value="批量导出" class="button" onclick="batch_export()" />
-         {/if}
+         <!--{if $is_pre_sale neq '1'}-->
+        <!--<input type="button" value="批量导出" class="button" onclick="batch_export()" />-->
+         <!--{/if}-->
         
     </form>
 </div>
@@ -52,30 +53,30 @@
     $().ready(function(){
        $(".chzn-select").chosen();
        $(".chzn-container").click(function(){
-     	$("#menuContent_cat_id").hide();
+     	    $("#menuContent_cat_id").hide();
     	})
-		$('.chzn-container-single:last').css('width','60px');
+		$('.chzn-container-single:last').css('width','140px');
     });
 
     function searchGoods()
     {
         {/literal}
         {if $smarty.get.act neq "trash"}
-        listTable.filter['cat_id'] = document.forms['searchForm'].elements['cat_id'].value;
-        listTable.filter['brand_id'] = document.forms['searchForm'].elements['brand_id'].value;
+        //listTable.filter['cat_id'] = document.forms['searchForm'].elements['cat_id'].value;
+        listTable.filter['supplier_id'] = document.forms['searchForm'].elements['supplier_id'].value;
         {if $suppliers_exists == 0}
-            listTable.filter['intro_type'] = document.forms['searchForm'].elements['intro_type'].value;
+            //listTable.filter['intro_type'] = document.forms['searchForm'].elements['intro_type'].value;
             {/if}
                 {if $suppliers_exists eq 1}
-                listTable.filter['suppliers_id'] = document.forms['searchForm'].elements['suppliers_id'].value;
+                //listTable.filter['suppliers_id'] = document.forms['searchForm'].elements['suppliers_id'].value;
                 /* 代码增加_start  By  www.68ecshop.com */
-                listTable.filter['supplier_status'] = document.forms['searchForm'].elements['supplier_status'].value;
+                //listTable.filter['supplier_status'] = document.forms['searchForm'].elements['supplier_status'].value;
                 /* 代码增加_end  By  www.68ecshop.com */
                 {/if}
-                    listTable.filter['is_on_sale'] = document.forms['searchForm'].elements['is_on_sale'].value;
+                    //listTable.filter['is_on_sale'] = document.forms['searchForm'].elements['is_on_sale'].value;
                     {/if}
                         {literal}
-                        listTable.filter['keyword'] = Utils.trim(document.forms['searchForm'].elements['keyword'].value);
+                        //listTable.filter['keyword'] = Utils.trim(document.forms['searchForm'].elements['keyword'].value);
 
                         listTable.filter['page'] = 1;
 

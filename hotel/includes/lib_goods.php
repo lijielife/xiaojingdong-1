@@ -1069,6 +1069,7 @@ function goods_list($is_delete, $real_goods=1, $conditions = '')
         $filter['is_promote']       = empty($_REQUEST['is_promote']) ? 0 : intval($_REQUEST['is_promote']);
         $filter['stock_warning']    = empty($_REQUEST['stock_warning']) ? 0 : intval($_REQUEST['stock_warning']);
         $filter['brand_id']         = empty($_REQUEST['brand_id']) ? 0 : intval($_REQUEST['brand_id']);
+        $filter['supplier_id']         = empty($_REQUEST['supplier_id']) ? 0 : intval($_REQUEST['supplier_id']);
         /* 代码修改 By  www.68ecshop.com Start */
 //        $filter['keyword']          = empty($_REQUEST['keyword']) ? '' : trim($_REQUEST['keyword']);
         $filter['keyword']          = empty($_REQUEST['keyword']) ? '' : urldecode(trim($_REQUEST['keyword']));
@@ -1143,7 +1144,16 @@ function goods_list($is_delete, $real_goods=1, $conditions = '')
             $where .= " AND (is_on_sale = '" . $filter['is_on_sale'] . "')";
         }
 
-        $where_supp = ($filter['supp']>0) ? 'AND g.supplier_id > 0' : 'AND g.supplier_id = 0';
+        //$where_supp = ($filter['supp']>0) ? 'AND g.supplier_id > 0' : 'AND g.supplier_id = 0';
+        if(isset($_REQUEST['supplier_id']) && $_REQUEST['supplier_id'])
+        {
+            $where_supp =  ' AND g.supplier_id = "' .  $_REQUEST['supplier_id'] . '"  ' ;
+        }
+        else
+        {
+            $where_supp =  ' AND g.supplier_id > 0 AND g.supplier_type=2 ' ;
+        }
+
         if(isset($_REQUEST['supp']) && $_REQUEST['supp'] == -1){
           $where_supp = '';
         }
@@ -1172,6 +1182,8 @@ function goods_list($is_delete, $real_goods=1, $conditions = '')
 
         /* 记录总数 */
         $sql = "SELECT COUNT(*) FROM " .$GLOBALS['ecs']->table('goods'). " AS g WHERE is_delete='$is_delete' $where";
+
+
 
         $filter['record_count'] = $GLOBALS['db']->getOne($sql);
 

@@ -66,9 +66,10 @@ while ($row = $db->fetchRow($res))
                 "ON mp.goods_id = g.goods_id AND mp.user_rank = '$_SESSION[user_rank]' ".
            " WHERE pg.package_id = " . $row['act_id']. " ".
             /* 代码增加 By  www.68ecshop.com Start */
-            " AND g.is_delete = 0 AND g.is_on_sale = 1 " .
+            //" AND g.is_delete = 0 AND g.is_on_sale = 1 " .
             /* 代码增加 By  www.68ecshop.com End */
            " ORDER BY pg.goods_id";
+
 
     $goods_res = $GLOBALS['db']->getAll($sql);
 

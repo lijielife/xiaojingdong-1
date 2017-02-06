@@ -24,15 +24,15 @@
 			<span class="tab-front" id="general-tab">{$lang.tab_general}</span>
 			<span class="tab-back" id="detail-tab">{$lang.tab_detail}</span>
 			<span class="tab-back" id="mix-tab">{$lang.tab_mix}</span>
-			{if $goods_type_list}
-			<span class="tab-back" id="properties-tab">{$lang.tab_properties}</span>
-			{/if}
-			<span class="tab-back" id="gallery-tab">{$lang.tab_gallery}</span>
-			<span class="tab-back" id="linkgoods-tab">{$lang.tab_linkgoods}</span>
-			{if $code eq ''}
-			<span class="tab-back" id="groupgoods-tab">{$lang.tab_groupgoods}</span>
-			{/if}
-			<span class="tab-back" id="article-tab" style="display:none">{$lang.tab_article}</span>
+			<!--{if $goods_type_list}-->
+			<span class="tab-back" id="properties-tab">套餐选择</span>
+			<!--{/if}-->
+			<span class="tab-back" id="gallery-tab">房间图片</span>
+			<!--<span class="tab-back" id="linkgoods-tab">{$lang.tab_linkgoods}</span>-->
+			<!--{if $code eq ''}-->
+			<!--<span class="tab-back" id="groupgoods-tab">{$lang.tab_groupgoods}</span>-->
+			<!--{/if}-->
+			<!--<span class="tab-back" id="article-tab" style="display:none">{$lang.tab_article}</span>-->
 		</p>
 	</div>
 
@@ -61,110 +61,110 @@
 						{$lang.require_field}
 					</td>
 				</tr>
+				<!--<tr>-->
+					<!--<td class="label">-->
+						<!--<a href="javascript:showNotice('noticeGoodsSN');" title="{$lang.form_notice}">-->
+							<!--<img src="images/notice.gif" width="16" height="16" border="0" alt="{$lang.form_notice}">-->
+						<!--</a>-->
+						<!--{$lang.lab_goods_sn}-->
+					<!--</td>-->
+					<!--<td>-->
+						<!--<input type="text" name="goods_sn" value="{$goods.goods_sn|escape}" size="20" onblur="checkGoodsSn(this.value,'{$goods.goods_id}')" />-->
+						<!--<span id="goods_sn_notice"></span>-->
+						<!--<br />-->
+						<!--<span class="notice-span" {if $help_open}style="display:block" {else} style="display:none" {/if} id="noticeGoodsSN">{$lang.notice_goods_sn}</span>-->
+					<!--</td>-->
+				<!--</tr>-->
+				<!--<tr>-->
+					<!--<td class="label">{$lang.lab_goods_cat}</td>-->
+					<!--<td>-->
+						<!--<input type="text" id="cat_name" name="cat_name" nowvalue="{$goods_cat_id}" value="{$goods_cat_name}">-->
+						<!--<input type="hidden" id="cat_id" name="cat_id" value="{$goods_cat_id}">-->
+						<!--{if $is_add}-->
+						<!--<a href="javascript:void(0)" onclick="rapidCatAdd()" title="{$lang.rapid_add_cat}" class="special">{$lang.rapid_add_cat}</a>-->
+						<!--<span id="category_add" style="display:none;">-->
+							<!--<input class="text" size="10" name="addedCategoryName" />-->
+							<!--<a href="javascript:void(0)" onclick="addCategory()" title="{$lang.button_submit}" class="special">{$lang.button_submit}</a>-->
+							<!--<a href="javascript:void(0)" onclick="return goCatPage()" title="{$lang.category_manage}" class="special">{$lang.category_manage}</a>-->
+							<!--<a href="javascript:void(0)" onclick="hideCatDiv()" title="{$lang.hide}" class="special">&lt;&lt;</a>-->
+						<!--</span>-->
+						<!--{/if} {$lang.require_field}-->
+						<!--<script type="text/javascript">-->
+                		<!--$().ready(function(){-->
+							<!--// $("#cat_name")为获取分类名称的jQuery对象，可根据实际情况修改-->
+							<!--// $("#cat_id")为获取分类ID的jQuery对象，可根据实际情况修改-->
+							<!--// "{$goods_cat_id}"为被选中的商品分类编号，无则设置为null或者不写此参数或者为空字符串-->
+							<!--$.ajaxCategorySelecter($("#cat_name"), $("#cat_id"), "{$goods_cat_id}");-->
+						<!--});-->
+            			<!--</script>-->
+					<!--</td>-->
+				<!--</tr>-->
+				<!--<tr>-->
+					<!--<td class="label">{$lang.lab_other_cat}</td>-->
+					<!--<td>-->
+						<!--<input type="button" value="{$lang.add}" onclick="addOtherCat(this.parentNode)" class="button" />-->
+						<!--{foreach from=$goods.other_cat item=cat_id}-->
+						<!--<select name="other_cat[]">-->
+							<!--<option value="0">{$lang.select_please}</option>-->
+							<!--{$other_cat_list.$cat_id}-->
+						<!--</select>-->
+						<!--{/foreach}-->
+						<!--<select name="other_cat[]" onchange="hideCatDiv()" ><option value="0">{$lang.select_please}</option>{$cat_other_list}</select>-->
+					<!--</td>-->
+				<!--</tr>-->
 				<tr>
-					<td class="label">
-						<a href="javascript:showNotice('noticeGoodsSN');" title="{$lang.form_notice}">
-							<img src="images/notice.gif" width="16" height="16" border="0" alt="{$lang.form_notice}">
-						</a>
-						{$lang.lab_goods_sn}
-					</td>
-					<td>
-						<input type="text" name="goods_sn" value="{$goods.goods_sn|escape}" size="20" onblur="checkGoodsSn(this.value,'{$goods.goods_id}')" />
-						<span id="goods_sn_notice"></span>
-						<br />
-						<span class="notice-span" {if $help_open}style="display:block" {else} style="display:none" {/if} id="noticeGoodsSN">{$lang.notice_goods_sn}</span>
-					</td>
-				</tr>
-				<tr>
-					<td class="label">{$lang.lab_goods_cat}</td>
-					<td>
-						<input type="text" id="cat_name" name="cat_name" nowvalue="{$goods_cat_id}" value="{$goods_cat_name}">
-						<input type="hidden" id="cat_id" name="cat_id" value="{$goods_cat_id}">
-						{if $is_add}
-						<a href="javascript:void(0)" onclick="rapidCatAdd()" title="{$lang.rapid_add_cat}" class="special">{$lang.rapid_add_cat}</a>
-						<span id="category_add" style="display:none;">
-							<input class="text" size="10" name="addedCategoryName" />
-							<a href="javascript:void(0)" onclick="addCategory()" title="{$lang.button_submit}" class="special">{$lang.button_submit}</a>
-							<a href="javascript:void(0)" onclick="return goCatPage()" title="{$lang.category_manage}" class="special">{$lang.category_manage}</a>
-							<a href="javascript:void(0)" onclick="hideCatDiv()" title="{$lang.hide}" class="special">&lt;&lt;</a>
-						</span>
-						{/if} {$lang.require_field}
-						<script type="text/javascript">
-                		$().ready(function(){
-							// $("#cat_name")为获取分类名称的jQuery对象，可根据实际情况修改
-							// $("#cat_id")为获取分类ID的jQuery对象，可根据实际情况修改
-							// "{$goods_cat_id}"为被选中的商品分类编号，无则设置为null或者不写此参数或者为空字符串
-							$.ajaxCategorySelecter($("#cat_name"), $("#cat_id"), "{$goods_cat_id}");
-						});
-            			</script>
-					</td>
-				</tr>
-				<tr>
-					<td class="label">{$lang.lab_other_cat}</td>
-					<td>
-						<input type="button" value="{$lang.add}" onclick="addOtherCat(this.parentNode)" class="button" />
-						{foreach from=$goods.other_cat item=cat_id}
-						<select name="other_cat[]">
-							<option value="0">{$lang.select_please}</option>
-							{$other_cat_list.$cat_id}
-						</select>
-						{/foreach}
-						<select name="other_cat[]" onchange="hideCatDiv()" ><option value="0">{$lang.select_please}</option>{$cat_other_list}</select>
-					</td>
-				</tr>
-				<tr>
-					<td class="label">{$lang.lab_goods_brand}</td>
+					<td class="label">所属酒店</td>
 					<td>
 						<!-- 代码修改_start_derek20150129admin_goods  www.68ecshop.com -->
 
-						<input id="brand_search" name="brand_search" type="text" value="{$brand_name_val|default:请输入……}" onclick="onC_search()" onblur="onB_search()" oninput="onK_search(this.value)" />
-						<input id="brand_search_bf" name="brand_search_bf" type="hidden" value="{$brand_name_val}" />
-						<input id="brand_search_jt" name="brand_search_jt" type="hidden" value="{$goods.brand_id}" />
+						<input id="brand_search" name="brand_search" type="text" value="{$supplier_name_val|default:请输入……}" onclick="onC_search()" onblur="onB_search()" oninput="onK_search(this.value)" />
+						<input id="brand_search_bf" name="brand_search_bf" type="hidden" value="{$supplier_name_val}" />
+						<input id="brand_search_jt" name="brand_search_jt" type="hidden" value="{$goods.supplier_id}" />
 						<script language="javascript">
-			//文本框点击事件
-            function onC_search()
-			{
-				if (document.getElementById("brand_search").value == "请输入……"){
-					document.getElementById("brand_search").value = "";
-				}
-				document.getElementById("brand_content").style.display = "block";
-				$("div[id^='@']>div").css('display','block');
-			}
-			//失去焦点事件
-            function onB_search()
-			{
-				if (document.getElementById("brand_search").value == ""){
-					document.getElementById("brand_search").value = document.getElementById("brand_search_bf").value;
-				}
-				//鼠标离开判断搜索框中名称与选中的名称是否一致，不一致则清空
-				if($("#brand_search").val() != $("#brand_name").val()){
-					if($("#brand_search_bf").val() != ''){
-						$("#brand_search").val($("#brand_search_bf").val());
-						$("#brand_id").val($("#brand_search_jt").val());
-						$("#brand_name").val($("#brand_search_bf").val());
-					}else{
-						$("#brand_search").val("");
-						$("#brand_id").val(0);
-						$("#brand_name").val("");
-					}
-				}
-			}
-			//输入事件
-			function onK_search(w)
-			{
-				if (w != "")
-				{
-					$("div[id^='@']>div").css('display','none');
-					$("div[id^='@']>div[id*='"+w+"']").css('display','block');
-				}
-				else
-					$("div[id^='@']>div").css('display','block');
-			}
-            </script>
+							//文本框点击事件
+							function onC_search()
+							{
+								if (document.getElementById("brand_search").value == "请输入……"){
+									document.getElementById("brand_search").value = "";
+								}
+								document.getElementById("hotel_content").style.display = "block";
+								$("div[id^='@']>div").css('display','block');
+							}
+							//失去焦点事件
+							function onB_search()
+							{
+								if (document.getElementById("brand_search").value == ""){
+									document.getElementById("brand_search").value = document.getElementById("brand_search_bf").value;
+								}
+								//鼠标离开判断搜索框中名称与选中的名称是否一致，不一致则清空
+								if($("#brand_search").val() != $("#brand_name").val()){
+									if($("#brand_search_bf").val() != ''){
+										$("#brand_search").val($("#brand_search_bf").val());
+										$("#brand_id").val($("#brand_search_jt").val());
+										$("#brand_name").val($("#brand_search_bf").val());
+									}else{
+										$("#brand_search").val("");
+										$("#brand_id").val(0);
+										$("#brand_name").val("");
+									}
+								}
+							}
+							//输入事件
+							function onK_search(w)
+							{
+								if (w != "")
+								{
+									$("div[id^='@']>div").css('display','none');
+									$("div[id^='@']>div[id*='"+w+"']").css('display','block');
+								}
+								else
+									$("div[id^='@']>div").css('display','block');
+							}
+						</script>
 
 						<!-- 代码修改_end_derek20150129admin_goods  www.68ecshop.com -->
 						{if $is_add}
-						<a href="javascript:void(0)" title="{$lang.rapid_add_brand}" onclick="rapidBrandAdd()" class="special">{$lang.rapid_add_brand}</a>
+						<!--<a href="javascript:void(0)" title="{$lang.rapid_add_brand}" onclick="rapidBrandAdd()" class="special">{$lang.rapid_add_brand}</a>-->
 						<span id="brand_add" style="display:none;">
 							<input class="text" size="15" name="addedBrandName" />
 							<a href="javascript:void(0)" onclick="addBrand()" class="special">{$lang.button_submit}</a>
@@ -266,47 +266,150 @@
 							</div>
 						</div>
 
+
+						<div id="hotel_content" style="margin-top:5px; margin-bottom:10px; display:none">
+							<div style="float:left; overflow-y:scroll; width:420px; height:120px; border:#CCC 1px solid">
+								<!--<div id="xin_brand" style="display:none">新增品牌：</div>-->
+								<table width="400" border="0" cellspacing="0" cellpadding="0">
+									<!-- {if $brand_list_new ne ""} -->
+									<tr>
+										<td style="padding:5px 10px">A-G</td>
+										<td style="padding:5px 10px">H-K</td>
+										<td style="padding:5px 10px">L-S</td>
+										<td style="padding:5px 10px">T-Z</td>
+										<td style="padding:5px 10px">0-9</td>
+									</tr>
+									<tr>
+										<td valign="top" style="padding-left:10px">
+											<!-- {foreach from=$hotel_list item=hotel key=key} -->
+											<!-- {if $hotel.name_p >= "a" && $hotel.name_p <= "g"} -->
+
+											<div id="@{$key}">
+												<div id="{$hotel.name_pinyin}{$hotel.name}">
+													<a href="javascript:go_supplier_id({$key},'{$hotel.name}')">{$hotel.name}</a>
+												</div>
+											</div>
+
+											<!-- {/if} -->
+											<!-- {/foreach} -->
+										</td>
+										<td valign="top" style="padding-left:10px">
+											<!-- {foreach from=$hotel_list item=hotel key=key} -->
+											<!-- {if $hotel.name_p >= "h" && $hotel.name_p <= "k"} -->
+
+											<div id="@{$key}">
+												<div id="{$hotel.name_pinyin}{$hotel.name}">
+													<a href="javascript:go_supplier_id({$key},'{$hotel.name}')">{$hotel.name}</a>
+												</div>
+											</div>
+
+											<!-- {/if} -->
+											<!-- {/foreach} -->
+										</td>
+										<td valign="top" style="padding-left:10px">
+											<!-- {foreach from=$hotel_list item=hotel key=key} -->
+											<!-- {if $hotel.name_p >= "l" && $hotel.name_p <= "s"} -->
+
+											<div id="@{$key}">
+												<div id="{$hotel.name_pinyin}{$hotel.name}">
+													<a href="javascript:go_supplier_id({$key},'{$hotel.name}')">{$hotel.name}</a>
+												</div>
+											</div>
+
+											<!-- {/if} -->
+											<!-- {/foreach} -->
+										</td>
+										<td valign="top" style="padding-left:10px">
+											<!-- {foreach from=$hotel_list item=hotel key=key} -->
+											<!-- {if $hotel.name_p >= "t" && $hotel.name_p <= "z"} -->
+
+											<div id="@{$key}">
+												<div id="{$hotel.name_pinyin}{$hotel.name}">
+													<a href="javascript:go_supplier_id({$key},'{$hotel.name}')">{$hotel.name}</a>
+												</div>
+											</div>
+
+											<!-- {/if} -->
+											<!-- {/foreach} -->
+										</td>
+										<td valign="top" style="padding-left:10px">
+											<!-- {foreach from=$hotel_list item=hotel key=key} -->
+											<!-- {if $hotel.name_p >= "0" && $hotel.name_p <= "9"} -->
+
+											<div id="@{$key}">
+												<div id="{$hotel.name_pinyin}{$hotel.name}">
+													<a href="javascript:go_supplier_id({$key},'{$hotel.name}')">{$hotel.name}</a>
+												</div>
+											</div>
+
+											<!-- {/if} -->
+											<!-- {/foreach} -->
+										</td>
+									</tr>
+									<!-- {else} -->
+									<tr>
+										<td colspan="5" align="center">暂无数据……</td>
+									</tr>
+									<!-- {/if} -->
+								</table>
+							</div>
+							<div style="padding:106px 0px 0px 426px">
+								<a href="javascript:no_look_hotel_content()">收起列表↑</a>
+							</div>
+						</div>
+
 						<!-- {if $goods.goods_sn} -->
 
-						<input type="hidden" name="brand_id" id="brand_id" value="{$goods.brand_id}" />
-						<input type="hidden" name="brand_name" id="brand_name" value="{$brand_name_val}" />
+						<input type="hidden" name="supplier_id" id="supplier_id" value="{$goods.supplier}" />
+						<input type="hidden" name="supplier_name" id="supplier_name" value="{$supplier_name_val}" />
 
 						<!-- {else} -->
 
-						<input type="hidden" name="brand_id" id="brand_id" value="0" />
-						<input type="hidden" name="brand_name" id="brand_name" value="{$brand_name_val}" />
+						<input type="hidden" name="supplier_id" id="supplier_id" value="0" />
+						<input type="hidden" name="supplier_name" id="supplier_name" value="{$supplier_name_val}" />
 
 						<!-- {/if} -->
 						<script language="javascript">
-            function go_brand_id(id,name)
-			{
-				document.getElementById("brand_id").value = id;
-				document.getElementById("brand_search").value = name;
-				document.getElementById("brand_name").value = name;
-				document.getElementById("brand_content").style.display = "none";
-			}
-			function no_look_brand_content()
-			{
-				document.getElementById("brand_content").style.display = "none";
-			}
-            </script>
+							function go_brand_id(id,name)
+							{
+								document.getElementById("brand_id").value = id;
+								document.getElementById("brand_search").value = name;
+								document.getElementById("brand_name").value = name;
+								document.getElementById("brand_content").style.display = "none";
+							}
+							function no_look_brand_content()
+							{
+								document.getElementById("brand_content").style.display = "none";
+							}
+							function go_supplier_id(id,name)
+							{
+								document.getElementById("supplier_id").value = id;
+								document.getElementById("brand_search").value = name;
+								document.getElementById("supplier_name").value = name;
+								document.getElementById("hotel_content").style.display = "none";
+							}
+							function no_look_hotel_content()
+							{
+								document.getElementById("hotel_content").style.display = "none";
+							}
+						</script>
 
 						<!-- 代码增加_end_derek20150129admin_goods  www.68ecshop.com -->
 					</td>
 				</tr>
-				{if $suppliers_exists eq 1}
-				<tr>
-					<td class="label">{$lang.label_suppliers}</td>
-					<td>
-						<select name="suppliers_id" id="suppliers_id">
-							<option value="0">{$lang.suppliers_no}</option>
+				<!--{if $suppliers_exists eq 1}-->
+				<!--<tr>-->
+					<!--<td class="label">{$lang.label_suppliers}</td>-->
+					<!--<td>-->
+						<!--<select name="suppliers_id" id="suppliers_id">-->
+							<!--<option value="0">{$lang.suppliers_no}</option>-->
 
-							{html_options options=$suppliers_list_name selected=$goods.suppliers_id}
+							<!--{html_options options=$suppliers_list_name selected=$goods.suppliers_id}-->
 
-						</select>
-					</td>
-				</tr>
-				{/if}
+						<!--</select>-->
+					<!--</td>-->
+				<!--</tr>-->
+				<!--{/if}-->
 				<tr>
 					<td class="label">{$lang.lab_shop_price}</td>
 					<td>
@@ -316,62 +419,62 @@
 					</td>
 				</tr>
 				<!-- 手机专享价格  app  jx -->
-			   <tr>
-				<td class="label">手机专享价：</td>
-				<td><input type="text" name="exclusive" value="{$goods.exclusive}" size="20" />
-				 <br />
-				<span class="notice-span" {if $help_open}style="display:block" {else} style="display:none" {/if} id="noticeUserPrice">手机专享价格为-1的时候表示没有手机专享价格</span>
-				</td>
-			  </tr>
+			   <!--<tr>-->
+				<!--<td class="label">手机专享价：</td>-->
+				<!--<td><input type="text" name="exclusive" value="{$goods.exclusive}" size="20" />-->
+				 <!--<br />-->
+				<!--<span class="notice-span" {if $help_open}style="display:block" {else} style="display:none" {/if} id="noticeUserPrice">手机专享价格为-1的时候表示没有手机专享价格</span>-->
+				<!--</td>-->
+			  <!--</tr>-->
 			  <!-- 手机专享价格  app jx -->
-				{if $user_rank_list}
-				<tr>
-					<td class="label">
-						<a href="javascript:showNotice('noticeUserPrice');" title="{$lang.form_notice}">
-							<img src="images/notice.gif" width="16" height="16" border="0" alt="{$lang.form_notice}">
-						</a>
-						{$lang.lab_user_price}
-					</td>
-					<td>
-						{foreach from=$user_rank_list item=user_rank} {$user_rank.rank_name}
-						<span id="nrank_{$user_rank.rank_id}"></span>
-						<input type="text" id="rank_{$user_rank.rank_id}" name="user_price[]" value="{$member_price_list[$user_rank.rank_id]|default:-1}" onkeyup="if(parseInt(this.value)<-1){this.value='-1';};set_price_note({$user_rank.rank_id})" size="8" />
-						<input type="hidden" name="user_rank[]" value="{$user_rank.rank_id}" />
-						{/foreach}
-						<br />
-						<span class="notice-span" {if $help_open}style="display:block" {else} style="display:none" {/if} id="noticeUserPrice">{$lang.notice_user_price}</span>
-					</td>
-				</tr>
-				{/if}
+				<!--{if $user_rank_list}-->
+				<!--<tr>-->
+					<!--<td class="label">-->
+						<!--<a href="javascript:showNotice('noticeUserPrice');" title="{$lang.form_notice}">-->
+							<!--<img src="images/notice.gif" width="16" height="16" border="0" alt="{$lang.form_notice}">-->
+						<!--</a>-->
+						<!--{$lang.lab_user_price}-->
+					<!--</td>-->
+					<!--<td>-->
+						<!--{foreach from=$user_rank_list item=user_rank} {$user_rank.rank_name}-->
+						<!--<span id="nrank_{$user_rank.rank_id}"></span>-->
+						<!--<input type="text" id="rank_{$user_rank.rank_id}" name="user_price[]" value="{$member_price_list[$user_rank.rank_id]|default:-1}" onkeyup="if(parseInt(this.value)<-1){this.value='-1';};set_price_note({$user_rank.rank_id})" size="8" />-->
+						<!--<input type="hidden" name="user_rank[]" value="{$user_rank.rank_id}" />-->
+						<!--{/foreach}-->
+						<!--<br />-->
+						<!--<span class="notice-span" {if $help_open}style="display:block" {else} style="display:none" {/if} id="noticeUserPrice">{$lang.notice_user_price}</span>-->
+					<!--</td>-->
+				<!--</tr>-->
+				<!--{/if}-->
 
         		<!--商品优惠价格-->
-				<tr>
-					<td class="label">
-						<a href="javascript:showNotice('volumePrice');" title="{$lang.form_notice}">
-							<img src="images/notice.gif" width="16" height="16" border="0" alt="{$lang.form_notice}">
-						</a>
-						{$lang.lab_volume_price}
-					</td>
-					<td>
-						<table width="100%" id="tbody-volume" align="center">
-							{foreach from=$volume_price_list item=volume_price name="volume_price_tab"}
-							<tr>
-								<td>
-									{if $smarty.foreach.volume_price_tab.iteration eq 1}
-									<a href="javascript:;" onclick="addVolumePrice(this)">[+]</a>
-									{else}
-									<a href="javascript:;" onclick="removeVolumePrice(this)">[-]</a>
-									{/if} {$lang.volume_number}
-									<input type="text" name="volume_number[]" size="8" value="{$volume_price.number}" />
-									{$lang.volume_price}
-									<input type="text" name="volume_price[]" size="8" value="{$volume_price.price}" />
-								</td>
-							</tr>
-							{/foreach}
-						</table>
-						<span class="notice-span" {if $help_open}style="display:block" {else} style="display:none" {/if} id="volumePrice">{$lang.notice_volume_price}</span>
-					</td>
-				</tr>
+				<!--<tr>-->
+					<!--<td class="label">-->
+						<!--<a href="javascript:showNotice('volumePrice');" title="{$lang.form_notice}">-->
+							<!--<img src="images/notice.gif" width="16" height="16" border="0" alt="{$lang.form_notice}">-->
+						<!--</a>-->
+						<!--{$lang.lab_volume_price}-->
+					<!--</td>-->
+					<!--<td>-->
+						<!--<table width="100%" id="tbody-volume" align="center">-->
+							<!--{foreach from=$volume_price_list item=volume_price name="volume_price_tab"}-->
+							<!--<tr>-->
+								<!--<td>-->
+									<!--{if $smarty.foreach.volume_price_tab.iteration eq 1}-->
+									<!--<a href="javascript:;" onclick="addVolumePrice(this)">[+]</a>-->
+									<!--{else}-->
+									<!--<a href="javascript:;" onclick="removeVolumePrice(this)">[-]</a>-->
+									<!--{/if} {$lang.volume_number}-->
+									<!--<input type="text" name="volume_number[]" size="8" value="{$volume_price.number}" />-->
+									<!--{$lang.volume_price}-->
+									<!--<input type="text" name="volume_price[]" size="8" value="{$volume_price.price}" />-->
+								<!--</td>-->
+							<!--</tr>-->
+							<!--{/foreach}-->
+						<!--</table>-->
+						<!--<span class="notice-span" {if $help_open}style="display:block" {else} style="display:none" {/if} id="volumePrice">{$lang.notice_volume_price}</span>-->
+					<!--</td>-->
+				<!--</tr>-->
         		<!--商品优惠价格 end -->
 
 				<tr>
@@ -394,19 +497,19 @@
 						<span class="notice-span" {if $help_open}style="display:block" {else} style="display:none" {/if} id="giveIntegral">{$lang.notice_give_integral}</span>
 					</td>
 				</tr>
-				<tr>
-					<td class="label">
-						<a href="javascript:showNotice('rankIntegral');" title="{$lang.form_notice}">
-							<img src="images/notice.gif" width="16" height="16" border="0" alt="{$lang.form_notice}">
-						</a>
-						{$lang.lab_rank_integral}
-					</td>
-					<td>
-						<input type="text" name="rank_integral" value="{$goods.rank_integral}" size="20" />
-						<br />
-						<span class="notice-span" {if $help_open}style="display:block" {else} style="display:none" {/if} id="rankIntegral">{$lang.notice_rank_integral}</span>
-					</td>
-				</tr>
+				<!--<tr>-->
+					<!--<td class="label">-->
+						<!--<a href="javascript:showNotice('rankIntegral');" title="{$lang.form_notice}">-->
+							<!--<img src="images/notice.gif" width="16" height="16" border="0" alt="{$lang.form_notice}">-->
+						<!--</a>-->
+						<!--{$lang.lab_rank_integral}-->
+					<!--</td>-->
+					<!--<td>-->
+						<!--<input type="text" name="rank_integral" value="{$goods.rank_integral}" size="20" />-->
+						<!--<br />-->
+						<!--<span class="notice-span" {if $help_open}style="display:block" {else} style="display:none" {/if} id="rankIntegral">{$lang.notice_rank_integral}</span>-->
+					<!--</td>-->
+				<!--</tr>-->
 				<!-- <tr>
 					<td class="label">
 						<a href="javascript:showNotice('noticPoints');" title="{$lang.form_notice}">
@@ -432,28 +535,28 @@
 					</td>
 				</tr>
 
-				<tr id="promote_4">
-					<td class="label" id="promote_5">{$lang.lab_promote_date}</td>
-                    <!-- 代码修改 By  www.68ecshop.com 促销商品时间精确到时分 Start -->
-                    <!--
-                             <td id="promote_6">
-                                 <input name="promote_start_date" type="text" id="promote_start_date" size="12" value='{$goods.promote_start_date}' readonly="readonly" />
-                                 <input name="selbtn1" type="button" id="selbtn1" onclick="return showCalendar('promote_start_date', '%Y-%m-%d', false, false, 'selbtn1');" value="{$lang.btn_select}" class="button" />
-                                 -
-                                 <input name="promote_end_date" type="text" id="promote_end_date" size="12" value='{$goods.promote_end_date}' readonly="readonly" />
-                                 <input name="selbtn2" type="button" id="selbtn2" onclick="return showCalendar('promote_end_date', '%Y-%m-%d', false, false, 'selbtn2');" value="{$lang.btn_select}" class="button" />
-                             </td>
-                         </tr>
-                    -->
-                    <td id="promote_6">
-                        <input name="promote_start_date" type="text" id="promote_start_date" size="12" value='{$goods.promote_start_date}' readonly="readonly" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})" />
-                        -
-                        <input name="promote_end_date" type="text" id="promote_end_date" size="12" value='{$goods.promote_end_date}' readonly="readonly" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})" />
-                    </td>
-                    <!-- 代码修改 By  www.68ecshop.com 促销商品时间精确到时分 End -->
+				<!--<tr id="promote_4">-->
+					<!--<td class="label" id="promote_5">{$lang.lab_promote_date}</td>-->
+                    <!--&lt;!&ndash; 代码修改 By  www.68ecshop.com 促销商品时间精确到时分 Start &ndash;&gt;-->
+                    <!--&lt;!&ndash;-->
+                             <!--<td id="promote_6">-->
+                                 <!--<input name="promote_start_date" type="text" id="promote_start_date" size="12" value='{$goods.promote_start_date}' readonly="readonly" />-->
+                                 <!--<input name="selbtn1" type="button" id="selbtn1" onclick="return showCalendar('promote_start_date', '%Y-%m-%d', false, false, 'selbtn1');" value="{$lang.btn_select}" class="button" />-->
+                                 <!-- - -->
+                                 <!--<input name="promote_end_date" type="text" id="promote_end_date" size="12" value='{$goods.promote_end_date}' readonly="readonly" />-->
+                                 <!--<input name="selbtn2" type="button" id="selbtn2" onclick="return showCalendar('promote_end_date', '%Y-%m-%d', false, false, 'selbtn2');" value="{$lang.btn_select}" class="button" />-->
+                             <!--</td>-->
+                         <!--</tr>-->
+                    <!--&ndash;&gt;-->
+                    <!--<td id="promote_6">-->
+                        <!--<input name="promote_start_date" type="text" id="promote_start_date" size="12" value='{$goods.promote_start_date}' readonly="readonly" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})" />-->
+                        <!-- - -->
+                        <!--<input name="promote_end_date" type="text" id="promote_end_date" size="12" value='{$goods.promote_end_date}' readonly="readonly" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})" />-->
+                    <!--</td>-->
+                    <!--&lt;!&ndash; 代码修改 By  www.68ecshop.com 促销商品时间精确到时分 End &ndash;&gt;-->
 
 
-				<tr>
+				<!--<tr>-->
 					<td class="label">
 						<label for="is_buy">
 							<input type="checkbox" id="is_buy" name="is_buy" value="1" {if $goods.is_buy}checked="checked" {/if} onclick="handleBuy(this.checked);" />
@@ -466,26 +569,26 @@
 						<span class="notice-span" {if $help_open}style="display:block" {else} style="display:none" {/if} id="giveIntegral">表示限购日期内，每个用户最多只能购买多少件。0：表示不限购</span>
 					</td>
 				</tr>
-				<tr id="promote_4">
-					<td class="label">限购日期：</td>
-					<td>
-						<input name="buymax_start_date" type="text" id="buymax_start_date" size="12" value='{$goods.buymax_start_date}' readonly="readonly" />
-						<input name="selbtn3" type="button" id="selbtn3" onclick="return showCalendar('buymax_start_date', '%Y-%m-%d', false, false, 'selbtn3');" value="{$lang.btn_select}" class="button" {if $goods.is_buy eq 0} disabled="disabled" {/if}/>
-						-
-						<input name="buymax_end_date" type="text" id="buymax_end_date" size="12" value='{$goods.buymax_end_date}' readonly="readonly" />
-						<input name="selbtn4" type="button" id="selbtn4" onclick="return showCalendar('buymax_end_date', '%Y-%m-%d', false, false, 'selbtn4');" value="{$lang.btn_select}" class="button" {if $goods.is_buy eq 0} disabled="disabled" {/if}/>
-					</td>
-				</tr>
+				<!--<tr id="promote_4">-->
+					<!--<td class="label">限购日期：</td>-->
+					<!--<td>-->
+						<!--<input name="buymax_start_date" type="text" id="buymax_start_date" size="12" value='{$goods.buymax_start_date}' readonly="readonly" />-->
+						<!--<input name="selbtn3" type="button" id="selbtn3" onclick="return showCalendar('buymax_start_date', '%Y-%m-%d', false, false, 'selbtn3');" value="{$lang.btn_select}" class="button" {if $goods.is_buy eq 0} disabled="disabled" {/if}/>-->
+						<!-- - -->
+						<!--<input name="buymax_end_date" type="text" id="buymax_end_date" size="12" value='{$goods.buymax_end_date}' readonly="readonly" />-->
+						<!--<input name="selbtn4" type="button" id="selbtn4" onclick="return showCalendar('buymax_end_date', '%Y-%m-%d', false, false, 'selbtn4');" value="{$lang.btn_select}" class="button" {if $goods.is_buy eq 0} disabled="disabled" {/if}/>-->
+					<!--</td>-->
+				<!--</tr>-->
 
-				<tr>
-					<td class="label" id="promote_5">{$lang.lab_cost_price}</td>
-					<td id="promote_7">
-						<input type="text" id="promote_1" name="cost_price" value="{$goods.cost_price}" size="20" />
-						<br />
-						<span class="notice-span">{$lang.notice_cost_price}</span>
-					</td>
+				<!--<tr>-->
+					<!--<td class="label" id="promote_5">{$lang.lab_cost_price}</td>-->
+					<!--<td id="promote_7">-->
+						<!--<input type="text" id="promote_1" name="cost_price" value="{$goods.cost_price}" size="20" />-->
+						<!--<br />-->
+						<!--<span class="notice-span">{$lang.notice_cost_price}</span>-->
+					<!--</td>-->
 
-				</tr>
+				<!--</tr>-->
 
 				<tr>
 					<td class="label">{$lang.lab_picture}</td>
@@ -525,15 +628,15 @@
 					</td>
 				</tr>
 				<!--代码增加_start byjdy-->
-				<tr>
-					<td class="label">
-						<font color=#ff3300>是否显示在频道首页：</font>
-					</td>
-					<td>
-						<input type="checkbox" name="is_catindex" value="1" {if $goods.is_catindex}checked="checked" {/if} />
-						对于二级或三级分类下商品，打勾表示在频道首页显示，否则不显示。
-					</td>
-				</tr>
+				<!--<tr>-->
+					<!--<td class="label">-->
+						<!--<font color=#ff3300>是否显示在频道首页：</font>-->
+					<!--</td>-->
+					<!--<td>-->
+						<!--<input type="checkbox" name="is_catindex" value="1" {if $goods.is_catindex}checked="checked" {/if} />-->
+						<!--对于二级或三级分类下商品，打勾表示在频道首页显示，否则不显示。-->
+					<!--</td>-->
+				<!--</tr>-->
 				<!--代码增加_end byjdy-->
 				{* 代码增加_start By www.68ecshop.com *}
 				<!--{if $goods.supplier_id}-->
@@ -672,7 +775,31 @@
       		<!-- 属性与规格 --> 
 			{if $goods_type_list}
 			<table width="100%" id="properties-table" style="display:none" align="center">
-				<tr>
+				 <tr>
+				    <td id="tbody-goodsAttr" colspan="2" style="padding:0">
+				    	<table width="100%" id="attrTable">
+				    		<tbody>
+				    			<tr>
+				    				<td class="label">
+				    					<a href="javascript:;">[+]</a>套餐：
+				    				</td>
+				    				<td>
+				    					<input type="hidden" name="attr_id_list[]" value="1" txm="0" class="ctxm_0">
+				    						<select class="attr_num_1" name="attr_value_list[]">
+				    							<option value="">请选择...</option>
+				    							<option value="1">单早</option>
+				    							<option value="2">双早</option>
+				
+				    						</select> 
+				    						属性价格 <input type="text" name="attr_price_list[]" value="" size="5" maxlength="10">
+				    				</td>
+				    			</tr>
+				    		</tbody>
+				    	</table>
+				    	<div id="input_txm"></div>
+				    </td>
+			    </tr>
+				<!-- <tr>
 					<td class="label">
 						<a href="javascript:showNotice('noticeGoodsType');" title="{$lang.form_notice}">
 							<img src="images/notice.gif" width="16" height="16" border="0" alt="{$lang.form_notice}">
@@ -692,7 +819,7 @@
 				</tr>
 				<tr>
 					<td id="tbody-goodsAttr" colspan="2" style="padding:0">{$goods_attr_html}</td>
-				</tr>
+				</tr> -->
 			</table>
 			{/if}
 
@@ -745,17 +872,17 @@
 			}
 			{/literal}
 			</script>
-						<font color=#ff3300>请选择商品颜色</font>
-						（点击下面不同颜色切换到该颜色对应的相册）
-						<br>
-						<br>
-						<div class="attr-color-div">
-							{foreach from=$color_list_www_ecshop68_com name=color_list item=color_qq}
-							<span class="{if $smarty.foreach.color_list.iteration eq 1}attr-front{else}attr-back{/if}" id="color_{$smarty.foreach.color_list.iteration}">
-								<a href="attr_img_upload.php?goods_id={$goods.goods_id}&goods_attr_id={$color_qq.goods_attr_id}" onclick="javascript:changeCurrentColor({$smarty.foreach.color_list.iteration})" target="attr_upload">{$color_qq.attr_value}</a>
-							</span>
-							{/foreach}
-						</div>
+						<!--<font color=#ff3300>请选择商品颜色</font>-->
+						<!--（点击下面不同颜色切换到该颜色对应的相册）-->
+						<!--<br>-->
+						<!--<br>-->
+						<!--<div class="attr-color-div">-->
+							<!--{foreach from=$color_list_www_ecshop68_com name=color_list item=color_qq}-->
+							<!--<span class="{if $smarty.foreach.color_list.iteration eq 1}attr-front{else}attr-back{/if}" id="color_{$smarty.foreach.color_list.iteration}">-->
+								<!--<a href="attr_img_upload.php?goods_id={$goods.goods_id}&goods_attr_id={$color_qq.goods_attr_id}" onclick="javascript:changeCurrentColor({$smarty.foreach.color_list.iteration})" target="attr_upload">{$color_qq.attr_value}</a>-->
+							<!--</span>-->
+							<!--{/foreach}-->
+						<!--</div>-->
 						<iframe name="attr_upload" src="attr_img_upload.php?goods_id={$goods.goods_id}&goods_attr_id={$color_list_www_ecshop68_com.0.goods_attr_id}" frameborder=1 scrolling=no width="100%" height="auto" style="min-height:630px; border:1px #eee solid; margin-top:5px;"> </iframe>
 					</td>
 				</tr>
@@ -767,123 +894,123 @@
 			<!--代码修改_end By www.ecshop68.com-->
 
 			<!-- 鍏宠仈鍟嗗搧 -->
-			<table width="90%" id="linkgoods-table" style="display:none" align="center">
-        		<!-- 商品搜索 -->
-				<tr>
-					<td colspan="3">
-						<img src="images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH" />
-						<select name="cat_id1">
-							<option value="0">{$lang.all_category}{$cat_list}
-						</select>
-						<select name="brand_id1">
-							<option value="0">{$lang.all_brand}{html_options options=$brand_list}
-						</select>
-						<input type="text" name="keyword1" />
-						<input type="button" value="{$lang.button_search}" class="button" onclick="searchGoods(sz1, 'cat_id1','brand_id1','keyword1')" />
-					</td>
-				</tr>
-        		<!-- 商品列表 -->
-				<tr>
-					<th>{$lang.all_goods}</th>
-					<th>{$lang.handler}</th>
-					<th>{$lang.link_goods}</th>
-				</tr>
-				<tr>
-					<td width="42%">
-						<select name="source_select1" size="20" style="width:100%" ondblclick="sz1.addItem(false, 'add_link_goods', goodsId, this.form.elements['is_single'][0].checked)" multiple="true">
-						</select>
-					</td>
-					<td align="center">
-						<p>
-							<input name="is_single" type="radio" value="1" checked="checked" />
-							{$lang.single}
-							<br />
-							<input name="is_single" type="radio" value="0" />
-							{$lang.double}
-						</p>
-						<p>
-							<input type="button" value=">>" onclick="sz1.addItem(true, 'add_link_goods', goodsId, this.form.elements['is_single'][0].checked)" class="button" />
-						</p>
-						<p>
-							<input type="button" value=">" onclick="sz1.addItem(false, 'add_link_goods', goodsId, this.form.elements['is_single'][0].checked)" class="button" />
-						</p>
-						<p>
-							<input type="button" value="<" onclick="sz1.dropItem(false, 'drop_link_goods', goodsId, elements['is_single'][0].checked)" class="button" />
-						</p>
-						<p>
-							<input type="button" value="<<" onclick="sz1.dropItem(true, 'drop_link_goods', goodsId, elements['is_single'][0].checked)" class="button" />
-						</p>
-					</td>
-					<td width="42%">
-						<select name="target_select1" size="20" style="width:100%" multiple ondblclick="sz1.dropItem(false, 'drop_link_goods', goodsId, elements['is_single'][0].checked)">
+			<!--<table width="90%" id="linkgoods-table" style="display:none" align="center">-->
+        		<!--&lt;!&ndash; 商品搜索 &ndash;&gt;-->
+				<!--<tr>-->
+					<!--<td colspan="3">-->
+						<!--<img src="images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH" />-->
+						<!--<select name="cat_id1">-->
+							<!--<option value="0">{$lang.all_category}{$cat_list}-->
+						<!--</select>-->
+						<!--<select name="brand_id1">-->
+							<!--<option value="0">{$lang.all_brand}{html_options options=$brand_list}-->
+						<!--</select>-->
+						<!--<input type="text" name="keyword1" />-->
+						<!--<input type="button" value="{$lang.button_search}" class="button" onclick="searchGoods(sz1, 'cat_id1','brand_id1','keyword1')" />-->
+					<!--</td>-->
+				<!--</tr>-->
+        		<!--&lt;!&ndash; 商品列表 &ndash;&gt;-->
+				<!--<tr>-->
+					<!--<th>{$lang.all_goods}</th>-->
+					<!--<th>{$lang.handler}</th>-->
+					<!--<th>{$lang.link_goods}</th>-->
+				<!--</tr>-->
+				<!--<tr>-->
+					<!--<td width="42%">-->
+						<!--<select name="source_select1" size="20" style="width:100%" ondblclick="sz1.addItem(false, 'add_link_goods', goodsId, this.form.elements['is_single'][0].checked)" multiple="true">-->
+						<!--</select>-->
+					<!--</td>-->
+					<!--<td align="center">-->
+						<!--<p>-->
+							<!--<input name="is_single" type="radio" value="1" checked="checked" />-->
+							<!--{$lang.single}-->
+							<!--<br />-->
+							<!--<input name="is_single" type="radio" value="0" />-->
+							<!--{$lang.double}-->
+						<!--</p>-->
+						<!--<p>-->
+							<!--<input type="button" value=">>" onclick="sz1.addItem(true, 'add_link_goods', goodsId, this.form.elements['is_single'][0].checked)" class="button" />-->
+						<!--</p>-->
+						<!--<p>-->
+							<!--<input type="button" value=">" onclick="sz1.addItem(false, 'add_link_goods', goodsId, this.form.elements['is_single'][0].checked)" class="button" />-->
+						<!--</p>-->
+						<!--<p>-->
+							<!--<input type="button" value="<" onclick="sz1.dropItem(false, 'drop_link_goods', goodsId, elements['is_single'][0].checked)" class="button" />-->
+						<!--</p>-->
+						<!--<p>-->
+							<!--<input type="button" value="<<" onclick="sz1.dropItem(true, 'drop_link_goods', goodsId, elements['is_single'][0].checked)" class="button" />-->
+						<!--</p>-->
+					<!--</td>-->
+					<!--<td width="42%">-->
+						<!--<select name="target_select1" size="20" style="width:100%" multiple ondblclick="sz1.dropItem(false, 'drop_link_goods', goodsId, elements['is_single'][0].checked)">-->
 
-							{foreach from=$link_goods_list item=link_goods}
+							<!--{foreach from=$link_goods_list item=link_goods}-->
 
-							<option value="{$link_goods.goods_id}">{$link_goods.goods_name}</option>
+							<!--<option value="{$link_goods.goods_id}">{$link_goods.goods_name}</option>-->
 
-							{/foreach}
+							<!--{/foreach}-->
 
-						</select>
-					</td>
-				</tr>
-			</table>
+						<!--</select>-->
+					<!--</td>-->
+				<!--</tr>-->
+			<!--</table>-->
 
       		<!-- 配件 -->
-			<table width="90%" id="groupgoods-table" style="display:none" align="center">
-        		<!-- 商品搜索 -->
-				<tr>
-					<td colspan="3">
-						<img src="images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH" />
-						<select name="cat_id2">
-							<option value="0">{$lang.all_category}{$cat_list}
-						</select>
-						<select name="brand_id2">
-							<option value="0">{$lang.all_brand}{html_options options=$brand_list}
-						</select>
-						<input type="text" name="keyword2" />
-						<input type="button" value="{$lang.button_search}" onclick="searchGoods(sz2, 'cat_id2', 'brand_id2', 'keyword2')" class="button" />
-					</td>
-				</tr>
-        <!-- 商品列表 -->
-				<tr>
-					<th>{$lang.all_goods}</th>
-					<th>{$lang.handler}</th>
-					<th>{$lang.group_goods}</th>
-				</tr>
-				<tr>
-					<td width="42%">
-						<select name="source_select2" size="20" style="width:100%" onchange="sz2.priceObj.value = this.options[this.selectedIndex].id" ondblclick="sz2.addItem(false, 'add_group_goods', goodsId, this.form.elements['price2'].value)">
-						</select>
-					</td>
-					<td align="center">
-						<p>
-							{$lang.price}
-							<br />
-							<input onkeyup="this.value=this.value.replace(/[^0-9.]/g,'')" name="price2" type="text" size="6" style="min-width:40px;width:40px;"/>
-						</p>
-						<p>
-							<input type="button" value=">" onclick="sz2.addItem(false, 'add_group_goods', goodsId, this.form.elements['price2'].value)" class="button" />
-						</p>
-						<p>
-							<input type="button" value="<" onclick="sz2.dropItem(false, 'drop_group_goods', goodsId, elements['is_single'][0].checked)" class="button" />
-						</p>
-						<p>
-							<input type="button" value="<<" onclick="sz2.dropItem(true, 'drop_group_goods', goodsId, elements['is_single'][0].checked)" class="button" />
-						</p>
-					</td>
-					<td width="42%">
-						<select name="target_select2" size="20" style="width:100%" multiple ondblclick="sz2.dropItem(false, 'drop_group_goods', goodsId, elements['is_single'][0].checked)">
+			<!--<table width="90%" id="groupgoods-table" style="display:none" align="center">-->
+        		<!--&lt;!&ndash; 商品搜索 &ndash;&gt;-->
+				<!--<tr>-->
+					<!--<td colspan="3">-->
+						<!--<img src="images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH" />-->
+						<!--<select name="cat_id2">-->
+							<!--<option value="0">{$lang.all_category}{$cat_list}-->
+						<!--</select>-->
+						<!--<select name="brand_id2">-->
+							<!--<option value="0">{$lang.all_brand}{html_options options=$brand_list}-->
+						<!--</select>-->
+						<!--<input type="text" name="keyword2" />-->
+						<!--<input type="button" value="{$lang.button_search}" onclick="searchGoods(sz2, 'cat_id2', 'brand_id2', 'keyword2')" class="button" />-->
+					<!--</td>-->
+				<!--</tr>-->
+        <!--&lt;!&ndash; 商品列表 &ndash;&gt;-->
+				<!--<tr>-->
+					<!--<th>{$lang.all_goods}</th>-->
+					<!--<th>{$lang.handler}</th>-->
+					<!--<th>{$lang.group_goods}</th>-->
+				<!--</tr>-->
+				<!--<tr>-->
+					<!--<td width="42%">-->
+						<!--<select name="source_select2" size="20" style="width:100%" onchange="sz2.priceObj.value = this.options[this.selectedIndex].id" ondblclick="sz2.addItem(false, 'add_group_goods', goodsId, this.form.elements['price2'].value)">-->
+						<!--</select>-->
+					<!--</td>-->
+					<!--<td align="center">-->
+						<!--<p>-->
+							<!--{$lang.price}-->
+							<!--<br />-->
+							<!--<input onkeyup="this.value=this.value.replace(/[^0-9.]/g,'')" name="price2" type="text" size="6" style="min-width:40px;width:40px;"/>-->
+						<!--</p>-->
+						<!--<p>-->
+							<!--<input type="button" value=">" onclick="sz2.addItem(false, 'add_group_goods', goodsId, this.form.elements['price2'].value)" class="button" />-->
+						<!--</p>-->
+						<!--<p>-->
+							<!--<input type="button" value="<" onclick="sz2.dropItem(false, 'drop_group_goods', goodsId, elements['is_single'][0].checked)" class="button" />-->
+						<!--</p>-->
+						<!--<p>-->
+							<!--<input type="button" value="<<" onclick="sz2.dropItem(true, 'drop_group_goods', goodsId, elements['is_single'][0].checked)" class="button" />-->
+						<!--</p>-->
+					<!--</td>-->
+					<!--<td width="42%">-->
+						<!--<select name="target_select2" size="20" style="width:100%" multiple ondblclick="sz2.dropItem(false, 'drop_group_goods', goodsId, elements['is_single'][0].checked)">-->
 
-							{foreach from=$group_goods_list item=group_goods}
+							<!--{foreach from=$group_goods_list item=group_goods}-->
 
-							<option value="{$group_goods.goods_id}">{$group_goods.goods_name}</option>
+							<!--<option value="{$group_goods.goods_id}">{$group_goods.goods_name}</option>-->
 
-							{/foreach}
+							<!--{/foreach}-->
 
-						</select>
-					</td>
-				</tr>
-			</table>
+						<!--</select>-->
+					<!--</td>-->
+				<!--</tr>-->
+			<!--</table>-->
 
 			<!-- 鍏宠仈鏂囩珷 -->
 			<table width="90%" id="article-table" style="display:none" align="center">
@@ -1193,17 +1320,29 @@ function chu (result)
    */
   function addSpec(obj)
   {
-      var src   = obj.parentNode.parentNode;
-      var idx   = rowindex(src);
-      var tbl   = document.getElementById('attrTable');
-      var row   = tbl.insertRow(idx + 1);
-      var cell1 = row.insertCell(-1);
-      var cell2 = row.insertCell(-1);
-      var regx  = /<a([^>]+)<\/a>/i;
+      // var src   = obj.parentNode.parentNode;
+      // var idx   = rowindex(src);
+      // var tbl   = document.getElementById('attrTable');
+      // var row   = tbl.insertRow(idx + 1);
+      // var cell1 = row.insertCell(-1);
+      // var cell2 = row.insertCell(-1);
+      // var regx  = /<a([^>]+)<\/a>/i;
 
-      cell1.className = 'label';
-      cell1.innerHTML = src.childNodes[0].innerHTML.replace(/(.*)(addSpec)(.*)(\[)(\+)/i, "$1removeSpec$3$4-");
-      cell2.innerHTML = src.childNodes[1].innerHTML.replace(/readOnly([^\s|>]*)/i, '');
+      // cell1.className = 'label';
+      // cell1.innerHTML = src.childNodes[0].innerHTML.replace(/(.*)(addSpec)(.*)(\[)(\+)/i, "$1removeSpec$3$4-");
+      // cell2.innerHTML = src.childNodes[1].innerHTML.replace(/readOnly([^\s|>]*)/i, '');
+      var html = $('#attrTable tbody tr').eq(0).attr('outerHTML');
+
+      //html.replace(/addSpec(this)/, "ttt");
+      //console.log(html,typeof(html));
+      $('#attrTable tbody').eq(0).append(html);
+      //
+      $('#attrTable tbody tr').last().find('a').html('[-]');
+      $('#attrTable tbody tr').last().find('a').bind('click',function(){
+      	console.log('t');
+      	$(this).parent().parent().remove();
+      	return;
+      })
   }
 
   /**
@@ -1717,5 +1856,18 @@ function chu (result)
     }
   }
   {/literal}
+  $(function(){
+  	$('#attrTable').find('a').bind('click',function(){
+  		var html = $('#attrTable tbody tr').eq(0).attr('outerHTML');
+		$('#attrTable tbody').eq(0).append(html);
+      //
+    	$('#attrTable tbody tr').last().find('a').html('[-]');
+    	$('#attrTable tbody tr').last().find('a').bind('click',function(){
+	      	console.log('t');
+	      	$(this).parent().parent().remove();
+	      	return;
+       })
+  	})
+  })
 </script>
 {include file="pagefooter.htm"}

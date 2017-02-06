@@ -760,7 +760,7 @@
                                     <div class="h_info">
                                         <div class="h_info_pic" data-mark="" method="imgContainer">
                                             <!-- todo 图片点击后跳转到酒店地址 -->
-                                            <a href="#" target="_blank">
+                                            <a href="hotel_info.php?id={$hotel.id}" target="_blank">
                                                 <img method="bigImg" data-mark="" src="{$hotel.photos.0.thumb_url}" data-src="{$hotel.photos.0.img_url}" alt="{$hotel.supplier_name}" width="180" height="130">
                                             </a>
                                             <div class="float_pic" data-mark="" style="display: none;">
@@ -779,7 +779,7 @@
                                                 </p>
                                                 <p class="mt5"></p>
                                                 <div class="to_detail">
-                                                    <a class="t14" href="#" target="_blank">查看详情</a></div>
+                                                    <a class="t14" href="hotel_info.php?id={$hotel.id}" target="_blank">查看详情</a></div>
                                                 <div class="h_add_cc">
                         
                                                     <!-- <span class="add_collect ml20" method="collectable" data-hotelid="51906005">
@@ -801,7 +801,7 @@
                          
                                             <div class="h_info_base">
                                                 <p class="h_info_b1">
-                                                    <a href="#" target="_blank" title="{$hotel.supplier_name}">
+                                                    <a href="hotel_info.php?id={$hotel.id}" target="_blank" title="{$hotel.supplier_name}">
                                                         <span class="icon_nmb" id="icon_nmb_id">1</span>{$hotel.supplier_name}</a>
                                                     <i class="icon_crown" title="艺龙皇冠级合作酒店"></i>
                                                     <b class="icon_stars icon_elevel5" title="艺龙用户评定为豪华型酒店"></b>

@@ -81,6 +81,16 @@ if ($_REQUEST['act'] == 'list' || $_REQUEST['act'] == 'trash')
     $smarty->assign('code',     $code);
     $smarty->assign('cat_list',     cat_list(0, $cat_id));
     $smarty->assign('brand_list',   get_brand_list());
+    //print_r(get_brand_list());
+    //print_r(get_hotel_list());
+    $d = get_hotel_list();
+    $hotel_list = array();
+    foreach($d as $k => $v)
+    {
+        $hotel_list[$k] = $v['name'];
+    }
+
+    $smarty->assign('hotel_list',   $hotel_list);
     $smarty->assign('intro_list',   get_intro_list());
     $smarty->assign('lang',         $_LANG);
     $smarty->assign('list_type',    $_REQUEST['act'] == 'list' ? 'goods' : 'trash');
@@ -91,6 +101,7 @@ if ($_REQUEST['act'] == 'list' || $_REQUEST['act'] == 'trash')
     $smarty->assign('suppliers_list', ($suppliers_list_count == 0 ? 0 : $suppliers_list)); // 取供货商列表
 
     $goods_list = goods_list($_REQUEST['act'] == 'list' ? 0 : 1, ($_REQUEST['act'] == 'list') ? (($code == '') ? 1 : 0) : -1);
+    //print_r($goods_list);
     $smarty->assign('goods_list',   $goods_list['goods']);
     $smarty->assign('filter',       $goods_list['filter']);
     $smarty->assign('record_count', $goods_list['record_count']);
@@ -262,6 +273,9 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
 		$r_b_id = $db->getOne("select brand_name from ".$ecs->table('brand')." where brand_id=".$goods['brand_id']);
 		$goods['brand_name'] = $r_b_id;
 		$smarty->assign('brand_name_val',$goods['brand_name']);
+
+        $goods['supplier_name'] = $db->getOne("select supplier_name from ".$ecs->table('supplier')." where supplier_id=".$goods['supplier_id']);
+        $smarty->assign('supplier_name_val',$goods['supplier_name']);
 		
 		// 代码增加_end_derek20150129admin_goods  www.68ecshop.com
 
@@ -489,9 +503,16 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
 	$smarty->assign('goods_cat_name', $cat_list[$goods['cat_id']]['cat_name']);
 	$smarty->assign('goods_cat_id', $goods['cat_id']);
 	$smarty->assign('brand_list', get_brand_list());
+
 	// 代码增加_start_derek20150129admin_goods  www.68ecshop.com
 	
     $smarty->assign('brand_list_new', get_brand_list(true));
+    //print_r(get_brand_list(true));
+
+    //获取酒店列表
+    $hotel_list = get_hotel_list();
+    $smarty->assign('hotel_list', $hotel_list);
+    //print_r($hotel_list);
 	
 	// 代码增加_start_derek20150129admin_goods  www.68ecshop.com
     
@@ -544,6 +565,18 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
 
 elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
 {
+    if($_REQUEST['act'] == 'insert')
+    {
+        $supplier_id =  isset($_POST['supplier_id']) ? $_POST['supplier_id'] : 0;
+    }
+    else
+    {
+        $supplier_id =  isset($_POST['brand_search_jt']) ? $_POST['brand_search_jt'] : 0;
+    }
+    if($supplier_id == 0)
+    {
+        die('请选择所属酒店');
+    }
     $code = empty($_REQUEST['extension_code']) ? '' : trim($_REQUEST['extension_code']);
 
     /* 是否处理缩略图 */
@@ -940,13 +973,13 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
                     "cat_id, brand_id, shop_price, market_price, is_promote, zhekou, promote_price, " .
                     "promote_start_date, promote_end_date, is_buy,buymax,buymax_start_date,buymax_end_date, goods_img, goods_thumb, original_img, keywords, goods_brief, " .
                     "seller_note, goods_weight, goods_number, warn_number, integral, give_integral, is_best, is_new, is_hot, " .
-                    "is_on_sale, is_alone_sale, is_shipping, goods_desc, add_time, last_update, goods_type, rank_integral,exclusive, suppliers_id, cost_price)" .
+                    "is_on_sale, is_alone_sale, is_shipping, goods_desc, add_time, last_update, goods_type, rank_integral,exclusive, suppliers_id, supplier_id,supplier_type,cost_price)" .
                 "VALUES ('$_POST[goods_name]', '$goods_name_style', '$ghost_count', '$goods_sn', '$catgory_id', " .
                     "'$brand_id', '$shop_price', '$market_price', '$is_promote', '$zhekou', '$promote_price', ".
                     "'$promote_start_date', '$promote_end_date', '$is_buy','$buymax','$buymax_start_date','$buymax_end_date','$goods_img', '$goods_thumb', '$original_img', ".
                     "'$_POST[keywords]', '$_POST[goods_brief]', '$_POST[seller_note]', '$goods_weight', '$goods_number',".
                     " '$warn_number', '$_POST[integral]', '$give_integral', '$is_best', '$is_new', '$is_hot', '$is_on_sale', '$is_alone_sale', $is_shipping, ".
-                    " '$_POST[goods_desc]', '" . gmtime() . "', '". gmtime() ."', '$goods_type', '$rank_integral','$exclusive', '$suppliers_id', '$cost_price')";
+                    " '$_POST[goods_desc]', '" . gmtime() . "', '". gmtime() ."', '$goods_type', '$rank_integral','$exclusive', '$suppliers_id','$supplier_id', 2, '$cost_price')";
         }
         else
         {
@@ -954,13 +987,13 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
                     "cat_id, brand_id, shop_price, market_price, is_promote, zhekou, promote_price, " .
                     "promote_start_date, promote_end_date, is_buy,buymax,buymax_start_date,buymax_end_date,goods_img, goods_thumb, original_img, keywords, goods_brief, " .
                     "seller_note, goods_weight, goods_number, warn_number, integral, give_integral, is_best, is_new, is_hot, is_real, " .
-                    "is_on_sale, is_alone_sale, is_shipping, goods_desc, add_time, last_update, goods_type, extension_code,exclusive, rank_integral, cost_price)" .
+                    "is_on_sale, is_alone_sale, is_shipping, goods_desc, add_time, last_update, goods_type, extension_code,exclusive, rank_integral, supplier_id,supplier_type,cost_price)" .
                 "VALUES ('$_POST[goods_name]', '$goods_name_style', '$ghost_count', '$goods_sn', '$catgory_id', " .
                     "'$brand_id', '$shop_price', '$market_price', '$is_promote', '$zhekou', '$promote_price', ".
                     "'$promote_start_date', '$promote_end_date', '$is_buy','$buymax','$buymax_start_date','$buymax_end_date', '$goods_img', '$goods_thumb', '$original_img', ".
                     "'$_POST[keywords]', '$_POST[goods_brief]', '$_POST[seller_note]', '$goods_weight', '$goods_number',".
                     " '$warn_number', '$_POST[integral]', '$give_integral', '$is_best', '$is_new', '$is_hot', 0, '$is_on_sale', '$is_alone_sale', $is_shipping, ".
-                    " '$_POST[goods_desc]', '" . gmtime() . "', '". gmtime() ."', '$goods_type', '$code','$exclusive', '$rank_integral', '$cost_price')";
+                    " '$_POST[goods_desc]', '" . gmtime() . "', '". gmtime() ."', '$goods_type', '$code','$exclusive', '$rank_integral', '$supplier_id', 2,'$cost_price')";
         }
     }
     else
@@ -1164,110 +1197,214 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
     }
 
     /* 处理属性 */
+  //   if ((isset($_POST['attr_id_list']) && isset($_POST['attr_value_list'])) || (empty($_POST['attr_id_list']) && empty($_POST['attr_value_list'])))
+  //   {
+  //       // 取得原有的属性值
+  //       $goods_attr_list = array();
+
+  //       $keywords_arr = explode(" ", $_POST['keywords']);
+
+  //       $keywords_arr = array_flip($keywords_arr);
+  //       if (isset($keywords_arr['']))
+  //       {
+  //           unset($keywords_arr['']);
+  //       }
+
+  //       $sql = "SELECT attr_id, attr_index FROM " . $ecs->table('attribute') . " WHERE cat_id = '$goods_type'";
+
+  //       $attr_res = $db->query($sql);
+
+  //       $attr_list = array();
+
+  //       while ($row = $db->fetchRow($attr_res))
+  //       {
+  //           $attr_list[$row['attr_id']] = $row['attr_index'];
+  //       }
+
+  //       $sql = "SELECT g.*, a.attr_type
+  //               FROM " . $ecs->table('goods_attr') . " AS g
+  //                   LEFT JOIN " . $ecs->table('attribute') . " AS a
+  //                       ON a.attr_id = g.attr_id
+  //               WHERE g.goods_id = '$goods_id'";
+
+  //       $res = $db->query($sql);
+
+  //       while ($row = $db->fetchRow($res))
+  //       {
+  //           $goods_attr_list[$row['attr_id']][$row['attr_value']] = array('sign' => 'delete', 'goods_attr_id' => $row['goods_attr_id']);
+  //       }
+  //       // 循环现有的，根据原有的做相应处理
+  //       if(isset($_POST['attr_id_list']))
+  //       {
+  //           foreach ($_POST['attr_id_list'] AS $key => $attr_id)
+  //           {
+  //               $attr_value = $_POST['attr_value_list'][$key];
+  //               $attr_price = $_POST['attr_price_list'][$key];
+		// 		$attr_price = ($attr_price>=0) ? $attr_price : 0;
+  //               if (!empty($attr_value))
+  //               {
+  //                   if (isset($goods_attr_list[$attr_id][$attr_value]))
+  //                   {
+  //                       // 如果原来有，标记为更新
+  //                       $goods_attr_list[$attr_id][$attr_value]['sign'] = 'update';
+  //                       $goods_attr_list[$attr_id][$attr_value]['attr_price'] = $attr_price;
+  //                   }
+  //                   else
+  //                   {
+  //                       // 如果原来没有，标记为新增
+  //                       $goods_attr_list[$attr_id][$attr_value]['sign'] = 'insert';
+  //                       $goods_attr_list[$attr_id][$attr_value]['attr_price'] = $attr_price;
+  //                   }
+  //                   $val_arr = explode(' ', $attr_value);
+  //                   foreach ($val_arr AS $k => $v)
+  //                   {
+  //                       if (!isset($keywords_arr[$v]) && $attr_list[$attr_id] == "1")
+  //                       {
+  //                           $keywords_arr[$v] = $v;
+  //                       }
+  //                   }
+  //               }
+  //           }
+  //       }
+  //       $keywords = join(' ', array_flip($keywords_arr));
+
+  //       $sql = "UPDATE " .$ecs->table('goods'). " SET keywords = '$keywords' WHERE goods_id = '$goods_id' LIMIT 1";
+
+  //       $db->query($sql);
+
+  //       /* 插入、更新、删除数据 */
+  //       foreach ($goods_attr_list as $attr_id => $attr_value_list)
+  //       {
+  //           foreach ($attr_value_list as $attr_value => $info)
+  //           {
+  //               if ($info['sign'] == 'insert')
+  //               {
+  //                   $sql = "INSERT INTO " .$ecs->table('goods_attr'). " (attr_id, goods_id, attr_value, attr_price)".
+  //                           "VALUES ('$attr_id', '$goods_id', '$attr_value', '$info[attr_price]')";
+  //               }
+  //               elseif ($info['sign'] == 'update')
+  //               {
+  //                   $sql = "UPDATE " .$ecs->table('goods_attr'). " SET attr_price = '$info[attr_price]' WHERE goods_attr_id = '$info[goods_attr_id]' LIMIT 1";
+  //               }
+  //               else
+  //               {
+  //               	//删除商品属性
+  //                   $sql = "DELETE FROM " .$ecs->table('goods_attr'). " WHERE goods_attr_id = '$info[goods_attr_id]' LIMIT 1";
+  //                   $db->query($sql);
+  //                   //删除商品属性对应的货品信息
+  //                   $sql = "DELETE FROM " .$ecs->table('products'). " WHERE goods_id = '$goods_id' and (goods_attr = '".$info['goods_attr_id']."' or goods_attr like '%|".$info['goods_attr_id']."' or goods_attr like '".$info['goods_attr_id']."|%' or goods_attr like '%|".$info['goods_attr_id']."|%')";
+  //                   $db->query($sql);
+  //                   continue;
+  //               }
+  //               $db->query($sql);
+		// //同步购物车中相关商品价格
+		// tongbu_cart_price(intval($_REQUEST['goods_id']));
+  //           }
+  //       }
+  //   }
+
+    /* 处理属性,这里处理的是早餐套餐 */
     if ((isset($_POST['attr_id_list']) && isset($_POST['attr_value_list'])) || (empty($_POST['attr_id_list']) && empty($_POST['attr_value_list'])))
     {
-        // 取得原有的属性值
-        $goods_attr_list = array();
-
-        $keywords_arr = explode(" ", $_POST['keywords']);
-
-        $keywords_arr = array_flip($keywords_arr);
-        if (isset($keywords_arr['']))
-        {
-            unset($keywords_arr['']);
-        }
-
-        $sql = "SELECT attr_id, attr_index FROM " . $ecs->table('attribute') . " WHERE cat_id = '$goods_type'";
-
-        $attr_res = $db->query($sql);
-
-        $attr_list = array();
-
-        while ($row = $db->fetchRow($attr_res))
-        {
-            $attr_list[$row['attr_id']] = $row['attr_index'];
-        }
-
-        $sql = "SELECT g.*, a.attr_type
-                FROM " . $ecs->table('goods_attr') . " AS g
-                    LEFT JOIN " . $ecs->table('attribute') . " AS a
-                        ON a.attr_id = g.attr_id
-                WHERE g.goods_id = '$goods_id'";
-
+        //获取早餐的商品id
+        $breakfast_id = '';
+        $sql = "SELECT goods_id FROM " . $ecs->table('goods') . " WHERE goods_name = '早餐'";
         $res = $db->query($sql);
-
         while ($row = $db->fetchRow($res))
         {
-            $goods_attr_list[$row['attr_id']][$row['attr_value']] = array('sign' => 'delete', 'goods_attr_id' => $row['goods_attr_id']);
+            $breakfast_id = $row['goods_id'];
         }
-        // 循环现有的，根据原有的做相应处理
-        if(isset($_POST['attr_id_list']))
+        if($breakfast_id)
         {
-            foreach ($_POST['attr_id_list'] AS $key => $attr_id)
+            if($is_insert)
             {
-                $attr_value = $_POST['attr_value_list'][$key];
-                $attr_price = $_POST['attr_price_list'][$key];
-				$attr_price = ($attr_price>=0) ? $attr_price : 0;
-                if (!empty($attr_value))
+                //新建
+                if(isset($_POST['attr_id_list']))
                 {
-                    if (isset($goods_attr_list[$attr_id][$attr_value]))
+                    foreach ($_POST['attr_id_list'] AS $key => $attr_id)
                     {
-                        // 如果原来有，标记为更新
-                        $goods_attr_list[$attr_id][$attr_value]['sign'] = 'update';
-                        $goods_attr_list[$attr_id][$attr_value]['attr_price'] = $attr_price;
+                        $attr_value = $_POST['attr_value_list'][$key]; //早餐数量
+                        $attr_price = $_POST['attr_price_list'][$key]; //套餐价格
+                        $attr_price = ($attr_price>=0) ? $attr_price : 0;
+                        $package_id = 0;
+                        $sql = "INSERT INTO " . $ecs->table('package_goods') . " (package_id, goods_id, product_id, goods_number, admin_id) " .
+                "VALUES ('$package_id', '" . $goods_id . "', 0,". $attr_value.", '$_SESSION[admin_id]')";
+                        $db->query($sql, 'SILENT');
+
+                         /* 插入数据 */
+                        $info = array('package_price'=>$attr_price);
+                        $end_time = time() + 365*24*3600;
+                        $record = array('act_name'=>$_POST['goods_name'].'套餐', 'act_desc'=>'',
+                                        'act_type'=>GAT_PACKAGE, 'start_time'=>time(),
+                                        'end_time'=>$end_time, 'is_finished'=>0, 'ext_info'=>serialize($info));
+
+                        $db->AutoExecute($ecs->table('goods_activity'),$record,'INSERT');
+
+                        /* 礼包编号 */
+                        $package_id = $db->insert_id();
+
+                        $sql = "UPDATE " . $GLOBALS['ecs']->table('package_goods') . " SET " .
+                                " package_id = '$package_id' " .
+                                " WHERE package_id = '0'" .
+                                " AND admin_id = '$_SESSION[admin_id]'";
+                        $GLOBALS['db']->query($sql);
                     }
-                    else
+                }
+            }
+            else
+            {
+                //更新,有bug //todo
+                if(isset($_POST['attr_id_list']) && $_POST['attr_value_list'][0])
+                {
+                    //删除旧的
+                    $sql = "SELECT package_id FROM " . $ecs->table('package_goods') . " WHERE goods_id='$goods_id'";
+
+                    $res = $db->query($sql);
+                    while ($row = $db->fetchRow($res))
                     {
-                        // 如果原来没有，标记为新增
-                        $goods_attr_list[$attr_id][$attr_value]['sign'] = 'insert';
-                        $goods_attr_list[$attr_id][$attr_value]['attr_price'] = $attr_price;
+                        $package_id = $row['package_id'];
+                        $sql = "DELETE FROM " . $ecs->table('package_goods') . " WHERE package_id='$package_id'";
+                        $db->query($sql);
                     }
-                    $val_arr = explode(' ', $attr_value);
-                    foreach ($val_arr AS $k => $v)
+
+                    //重新插入
+                    foreach ($_POST['attr_id_list'] AS $key => $attr_id)
                     {
-                        if (!isset($keywords_arr[$v]) && $attr_list[$attr_id] == "1")
-                        {
-                            $keywords_arr[$v] = $v;
-                        }
+                        $attr_value = $_POST['attr_value_list'][$key]; //早餐数量
+                        $attr_price = $_POST['attr_price_list'][$key]; //套餐价格
+                        $attr_price = ($attr_price>=0) ? $attr_price : 0;
+                        $package_id = 0;
+                        $sql = "INSERT INTO " . $ecs->table('package_goods') . " (package_id, goods_id, product_id, goods_number, admin_id) " .
+                "VALUES ('$package_id', '" . $goods_id . "',0,1,'$_SESSION[admin_id]')";
+                        $db->query($sql, 'SILENT');
+
+                         $sql = "INSERT INTO " . $ecs->table('package_goods') . " (package_id, goods_id, product_id, goods_number, admin_id) " .
+                "VALUES ('$package_id', '" . $breakfast_id . "', 0,". $attr_value.", '$_SESSION[admin_id]')";
+                        $db->query($sql, 'SILENT');
+
+                         /* 插入数据 */
+                        $info = array('package_price'=>$attr_price);
+                        $end_time = time() + 365*24*3600;
+                        $record = array('act_name'=>$_POST['goods_name'].'套餐', 'act_desc'=>'',
+                                        'act_type'=>GAT_PACKAGE, 'start_time'=>time(),
+                                        'end_time'=>$end_time, 'is_finished'=>0, 'ext_info'=>serialize($info));
+
+                        $db->AutoExecute($ecs->table('goods_activity'),$record,'INSERT');
+
+                        /* 礼包编号 */
+                        $package_id = $db->insert_id();
+
+                        $sql = "UPDATE " . $GLOBALS['ecs']->table('package_goods') . " SET " .
+                                " package_id = '$package_id' " .
+                                " WHERE package_id = '0'" .
+                                " AND admin_id = '$_SESSION[admin_id]'";
+                        $GLOBALS['db']->query($sql);
                     }
                 }
             }
         }
-        $keywords = join(' ', array_flip($keywords_arr));
 
-        $sql = "UPDATE " .$ecs->table('goods'). " SET keywords = '$keywords' WHERE goods_id = '$goods_id' LIMIT 1";
-
-        $db->query($sql);
-
-        /* 插入、更新、删除数据 */
-        foreach ($goods_attr_list as $attr_id => $attr_value_list)
-        {
-            foreach ($attr_value_list as $attr_value => $info)
-            {
-                if ($info['sign'] == 'insert')
-                {
-                    $sql = "INSERT INTO " .$ecs->table('goods_attr'). " (attr_id, goods_id, attr_value, attr_price)".
-                            "VALUES ('$attr_id', '$goods_id', '$attr_value', '$info[attr_price]')";
-                }
-                elseif ($info['sign'] == 'update')
-                {
-                    $sql = "UPDATE " .$ecs->table('goods_attr'). " SET attr_price = '$info[attr_price]' WHERE goods_attr_id = '$info[goods_attr_id]' LIMIT 1";
-                }
-                else
-                {
-                	//删除商品属性
-                    $sql = "DELETE FROM " .$ecs->table('goods_attr'). " WHERE goods_attr_id = '$info[goods_attr_id]' LIMIT 1";
-                    $db->query($sql);
-                    //删除商品属性对应的货品信息
-                    $sql = "DELETE FROM " .$ecs->table('products'). " WHERE goods_id = '$goods_id' and (goods_attr = '".$info['goods_attr_id']."' or goods_attr like '%|".$info['goods_attr_id']."' or goods_attr like '".$info['goods_attr_id']."|%' or goods_attr like '%|".$info['goods_attr_id']."|%')";
-                    $db->query($sql);
-                    continue;
-                }
-                $db->query($sql);
-		//同步购物车中相关商品价格
-		tongbu_cart_price(intval($_REQUEST['goods_id']));
-            }
-        }
+    
     }
 
     /* 处理会员价格 */
@@ -3911,4 +4048,27 @@ function getNeedBetween($kw, $mark1, $mark2)
     return $kw;
 }
 /* 代码增加 By  www.68ecshop.com End */
+
+
+
+//获取酒店列表
+function get_hotel_list()
+{
+    $sql = 'SELECT supplier_id, supplier_name,supplier_quanpin,supplier_shoupin FROM ' . $GLOBALS['ecs']->table('supplier') . ' WHERE supplier_type = 2';
+    $res = $GLOBALS['db']->getAll($sql);
+
+    $brand_list = array();
+    foreach ($res AS $row)
+    {
+
+        $brand_list[$row['supplier_id']]['name'] = $row['supplier_name'];
+        $brand_list[$row['supplier_id']]['name_pinyin'] = $row['supplier_quanpin'];
+        $brand_list[$row['supplier_id']]['name_p'] = substr($brand_list[$row['supplier_id']]['name_pinyin'],0,1);
+    }
+
+    return $brand_list;
+}
+
+
+
 ?>

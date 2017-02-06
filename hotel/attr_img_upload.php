@@ -9,7 +9,7 @@ $goods_id = $_REQUEST['goods_id'] ? $_REQUEST['goods_id'] : 0;
 $goods_attr_id = isset($_REQUEST['goods_attr_id']) ? intval($_REQUEST['goods_attr_id']) : '-1';
 if(!$goods_id or $goods_attr_id=='-1' )
 {
-	echo '<center><br>错误操作！</center>';
+	echo '<center><br>请先上传房间,然后再编辑并、上传图片！</center>';
 	exit;
 }
 //echo $goods_attr_id;
@@ -114,16 +114,17 @@ if ($img_list)
 		echo '<div class="gallery_img_box">';
 		if ($img['is_attr_image'])
 		{
-			echo '<div class="shuxingtupian">属性图片</div>';		
+			//echo '<div class="shuxingtupian">属性图片</div>';
 		}
 		echo '<img src="../'.$img['thumb_url'].'"  class="gallery_img">';
 		echo '<br><br><a href="?act=drop_image&goods_id=' . $goods_id . '&goods_attr_id=' . $goods_attr_id . '&img_id='. $img['img_id'] .'" onclick="javascript: return  (confirm(\'确认删除此图片吗\'))">[删除]</a> <a href="?act=set_attrimage&goods_id=' . $goods_id . '&goods_attr_id=' . $goods_attr_id . '&img_id='. $img['img_id'] .'">[属性图片]</a><br>顺序:<input type="text" name="sort" value="'.$img['img_sort'].'" style="width:20px;" onblur="set_sort(this.value,'.$img['img_id'].')">';
+//		echo '<br><br><a href="?act=drop_image&goods_id=' . $goods_id . '&goods_attr_id=' . $goods_attr_id . '&img_id='. $img['img_id'] .'" onclick="javascript: return  (confirm(\'确认删除此图片吗\'))">[删除]</a>';
 		echo '</div>';
 	}
 }
 else
 {
-		echo '<br>对不起，该属性下还未上传任何图片！';
+		echo '<br>暂无图片！';
 }
 ?>
 </div>
@@ -201,7 +202,7 @@ function handle_gallery_image_attr($goods_id, $goods_attr_id, $image_files)
             // 生成缩略图
             if ($proc_thumb)
             {
-                $thumb_url = $GLOBALS['image']->make_thumb($image_files['tmp_name'], $GLOBALS['_CFG']['thumb_width'],  $GLOBALS['_CFG']['thumb_height']);
+                $thumb_url = $GLOBALS['image']->make_thumb($image_files['tmp_name'], 96,  96);
                 $thumb_url = is_string($thumb_url) ? $thumb_url : '';
             }
 

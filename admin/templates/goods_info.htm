@@ -524,6 +524,31 @@
 						{/if}
 					</td>
 				</tr>
+
+				<tr id="breakfast">
+					<td class="label">{$lang.lab_thumb}</td>
+					<td id="auto_thumb_3">
+						<input type="file" name="goods_thumb" size="35" />
+						{if $goods.goods_thumb}
+						<a href="goods.php?act=show_image&img_url={$goods.goods_thumb}" target="_blank">
+							<img src="images/yes.gif" border="0" />
+						</a>
+						{else}
+						<img src="images/no.gif" />
+						{/if}
+						<br />
+						<input type="text" size="40" value="{$lang.lab_thumb_url}" style="color:#aaa;" onfocus="if (this.value == '{$lang.lab_thumb_url}'){this.value='http://';this.style.color='#000';}" name="goods_thumb_url" />
+						{if $gd > 0}
+						<br />
+						<label for="auto_thumb">
+							<input type="checkbox" id="auto_thumb" name="auto_thumb" checked="true" value="1" onclick="handleAutoThumb(this.checked)" />
+							{$lang.auto_thumb}
+						</label>
+						{/if}
+					</td>
+				</tr>
+
+
 				<!--代码增加_start byjdy-->
 				<tr>
 					<td class="label">

@@ -252,9 +252,9 @@ $modules['16_email_manage']['sendmail'] = 'sendmail.php?act=sendmail';
 /* 代码增加_start By www.68ecshop.com */
 
 
-$modules['02_cat_and_goods']['pricecut'] = 'pricecut.php?act=list&status=-1';
-$purview['pricecut'] = 'goods_manage';
-$_LANG['pricecut'] = '降价通知列表';
+// $modules['02_cat_and_goods']['pricecut'] = 'pricecut.php?act=list&status=-1';
+// $purview['pricecut'] = 'goods_manage';
+// $_LANG['pricecut'] = '降价通知列表';
 /* 代码增加_end By www.68ecshop.com */
 
 

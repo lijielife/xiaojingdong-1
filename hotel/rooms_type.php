@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ECSHOP 酒店类型管理程序
+ * ECSHOP 酒店房间类型管理程序
  * $Author: ry $
  * $Id: goods_type.php
 */
@@ -10,7 +10,7 @@ define('IN_ECS', true);
 
 require(dirname(__FILE__) . '/includes/init.php');
 
-$exc = new exchange($ecs->table("hotels_type"), $db, 'cat_id', 'cat_name');
+$exc = new exchange($ecs->table("rooms_type"), $db, 'cat_id', 'cat_name');
 
 /*------------------------------------------------------ */
 //-- 管理界面
@@ -19,7 +19,8 @@ if ($_REQUEST['act'] == 'manage')
 {
     assign_query_info();
 
-    $smarty->assign('ur_here',          $_LANG['08_hotel_type']);
+//    $smarty->assign('ur_here',          $_LANG['08_hotel_type']);
+    $smarty->assign('ur_here',          '酒店房间类型');
     $smarty->assign('full_page',        1);
 
     $good_type_list = get_goodstype();
@@ -30,16 +31,16 @@ if ($_REQUEST['act'] == 'manage')
     $smarty->assign('record_count', $good_type_list['record_count']);
     $smarty->assign('page_count',   $good_type_list['page_count']);
 
-    $query = $db->query("SELECT a.cat_id FROM " . $ecs->table('hotels_attribute') . " AS a RIGHT JOIN " . $ecs->table('hotels_attr') . " AS g ON g.attr_id = a.attr_id GROUP BY a.cat_id");
+    $query = $db->query("SELECT a.cat_id FROM " . $ecs->table('rooms_attribute') . " AS a RIGHT JOIN " . $ecs->table('rooms_attr') . " AS g ON g.attr_id = a.attr_id GROUP BY a.cat_id");
      while ($row = $db->fetchRow($query))
     {
         $good_in_type[$row['cat_id']]=1;
     }
     $smarty->assign('good_in_type', $good_in_type);
 
-    $smarty->assign('action_link',      array('text' => '新建酒店类型', 'href' => 'goods_type.php?act=add'));
+    $smarty->assign('action_link',      array('text' => '新建房间类型', 'href' => 'rooms_type.php?act=add'));
 
-    $smarty->display('goods_type.htm');
+    $smarty->display('rooms_type.htm');
 }
 
 /*------------------------------------------------------ */
@@ -110,14 +111,14 @@ elseif ($_REQUEST['act'] == 'add')
 {
     admin_priv('goods_type');
 
-    $smarty->assign('ur_here',     '新建酒店类型');
-    $smarty->assign('action_link', array('href'=>'goods_type.php?act=manage', 'text' => $_LANG['goods_type_list']));
+    $smarty->assign('ur_here',     '新建房间类型');
+    $smarty->assign('action_link', array('href'=>'rooms_type.php?act=manage', 'text' => $_LANG['goods_type_list']));
     $smarty->assign('action',      'add');
     $smarty->assign('form_act',    'insert');
     $smarty->assign('goods_type',  array('enabled' => 1));
 
     assign_query_info();
-    $smarty->display('goods_type_info.htm');
+    $smarty->display('rooms_type_info.htm');
 }
 
 elseif ($_REQUEST['act'] == 'insert')
@@ -128,14 +129,14 @@ elseif ($_REQUEST['act'] == 'insert')
     $goods_type['attr_group'] = sub_str($_POST['attr_group'], 255);
     $goods_type['enabled']    = intval($_POST['enabled']);
 
-    if ($db->autoExecute($ecs->table('hotels_type'), $goods_type) !== false)
+    if ($db->autoExecute($ecs->table('rooms_type'), $goods_type) !== false)
     {
-        $links = array(array('href' => 'goods_type.php?act=manage', 'text' => $_LANG['back_list']));
-        sys_msg('新建酒店类型成功', 0, $links);
+        $links = array(array('href' => 'rooms_type.php?act=manage', 'text' => $_LANG['back_list']));
+        sys_msg('新建房间类型成功', 0, $links);
     }
     else
     {
-        sys_msg('新建酒店类型失败', 1);
+        sys_msg('新建房间类型失败', 1);
     }
 }
 
@@ -222,13 +223,13 @@ elseif ($_REQUEST['act'] == 'remove')
         admin_log(addslashes($name), 'remove', 'goods_type');
 
         /* 清除该类型下的所有属性 */
-        $sql = "SELECT attr_id FROM " .$ecs->table('hotels_attribute'). " WHERE cat_id = '$id'";
+        $sql = "SELECT attr_id FROM " .$ecs->table('rooms_attribute'). " WHERE cat_id = '$id'";
         $arr = $db->getCol($sql);
 
-        $GLOBALS['db']->query("DELETE FROM " .$ecs->table('hotels_attribute'). " WHERE attr_id " . db_create_in($arr));
-        $GLOBALS['db']->query("DELETE FROM " .$ecs->table('hotels_attr'). " WHERE attr_id " . db_create_in($arr));
+        $GLOBALS['db']->query("DELETE FROM " .$ecs->table('rooms_attribute'). " WHERE attr_id " . db_create_in($arr));
+        $GLOBALS['db']->query("DELETE FROM " .$ecs->table('rooms_attr'). " WHERE attr_id " . db_create_in($arr));
 
-        $url = 'goods_type.php?act=query&' . str_replace('act=remove', '', $_SERVER['QUERY_STRING']);
+        $url = 'rooms_type.php?act=query&' . str_replace('act=remove', '', $_SERVER['QUERY_STRING']);
 
         ecs_header("Location: $url\n");
         exit;
@@ -254,15 +255,15 @@ function get_goodstype()
         $filter = array();
 
         /* 记录总数以及页数 */
-        $sql = "SELECT COUNT(*) FROM ".$GLOBALS['ecs']->table('hotels_type');
+        $sql = "SELECT COUNT(*) FROM ".$GLOBALS['ecs']->table('rooms_type');
         $filter['record_count'] = $GLOBALS['db']->getOne($sql);
 
         $filter = page_and_size($filter);
 
         /* 查询记录 */
         $sql = "SELECT t.*, COUNT(a.cat_id) AS attr_count ".
-               "FROM ". $GLOBALS['ecs']->table('hotels_type'). " AS t ".
-               "LEFT JOIN ". $GLOBALS['ecs']->table('hotels_attribute'). " AS a ON a.cat_id=t.cat_id ".
+               "FROM ". $GLOBALS['ecs']->table('rooms_type'). " AS t ".
+               "LEFT JOIN ". $GLOBALS['ecs']->table('rooms_attribute'). " AS a ON a.cat_id=t.cat_id ".
                "GROUP BY t.cat_id " .
                'LIMIT ' . $filter['start'] . ',' . $filter['page_size'];
         set_filter($filter, $sql);

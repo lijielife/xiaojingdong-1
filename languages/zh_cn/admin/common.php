@@ -185,8 +185,10 @@ $_LANG['02_1_supplier_goods_list'] = '入驻商商品列表';
 /* 商品管理 */
 /* 代码增加_start By supplier.68ecshop.com */
 $_LANG['01_goods_list'] = '商品列表';
+$_LANG['01_rooms_list'] = '房间列表';
 $_LANG['02_supplier_goods_list'] = '入驻商商品列表';
 $_LANG['03_goods_add'] = '添加新商品';
+$_LANG['03_rooms_add'] = '添加新房间';
 $_LANG['04_category_list'] = '商品分类';
 /* 代码增加_end By supplier.68ecshop.com */
 $_LANG['04_category_add'] = '添加分类';
@@ -201,6 +203,7 @@ $_LANG['06_goods_brand_list'] = '商品品牌';
 $_LANG['06_hotels_brand_list'] = '酒店品牌';
 $_LANG['07_brand_add'] = '添加品牌';
 $_LANG['08_goods_type'] = '商品类型';
+$_LANG['08_rooms_type'] = '房间类型';
 $_LANG['09_attribute_list'] = '商品属性';
 $_LANG['10_attribute_add'] = '添加属性';
 $_LANG['11_goods_trash'] = '商品回收站';
