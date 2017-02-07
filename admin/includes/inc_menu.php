@@ -51,18 +51,18 @@ $modules['02_cat_and_goods']['goods_auto'] = 'goods_auto.php?act=list';
 //$modules['02_cat_and_goods']['scan_store'] = 'scan.php?act=insert'; //出入库管理
 
 /* $modules['03_promotion']['02_snatch_list'] = 'snatch.php?act=list'; */
-$modules['03_promotion']['04_bonustype_list'] = 'bonus.php?act=list';
+//$modules['03_promotion']['04_bonustype_list'] = 'bonus.php?act=list';
 // $modules['03_promotion']['06_pack_list'] = 'pack.php?act=list';
 // $modules['03_promotion']['07_card_list'] = 'card.php?act=list';
-$modules['03_promotion']['08_group_buy'] = 'group_buy.php?act=list';
-$modules['03_promotion']['09_topic'] = 'topic.php?act=list';
-$modules['03_promotion']['10_auction'] = 'auction.php?act=list';
-$modules['03_promotion']['12_favourable'] = 'favourable.php?act=list';
+// $modules['03_promotion']['08_group_buy'] = 'group_buy.php?act=list';
+// $modules['03_promotion']['09_topic'] = 'topic.php?act=list';
+// $modules['03_promotion']['10_auction'] = 'auction.php?act=list';
+// $modules['03_promotion']['12_favourable'] = 'favourable.php?act=list';
 // $modules['03_promotion']['13_wholesale'] = 'wholesale.php?act=list';
-$modules['03_promotion']['14_package_list'] = 'package.php?act=list';
+//$modules['03_promotion']['14_package_list'] = 'package.php?act=list';
 // $modules['03_promotion']['ebao_commend'] = 'ebao_commend.php?act=list';
-$modules['03_promotion']['15_exchange_goods'] = 'exchange_goods.php?act=list';
-$modules['03_promotion']['25_pre_sale_list'] = 'pre_sale.php?act=list'; // 预售
+// $modules['03_promotion']['15_exchange_goods'] = 'exchange_goods.php?act=list';
+// $modules['03_promotion']['25_pre_sale_list'] = 'pre_sale.php?act=list'; // 预售
 
 $modules['04_order']['01_order_list'] = 'order.php?act=list';
 $modules['04_order']['02_supplier_order'] = 'order.php?act=list&supp=1';
@@ -267,7 +267,7 @@ $modules['17_pickup_point_manage']['pickup_point_batch_add'] = 'pickup_point.php
 /* 代码增加_end By www.ecshop68.com */
 
 /* 代码增加_start By www.68ecshop.com */
-$modules['03_promotion']['19_valuecard_list'] = 'valuecard.php?act=list';
+// $modules['03_promotion']['19_valuecard_list'] = 'valuecard.php?act=list';
 
 $_LANG['19_valuecard_list'] = '储值卡管理';
 $purview['19_valuecard_list'] = 'bonus_manage';
