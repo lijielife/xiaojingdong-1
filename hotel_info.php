@@ -57,8 +57,7 @@ $smarty->assign('hotel_image_detail_html',$hotel_image_detail_html);
 $room_html = create_room_html($id);
 $smarty->assign('room_html',$room_html);
 
-$d = get_package_goods_list($id);
-print_r($d);exit;
+
 
 $smarty->display('detail.html');
 
@@ -193,23 +192,30 @@ function create_room_html($supplier_id)
         $taocan = get_package_goods_list($id); // 套餐
         $photos = get_goods_gallery_attr($id); // 房间图片
         $name = get_goods_attr_value($id,'goods_name'); // 房间名
+        $room_num = get_goods_attr_value($id,'goods_number'); // 房间数量
         $market_price = get_goods_attr_value($id,'market_price');  //市场价格
         $shop_price = get_goods_attr_value($id,'shop_price');  //酒店价格
         $desc = get_goods_attr_value($id,'goods_desc');  //酒店价格
         $goods_thumb = get_goods_attr_value($id,'goods_thumb');
 
-        print_r($taocan);
-        print_r($photos);
-        print_r($name);
-        print_r($market_price);
-        print_r($shop_price);
+        $breakfast = get_package_goods_list($id);
+        //print_r($breakfast);
 
+        $products_num = count($breakfast) + 1;
+
+        //print_r($taocan);
+        //print_r($photos);
+        //print_r($name);
+        //print_r($market_price);
+        //print_r($shop_price);
+
+        //todo 产品库存
 
         $html .= '<div class="htype_item on" data-handle="roomType" data-roomid="0001">';
         $html .= ' <div class="htype_info clearfix" method="togRoom">';
         $html .= '<div class="htype_info_pic left"><img src="'.$goods_thumb['goods_thumb'].'"  width="80" height="80"></div> <div class="htype_info_pb right">'; //todo 房间的主图片
         $html .= '<p class="cf55"><span class="t14 c555">¥</span><span class="htype_info_num">'.intval($shop_price['shop_price']).'</span><span class="t12">起</span></p>';
-        $html .= '<p class="htype_info_total mt5 ">共4个产品<i class="icon_triangle_8b"></i></p></div>';
+        $html .= '<p class="htype_info_total mt5 ">共'.$products_num.'个产品<i class="icon_triangle_8b"></i></p></div>';
         $html .= '<div class="htype_info_nt">
                                             <p class="htype_info_name">
                                                 <span class="l37d">'.$name['goods_name'].'</span></p>
@@ -219,29 +225,29 @@ function create_room_html($supplier_id)
 
         //房型详细信息start
         $html .= ' <div data-handle="roomTable" style="display:block;" class="htype_info_list btddd">
-                                        <table cellpadding="0" cellspacing="0" class="htype-table">
-                                            <thead>
-                                                <tr>
-                                                    <th class="ht_empty">&nbsp;</th>
-                                                    <th class="ht_name">产品名称</th>
-                                                    <th class="ht_supply">供应商</th>
-                                                    <th class="ht_brak">早餐</th>
-                                                    <th class="ht_rule">取消规则</th>
-                                                    <th class="ht_pri">
-                                                        <span class="night">日均价</span></th>
-                                                    <th class="ht_retu">&nbsp;</th>
-                                                    <th class="ht_pay">&nbsp;</th>
-                                                    <th class="ht_book">&nbsp;</th>
-                                                    <th class="ht_last">&nbsp;</th></tr>
-                                            </thead>
-                                            <tbody>';
+                                            <table cellpadding="0" cellspacing="0" class="htype-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="ht_empty">&nbsp;</th>
+                                                        <th class="ht_name">产品名称</th>
+                                                        <th class="ht_supply">供应商</th>
+                                                        <th class="ht_brak">早餐</th>
+                                                        <th class="ht_rule">取消规则</th>
+                                                        <th class="ht_pri">
+                                                            <span class="night">日均价</span></th>
+                                                        <th class="ht_retu">&nbsp;</th>
+                                                        <th class="ht_pay">&nbsp;</th>
+                                                        <th class="ht_book">&nbsp;</th>
+                                                        <th class="ht_last">&nbsp;</th></tr>
+                                                </thead>
+                                                <tbody>';
         $html .= '<tr data-handle="rp" style="">
                                             <td class="ht_empty">&nbsp;</td>
                                             <td class="ht_name">
-                                                <span title="标准价">'.$name['goods_name'].'</span>
+                                                <span title="标准价">标准价</span>
                                                 <i class="icon_tuijia"></i>
                                             </td>
-                                            <td class="ht_supply">代理</td>
+                                            <td class="ht_supply">酒店</td>
                                             <td class="ht_brak">无早</td>
                                             <td class="ht_rule">
                                                 <span class="ht_rule_free" method="cancelTip" canceltype="0">免费取消</span></td>
@@ -268,14 +274,76 @@ function create_room_html($supplier_id)
                                             </td>
                                             <td class="ht_book">
                                                 <a class="btn_com_w1" rel="nofollow" method="order">预订</a>
-                                                <p class="t12 cf55">仅剩3间</p></td>
+                                                <p class="t12 cf55">仅剩'.$room_num['goods_number'].'间</p></td>
                                             <td class="ht_last">&nbsp;</td></tr>';
-        $html .= ' <tr class="ht_tr_other">
+       
+        //早餐套餐
+        foreach($breakfast as $val)
+        {
+            //print_r($val);
+            $price = intval(trim($val['package_price'],'¥'));
+            $goods_list = $val['goods_list'];
+            $breakfast_num = 1;
+            foreach($goods_list as $v)
+            {
+                if($v['goods_name'] == '早餐')
+                {
+                    $breakfast_num = $v['goods_number'];
+                }
+            }
+            if($breakfast_num == 1)
+            {
+                $product_name = '含单早';
+                $breakfast_name = '单早';
+            }
+            elseif($breakfast_num == 2)
+            {
+                $product_name = '含双早';
+                $breakfast_name = '双早';
+            }
+
+            $html .= '<tr data-handle="rp" style="">
+                                                <td class="ht_empty">&nbsp;</td>
+                                                <td class="ht_name">
+                                                    <span title="标准价">'.$product_name.'</span>
+                                                    <i class="icon_tuijia"></i>
+                                                </td>
+                                                <td class="ht_supply">酒店</td>
+                                                <td class="ht_brak">'.$breakfast_name.'</td>
+                                                <td class="ht_rule">
+                                                    <span class="ht_rule_free" method="cancelTip" canceltype="0">免费取消</span></td> 
+                                                <td class="ht_pri">
+                                                    <!-- 只有非促销的五折不展示价格日历 -->
+                                                    <span method="AvgPrice" class="ht_pri_h cur">¥
+                                                        <span class="ht_pri_num">'.intval($price).'</span></span>
+                                                </td>';
+                                            $dif = intval($market_price['market_price']) - intval($price);
+                                            if($dif > 0)
+                                            {
+                                                $html .= '<td class="ht_retu">
+                                                    <span method="coupon">'.intval($market_price['market_price']).'优惠'.$dif.'</span>
+                                                </td>';
+                                            }
+                                            else
+                                            {
+                                                 $html .= '<td class="ht_retu"></td>';
+                                            }
+                                               
+            $html .= '
+                                                <td class="ht_pay">
+                                                    <i class=""></i>
+                                                </td>
+                                                <td class="ht_book">
+                                                    <a class="btn_com_w1" rel="nofollow" method="order">预订</a>
+                                                    <p class="t12 cf55">仅剩'.$room_num['goods_number'].'间</p></td>
+                                                <td class="ht_last">&nbsp;</td></tr>';
+        }
+        
+        //房间图片
+         $html .= ' <tr class="ht_tr_other">
                                                     <td class="ht_empty">&nbsp;</td>
                                                     <td colspan="9" class="ht_other">
                                                         <ul class="ht_pic_list clearfix">';
-
-        //房间图片
         foreach($photos as $photo)
         {
             $html .='<li method="ShowImage"><img  bigimgurl="'. $photo['img_original'].'" width="96" height="96" src="'.$photo['thumb_url'].'"></li>';

@@ -51,18 +51,18 @@ $modules['02_1_cat_and_goods']['goods_auto'] = 'goods_auto.php?act=list';
 $modules['02_1_cat_and_goods']['scan_store'] = 'scan.php?act=insert';
 
 /* $modules['03_promotion']['02_snatch_list'] = 'snatch.php?act=list'; */
-$modules['03_1_promotion']['04_bonustype_list'] = 'bonus.php?act=list';
+//$modules['03_1_promotion']['04_bonustype_list'] = 'bonus.php?act=list';
 // $modules['03_promotion']['06_pack_list'] = 'pack.php?act=list';
 // $modules['03_promotion']['07_card_list'] = 'card.php?act=list';
-$modules['03_1_promotion']['08_group_buy'] = 'group_buy.php?act=list';
-$modules['03_1_promotion']['09_topic'] = 'topic.php?act=list';
-$modules['03_1_promotion']['10_auction'] = 'auction.php?act=list';
-$modules['03_1_promotion']['12_favourable'] = 'favourable.php?act=list';
+//$modules['03_1_promotion']['08_group_buy'] = 'group_buy.php?act=list';
+//$modules['03_1_promotion']['09_topic'] = 'topic.php?act=list';
+//$modules['03_1_promotion']['10_auction'] = 'auction.php?act=list';
+//$modules['03_1_promotion']['12_favourable'] = 'favourable.php?act=list';
 // $modules['03_promotion']['13_wholesale'] = 'wholesale.php?act=list';
-$modules['03_1_promotion']['14_package_list'] = 'package.php?act=list';
+//$modules['03_1_promotion']['14_package_list'] = 'package.php?act=list';
 // $modules['03_promotion']['ebao_commend'] = 'ebao_commend.php?act=list';
-$modules['03_1_promotion']['15_exchange_goods'] = 'exchange_goods.php?act=list';
-$modules['03_1_promotion']['25_pre_sale_list'] = 'pre_sale.php?act=list'; // 预售
+//$modules['03_1_promotion']['15_exchange_goods'] = 'exchange_goods.php?act=list';
+//$modules['03_1_promotion']['25_pre_sale_list'] = 'pre_sale.php?act=list'; // 预售
 
 $modules['04_1_order']['01_order_list'] = 'order.php?act=list';
 $modules['04_1_order']['02_supplier_order'] = 'order.php?act=list&supp=1';
@@ -238,8 +238,8 @@ $modules['02_1_supplier']['06_hotels_brand_list'] = 'brand.php?act=list';
 // $modules['17_weixin_manage']['weixin_addkey'] = 'weixin.php?act=addkey';
 $modules['11_1_system']['website'] = 'website.php?act=list';
 /* 代码增加_start By www.68ecshop.com */
-$modules['03_1_promotion']['16_takegoods_list'] = 'takegoods.php?act=list';
-$modules['03_1_promotion']['16_takegoods_order'] = 'takegoods.php?act=order_list';
+//$modules['03_1_promotion']['16_takegoods_list'] = 'takegoods.php?act=list';
+//$modules['03_1_promotion']['16_takegoods_order'] = 'takegoods.php?act=order_list';
 
 
 /* 代码增加_end By www.68ecshop.com */
@@ -264,7 +264,7 @@ $modules['17_pickup_point_manage']['pickup_point_batch_add'] = 'pickup_point.php
 /* 代码增加_end By www.ecshop68.com */
 
 /* 代码增加_start By www.68ecshop.com */
-$modules['03_1_promotion']['19_valuecard_list'] = 'valuecard.php?act=list';
+//$modules['03_1_promotion']['19_valuecard_list'] = 'valuecard.php?act=list';
 $_LANG['19_1_valuecard_list'] = '储值卡管理';
 $purview['19_1_valuecard_list'] = 'bonus_manage';
 $modules['11_1_system']['website'] = 'website.php?act=list';
