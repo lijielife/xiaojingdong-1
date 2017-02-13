@@ -989,7 +989,7 @@ if(result.error == 1){
 			document.getElementById('ECS_INVPAYEE').disabled=false;
 		}
 		</script>
-	{if $allow_use_surplus}
+	{if ($allow_use_surplus and  $is_exchange_goods != 1)}
           <tr>
             <td colspan=4 class="tdother2">
             	<div class="allow_user_surplus">

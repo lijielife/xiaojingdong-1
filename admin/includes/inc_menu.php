@@ -61,7 +61,7 @@ $modules['02_cat_and_goods']['goods_auto'] = 'goods_auto.php?act=list';
 // $modules['03_promotion']['13_wholesale'] = 'wholesale.php?act=list';
 //$modules['03_promotion']['14_package_list'] = 'package.php?act=list';
 // $modules['03_promotion']['ebao_commend'] = 'ebao_commend.php?act=list';
-// $modules['03_promotion']['15_exchange_goods'] = 'exchange_goods.php?act=list';
+$modules['03_promotion']['15_exchange_goods'] = 'exchange_goods.php?act=list';
 // $modules['03_promotion']['25_pre_sale_list'] = 'pre_sale.php?act=list'; // 预售
 
 $modules['04_order']['01_order_list'] = 'order.php?act=list';
@@ -74,15 +74,8 @@ $modules['04_order']['06_undispose_booking'] = 'goods_booking.php?act=list_all';
 $modules['04_order']['08_add_order'] = 'order.php?act=add';
 $modules['04_order']['09_delivery_order'] = 'order.php?act=delivery_list';
 // $modules['04_order']['10_back_order'] = 'order.php?act=back_list';
-$modules['04_order']['10_back_order'] = 'back.php?act=back_list'; // 代码修改
-                                                                                // By
-                                                                                // www.68ecshop.com
-$modules['04_order']['11_supplier_back_order'] = 'back.php?act=back_list&supp=1'; // 代码修改
-                                                                                       // By
-                                                                                       // www.68ecshop.com
-                                                                                       // ecshop
-                                                                                       // add
-                                                                                       // start
+$modules['04_order']['10_back_order'] = 'back.php?act=back_list'; 
+$modules['04_order']['11_supplier_back_order'] = 'back.php?act=back_list&supp=1'; 
 $modules['04_order']['12_order_excel'] = 'excel.php?act=order_excel';
 $modules['04_order']['11_kuaidi_order'] = 'kuaidi_order.php?act=list';
 $modules['04_order']['12_kuaidi_order2'] = 'kuaidi_order.php?act=list&order_status=4&is_finish=1';
@@ -115,7 +108,7 @@ $modules['06_stats']['keyword'] = 'keyword.php?act=list'; // 客户搜索记录
 $modules['06_stats']['report_guest'] = 'guest_stats.php?act=list'; // 客户统计
 //$modules['06_stats']['report_order'] = 'order_stats.php?act=list';
 //$modules['06_stats']['report_sell'] = 'sale_general.php?act=list';
-//$modules['06_stats']['sale_list'] = 'sale_list.php?act=list';
+$modules['06_stats']['sale_list'] = 'sale_list.php?act=list';
 //$modules['06_stats']['sell_stats'] = 'sale_order.php?act=goods_num';
 //$modules['06_stats']['report_users'] = 'users_order.php?act=order_num';
 //$modules['06_stats']['visit_buy_per'] = 'visit_sold.php?act=list';

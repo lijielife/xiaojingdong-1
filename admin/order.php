@@ -1526,6 +1526,7 @@ elseif ($_REQUEST['act'] == 'step_post')
 				     " as oi on og.order_id=oi.order_id where og.rec_id=".$rec_id;
                 /* 取得参数 */
               $goods_price = floatval($_POST['goods_price'][$key]);
+              $cb_price = floatval($_POST['cb_price'][$key]);
 			  $exclusive = floatval($_POST['exclusive'][$key]);
               $goods_number = intval($_POST['goods_number'][$key]);
               $goods_attr = $_POST['goods_attr'][$key];
@@ -1542,7 +1543,7 @@ elseif ($_REQUEST['act'] == 'step_post')
               {
                 /* 修改 */
                 $sql = "UPDATE " . $ecs->table('order_goods') .
-                        " SET goods_price = '$goods_price', " .
+                        " SET goods_price = '$goods_price',cb_price = '$cb_price', " .
 						"exclusive = '$exclusive',".
                         "goods_number = '$goods_number', " .
                         "goods_attr = '$goods_attr' " .
@@ -4068,7 +4069,7 @@ elseif ($_REQUEST['act'] == 'operate')
             /* 取得订单商品 */
             $goods_list = array();
             $goods_attr = array();
-            $sql = "SELECT o.*, g.goods_number AS storage, o.goods_attr, IFNULL(b.brand_name, '') AS brand_name " .
+            $sql = "SELECT o.*, g.goods_number AS storage, if(o.cb_price>0,o.cb_price,g.cb_price)  AS cb_price,o.goods_attr, IFNULL(b.brand_name, '') AS brand_name " .
                     "FROM " . $ecs->table('order_goods') . " AS o ".
                     "LEFT JOIN " . $ecs->table('goods') . " AS g ON o.goods_id = g.goods_id " .
                     "LEFT JOIN " . $ecs->table('brand') . " AS b ON g.brand_id = b.brand_id " .
@@ -4214,6 +4215,11 @@ elseif ($_REQUEST['act'] == 'batch_operate_post')
                 /* 标记订单为已确认 */
                 update_order($order_id, array('order_status' => OS_CONFIRMED, 'confirm_time' => time()));
                 update_order_amount($order_id);
+                $sql_cost =  "UPDATE ". $GLOBALS['ecs']->table('order_goods')." as og,". 
+                        $GLOBALS['ecs']->table('goods')." as g SET og.cb_price = g.cb_price " .
+                        " WHERE og.goods_id = g.goods_id".
+                       " AND og.order_id = '$order_id' and og.cb_price=0";
+                $GLOBALS['db']->query($sql_cost);
 
                 /* 记录log */
                 order_action($order['order_sn'], OS_CONFIRMED, SS_UNSHIPPED, PS_UNPAYED, $action_note);
@@ -4472,6 +4478,11 @@ elseif ($_REQUEST['act'] == 'operate_post')
         /* 标记订单为已确认 */
         update_order($order_id, array('order_status' => OS_CONFIRMED, 'confirm_time' => time()));
         update_order_amount($order_id);
+        $sql_cost =  "UPDATE ". $GLOBALS['ecs']->table('order_goods')." as og,". 
+                        $GLOBALS['ecs']->table('goods')." as g SET og.cb_price = g.cb_price " .
+                        " WHERE og.goods_id = g.goods_id".
+                       " AND og.order_id = '$order_id' and og.cb_price=0";
+        $GLOBALS['db']->query($sql_cost);
 
         /* 记录log */
         order_action($order['order_sn'], OS_CONFIRMED, SS_UNSHIPPED, PS_UNPAYED, $action_note);
@@ -5234,7 +5245,7 @@ elseif ($_REQUEST['act'] == 'json')
         /* 取得商品信息 */
         $goods_id = $_REQUEST['goods_id'];
         $sql = "SELECT goods_id, c.cat_name, goods_sn, goods_name, b.brand_name, " .
-                "goods_number, market_price, shop_price,exclusive, promote_price, " .
+                "goods_number, market_price, shop_price,cb_price,exclusive, promote_price, " .
                 "promote_start_date, promote_end_date, goods_brief, goods_type, is_promote " .
                 "FROM " . $ecs->table('goods') . " AS g " .
                 "LEFT JOIN " . $ecs->table('brand') . " AS b ON g.brand_id = b.brand_id " .

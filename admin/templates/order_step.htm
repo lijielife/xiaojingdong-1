@@ -35,6 +35,7 @@
 	<th scope="col">手机专享价格</th>
     <th scope="col">{$lang.goods_number}</th>
     <th scope="col">{$lang.goods_attr}</th>
+    <th scope="col">进货价</th>
     <th scope="col">{$lang.subtotal}</th>
     <th scope="col">{$lang.handler}</th>
   </tr>
@@ -55,6 +56,7 @@
 	 <!--  //手机专享价格 app  -->
 	<td><input name="goods_number[]" type="text" style="text-align:right" value="{$goods.goods_number}" size="6" /></td>
     <td><textarea name="goods_attr[]" cols="30" rows="{$goods.rows}">{$goods.goods_attr}</textarea></td>
+    <td><input name="cost_price[]" type="text" style="text-align:right" value="{$goods.cb_price}" size="10" /></td>
     <td align="right">{$goods.subtotal}</td>
     <td><a href="javascript:confirm_redirect(confirm_drop, 'order.php?act=process&func=drop_order_goods&rec_id={$goods.rec_id}&step_act={$step_act}&order_id={$order_id}')">{$lang.drop}</a></td>
   </tr>
@@ -98,6 +100,10 @@
   <tr>
     <th>{$lang.goods_price}</th>
     <td id="add_price">&nbsp;</td>
+  </tr>
+  <tr>
+    <th>进货价</th>
+    <td id="cb_price">&nbsp;</td>
   </tr>
   <tr>
   <!--  //手机专享价格 app  -->
@@ -1258,6 +1264,7 @@ function save_inv_remark_response(result)
       document.getElementById('goods_cat').innerHTML = '';
       document.getElementById('goods_brand').innerHTML = '';
       document.getElementById('add_price').innerHTML = '';
+      document.getElementById('b_price').innerHTML = '';
       document.getElementById('goods_attr').innerHTML = '';
     }
   }
@@ -1280,6 +1287,7 @@ function save_inv_remark_response(result)
     }
     priceHtml += '<input type="radio" name="add_price" value="user_input" />' + input_price + '<input type="text" name="input_price" value="" /><br />';
     document.getElementById('add_price').innerHTML = priceHtml;
+    document.getElementById('cb_price').innerHTML = '<input type="text" name="cb_price" value="'+result.cb_price+'" />'; ;
 
     // 显示属性
     var specCnt = 0; // 规格的数量

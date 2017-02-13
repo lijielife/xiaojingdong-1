@@ -131,6 +131,7 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
 
 	// 代码增加_start_derek20150129admin_goods  www.68ecshop.com
 
+    //print_r($_POST);exit;
 	include_once(ROOT_PATH . '/includes/Pinyin.php');
 
 	// 代码增加_end_derek20150129admin_goods  www.68ecshop.com
@@ -198,6 +199,7 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
             'goods_type'    => 0,       // 商品类型
             'shop_price'    => 0,
             'promote_price' => 0,
+            'cb_price' => 0,
             'market_price'  => 0,
             'integral'      => 0,
             'goods_number'  => $_CFG['default_storage'],
@@ -284,6 +286,7 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
                 'goods_type'    => 0,       // 商品类型
                 'shop_price'    => 0,
                 'promote_price' => 0,
+                'cb_price'      => 0,
                 'market_price'  => 0,
                 'integral'      => 0,
                 'goods_number'  => 1,
@@ -888,6 +891,7 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
     $shop_price = !empty($_POST['shop_price']) ? $_POST['shop_price'] : 0;
     $market_price = !empty($_POST['market_price']) ? $_POST['market_price'] : 0;
     $promote_price = !empty($_POST['promote_price']) ? floatval($_POST['promote_price'] ) : 0;
+    $cb_price = !empty($_POST['cb_price']) ? $_POST['cb_price'] : 0;
     $is_promote = empty($promote_price) ? 0 : 1;
     $zhekou = ($promote_price == 0 ? 10.0 : (number_format(($promote_price/$shop_price),2))*10);
     $promote_start_date = ($is_promote && !empty($_POST['promote_start_date'])) ? local_strtotime($_POST['promote_start_date']) : 0;
@@ -934,12 +938,12 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
         {
             $sql = "INSERT INTO " . $ecs->table('goods') . " (goods_name, goods_name_style, ghost_count, goods_sn, " .
                     "cat_id, brand_id, shop_price, market_price, is_promote, zhekou, promote_price, " .
-                    "promote_start_date, promote_end_date, is_buy,buymax,buymax_start_date,buymax_end_date, goods_img, goods_thumb, original_img, keywords, goods_brief, " .
+                    "cb_price,promote_start_date, promote_end_date, is_buy,buymax,buymax_start_date,buymax_end_date, goods_img, goods_thumb, original_img, keywords, goods_brief, " .
                     "seller_note, goods_weight, goods_number, warn_number, integral, give_integral, is_best, is_new, is_hot, " .
                     "is_on_sale, is_alone_sale, is_shipping, goods_desc, add_time, last_update, goods_type, rank_integral,exclusive, suppliers_id, cost_price)" .
                 "VALUES ('$_POST[goods_name]', '$goods_name_style', '$ghost_count', '$goods_sn', '$catgory_id', " .
                     "'$brand_id', '$shop_price', '$market_price', '$is_promote', '$zhekou', '$promote_price', ".
-                    "'$promote_start_date', '$promote_end_date', '$is_buy','$buymax','$buymax_start_date','$buymax_end_date','$goods_img', '$goods_thumb', '$original_img', ".
+                    "'$cb_price','$promote_start_date', '$promote_end_date', '$is_buy','$buymax','$buymax_start_date','$buymax_end_date','$goods_img', '$goods_thumb', '$original_img', ".
                     "'$_POST[keywords]', '$_POST[goods_brief]', '$_POST[seller_note]', '$goods_weight', '$goods_number',".
                     " '$warn_number', '$_POST[integral]', '$give_integral', '$is_best', '$is_new', '$is_hot', '$is_on_sale', '$is_alone_sale', $is_shipping, ".
                     " '$_POST[goods_desc]', '" . gmtime() . "', '". gmtime() ."', '$goods_type', '$rank_integral','$exclusive', '$suppliers_id', '$cost_price')";
@@ -948,16 +952,19 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
         {
             $sql = "INSERT INTO " . $ecs->table('goods') . " (goods_name, goods_name_style, ghost_count, goods_sn, " .
                     "cat_id, brand_id, shop_price, market_price, is_promote, zhekou, promote_price, " .
-                    "promote_start_date, promote_end_date, is_buy,buymax,buymax_start_date,buymax_end_date,goods_img, goods_thumb, original_img, keywords, goods_brief, " .
+                    "cb_price,promote_start_date, promote_end_date, is_buy,buymax,buymax_start_date,buymax_end_date,goods_img, goods_thumb, original_img, keywords, goods_brief, " .
                     "seller_note, goods_weight, goods_number, warn_number, integral, give_integral, is_best, is_new, is_hot, is_real, " .
                     "is_on_sale, is_alone_sale, is_shipping, goods_desc, add_time, last_update, goods_type, extension_code,exclusive, rank_integral, cost_price)" .
                 "VALUES ('$_POST[goods_name]', '$goods_name_style', '$ghost_count', '$goods_sn', '$catgory_id', " .
                     "'$brand_id', '$shop_price', '$market_price', '$is_promote', '$zhekou', '$promote_price', ".
-                    "'$promote_start_date', '$promote_end_date', '$is_buy','$buymax','$buymax_start_date','$buymax_end_date', '$goods_img', '$goods_thumb', '$original_img', ".
+                    "'$cb_price','$promote_start_date', '$promote_end_date', '$is_buy','$buymax','$buymax_start_date','$buymax_end_date', '$goods_img', '$goods_thumb', '$original_img', ".
                     "'$_POST[keywords]', '$_POST[goods_brief]', '$_POST[seller_note]', '$goods_weight', '$goods_number',".
                     " '$warn_number', '$_POST[integral]', '$give_integral', '$is_best', '$is_new', '$is_hot', 0, '$is_on_sale', '$is_alone_sale', $is_shipping, ".
                     " '$_POST[goods_desc]', '" . gmtime() . "', '". gmtime() ."', '$goods_type', '$code','$exclusive', '$rank_integral', '$cost_price')";
         }
+
+
+       
     }
     else
     {
@@ -1001,6 +1008,7 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
                 "is_promote = '$is_promote', " .
 				"zhekou = '$zhekou', " .
                 "promote_price = '$promote_price', " .
+                "cb_price = '$cb_price', " .
                 "promote_start_date = '$promote_start_date', " .
 				"is_buy = '$is_buy', " .
 				"buymax = '$buymax', " .
@@ -1047,6 +1055,34 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
     $db->query($sql);
 	/* 商品编号 */
     $goods_id = $is_insert ? $db->insert_id() : $_REQUEST['goods_id'];
+
+    //积分商城
+    if(isset($_POST['exchange_integral']))
+    {
+        if($is_insert)
+        {
+            $sql = "INSERT INTO ".$ecs->table('exchange_goods')."(goods_id, exchange_integral, is_exchange, is_hot) ".
+        "VALUES ('$goods_id', '$_POST[exchange_integral]', '1', '1')";
+        }
+        else
+        {
+            $sql = "SELECT COUNT(1) FROM " . $ecs->table('exchange_goods') . " WHERE goods_id='$goods_id'";
+            $num = $db->getOne($sql);
+            if($num == 0)
+            {
+                $sql = "INSERT INTO ".$ecs->table('exchange_goods')."(goods_id, exchange_integral, is_exchange, is_hot) ".
+        "VALUES ('$goods_id', '$_POST[exchange_integral]', '1', '1')";
+            }
+            else
+            {
+                $sql = "UPDATE ".$ecs->table('exchange_goods')." SET exchange_integral='$_POST[exchange_integral]' WHERE goods_id='$goods_id'";
+            }
+
+            
+        }
+
+        $db->query($sql);
+    }
 
 	//同步购物车中相关商品价格
 	if(!$is_insert){

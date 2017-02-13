@@ -418,6 +418,11 @@ if (!$smarty->is_cached('goods.dwt', $cache_id))
     $smarty->assign('ppts', $ppts);
  /* 代码增加 By  www.68ecshop.com 自提点 End */
 
+
+    //获取多少积分可以兑换该商品
+         /* 获得商品列表 */
+    $sql = 'SELECT exchange_integral FROM ' . $GLOBALS['ecs']->table('exchange_goods') . " WHERE goods_id = '$goods_id' ";
+    $goods['exchange_integral'] = $db->getOne($sql);
 	
 
     if ($goods === false)

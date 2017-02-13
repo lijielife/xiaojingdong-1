@@ -20,21 +20,34 @@
      <tr>
       <th>{$lang.goods_name}</th>
       <th>{$lang.order_sn}</th>
+      <th>商品货号</th>
       <th>{$lang.amount}</th>
       <th>{$lang.sell_price}</th>
+           <th>进货成本</th>
+           <th>商品库存</th>
+           <th>配送费用</th>
+   <th><!--{$lang.gross_profit}毛利润-->折后价格</th>
       <th>{$lang.sell_date}</th>
     </tr>
   {foreach from=$goods_sales_list item=list}
     <tr align="center">
       <td align="left"><a href="../goods.php?id={$list.goods_id}" target="_blank">{$list.goods_name}</a></td>
       <td><a href="order.php?act=info&order_id={$list.order_id}">{$list.order_sn}</a></td>
+      <td>{$list.goods_sn}</td>
       <td align="right">{$list.goods_num}</td>
-      <td align="right">{$list.sales_price}{$end_date}</td>
+      <td align="right">{$list.sales_price}<!--{$end_date}--></td>
+         <td align="right">{$list.cb_price}</td>
+          <td>{$list.goods_number}<!-- 商品表中ecs_goods的库存数量 --></td>
+         <td>{$list.shipping_fee}</td>
+        
+   <td align="right"><!--毛利润{$list.gross_profit}-->{$list.goods_amount}</td>
       <td>{$list.sales_time}</td>
     </tr>
   {foreachelse}
     <tr><td class="no-records" colspan="10">{$lang.no_records}</td></tr>
   {/foreach}
+  
+
   </table>
   <table id="page-table" cellspacing="0">
   <tr>

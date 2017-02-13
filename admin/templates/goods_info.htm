@@ -381,6 +381,33 @@
 						<input type="button" value="{$lang.integral_market_price}" onclick="integral_market_price()" />
 					</td>
 				</tr>
+
+				<!--新增 成本价 begin -->
+				<tr>
+					<td class="label">进货成本</td>
+					<td>
+						<input type="text" name="cb_price" value="{$goods.cb_price}" size="20" />
+						<br />
+						<span class="notice-span" {if $help_open}style="display:block" {else} style="display:none" {/if} id="minNumber">该商品进货价格(成本价，在商品添加时设置，也可以在商品编辑里面修改 。</span></td>    
+					</td>
+				</tr>
+			  <!-- 成本价 end -->
+
+				<tr>
+					<td class="label">
+						<a href="javascript:showNotice('noticepackagePrice');" title="点击此处查看提示信息">
+							<img src="images/notice.gif" width="16" height="16" border="0" alt="点击此处查看提示信息">
+						</a>积分购买
+					</td>
+					<td>
+						<input type="text" name="exchange_integral" maxlength="60" size="20" value="99">
+							<span class="require-field">*</span>
+							<br>
+							<span class="notice-span" style="display: block;" id="noticepackagePrice">兑换本商品需要消耗的积分值
+							</span>
+					</td>
+				</tr>
+				
 				<tr>
 					<td class="label">
 						<a href="javascript:showNotice('giveIntegral');" title="{$lang.form_notice}">
@@ -394,6 +421,8 @@
 						<span class="notice-span" {if $help_open}style="display:block" {else} style="display:none" {/if} id="giveIntegral">{$lang.notice_give_integral}</span>
 					</td>
 				</tr>
+
+				
 				<tr>
 					<td class="label">
 						<a href="javascript:showNotice('rankIntegral');" title="{$lang.form_notice}">

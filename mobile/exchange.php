@@ -252,7 +252,7 @@ elseif ($_REQUEST['act'] == 'buy')
     }
 
     /* 查询：取得参数：商品id */
-    $goods_id = isset($_POST['goods_id']) ? intval($_POST['goods_id']) : 0;
+    $goods_id = isset($_REQUEST['goods_id']) ? intval($_REQUEST['goods_id']) : 0;
     if ($goods_id <= 0)
     {
         ecs_header("Location: ./\n");

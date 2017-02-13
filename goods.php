@@ -466,7 +466,6 @@ if (!$smarty->is_cached('goods.dwt', $cache_id))
 		$goods['count'] = selled_count($goods['goods_id']);//商品销量    lw 2015-1-21
 		$goods_volume_price = get_goods_volume($goods_id);//查询商品的优惠数量和价格    jx 2015-1-1
 		//计算购买该商品赠送的消费积分
-		
 		$goods['give_integral_2'] = $goods['give_integral'];
 		
 		if($goods['give_integral'] > -1)
@@ -480,6 +479,12 @@ if (!$smarty->is_cached('goods.dwt', $cache_id))
 				$goods['give_integral'] = intval($goods['shop_price']);
 			}
 		}
+
+		//获取多少积分可以兑换该商品
+		 /* 获得商品列表 */
+	    $sql = 'SELECT exchange_integral FROM ' . $GLOBALS['ecs']->table('exchange_goods') . " WHERE goods_id = '$goods_id' ";
+	    $goods['exchange_integral'] = $db->getOne($sql);
+
 		$smarty->assign('url',              $_SERVER["REQUEST_URI"]);
 		$smarty->assign('goods',              $goods);
         $smarty->assign('collect_num',$collect_num);

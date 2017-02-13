@@ -123,12 +123,33 @@ document.getElementById("share_form").submit();
       <em id="IS_EXCLUSIVE" style="display:none">手机专享</em> </dd>
     {/if}
   </dl>  
+
+
   <ul class="price_dottm">
     <li style=" text-align:left">折扣：{$zhekou}折</li>
     <li>{$review_count}人评价</li>
     <li style=" text-align:right">{$order_num}人已购</li>
   </ul>
 </div>
+
+<!--积分-->
+{if $goods.exchange_integral} 
+<div class="product_info"> 
+  <dl class="goods_price">
+    <dt> 
+      <span id="ECS_GOODS_AMOUNT">{$goods.exchange_integral}</span>
+       <!-- <em>促销价</em>
+       <em>剩余<i id="leftTime">{$lang.please_waiting}</i></em>  -->
+    </dt>
+
+    <dd><i>积分购买：<font>{$goods.exchange_integral}</font></i> 
+    </dd>
+  </dl>  
+</div>
+  
+  
+<!-- {/if}--> 
+
 <!---优惠活动--->
  <!-- {if $promotion || $volume_price_list || $goods.give_integral > 0 || $goods.bonus_money} -->
  <div class="goods_hd"> 
@@ -176,10 +197,10 @@ document.getElementById("share_form").submit();
 
 <!---自提点---->
 <!--{if $pups && $ppts}-->
-<section id="search_ka" class="goods_ziti">
+<!-- <section id="search_ka" class="goods_ziti">
 <a href="pocking.php?id={$goods.goods_id}"><span>查看自提点</span><i><img src="themesmobile/68ecshopcom_mobile/images/goods/ziti.png"></i></a>
 
-</section>
+</section> -->
 <!--{/if}-->
 
 <!---店铺信息---->
@@ -535,6 +556,34 @@ function choose_attr(num){
         }
 
 }
+
+//积分购买
+function exchange(num){
+  document.body.style.overflow='hidden';
+  $("#choose_attr").animate({height:'80%'},[10000]);
+
+    var total=0,h=$(window).height(),
+        top =$('.f_title_attr').height()||0,
+    bottom =$('#choose_attr .f_foot').height()||0,
+        con = $('.f_content_attr');
+    total = 0.8*h;
+    con.height(total-top-bottom+'px');
+  $(".f_mask").show();
+        if(num == 0){
+            var actionForm = document.getElementById('purchase_form');  
+            actionForm.action = "javascript:addToCart({$goods.goods_id}),close_choose_attr()";
+        }
+        if(num == 1){
+            //var actionForm = document.getElementById('purchase_form');  
+            //actionForm.action = "javascript:addToCart({$goods.goods_id},0,1),close_choose_attr()";
+            var url = 'exchange.php?act=buy&goods_id=' + {$goods.goods_id};
+            $('#choose_attr').find('button').hide();
+            $('#choose_attr .f_foot').bind('click',function(){
+              window.location.href = url;
+            })
+        }
+
+}
 function close_choose_attr(){	
 document.body.style.overflow='';
 	$(".f_mask").hide();	
@@ -671,8 +720,9 @@ function selcartResponse(result){
  <li><a href="javascript:collect({$goods.goods_id})" id="favorite_add"><em class="goods_nav3"></em><span>收藏</span></a></li>
  </ul>
  <dl> 
- <dd class="flow" id="ECS_ADD_TO_CART"><a class="button active_button" onClick="choose_attr(0)">加入购物车</a> </dd>
+ <!-- <dd class="flow" id="ECS_ADD_TO_CART"><a class="button active_button" onClick="choose_attr(0)">加入购物车</a> </dd> -->
  <dd class="goumai" id="ECS_ONE_STEP_BUY"><a style="display:block;" onClick="choose_attr(1)">立即购买</a> </dd>
+ <dd class="goumai" id="ECS_ONE_STEP_BUY"><a style="display:block;" onClick="exchange(1)">积分购买</a> </dd>
  <span class="daohuo" id="ECS_DAOHUO"> <a onClick="tell_me({$goods.goods_id})"/>到货通知</a></span>
  </dl>                
 </div>  

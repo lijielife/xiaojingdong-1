@@ -91,6 +91,7 @@
                       <!--{else}--> 
                       <span class="price">售价</span><strong class="p-price" id="ECS_GOODS_AMOUNT"></strong> 
                       <!--{/if}--> 
+
                       <span class="depreciate"><a href="javascript:showDiv({$goods.goods_id});">降价通知</a></span> 
                  </div>
                  <div class="show-price"> 
@@ -118,20 +119,22 @@
                         <span class="rmbPrice"> {$rank_price.rank_name}：{$rank_price.price}</span> 
                         <!--{/foreach}--> 
                       </div>
+
                       <script type="text/javascript">
-						function hidevip1(){ 
-						document.getElementById('vip1').style.display="none";
-						document.getElementById('vip2').style.display="block";
-						}
-						function showvip1(){ 
-						document.getElementById('vip1').style.display="block";
-						document.getElementById('vip2').style.display="none";
-						}
-					  </script> 
+              						function hidevip1(){ 
+              						document.getElementById('vip1').style.display="none";
+              						document.getElementById('vip2').style.display="block";
+              						}
+              						function showvip1(){ 
+              						document.getElementById('vip1').style.display="block";
+              						document.getElementById('vip2').style.display="none";
+              						}
+              					  </script> 
                     </div>
                     <!-- {/if} --> 
                   </div>
                 </div>
+
                <!--{if $goods.goods_brand neq "" and $cfg.show_brand || $cfg.use_integral || $cfg.show_goodsweight || $cfg.show_addtime}-->
                <ul id="summary1">
                   <!-- {if $goods.goods_brand neq "" and $cfg.show_brand} 显示商品品牌-->
@@ -160,6 +163,7 @@
                   <!-- {/if} -->
                </ul>
                <!--{/if}-->
+
                <div id="summary-qita">
                   <ul class="qita">
                     <li>
@@ -293,6 +297,15 @@
                   <!-- {/if} -->
                 </ul>
                 <!--{/if}-->
+                <!--{if $goods.exchange_integral} 促销--> 
+                <div id="goods-price">
+                 <div class="mar-l">
+                      <span class="price">积分</span><strong class="p-price" id="ECS_GOODS_AMOUNT1"></strong> 
+                      <strong class="p-price" id="ECS_GOODS_AMOUNT">{$goods.exchange_integral}</strong>
+                      <!-- <font class="market-price">{$goods.exchange_integral}</font>  -->
+                 </div>
+                </div>
+                <!--{/if}--> 
                <ul id="choose" class="choose_bor">
                   <!--{if $pups && $ppts}后台安装了门店自提这个配送方式才显示-->
                   <li class="choose-pickup-point">
@@ -420,7 +433,10 @@
                   	</div>
                   	<div id="choose-btns" class="buyNub-buy"> 
                         <!--{if $goods_n>0}--> 
-                        <a href="javascript:addToCart({$goods.goods_id},0,1)" name="bi_addToCart" class="u-buy1">立即购买</a> <a href="javascript:addToCart({$goods.goods_id})" name="bi_addToCart" class="u-buy2">加入购物车</a> 
+                        <a href="javascript:addToCart({$goods.goods_id},0,1)" name="bi_addToCart" class="u-buy1">立即购买</a> 
+                        <br>
+                        <a href="javascript:addToexchange({$goods.goods_id})" name="bi_addToCart" class="u-buy1">积分兑换</a> 
+                        <a href="javascript:addToCart({$goods.goods_id})" name="bi_addToCart" class="u-buy2">加入购物车</a> 
                         <!-- {else}--> 
                         <a onclick="tell_me({$goods.goods_id})" class="tell-me"><i></i>到货通知</a>
                         <!-- {/if}--> 
@@ -432,13 +448,17 @@
                             </div>
                         </a>  
                   	</div>
-					<script type="text/javascript">
+					         <script type="text/javascript">
                         $("#phone").mouseover( function(){	
                             $( "#phone-tan" ).show();
                         });
                         $("#phone").mouseleave( function(){
                             $( "#phone-tan" ).hide();
                         });
+                        function addToexchange(goods_id){
+                            var url = 'exchange.php?act=buy&goods_id=' + goods_id;
+                            window.location.href=url;
+                        }
                     </script> 
                 </div>       
           </form>

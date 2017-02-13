@@ -520,11 +520,20 @@ function order_goods($order_id)
 	//$sql = "SELECT rec_id, og.goods_id, og.product_id, og.goods_name, g.goods_thumb, og.goods_sn, og.market_price, og.goods_number, " .
 	//手机专享价格  app  jx  
 	$sql = "SELECT rec_id, og.goods_id, og.product_id,og.goods_name, g.goods_thumb, og.goods_sn, og.market_price,og.exclusive, og.goods_number, " .
-            "og.goods_price, og.goods_attr, og.is_real, og.parent_id, og.is_gift, " .
+            "og.goods_price, if(og.cb_price>0,og.cb_price,g.cb_price) AS cb_price,og.goods_attr, og.is_real, og.parent_id, og.is_gift, " .
             "og.goods_price * og.goods_number AS subtotal, og.extension_code, og.order_id, package_attr_id  " .
             "FROM " . $GLOBALS['ecs']->table('order_goods') . "as og right join" . $GLOBALS['ecs']->table('goods') .
 			"as g on og.goods_id = g.goods_id" .
             " WHERE order_id = '$order_id'";// 修改 by www.ecshop68.com 增加 package_attr_id 字段
+
+    // $sql = "SELECT o.rec_id, o.goods_id, o.goods_name, o.goods_sn, o.market_price, o.goods_number, " .
+    //         "o.goods_price,if(o.cb_price>0,o.cb_price,g.cb_price)  AS cb_price, o.goods_attr, 
+    //         o.is_real, o.parent_id, o.is_gift, " .
+    //         "o.goods_price * o.goods_number AS subtotal, o.extension_code " .
+    //         "FROM " . $GLOBALS['ecs']->table('order_goods') . " AS o ".
+    //         "LEFT JOIN " . $GLOBALS['ecs']->table('goods') . " AS g ON o.goods_id = g.goods_id " .
+    //         " WHERE order_id = '$order_id'";
+
 
     $res = $GLOBALS['db']->query($sql);
 

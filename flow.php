@@ -895,7 +895,6 @@ elseif ($_REQUEST['step'] == 'checkout')
     //$_SESSION['flow_consignee']['mobile']
     /* 取得购物类型 */
     $flow_type = isset($_SESSION['flow_type']) ? intval($_SESSION['flow_type']) : CART_GENERAL_GOODS;
-
     /* 团购标志 */
     if ($flow_type == CART_GROUP_BUY_GOODS)
     {
@@ -1101,6 +1100,10 @@ elseif ($_REQUEST['step'] == 'checkout')
 			}
 	    }
     }
+
+
+
+    if($flow_type == '')
     /* 对是否允许修改购物车赋值 */
     if ($flow_type != CART_GENERAL_GOODS || $_CFG['one_step_buy'] == '1')
     {
