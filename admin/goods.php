@@ -266,6 +266,9 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
 		
 		// 代码增加_end_derek20150129admin_goods  www.68ecshop.com
 
+
+        
+
         /* 虚拟卡商品复制时, 将其库存置为0*/
         if ($is_copy && $code != '')
         {
@@ -302,6 +305,16 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
 				'exclusive' => -1,//手机专享价格   app  jx  
                 'rank_integral' => -1
             );
+        }
+        else
+        {
+            //查询产品需要的积分
+            $sql = "SELECT exchange_integral FROM  ".$ecs->table('exchange_goods') . "WHERE goods_id = '$_REQUEST[goods_id]'";
+            $exchange_integral = $db->getOne($sql);
+            if($exchange_integral)
+            {
+                $goods['exchange_integral'] = $exchange_integral;
+            }
         }
 
         /* 获取商品类型存在规格的类型 */

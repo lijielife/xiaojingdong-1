@@ -359,6 +359,16 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
                 'rank_integral' => -1
             );
         }
+        else
+        {
+            //查询产品需要的积分
+            $sql = "SELECT exchange_integral FROM  ".$ecs->table('exchange_goods') . "WHERE goods_id = '$_REQUEST[goods_id]'";
+            $exchange_integral = $db->getOne($sql);
+            if($exchange_integral)
+            {
+                $goods['exchange_integral'] = $exchange_integral;
+            }
+        }
 
         /* 获取商品类型存在规格的类型 */
         $specifications = get_goods_type_specifications();
@@ -395,8 +405,8 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
             $goods['promote_end_date'] = local_date('Y-m-d', $goods['promote_end_date']);
         }
 
-	$goods['buymax_start_date'] = local_date('Y-m-d', $goods['buymax_start_date']);
-	$goods['buymax_end_date'] = local_date('Y-m-d', $goods['buymax_end_date']);
+    	$goods['buymax_start_date'] = local_date('Y-m-d', $goods['buymax_start_date']);
+    	$goods['buymax_end_date'] = local_date('Y-m-d', $goods['buymax_end_date']);
 
         /* 如果是复制商品，处理 */
         if ($_REQUEST['act'] == 'copy')

@@ -48,7 +48,13 @@ if(!(preg_match($smartuachar, $ua)) && ($ua == '' || preg_match($uachar, $ua))&&
 }
 $smarty->template_dir   = ROOT_PATH . 'themes/platform';
 
-print_r(get_recommend_goods('best'));
+
+//热门推荐
+$recommend_goods = get_recommend_goods('best'));
+foreach($recommend_goods as $key => $val)
+{
+    //获取
+}
 
 $smarty->assign('best_goods',    get_recommend_goods('best'));    // 推荐商品
 
