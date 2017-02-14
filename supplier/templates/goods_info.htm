@@ -288,16 +288,16 @@ width:auto;
             {$lang.require_field}</td>
           </tr>
 		  <!-- 手机专享价格  app  jx -->
-		   <tr>
+		   <!-- <tr>
             <td class="label">手机专享价：</td>
             <td><input type="text" name="exclusive" value="{$goods.exclusive}" size="20" />
 			 <br />
 			<span class="notice-span" {if $help_open}style="display:block" {else} style="display:none" {/if} id="noticeUserPrice">手机专享价格为-1的时候表示没有手机专享价格</span>
             </td>
-          </tr>
+          </tr> -->
 		  <!-- 手机专享价格  app jx -->
           {if $user_rank_list}
-          <tr>
+         <!--  <tr>
             <td class="label"><a href="javascript:showNotice('noticeUserPrice');" title="{$lang.form_notice}"><img src="images/notice.gif" width="16" height="16" border="0" alt="{$lang.form_notice}"></a>{$lang.lab_user_price}</td>
             <td>
               {foreach from=$user_rank_list item=user_rank}
@@ -307,7 +307,7 @@ width:auto;
               <br />
               <span class="notice-span" {if $help_open}style="display:block" {else} style="display:none" {/if} id="noticeUserPrice">{$lang.notice_user_price}</span>
             </td>
-          </tr>
+          </tr> -->
           {/if}
 
           <!--鍟嗗搧浼樻儬浠锋牸-->
