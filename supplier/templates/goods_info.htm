@@ -340,6 +340,33 @@ width:auto;
               <input type="button" value="{$lang.integral_market_price}" onclick="integral_market_price()" />
             </td>
           </tr>
+
+          <!--新增 成本价 begin -->
+        <tr>
+          <td class="label">进货成本</td>
+          <td>
+            <input type="text" name="cb_price" value="{$goods.cb_price}" size="20" />
+            <br />
+            <span class="notice-span" {if $help_open}style="display:block" {else} style="display:none" {/if} id="minNumber">该商品进货价格(成本价，在商品添加时设置，也可以在商品编辑里面修改 。</span></td>    
+          </td>
+        </tr>
+        <!-- 成本价 end -->
+
+        <tr>
+          <td class="label">
+            <a href="javascript:showNotice('noticepackagePrice');" title="点击此处查看提示信息">
+              <img src="images/notice.gif" width="16" height="16" border="0" alt="点击此处查看提示信息">
+            </a>积分购买
+          </td>
+          <td>
+            <input type="text" name="exchange_integral" maxlength="60" size="20" value="99">
+              <span class="require-field">*</span>
+              <br>
+              <span class="notice-span" style="display: block;" id="noticepackagePrice">兑换本商品需要消耗的积分值
+              </span>
+          </td>
+        </tr>
+
           <!-- <tr>
             <td class="label"><a href="javascript:showNotice('giveIntegral');" title="{$lang.form_notice}"><img src="images/notice.gif" width="16" height="16" border="0" alt="{$lang.form_notice}"></a> {$lang.lab_give_integral}</td>
             <td><input type="text" name="give_integral" value="{$goods.give_integral}" size="20" />
@@ -377,7 +404,7 @@ width:auto;
               <input name="buymax_start_date" type="text" id="buymax_start_date" size="12" value='{$goods.buymax_start_date}' readonly="readonly" /><input name="selbtn3" type="button" id="selbtn3" onclick="return showCalendar('buymax_start_date', '%Y-%m-%d', false, false, 'selbtn3');" value="{$lang.btn_select}" class="button" {if $goods.is_buy eq 0} disabled="disabled"{/if}/> - <input name="buymax_end_date" type="text" id="buymax_end_date" size="12" value='{$goods.buymax_end_date}' readonly="readonly" /><input name="selbtn4" type="button" id="selbtn4" onclick="return showCalendar('buymax_end_date', '%Y-%m-%d', false, false, 'selbtn4');" value="{$lang.btn_select}" class="button" {if $goods.is_buy eq 0} disabled="disabled"{/if}/>
             </td>
           </tr>
-          <tr>
+          <!-- <tr>
               <td class="label" id="promote_5">{$lang.lab_cost_price}</td>
               <td id="promote_7">
                   <input type="text" id="promote_1" name="cost_price" value="{$goods.cost_price|default:0.00}" size="20" />
@@ -385,7 +412,7 @@ width:auto;
                   <span class="notice-span">{$lang.notice_cost_price}</span>
               </td>
 
-          </tr>
+          </tr> -->
           <tr>
             <td class="label">{$lang.lab_picture}</td>
             <td>

@@ -47,6 +47,12 @@ if(!(preg_match($smartuachar, $ua)) && ($ua == '' || preg_match($uachar, $ua))&&
 /* 修改 by www.68ecshop.com end */
 }
 $smarty->template_dir   = ROOT_PATH . 'themes/platform';
+
+print_r(get_recommend_goods('best'));
+
+$smarty->assign('best_goods',    get_recommend_goods('best'));    // 推荐商品
+
+
 $smarty->display('index.html');exit;
 /*------------------------------------------------------ */
 //-- Shopex系统地址转换
