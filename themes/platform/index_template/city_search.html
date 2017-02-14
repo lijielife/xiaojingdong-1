@@ -1,0 +1,104 @@
+<!-- 城市模糊搜索，用于用户自定义搜索，eg:首页的目的地，用户自定义输入-->
+<div id="c_contentend" style="display:none">
+    <div style="position: absolute; z-index: 2000; top: 261px; left: 241.5px;" winstyle="data">
+        <div style="width: 300px;position:relative;" class="com_results">
+            <div style="width: 100%;">
+                <ul method="cityData" style="">
+                    <!-- <li title="上海市" method="liData" data="0" class="">
+                        <i class="hotel"></i>
+                        <span method="spanData">上海市</span></li>
+                    <li title="深圳市" method="liData" data="1" class="">
+                        <i class="hotel"></i>
+                        <span method="spanData">深圳市</span></li>
+                    <li title="西安市" method="liData" data="2" class="">
+                        <i class="hotel"></i>
+                        <span method="spanData">西安市</span></li>
+                    <li title="青岛市" method="liData" data="3" class="">
+                        <i class="hotel"></i>
+                        <span method="spanData">青岛市</span></li>
+                    <li title="厦门市" method="liData" data="4" class="">
+                        <i class="hotel"></i>
+                        <span method="spanData">厦门市</span></li>
+                    <li title="济南市" method="liData" data="5" class="">
+                        <i class="hotel"></i>
+                        <span method="spanData">济南市</span></li>
+                    <li title="沈阳市" method="liData" data="6" class="">
+                        <i class="hotel"></i>
+                        <span method="spanData">沈阳市</span></li>
+                    <li title="石家庄市" method="liData" data="7" class="">
+                        <i class="hotel"></i>
+                        <span method="spanData">石家庄市</span></li>
+                    <li title="太原市" method="liData" data="8" class="">
+                        <i class="hotel"></i>
+                        <span method="spanData">太原市</span></li>
+                    <li title="烟台市" method="liData" data="9" class="">
+                        <i class="hotel"></i>
+                        <span method="spanData">烟台市</span></li> -->
+                </ul>
+            </div>
+            <div class="clear"></div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('#hotelCity').keyup(function(){
+        var keyword = $(this).val();
+        keyword = $.trim(keyword);
+        if(keyword == ''){
+            $('#c_contentend').hide();
+            $('#m_contentend').show();
+        }else{
+            get_data(keyword); 
+        }
+    })
+
+
+
+    function get_data(keyword){
+        $('#c_contentend ul').html();
+        $.ajax({
+            //url : '/hotel.php?act=city_name_suggest&keyword=' + encodeURI(keyword),
+            url : 'http://travel.elong.com/hotel/city/hotel/10.html?keyword=' + encodeURI(keyword),
+            dataType : 'jsonp',
+            success : function(data){
+                $('#m_contentend').hide();
+                var html = '';
+                //var city_info = data['msg'];
+                if(data.length > 0){
+                    $(data).each(function(k,v){
+                        if(v['Type'] == 'city'){
+                            //只列举城市
+                            html += '<li title="' + v['CityNameCn'] + '"  method="liData" data="' + k + '" class="" cityid="' + v['CityId'] + '">';
+                            html += '<i class="hotel"></i>';
+                            html += '<span method="spanData">' + v['CityNameCn'] + '</span>';
+                            html += '</li>';
+                        }
+                    });
+                    if(html == ''){
+                        html = '<li class="">对不起，找不到<span class="ml5">' + keyword + '</span></li>'
+                    }
+                }else{
+                    html = '<li class="">对不起，找不到<span class="ml5">' + keyword + '</span></li>'
+                }
+                if(html != ''){
+                    $('#c_contentend ul').html(html);
+                    $('#c_contentend').show();
+                    $('#c_contentend li').each(function(){
+                        var city_cn = $(this).attr('title');
+                        $(this).click(function(){
+                            $('#hotelCity').val(city_cn);
+                            $('#hotelCity').attr('cityid',$(this).attr('cityid'));
+                            $('#c_contentend').hide();
+                        })
+                    })
+                }
+            },
+            error : function(){
+                console.log(url);
+            }
+        })
+    }
+</script>
+

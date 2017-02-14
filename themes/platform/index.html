@@ -1,0 +1,571 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta http-equiv="Content-Type" content="text/x-component" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link rel="icon" href="favicon.ico" mce_href="favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" href="themes/platform/css/trip.css"/>
+    <link rel="stylesheet" type="text/css" href="themes/platform/css/el_common.css" /> 
+    <link rel="stylesheet" type="text/css" href="themes/platform/css/newIndex2015.css" /> 
+    <script type="text/javascript" src="themes/platform/js/jquery-1.8.3.min.js"></script>
+
+    <script type="text/javascript" src="themes/platform/js/cycle.js"></script>
+    <script type="text/javascript" src="themes/platform/js/index.js"></script>
+    <script type="text/javascript" src="themes/platform/js/trip.js"></script>
+      <!--日历插件 start-->
+    <script type="text/javascript" src="themes/platform/js/cQuery_110421.js"></script>
+    <script type="text/javascript" src="themes/platform/js/calendar.js"></script>
+	<title>旅游人首页</title>
+</head>
+<body style="background:#fafafa;">
+	 <!--第一种头部 start-->
+      <div id="head"></div>
+      <!--第一种头部 end-->   
+      
+      <!--banner start-->
+      <div class="idx_ban">
+      	  <!--预订类型 start-->
+      	  <div class="idx_b01">
+      	  	<div class="idx_b01_left">
+      	  	   <ul class="idx_b01_nav clearfix">
+      	  	   	<li class="act">住宿预订</li>
+      	  	   	<li>宴席预订</li>
+      	  	   </ul>
+      	  	   <div class="idx_b01_cont">
+      	  	   		<div class="idx_b01_box">
+      	  	   			<dl class="idx_b01_dl clearfix">
+      	  	   				<dt class="idx_b01_tit">目的地</dt>
+      	  	   				<dd class="idx_b01_msg idx_b01_msg02">
+      	  	   					<input  class="idx_b01_text" readonly="readonly" cityid="1901" type="text"  id="hotelCity" value ='长沙' />
+      	  	   					<!-- <div class="window_div"> -->              
+                          {include file="index_template/city_list.html"}      
+                        <!-- </div> -->
+      	  	   				</dd>
+      	  	   			</dl>
+      	  	   			<dl class="idx_b01_dl clearfix">
+      	  	   				<dt class="idx_b01_tit">入住日期</dt>
+      	  	   				<dd class="idx_b01_msg">
+      	  	   					<input  class="idx_b01_text idx_b02_text" readonly="readonly" type="text" name="" id="calendar" value="2017-01-01" />
+      	  	   					<span class="date_span"><i class="idx_b01_date"></i></span>
+      	  	   				</dd>
+      	  	   			</dl>
+      	  	   			<dl class="idx_b01_dl clearfix">
+      	  	   				<dt class="idx_b01_tit">退房日期</dt>
+      	  	   				<dd class="idx_b01_msg">
+      	  	   					<input  class="idx_b01_text idx_b02_text" type="text" readonly="readonly" name="" id="calendar02" value="2017-01-02" />
+      	  	   					<span class="date_span"><i class="idx_b01_date"></i></span>
+      	  	   				</dd>
+      	  	   			</dl>
+      	  	   			<dl class="idx_b01_dl clearfix">
+      	  	   				<dt class="idx_b01_tit">关键词</dt>
+      	  	   				<dd class="idx_b01_msg idx_b01_msg02">
+      	  	   					<input class="idx_b01_text" readonly="readonly" type="text" id="keywords" value="酒店名/位置/品牌" onfocus="if (value =='酒店名/位置/品牌'){value =''}"onblur="if (value ==''){value='酒店名/位置/品牌'}">
+      	  	   				    <!-- <div class="window_div"></div> -->
+                           {include file="index_template/hot_suggest.html"}   
+      	  	   				</dd>
+      	  	   			</dl>
+      	  	   			<a class="idx_b01_search" id="search_btn1"><i class="search_icon"></i>搜索</a>
+      	  	   		</div>
+      	  	   		<div class="idx_b01_box">
+      	  	   			<dl class="idx_b01_dl clearfix">
+      	  	   				<dt class="idx_b01_tit">举办地</dt>
+      	  	   				<dd class="idx_b01_msg idx_b01_msg02">
+      	  	   					<input  class="idx_b01_text" readonly="readonly" type="text" name="" id="hotelCity" value ='长沙' cityid="1901"  onfocus="if (value =='长沙'){value =''}"onblur="if (value ==''){value='长沙'}"/>
+      	  	   					<!-- <div class="window_div"></div> -->
+                         {include file="index_template/city_list.html"}    
+      	  	   				</dd>
+      	  	   			</dl>
+      	  	   			<dl class="idx_b01_dl clearfix">
+      	  	   				<dt class="idx_b01_tit">类型</dt>
+      	  	   				<dd class="idx_b01_msg">
+      	  	   					<div class="drop"> 
+									<input class="input_select" type="text" value="婚宴"/> 
+									<img src="themes/platform/images/head/select_down.png" class="">
+									<ul> 
+										<li><a>生日宴</a></li> 
+										<li><a>朋友宴</a></li> 
+									</ul> 
+								</div> 
+      	  	   				</dd>
+      	  	   			</dl>
+      	  	   			<dl class="idx_b01_dl clearfix">
+      	  	   				<dt class="idx_b01_tit">宴席日期</dt>
+      	  	   				<dd class="idx_b01_msg">
+      	  	   					<input  class="idx_b01_text idx_b02_text" readonly="readonly" type="text" name="" id="calendar03" value="2017-01-02" />
+      	  	   					<span class="date_span"><i class="idx_b01_date"></i></span>
+      	  	   				</dd>
+      	  	   			</dl>
+      	  	   			<dl class="idx_b01_dl clearfix">
+      	  	   				<dt class="idx_b01_tit">桌数</dt>
+      	  	   				<dd class="idx_b01_msg">
+      	  	   					<div class="drop"> 
+									<input class="input_select" type="text" value="不限"/> 
+									<img src="themes/platform/images/head/select_down.png" class="">
+									<ul> 
+										<li><a>8桌</a></li> 
+										<li><a>18桌</a></li>
+										<li><a>28桌</a></li> 
+									</ul> 
+								</div> 
+      	  	   				</dd>
+      	  	   			</dl>
+      	  	   			<dl class="idx_b01_dl clearfix">
+      	  	   				<dt class="idx_b01_tit">关键词</dt>
+      	  	   				<dd class="idx_b01_msg idx_b01_msg02">
+      	  	   					<input class="idx_b01_text" readonly="readonly" type="text" id="keywords" value="酒店名/位置/品牌" onfocus="if (value =='酒店名/位置/品牌'){value =''}"onblur="if (value ==''){value='酒店名/位置/品牌'}">
+                          {include file="index_template/hot_suggest.html"}
+      	  	   				    <!-- <div class="window_div"></div> -->
+      	  	   				</dd>
+      	  	   			</dl>
+      	  	   			<a class="idx_b01_search" href=""><i class="search_icon"></i>搜索</a>
+      	  	   		</div>
+      	  	   </div>
+      	  	</div>   
+      	    <div class="front-banner-nav"  style="z-index:7;"></div>
+      	  </div>
+      	  <!--预订类型 end-->
+      	  <!--轮播 start-->
+      	  <div class="idx_play">
+      	  	 <div class="front-banner">
+		            <ul>
+		                <li><a href="#" target="_blank">
+		                    <img src="themes/platform/images/banner.jpg" alt="banner"/>
+		                </a></li>
+		                <li><a href="#" target="_blank">
+		                    <img src="themes/platform/images/banner2.jpg" alt="banner"/>
+		                </a></li>
+		                <li><a href="#" target="_blank">
+		                    <img src="themes/platform/images/banner3.jpg" alt="banner"/>
+		                </a></li>
+		            </ul>
+		    </div>
+      	  </div>
+      	  <!--轮播 end-->
+      </div>
+      <!--banner end-->
+      
+      <!--广告 start-->
+      <div class="idx_gg clearfix">
+      	 <a href="#" target="_blank"><img src="themes/platform/images/gg01.jpg" alt="广告1"></a>
+      	 <a href="#" target="_blank"><img src="themes/platform/images/gg02.jpg" alt="广告2"></a>
+      	 <a href="#" target="_blank"><img src="themes/platform/images/gg03.jpg" alt="广告3"></a>
+      	 <a href="#" target="_blank"><img src="themes/platform/images/gg04.jpg" alt="广告4"></a>
+      </div>
+      <!--广告 end-->
+      
+      <!--热门酒店 start-->
+      <div class="zf_tit09">
+           <p><img src="themes/platform/images/icon01.png" alt="热门酒店">热门酒店</p>
+           <span>覆盖全国上万家酒店，你想住的，我们都有</span>
+           <a href="#" class="com_tmore">MORE&gt;</a>
+           <div class="com_tit">
+           	   <a href="#" target="_blank">云南</a>
+           	   <a href="#" target="_blank">北京</a>
+           	   <a href="#" target="_blank">上海</a>
+           	   <a href="#" target="_blank">天津</a>
+           	   <a href="#" target="_blank">重庆</a>
+           	   <a href="#" target="_blank">哈尔滨</a>
+           	   <a href="#" target="_blank">大连</a>
+           	   <a href="#" target="_blank">青岛</a>
+           </div>
+       </div>
+       <div class="jdmain clearfix">
+       	   <div class="jdbox">
+       	   	  <a href="#" target="_blank" class="jdbox_a1"><img src="themes/platform/images/hotj01.jpg" alt="大理途家·桃源人家海景客栈 "><span>云南·大理</span></a>
+       	      <div class="jdbox_tit">
+       	      	 <a href="#" target="_blank">大理途家·桃源人家海景客栈我要超出啦我要超出啦我要超出啦</a>
+       	      	 <ul class="clearfix">
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 </ul>
+       	      </div>
+       	   </div>
+       	   <div class="jdbox">
+       	   	  <a href="#" target="_blank" class="jdbox_a1"><img src="themes/platform/images/hotj02.jpg" alt="上海·浦东 "><span>上海·浦东</span></a>
+       	      <div class="jdbox_tit">
+       	      	 <a href="#" target="_blank">上海浦东绿地假日酒店我要超出啦我要超出啦我要超出啦</a>
+       	      	 <ul class="clearfix">
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 </ul>
+       	      </div>
+       	   </div>
+       	   <div class="jdbox">
+       	   	  <a href="#" target="_blank" class="jdbox_a1"><img src="themes/platform/images/hotj03.jpg" alt="香港迪士尼好莱坞酒店 "><span>香港迪士尼好莱坞酒店</span></a>
+       	      <div class="jdbox_tit">
+       	      	 <a href="#" target="_blank">香港迪士尼好莱坞酒店</a>
+       	      	 <ul class="clearfix">
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 </ul>
+       	      </div>
+       	   </div>
+       	   <div class="jdbox">
+       	   	  <a href="#" target="_blank" class="jdbox_a1"><img src="themes/platform/images/hotj04.jpg" alt="吉林·长白山 "><span>吉林·长白山</span></a>
+       	      <div class="jdbox_tit">
+       	      	 <a href="#" target="_blank">长白山凯悦酒店</a>
+       	      	 <ul class="clearfix">
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 </ul>
+       	      </div>
+       	   </div>
+       	   <div class="jdbox">
+       	   	  <a href="#" target="_blank" class="jdbox_a1"><img src="themes/platform/images/hotj05.jpg" alt="河北·张家口 "><span>河北·张家口</span></a>
+       	      <div class="jdbox_tit">
+       	      	 <a href="#" target="_blank">张家口汤INN温泉假日酒店</a>
+       	      	 <ul class="clearfix">
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 </ul>
+       	      </div>
+       	   </div>
+       	   <div class="jdbox">
+       	   	  <a href="#" target="_blank" class="jdbox_a1"><img src="themes/platform/images/hotj06.jpg" alt="浙江·舟山 "><span>浙江·舟山</span></a>
+       	      <div class="jdbox_tit">
+       	      	 <a href="#" target="_blank">普陀山祥生大酒店</a>
+       	      	 <ul class="clearfix">
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 </ul>
+       	      </div>
+       	   </div>
+       </div>
+      <!--热门酒店 end-->
+      
+      <!--商务预订 start-->
+      <div class="zf_tit09 zf_tit092">
+           <p><img src="themes/platform/images/icon02.png" alt="商务预订">商务预订</p>
+           <span>多功能厅、宴席用餐、商务会议等应有尽有！</span>
+           <a href="#" class="com_tmore">MORE&gt;</a>
+           <div class="com_tit">
+           	   <a href="#" target="_blank">商务会议</a>
+           	   <a href="#" target="_blank">宴席预订</a>
+           	   <a href="#" target="_blank">多媒体功能厅</a>
+           	   <a href="#" target="_blank">会客厅</a>
+           </div>
+       </div>
+       <div class="ydmain clearfix">
+       	  <a href="#" target="_blank" class="ydbox">
+       	  	 <img src="themes/platform/images/sw01.jpg" alt="商务预订">
+       	  	 <em>会议预订<br/><span>MEETING SCHEDULED</span></em>
+       	  </a>
+       	  <a href="#" target="_blank" class="ydbox ydbox02">
+       	  	 <img src="themes/platform/images/sw02.jpg" alt="宴席预订">
+       	  	 <em>宴席预订<br/><span>BANQUET RESERVATION</span></em>
+       	  </a>
+       </div>
+       <!--商务预订 end-->
+       
+       <!--热卖商品 start-->
+       <div class="zf_tit09 zf_tit093">
+           <p><img src="themes/platform/images/icon03.png" alt="热卖商品">热卖商品</p>
+           <span>金币商城种类繁多，你想要的，我们应有尽有</span>
+           <a href="#" class="com_tmore">MORE&gt;</a>
+           <div class="com_tit">
+           	   <a href="#" target="_blank">旅游必备</a>
+           	   <a href="#" target="_blank">数码电器</a>
+           	   <a href="#" target="_blank">潮流服饰</a>
+           	   <a href="#" target="_blank">食品保健</a>
+           	   <a href="#" target="_blank">护肤化妆</a>
+           </div>
+       </div>
+       <div class="htmain clearfix">
+       	  <div class="htbox">
+       	  	  <a href="#" target="_blank" class="htbox_a1"><img src="themes/platform/images/hots01.jpg" alt="迪秀旅行收纳袋行李箱衣服整理包旅游
+必备衣物收纳内衣整理袋套装"></a>
+              <div class="htdiv">
+              	  <p><img src="themes/platform/images/s.png" alt="价格"><span>60</span><i>包邮</i><em>￥29.86</em></p>
+              	  <a href="#" target="_blank">迪秀旅行收纳袋行李箱衣服整理包旅游
+必备衣物收纳内衣整理袋套装</a>
+              </div>
+              <span class="main02_s1"></span>
+			  <span class="main02_s2"></span>
+			  <span class="main02_s3"></span>
+			  <span class="main02_s4"></span>
+			  <span class="main02_s5"></span>
+			  <span class="main02_s6"></span>
+       	  </div>
+       	  <div class="htbox">
+       	  	  <a href="#" target="_blank" class="htbox_a1"><img src="themes/platform/images/hots02.jpg" alt="旅行洗漱包便携牙刷杯 出差牙刷牙膏
+收纳杯漱口杯旅游必备洗漱杯"></a>
+              <div class="htdiv">
+              	  <p><img src="themes/platform/images/s.png" alt="价格"><span>60</span><i>8.0折</i><em>￥9.98</em></p>
+              	  <a href="#" target="_blank">旅行洗漱包便携牙刷杯 出差牙刷牙膏
+收纳杯漱口杯旅游必备洗漱杯</a>
+              </div>
+              <span class="main02_s1"></span>
+			  <span class="main02_s2"></span>
+			  <span class="main02_s3"></span>
+			  <span class="main02_s4"></span>
+			  <span class="main02_s5"></span>
+			  <span class="main02_s6"></span>
+       	  </div>
+       	  <div class="htbox">
+       	  	  <a href="#" target="_blank" class="htbox_a1"><img src="themes/platform/images/hots03.jpg" alt="Leica/徕卡 徕卡Q 钛合金灰色喷漆版 
+19012 新品上市 限量发售"></a>
+              <div class="htdiv">
+              	  <p><img src="themes/platform/images/s.png" alt="价格"><span>6800</span><i>新品</i><em>￥3400.86</em></p>
+              	  <a href="#" target="_blank">Leica/徕卡 徕卡Q 钛合金灰色喷漆版 
+19012 新品上市 限量发售</a>
+              </div>
+              <span class="main02_s1"></span>
+			  <span class="main02_s2"></span>
+			  <span class="main02_s3"></span>
+			  <span class="main02_s4"></span>
+			  <span class="main02_s5"></span>
+			  <span class="main02_s6"></span>
+       	  </div>
+       	  <div class="htbox">
+       	  	  <a href="#" target="_blank" class="htbox_a1"><img src="themes/platform/images/hots04.jpg" alt="Cochenille铝框拉杆箱万向轮箱子行李
+箱女20寸24寸26寸旅行箱皮箱"></a>
+              <div class="htdiv">
+              	  <p><img src="themes/platform/images/s.png" alt="价格"><span>6800</span><i>新品</i><em>￥3400.86</em></p>
+              	  <a href="#" target="_blank">Cochenille铝框拉杆箱万向轮箱子行李
+箱女20寸24寸26寸旅行箱皮箱</a>
+              </div>
+              <span class="main02_s1"></span>
+			  <span class="main02_s2"></span>
+			  <span class="main02_s3"></span>
+			  <span class="main02_s4"></span>
+			  <span class="main02_s5"></span>
+			  <span class="main02_s6"></span>
+       	  </div>
+       	  <div class="htbox">
+       	  	  <a href="#" target="_blank" class="htbox_a1"><img src="themes/platform/images/hots05.jpg" alt="KEUMER帐篷户外3-4人 全自动家庭野外
+露营帐篷套装 弹簧液压支架"></a>
+              <div class="htdiv">
+              	  <p><img src="themes/platform/images/s.png" alt="价格"><span>298</span><i>包邮</i><em>￥149.00</em></p>
+              	  <a href="#" target="_blank">KEUMER帐篷户外3-4人 全自动家庭野外
+露营帐篷套装 弹簧液压支架KEUMER帐篷户外3-4人 全自动家庭野外
+露营帐篷套装 弹簧液压支架</a>
+              </div>
+              <span class="main02_s1"></span>
+			  <span class="main02_s2"></span>
+			  <span class="main02_s3"></span>
+			  <span class="main02_s4"></span>
+			  <span class="main02_s5"></span>
+			  <span class="main02_s6"></span>
+       	  </div>
+       	  <div class="htbox">
+       	  	  <a href="#" target="_blank" class="htbox_a1"><img src="themes/platform/images/hots06.jpg" alt="瑞戈瑞士军刀双肩包男休闲旅行包高中
+大学书包初中学生书包"></a>
+              <div class="htdiv">
+              	  <p><img src="themes/platform/images/s.png" alt="价格"><span>240</span><i>包邮</i><em>￥120.86</em></p>
+              	  <a href="#" target="_blank">瑞戈瑞士军刀双肩包男休闲旅行包高中
+大学书包初中学生书包</a>
+              </div>
+              <span class="main02_s1"></span>
+			  <span class="main02_s2"></span>
+			  <span class="main02_s3"></span>
+			  <span class="main02_s4"></span>
+			  <span class="main02_s5"></span>
+			  <span class="main02_s6"></span>
+       	  </div>
+       	  <div class="htbox">
+       	  	  <a href="#" target="_blank" class="htbox_a1"><img src="themes/platform/images/hots07.jpg" alt="旅行洗漱杯胶囊杯牙刷牙膏便携套装出
+差旅游必备收纳盒漱口饮水杯"></a>
+              <div class="htdiv">
+              	  <p><img src="themes/platform/images/s.png" alt="价格"><span>28</span><i>新品</i><em>￥14.05</em></p>
+              	  <a href="#" target="_blank">旅行洗漱杯胶囊杯牙刷牙膏便携套装出
+差旅游必备收纳盒漱口饮水杯</a>
+              </div>
+              <span class="main02_s1"></span>
+			  <span class="main02_s2"></span>
+			  <span class="main02_s3"></span>
+			  <span class="main02_s4"></span>
+			  <span class="main02_s5"></span>
+			  <span class="main02_s6"></span>
+       	  </div>
+       	  <div class="htbox">
+       	  	  <a href="#" target="_blank" class="htbox_a1"><img src="themes/platform/images/hots08.jpg" alt="旅行收纳袋衣服整理包衣物鞋子行李箱
+透明防水袋密封袋子旅游必备"></a>
+              <div class="htdiv">
+              	  <p><img src="themes/platform/images/s.png" alt="价格"><span>20</span><i>包邮</i><em>￥9.98</em></p>
+              	  <a href="#" target="_blank">旅行收纳袋衣服整理包衣物鞋子行李箱
+透明防水袋密封袋子旅游必备</a>
+              </div>
+              <span class="main02_s1"></span>
+			  <span class="main02_s2"></span>
+			  <span class="main02_s3"></span>
+			  <span class="main02_s4"></span>
+			  <span class="main02_s5"></span>
+			  <span class="main02_s6"></span>
+       	  </div>
+       	  <div class="htbox">
+       	  	  <a href="#" target="_blank" class="htbox_a1"><img src="themes/platform/images/hots09.jpg" alt="旅行洗漱杯胶囊杯牙刷牙膏便携套装出
+差旅游必备收纳盒漱口饮水杯"></a>
+              <div class="htdiv">
+              	  <p><img src="themes/platform/images/s.png" alt="价格"><span>46</span><i>促销</i><em>￥23.00</em></p>
+              	  <a href="#" target="_blank">旅行收纳袋套装 6件套行李箱超大旅游
+袋子衣物收纳包韩国出行必备</a>
+              </div>
+              <span class="main02_s1"></span>
+			  <span class="main02_s2"></span>
+			  <span class="main02_s3"></span>
+			  <span class="main02_s4"></span>
+			  <span class="main02_s5"></span>
+			  <span class="main02_s6"></span>
+       	  </div>
+       	  <div class="htbox">
+       	  	  <a href="#" target="_blank" class="htbox_a1"><img src="themes/platform/images/hots10.jpg" alt="旅行必备收纳包女防水男士洗漱包便携
+式化妆包收纳袋出差旅游用品"></a>
+              <div class="htdiv">
+              	  <p><img src="themes/platform/images/s.png" alt="价格"><span>36</span><i>包邮</i><em>￥18.00</em></p>
+              	  <a href="#" target="_blank">旅行必备收纳包女防水男士洗漱包便携
+式化妆包收纳袋出差旅游用品</a>
+              </div>
+              <span class="main02_s1"></span>
+			  <span class="main02_s2"></span>
+			  <span class="main02_s3"></span>
+			  <span class="main02_s4"></span>
+			  <span class="main02_s5"></span>
+			  <span class="main02_s6"></span>
+       	  </div>·
+       </div>
+       <!--热卖商品 end-->
+       
+       <!--资讯信息 start-->
+       <div class="zf_tit09 zf_tit094">
+           <p><img src="themes/platform/images/icon04.png" alt="资讯信息">资讯信息</p>
+           <span>网罗天下，信息传递，实时更新</span>
+           <a href="#" class="com_tmore">MORE&gt;</a>
+           <div class="com_tit">
+           	   <a href="#" target="_blank">旅游攻略</a>
+           	   <a href="#" target="_blank">平台动态 </a>
+           	   <a href="#" target="_blank">热门新闻</a>
+           </div>
+       </div>
+       <div class="zxmain clearfix">
+       	  <div class="zxnewL">
+       	  	 <div class="zf_tit01 clearfix">
+	            <p>平台动态</p>
+	            <a href="#" target="_blank">MORE&gt;</a>
+	         </div>
+	         <div class="zxnew_det">
+	         	 <a href="#" target="_blank" class="zf_tit02">	
+		                <p>·<span>台湾旅行小指南！必体验的TOP6！超出我会自动隐藏，超出我会自动隐藏</span></p>
+		                <i>01-05</i>
+		         </a>
+		         <a href="#" target="_blank" class="zf_tit02">	
+		                <p>·<span>去泰国必吃的 8种冰饮，吃了才算真正去过泰超出我会自动隐藏，超出我会自动隐藏</span></p>
+		                <i>01-05</i>
+		         </a>
+		         <a href="#" target="_blank" class="zf_tit02">	
+		                <p>·<span>这个冷门又便宜的目的地你知道吗？</span></p>
+		                <i>01-05</i>
+		         </a>
+		         <a href="#" target="_blank" class="zf_tit02">	
+		                <p>·<span>玩透广州长隆旅游度假区？最详尽大揭秘！</span></p>
+		                <i>01-05</i>
+		         </a>
+		         <a href="#" target="_blank" class="zf_tit02">	
+		                <p>·<span>开往中越边境，这里不是桂林，山水依然美丽</span></p>
+		                <i>01-05</i>
+		         </a>
+		         <a href="#" target="_blank" class="zf_tit02">	
+		                <p>·<span>哪些地方适合一个人旅行？</span></p>
+		                <i>01-05</i>
+		         </a>
+	         </div>
+	         <div class="zxnew_play"> 
+	         	<div class="front-banner02">
+		            <ul>
+		                <li><a href="#" target="_blank">
+		                    <img src="themes/platform/images/newsplay01.jpg" alt="banner"/>
+		                </a></li>
+		                <li><a href="#" target="_blank">
+		                    <img src="themes/platform/images/newsplay01.jpg" alt="banner"/>
+		                </a></li>
+		                <li><a href="#" target="_blank">
+		                    <img src="themes/platform/images/newsplay01.jpg" alt="banner"/>
+		                </a></li>
+		            </ul>
+		            <div class="front-banner-nav02"  style="z-index:7;"></div>
+		        </div>
+	        </div>
+       	  </div>
+       	  <div class="zxnewR">
+       	  	 <div class="zxnewbox clearfix">
+       	  	 	 <a href="#" target="_blank" class="zxnb_a1"><img src="themes/platform/images/news01.jpg" alt="旅游攻略"></a>
+                 <div class="zxnb_det">
+                 	 <h2><a href="#" title="怎么能来一场终生难忘的毕业旅行？">怎么能来一场终生难忘的毕业旅行？</a></h2>
+                 	 <p><a href="#" title="马上就到6月毕业季了，每到六月，校园里便充斥着离别的气息。悄然间，昔日一起同窗数载、同甘共苦的同窗们给了自己一种全新纪念的方式，以“毕业游”来告别这段青涩岁月。对于心怀远游的旅人，在这个意味着告别的季节，对于远方风景的渴望也在逐渐升腾。">马上就到6月毕业季了，每到六月，校园里便充斥着离别的气息。悄然间，昔日一起同窗数载、同甘共苦的同窗们给了自己一种全新纪念的方式，以“毕业游”来告别这段青涩岁月。对于心怀远游的旅人，在这个意味着告别的季节，对于远方风景的渴望也在逐渐升腾。</a></p>
+                 	 <div class="zxnb_ul"><a href="#">旅游攻略</a>&nbsp;&nbsp;|&nbsp;&nbsp;2356人浏览&nbsp;&nbsp;|&nbsp;&nbsp;2017-01-05</div>
+                     <div class="zxnb_ul02">
+                     	 <p><img src="themes/platform/images/love_no.png" alt="收藏" class="zxnb_img01">
+                     	    <img src="themes/platform/images/love_ok.png" alt="收藏" class="zxnb_img02">
+                     	    <span>2542</span>
+                     	 </p>
+                     	 <a href="#" title="赶紧去查看更多留言吧！"><img src="themes/platform/images/msg.png" alt="留言">
+                     	    <span>125</span>
+                     	 </a>
+                     </div>
+                 </div>
+       	  	 </div>
+       	  	 <div class="zxnewbox clearfix">
+       	  	 	 <a href="#" target="_blank" class="zxnb_a1"><img src="themes/platform/images/news02.jpg" alt="旅游攻略"></a>
+                 <div class="zxnb_det">
+                 	 <h2><a href="#" title="看完就出发，最好玩的巴厘岛八条路线全攻略！">看完就出发，最好玩的巴厘岛八条路线全攻略！</a></h2>
+                 	 <p><a href="#" title="都说巴厘岛一流的酒店，二流的沙滩，三流的海水，那么去到巴厘岛找一家酒店窝着就好了嘛，这确实也是休闲度假的一种好方式，但是：库塔海滩熙熙攘攘的人群，乌鲁瓦图有最壮观的庙宇，情人崖的日落是情侣们不能错过的浪漫；涨潮时会没入大海的海神庙;勇敢者的">都说巴厘岛一流的酒店，二流的沙滩，三流的海水，那么去到巴厘岛找一家酒店窝着就好了嘛，这确实也是休闲度假的一种好方式，但是：库塔海滩熙熙攘攘的人群，乌鲁瓦图有最壮观的庙宇，情人崖的日落是情侣们不能错过的浪漫；涨潮时会没入大海的海神庙;勇敢者的</a></p>
+                 	 <div class="zxnb_ul"><a href="#">旅游攻略</a>&nbsp;&nbsp;|&nbsp;&nbsp;2356人浏览&nbsp;&nbsp;|&nbsp;&nbsp;2017-01-05</div>
+                     <div class="zxnb_ul02">
+                     	 <p><img src="themes/platform/images/love_no.png" alt="收藏" class="zxnb_img01">
+                     	    <img src="themes/platform/images/love_ok.png" alt="收藏" class="zxnb_img02">
+                     	    <span>2542</span>
+                     	 </p>
+                     	 <a href="#" title="赶紧去查看更多留言吧！"><img src="themes/platform/images/msg.png" alt="留言">
+                     	    <span>125</span>
+                     	 </a>
+                     </div>
+                 </div>
+       	  	 </div>
+       	  	 <div class="zxnewbox clearfix">
+       	  	 	 <a href="#" target="_blank" class="zxnb_a1"><img src="themes/platform/images/news03.jpg" alt="旅游攻略"></a>
+                 <div class="zxnb_det">
+                 	 <h2><a href="#" title="白墙青瓦梦大理——盘点最美白族民宿">白墙青瓦梦大理——盘点最美白族民宿白墙青瓦梦大理——盘点最美白族民宿白墙青瓦梦大理——盘点最美白族民宿白墙青瓦梦大理——盘点最美白族民宿</a></h2>
+                 	 <p><a href="#" title="习大大来大理考察时，曾这样赞美一家白族民居，“这样的庭院比西式洋房好，记得住乡愁。” 筒板瓦盖顶，白墙青瓦配以雕梁画栋，三坊一照壁的白族民居正是大理建筑艺术中最特别的存在。蜂蜂们不妨选择留宿一晚，感受最正宗的大理生活。">习大大来大理考察时，曾这样赞美一家白族民居，“这样的庭院比西式洋房好，记得住乡愁。” 筒板瓦盖顶，白墙青瓦配以雕梁画栋，三坊一照壁的白族民居正是大理建筑艺术中最特别的存在。蜂蜂们不妨选择留宿一晚，感受最正宗的大理生活。</a></p>
+                 	 <div class="zxnb_ul"><a href="#">旅游攻略</a>&nbsp;&nbsp;|&nbsp;&nbsp;2356人浏览&nbsp;&nbsp;|&nbsp;&nbsp;2017-01-05</div>
+                     <div class="zxnb_ul02">
+                     	 <p><img src="themes/platform/images/love_no.png" alt="收藏" class="zxnb_img01">
+                     	    <img src="themes/platform/images/love_ok.png" alt="收藏" class="zxnb_img02">
+                     	    <span>2542</span>
+                     	 </p>
+                     	 <a href="#" title="赶紧去查看更多留言吧！"><img src="themes/platform/images/msg.png" alt="留言">
+                     	    <span>125</span>
+                     	 </a>
+                     </div>
+                 </div>
+       	  	 </div>
+       	  </div>
+       </div>
+       <!--资讯信息 end-->
+        
+       <!--底部 start-->
+       <div id="foot"></div>
+       <!--底部 end-->
+       
+       <!--右侧悬浮 start-->
+       <div id="myR"></div>
+       <!--右侧悬浮 end-->
+        
+</body>
+</html>
