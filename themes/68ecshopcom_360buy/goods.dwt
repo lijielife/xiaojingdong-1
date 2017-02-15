@@ -84,6 +84,16 @@
                <!-- {if $goods.goods_brief} -->
                <div class="goods-brief"><span>{$goods.goods_brief}</span></div>
                <!-- {/if} -->
+               <!--{if $goods.exchange_integral} 金币--> 
+                <div id="goods-price">
+                 <div class="mar-l">
+                      <span class="price">金币</span>
+                      <strong class="p-price" id="ECS_GOODS_AMOUNT1">{$goods.exchange_integral}</strong>
+                      <!-- <font class="market-price">{$goods.exchange_integral}</font>  -->
+                 </div>
+                </div>
+                <!--{/if}--> 
+                
                <div id="goods-price">
                  <div class="mar-l">
                       <!--{if $goods.is_promote and $goods.gmt_end_time } 促销--> 
@@ -108,7 +118,7 @@
                     </div>
                     <!--{/if}--> 
                     <!-- {if $rank_prices} 会员等级价格-->
-                    <div class="rank-prices">
+                    <div class="rank-prices" style="display: none;">
                       <div id="vip1" onmouseover="hidevip1()"> 
                       	<span class="rmbPrice">会员等级价格<i></i></span> 
                       </div>
@@ -143,9 +153,9 @@
                     <div class="dd"> <a href="{$goods.goods_brand_url}" >{$goods.goods_brand}</a></div>
                   </li>
                   <!--{/if}--> 
-                  <!-- {if $cfg.use_integral} 购买此商品可使用积分-->
+                  <!-- {if $cfg.use_integral} 购买此商品可使用金币-->
                   <li class="padd">
-                    <div class="dt">可使积分</div>
+                    <div class="dt">可使金币</div>
                     <div class="dd">{$goods.integral} {$points_name}</div>
                   </li>
                   <!-- {/if} --> 
@@ -172,16 +182,16 @@
                     <li>
                       <p>累计销量<span>{$goods.count}</span></p>
                     </li>
-                    <!-- {if $goods.give_integral_2 eq '-1'} 购买此商品赠送积分-->
+                    <!-- {if $goods.give_integral_2 eq '-1'} 购买此商品赠送金币-->
                     <li style="border:none">
-                      <p>赠送积分<span><font id="ECS_GOODS_AMOUNT_jf">{$goods.give_integral}</font></span></p>
+                      <p>赠送金币<span><font id="ECS_GOODS_AMOUNT_jf">{$goods.give_integral}</font></span></p>
                       <!-- {elseif $goods.give_integral_2 gt 0} -->
                     <li style="border:none">
-                      <p>赠送积分<span>{$goods.give_integral}</span></p>
+                      <p>赠送金币<span>{$goods.give_integral}</span></p>
                     </li>
                     <!-- {else} -->
                     <li style="border:none">
-                      <p>赠送积分<span>0</span></p>
+                      <p>赠送金币<span>0</span></p>
                     </li>
                     <!-- {/if} -->
                   </ul>
@@ -297,15 +307,6 @@
                   <!-- {/if} -->
                 </ul>
                 <!--{/if}-->
-                <!--{if $goods.exchange_integral} 促销--> 
-                <div id="goods-price">
-                 <div class="mar-l">
-                      <span class="price">积分</span><strong class="p-price" id="ECS_GOODS_AMOUNT1"></strong> 
-                      <strong class="p-price" id="ECS_GOODS_AMOUNT">{$goods.exchange_integral}</strong>
-                      <!-- <font class="market-price">{$goods.exchange_integral}</font>  -->
-                 </div>
-                </div>
-                <!--{/if}--> 
                <ul id="choose" class="choose_bor">
                   <!--{if $pups && $ppts}后台安装了门店自提这个配送方式才显示-->
                   <li class="choose-pickup-point">
@@ -435,7 +436,7 @@
                         <!--{if $goods_n>0}--> 
                         <a href="javascript:addToCart({$goods.goods_id},0,1)" name="bi_addToCart" class="u-buy1">立即购买</a> 
                         <br>
-                        <a href="javascript:addToexchange({$goods.goods_id})" name="bi_addToCart" class="u-buy1">积分兑换</a> 
+                        <a href="javascript:addToexchange({$goods.goods_id})" name="bi_addToCart" class="u-buy1">金币兑换</a> 
                         <a href="javascript:addToCart({$goods.goods_id})" name="bi_addToCart" class="u-buy2">加入购物车</a> 
                         <!-- {else}--> 
                         <a onclick="tell_me({$goods.goods_id})" class="tell-me"><i></i>到货通知</a>
@@ -492,7 +493,7 @@
         <div id="wrapper">
         <div class="mt" id="main-nav-holder">
           <ul class="tab" id="nav">
-            <li class="boldtit-list h-list" onclick="change_widget(1, this);"><a href="{$url}#os_canshu">规格参数</a></li>
+            <li class="boldtit-list h-list"  style="display: none;"   onclick="change_widget(1, this);"><a href="{$url}#os_canshu">规格参数</a></li>
             <li class="boldtit-list" onclick="change_widget(1, this);"><a href="{$url}#os_jieshao" >商品介绍</a></li>
             <li class="boldtit-list" onclick="change_widget(1, this);"><a href="{$url}#os_pinglun" >商品评价({$review_count})</a></li>
             <li class="boldtit-list" onclick="change_widget(1, this);"><a href="{$url}#os_shouhou" >售后保障</a></li>
@@ -501,8 +502,8 @@
           	<a href="javascript:addToCart({$goods.goods_id})" name="bi_addToCart"  class="right-add" >加入购物车</a>
             <div class="ce-right">
               <ul class="abs-ul">
-                <li class="abs-active"><i></i><span>规格参数</span></li>
-                <li><i></i><span>产品介绍</span></li>
+                <li style="display: none;"><i></i><span>规格参数</span></li>
+                <li class="abs-active"><i></i><span>产品介绍</span></li>
                 <li><i></i><span>商品评价</span></li>
                 <li><i></i><span>包装清单</span></li>
                 <li><i></i><span>售后服务</span></li>
@@ -512,7 +513,7 @@
           </div>
         </div>
         <div id="main_widget_1">
-          <div class="mc" id="os_canshu">
+          <div class="mc" id="os_canshu" style="display: none;">
             <ul class="detail-list">
               <li>商品名称：{$goods.goods_style_name}</li>
               <li>商品编号：{$goods.goods_sn}</li>
@@ -638,26 +639,34 @@ function changePriceResponse(res){
   if (res.err_msg.length > 0){
 	if(res.qty==0){
 		document.getElementById('choose-btns').style.display = 'none';
-    	document.getElementById('choose-btns1').style.display = 'block';
+    		document.getElementById('choose-btns1').style.display = 'block';
 	}
     alert(res.err_msg);
 	document.forms['ECS_FORMBUY'].elements['number'].value = res.qty;
  }else{
-	  document.getElementById('choose-btns').style.display = 'block';
-     document.getElementById('choose-btns1').style.display = 'none';
+ 	document.getElementById('choose-btns').style.display = 'block';
+	document.getElementById('choose-btns1').style.display = 'none';
     document.forms['ECS_FORMBUY'].elements['number'].value = res.qty;
 
     if (document.getElementById('ECS_GOODS_AMOUNT')){
-      document.getElementById('ECS_GOODS_AMOUNT').innerHTML = res.result;
-	  if (res.result_jf){
-		document.getElementById('ECS_GOODS_AMOUNT_jf').innerHTML = res.result_jf;
-	  }
+    		document.getElementById('ECS_GOODS_AMOUNT').innerHTML = res.result;
+		if (res.result_jf){
+			document.getElementById('ECS_GOODS_AMOUNT_jf').innerHTML = res.result_jf;
+		}
+    }
+    
+    //金币
+    if (document.getElementById('ECS_GOODS_AMOUNT1')){
+    		//document.getElementById('ECS_GOODS_AMOUNT1').innerHTML = res.result;
+		if (res.result_jb){
+			document.getElementById('ECS_GOODS_AMOUNT1').innerHTML = res.result_jb;
+		}
     }
     if(document.getElementById('shows_number')){
-	document.getElementById('shows_number').innerHTML = res.attr_num;
+		document.getElementById('shows_number').innerHTML = res.attr_num;
     }
     if(document.getElementById('mark_price')){
-	document.getElementById('mark_price').innerHTML = res.result1;
+		document.getElementById('mark_price').innerHTML = res.result1;
     }
   }
 

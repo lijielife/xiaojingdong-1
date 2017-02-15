@@ -162,12 +162,15 @@ if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'price')
         }
         $exclusive = $GLOBALS['db']->getOne("select exclusive from ".$GLOBALS['ecs']->table('goods')." where goods_id = $goods_id");
         $shop_price  = get_final_price($goods_id, $number, true, $attr_id);
+        $shop_jb_price  = get_final_jb_price($goods_id, $number, true, $attr_id);
         $res['is_exclusive']  = is_exclusive($exclusive,$shop_price);
         $res['result'] = price_format($shop_price * $number);
         $res['result_jf'] = floor($shop_price * $number);
+        $res['result_jb'] = floor($shop_jb_price * $number);
         $res['goods_attr_number'] = get_product_attr_num($goods_id,$_REQUEST['attr']);
         $res['goods_attr_thumb'] = get_goods_attr_thumb($goods_id,$attr_id);
         $res['goods_attr'] = get_goods_attr_str($attr_id);
+
     }
 
     die($json->encode($res));

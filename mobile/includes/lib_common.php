@@ -2610,6 +2610,42 @@ function get_final_price($goods_id, $goods_num = '1', $is_spec_price = false, $s
 }
 
 /**
+ * 取得商品最终金币价格
+ *
+ * @param   string  $goods_id      商品编号
+ * @param   string  $goods_num     购买数量
+ * @param   boolean $is_spec_price 是否加入规格价格
+ * @param   mix     $spec          规格ID的数组或者逗号分隔的字符串
+ *
+ * @return  商品最终购买价格
+ */
+function get_final_jb_price($goods_id, $goods_num = '1', $is_spec_price = false, $spec = array())
+{
+    $final_jb_price   = '0'; //商品最终购买价格
+
+    //获取商品的金币价格
+    $sql = "SELECT ex.exchange_integral FROM " .$GLOBALS['ecs']->table('exchange_goods'). " AS ex ".
+           " LEFT JOIN " . $GLOBALS['ecs']->table('goods') . " AS g ".
+                   "ON ex.goods_id = g.goods_id WHERE g.goods_id='$goods_id' LIMIT 1";
+    $final_jb_price = intval($GLOBALS['db']->getOne($sql));
+
+    //如果需要加入规格价格
+    if ($is_spec_price)
+    {
+        if (!empty($spec))
+        {
+
+            $spec_jb_price = spec_jb_price($spec);
+            $final_jb_price += $spec_jb_price;
+        }
+    }
+
+    //返回商品最终购买价格
+    return $final_jb_price;
+}
+
+
+/**
  * 将 goods_attr_id 的序列按照 attr_id 重新排序
  *
  * 注意：非规格属性的id会被排除

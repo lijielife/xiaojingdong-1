@@ -621,7 +621,7 @@ function get_attr_list($cat_id, $goods_id = 0)
     }
 
     // 查询属性值及商品的属性值
-     $sql = "SELECT a.attr_id, a.attr_name, a.attr_input_type, a.attr_type,a.attr_txm, a.attr_values, v.attr_value, v.attr_price ".
+     $sql = "SELECT a.attr_id, a.attr_name, a.attr_input_type, a.attr_type,a.attr_txm, a.attr_values, v.attr_value, v.attr_price,v.attr_jb_price ".
             "FROM " .$GLOBALS['ecs']->table('attribute'). " AS a ".
             "LEFT JOIN " .$GLOBALS['ecs']->table('goods_attr'). " AS v ".
             "ON v.attr_id = a.attr_id AND v.goods_id = '$goods_id' ".
@@ -727,8 +727,12 @@ function build_attr_html($cat_id, $goods_id = 0 , $bar_code = 0)
         }
       
         $html .= ($val['attr_type'] == 1 || $val['attr_type'] == 2) ?
-            $GLOBALS['_LANG']['spec_price'].' <input type="text" name="attr_price_list[]" value="' . $val['attr_price'] . '" size="5" maxlength="10" />' :
+            ' 人民币价格 <input type="text" name="attr_price_list[]" value="' . $val['attr_price'] . '" size="5" maxlength="10" />' :
             ' <input type="hidden" name="attr_price_list[]" value="0" />';
+
+        $html .= ($val['attr_type'] == 1 || $val['attr_type'] == 2) ?
+            ' 金币价格 <input type="text" name="attr_jb_list[]" value="' . $val['attr_jb_price'] . '" size="5" maxlength="10" />' :
+            ' <input type="hidden" name="attr_jb_list[]" value="0" />';
         
         if($val[attr_txm] > 0){
         	$html .="<span class=\"notice-span\" style=\"display:block\" id=\"attr_".$val['attr_id'] ."\">此属性是条码属性，您只有选择完所有的条码属性后才能输入“组合属性”的对应条形码</span>";

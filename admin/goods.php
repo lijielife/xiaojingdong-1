@@ -1253,6 +1253,8 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
                 $attr_value = $_POST['attr_value_list'][$key];
                 $attr_price = $_POST['attr_price_list'][$key];
 				$attr_price = ($attr_price>=0) ? $attr_price : 0;
+                $attr_jb_price = $_POST['attr_jb_list'][$key];
+                $attr_jb_price = ($attr_jb_price>=0) ? $attr_jb_price : 0;
                 if (!empty($attr_value))
                 {
                     if (isset($goods_attr_list[$attr_id][$attr_value]))
@@ -1260,12 +1262,14 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
                         // 如果原来有，标记为更新
                         $goods_attr_list[$attr_id][$attr_value]['sign'] = 'update';
                         $goods_attr_list[$attr_id][$attr_value]['attr_price'] = $attr_price;
+                        $goods_attr_list[$attr_id][$attr_value]['attr_jb_price'] = $attr_jb_price;
                     }
                     else
                     {
                         // 如果原来没有，标记为新增
                         $goods_attr_list[$attr_id][$attr_value]['sign'] = 'insert';
                         $goods_attr_list[$attr_id][$attr_value]['attr_price'] = $attr_price;
+                        $goods_attr_list[$attr_id][$attr_value]['attr_jb_price'] = $attr_jb_price;
                     }
                     $val_arr = explode(' ', $attr_value);
                     foreach ($val_arr AS $k => $v)
@@ -1291,12 +1295,12 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
             {
                 if ($info['sign'] == 'insert')
                 {
-                    $sql = "INSERT INTO " .$ecs->table('goods_attr'). " (attr_id, goods_id, attr_value, attr_price)".
-                            "VALUES ('$attr_id', '$goods_id', '$attr_value', '$info[attr_price]')";
+                    $sql = "INSERT INTO " .$ecs->table('goods_attr'). " (attr_id, goods_id, attr_value, attr_price,attr_jb_price)".
+                            "VALUES ('$attr_id', '$goods_id', '$attr_value', '$info[attr_price]','$info[attr_jb_price]')";
                 }
                 elseif ($info['sign'] == 'update')
                 {
-                    $sql = "UPDATE " .$ecs->table('goods_attr'). " SET attr_price = '$info[attr_price]' WHERE goods_attr_id = '$info[goods_attr_id]' LIMIT 1";
+                    $sql = "UPDATE " .$ecs->table('goods_attr'). " SET attr_price = '$info[attr_price]',attr_jb_price='$info[attr_jb_price]' WHERE goods_attr_id = '$info[goods_attr_id]' LIMIT 1";
                 }
                 else
                 {

@@ -997,6 +997,42 @@ function spec_price($spec)
 }
 
 /**
+ * 获得指定的规格的金币价格
+ *
+ * @access  public
+ * @param   mix     $spec   规格ID的数组或者逗号分隔的字符串
+ * @return  void
+ */
+function spec_jb_price($spec)
+{
+    if (!empty($spec))
+    {
+        if(is_array($spec))
+        {
+            foreach($spec as $key=>$val)
+            {
+                $spec[$key]=addslashes($val);
+            }
+        }
+        else
+        {
+            $spec=addslashes($spec);
+        }
+
+        $where = db_create_in($spec, 'goods_attr_id');
+
+        $sql = 'SELECT SUM(attr_jb_price) AS attr_jb_price FROM ' . $GLOBALS['ecs']->table('goods_attr') . " WHERE $where";
+        $price = floatval($GLOBALS['db']->getOne($sql));
+    }
+    else
+    {
+        $price = 0;
+    }
+
+    return $price;
+}
+
+/**
  * 取得团购活动信息
  * @param   int     $group_buy_id   团购活动id
  * @param   int     $current_num    本次购买数量（计算当前价时要加上的数量）

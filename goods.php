@@ -183,6 +183,7 @@ if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'price')
         
 // 		$number = 1;
         $shop_price  = get_final_price($goods_id, $number, true, $attr_id);
+        $shop_jb_price  = get_final_jb_price($goods_id, $number, true, $attr_id);
         $mark_price = get_mark_price($goods_id);
 
 		$shop_price = ($shop_price>=0) ? $shop_price : 0;
@@ -190,6 +191,7 @@ if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'price')
         $res['result'] = price_format($shop_price * $number);
         $res['result1'] = price_format($mark_price);
 		$res['result_jf'] = floor($shop_price * $number);
+		$res['result_jb'] = floor($shop_jb_price * $number);
 		
 		//预售，检查库存是否足够
 		$current_number = $res['attr_num'];
@@ -594,15 +596,28 @@ if (!$smarty->is_cached('goods.dwt', $cache_id))
 
 		/* 代码增加_end  By  www.ecshop68.com */
 
+		//获取全部属性相册还是获取某个颜色下面的
+		if(isset($_REQUEST['goods_attr_id']))
+		{
+			$smarty->assign('pictures',            get_goods_gallery_attr_www_ecshop68_com($goods_id, $_REQUEST['goods_attr_id'])); // 商品相册_修改
+		}
+		else
+		{
+			$smarty->assign('pictures',            get_goods_gallery_attr_www_ecshop68_com($goods_id,0));
+		}
+
+
 		$smarty->assign('promotion',       get_promotion_info($goods_id,$goods['supplier_id']));//促销信息
         $smarty->assign('specification',       $properties['spe']);                              // 商品规格
         $smarty->assign('spec_count',       count($properties['spe']));                         //判断单属性时无库存选择无效
         $smarty->assign('attribute_linked',    get_same_attribute_goods($properties));           // 相同属性的关联商品
         $smarty->assign('related_goods',       $linked_goods);                                   // 关联商品
         $smarty->assign('goods_article_list',  get_linked_articles($goods_id));                  // 关联文章
-        $smarty->assign('fittings',            get_goods_fittings(array($goods_id)));                   // 配件
+        $smarty->assign('fittings',            get_goods_fittings(array($goods_id)));            // 配件
         $smarty->assign('rank_prices',         get_user_rank_prices($goods_id, $shop_price));    // 会员等级价格
-		$smarty->assign('pictures',            get_goods_gallery_attr_www_ecshop68_com($goods_id, $goods_attr_id)); // 商品相册_修改 By www.ecshop68.com
+		// $smarty->assign('pictures',            get_goods_gallery_attr_www_ecshop68_com($goods_id, $goods_attr_id)); // 商品相册_修改 By www.ecshop68.com
+
+		
 		$smarty->assign('new_goods',           get_recommend_goods('new'));     // 最新商品  改 By www.ecshop68.com
         $smarty->assign('bought_goods',        get_also_bought($goods_id));                      // 购买了该商品的用户还购买了哪些商品
         $smarty->assign('goods_rank',          get_goods_rank($goods_id));                       // 商品的销售排名
@@ -1192,10 +1207,21 @@ function get_dianpu_baseinfo($suppid=0,$suppinfo){
 function get_goods_gallery_attr_www_ecshop68_com($goods_id, $goods_attr_id)
 {
 
-    $sql = 'SELECT img_id, img_original, img_url, thumb_url, img_desc' .
+	if($goods_attr_id)
+	{
+		$sql = 'SELECT img_id, img_original, img_url, thumb_url, img_desc' .
         ' FROM ' . $GLOBALS['ecs']->table('goods_gallery') .
         " WHERE goods_id = '$goods_id' and goods_attr_id='$goods_attr_id' order by img_sort,img_id LIMIT " . $GLOBALS['_CFG']['goods_gallery_number'];
-    $row = $GLOBALS['db']->getAll($sql);
+	}
+	else
+	{
+		$sql = 'SELECT img_id, img_original, img_url, thumb_url, img_desc' .
+        ' FROM ' . $GLOBALS['ecs']->table('goods_gallery') .
+        " WHERE goods_id = '$goods_id' order by img_sort,img_id LIMIT " . $GLOBALS['_CFG']['goods_gallery_number'];
+	}
+
+	 $row = $GLOBALS['db']->getAll($sql);
+    
 	if (count($row)==0)
 	{
 		$sql = 'SELECT img_id, img_original, img_url, thumb_url, img_desc' .
