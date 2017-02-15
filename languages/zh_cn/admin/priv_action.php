@@ -141,7 +141,7 @@ $_LANG['auction'] = '拍卖活动';
 $_LANG['favourable'] = '优惠活动';
 $_LANG['whole_sale'] = '批发管理';
 $_LANG['package_manage'] = '超值礼包';
-$_LANG['exchange_goods'] = '积分商城商品';
+$_LANG['exchange_goods'] = '金币商城商品';
 $_LANG['pre_sale'] = '预售管理';
 
 // 邮件管理

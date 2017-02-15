@@ -15,13 +15,13 @@
 
 $_LANG['rank_name'] = '酒店等级名称';
 $_LANG['supplier_rank_list'] = '酒店等级';
-$_LANG['integral_min'] = '积分下限';
-$_LANG['integral_max'] = '积分上限';
+$_LANG['integral_min'] = '金币下限';
+$_LANG['integral_max'] = '金币上限';
 $_LANG['discount'] = '初始折扣率';
 $_LANG['add_supplier_rank'] = '添加酒店等级';
 $_LANG['special_rank'] = '特殊会员组';
 $_LANG['show_price'] = '在商品详情页显示该会员等级的商品价格';
-$_LANG['notice_special'] = '特殊会员组的会员不会随着积分的变化而变化。';
+$_LANG['notice_special'] = '特殊会员组的会员不会随着金币的变化而变化。';
 $_LANG['add_continue'] = '继续添加入驻商等级';
 $_LANG['back_list'] = '返回入驻商等级列表';
 $_LANG['sort_order'] = '排序';

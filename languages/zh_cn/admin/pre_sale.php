@@ -24,7 +24,7 @@ $_LANG['start_date'] = '开始时间';
 $_LANG['end_date'] = '结束时间';
 $_LANG['deposit'] = '保证金';
 $_LANG['restrict_amount'] = '限购';
-$_LANG['gift_integral'] = '赠送积分';
+$_LANG['gift_integral'] = '赠送金币';
 $_LANG['valid_order'] = '订单';
 $_LANG['valid_goods'] = '订购商品';
 $_LANG['current_price'] = '当前价格';
@@ -47,7 +47,7 @@ $_LANG['label_deposit'] = '定金：';
 $_LANG['notice_deposit']= '定金为0时，表示用户直接支付当前的预售价格不需要<br/>支付尾款，此时尾款支付时间不可设置，预售活动结束<br/>后，系统会根据最新的预售价格返还用户已支付的差额。';
 $_LANG['label_restrict_amount'] = '预售库存：';
 $_LANG['notice_restrict_amount']= '达到此数量，预售活动自动结束。0表示没有数量限制。';
-$_LANG['label_gift_integral'] = '赠送积分数：';
+$_LANG['label_gift_integral'] = '赠送金币数：';
 $_LANG['label_retainage_start'] = '尾款支付开始时间：';
 $_LANG['label_retainage_end'] = '尾款支付结束时间：';
 $_LANG['notice_retainage_start'] = '尾款开始支付时间不得早于预售活动结束时间';
@@ -101,7 +101,7 @@ $_LANG['error_deposit'] = '定金不能大于阶梯价格';
 $_LANG['js_languages']['error_goods_null'] = '您没有选择预售商品！';
 $_LANG['js_languages']['error_deposit'] = '您输入的保证金不是数字！';
 $_LANG['js_languages']['error_restrict_amount'] = '您输入的限购数量不是整数！';
-$_LANG['js_languages']['error_gift_integral'] = '您输入的赠送积分数不是整数！';
+$_LANG['js_languages']['error_gift_integral'] = '您输入的赠送金币数不是整数！';
 $_LANG['js_languages']['search_is_null'] = '没有搜索到任何商品，请重新搜索';
 
 /* 删除预售活动 */

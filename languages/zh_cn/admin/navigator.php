@@ -48,7 +48,7 @@ $_LANG['auction'] = '拍卖';
 $_LANG['pro_sale'] = '预售';
 $_LANG['package'] = '超值礼包';
 $_LANG['stores'] = '店铺列表';
-$_LANG['exchange'] = '积分商城';
+$_LANG['exchange'] = '金币商城';
 $_LANG['pro_search'] = '限时拼团';
 
 
