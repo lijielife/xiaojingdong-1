@@ -171,6 +171,22 @@
            </div>
        </div>
        <div class="jdmain clearfix">
+       		<!--{foreach from=$recommend_hotels item=hotels}-->
+       		<div class="jdbox">
+       	   	  <a href="{$hotels.url}" target="_blank" class="jdbox_a1"><img src="{$hotels.img_url}" alt=""><span>{$hotels.province_cn}·{$hotels.city_cn}</span></a>
+       	      <div class="jdbox_tit">
+       	      	 <a href="{$hotels.url}" target="_blank">{$hotels.supplier_desc}</a>
+       	      	 <ul class="clearfix">
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 	<li><img src="themes/platform/images/start.png" alt="星级"></li>
+       	      	 </ul>
+       	      </div>
+       	   </div>
+       		<!--{/foreach}-->
+       	   <!--
        	   <div class="jdbox">
        	   	  <a href="#" target="_blank" class="jdbox_a1"><img src="themes/platform/images/hotj01.jpg" alt="大理途家·桃源人家海景客栈 "><span>云南·大理</span></a>
        	      <div class="jdbox_tit">
@@ -248,7 +264,9 @@
        	      	 </ul>
        	      </div>
        	   </div>
+       	  -->
        </div>
+
       <!--热门酒店 end-->
       
       <!--商务预订 start-->
@@ -289,7 +307,29 @@
            </div>
        </div>
        <div class="htmain clearfix">
-       	  <div class="htbox">
+       			<!--{foreach from=$recommend_goods item=good}-->
+       			<div class="htbox">
+					<a href="{$good.url}" target="_blank" class="htbox_a1">
+						<img src="{$good.goods_img}" alt="">
+					</a>
+					<div class="htdiv">
+						<p>
+							<img src="themes/platform/images/s.png" alt="价格">
+							<span>{$good.exchange_integral}</span>
+							<!--<i>包邮</i>-->
+							<em>{$good.shop_price}</em>
+						</p>
+						<a href="{$good.url}" target="_blank">{$good.name}</a>
+					</div>
+					<span class="main02_s1"></span>
+					<span class="main02_s2"></span>
+					<span class="main02_s3"></span>
+					<span class="main02_s4"></span>
+					<span class="main02_s5"></span>
+					<span class="main02_s6"></span>
+				</div>
+       			<!--{/foreach}-->
+       	 <!--<div class="htbox">
        	  	  <a href="#" target="_blank" class="htbox_a1"><img src="themes/platform/images/hots01.jpg" alt="迪秀旅行收纳袋行李箱衣服整理包旅游必备衣物收纳内衣整理袋套装"></a>
               <div class="htdiv">
               	  <p><img src="themes/platform/images/s.png" alt="价格"><span>60</span><i>包邮</i><em>￥29.86</em></p>
@@ -302,7 +342,7 @@
 			  <span class="main02_s5"></span>
 			  <span class="main02_s6"></span>
        	  </div>
-       	  <!--<div class="htbox">
+       	  <div class="htbox">
        	  	  <a href="#" target="_blank" class="htbox_a1"><img src="themes/platform/images/hots02.jpg" alt="旅行洗漱包便携牙刷杯 出差牙刷牙膏收纳杯漱口杯旅游必备洗漱杯"></a>
               <div class="htdiv">
               	  <p><img src="themes/platform/images/s.png" alt="价格"><span>60</span><i>8.0折</i><em>￥9.98</em></p>
@@ -406,7 +446,7 @@
 			  <span class="main02_s5"></span>
 			  <span class="main02_s6"></span>
        	  </div>
-       	  <div class="htbox">-->
+       	  <div class="htbox">
        	  	  <a href="#" target="_blank" class="htbox_a1"><img src="themes/platform/images/hots10.jpg" alt="旅行必备收纳包女防水男士洗漱包便携式化妆包收纳袋出差旅游用品"></a>
               <div class="htdiv">
               	  <p><img src="themes/platform/images/s.png" alt="价格"><span>36</span><i>包邮</i><em>￥18.00</em></p>
@@ -418,7 +458,7 @@
 			  <span class="main02_s4"></span>
 			  <span class="main02_s5"></span>
 			  <span class="main02_s6"></span>
-       	  </div>·
+       	  </div>·-->
        </div>
        <!--热卖商品 end-->
        
@@ -426,21 +466,30 @@
        <div class="zf_tit09 zf_tit094">
            <p><img src="themes/platform/images/icon04.png" alt="资讯信息">资讯信息</p>
            <span>网罗天下，信息传递，实时更新</span>
-           <a href="#" class="com_tmore">MORE&gt;</a>
+           <a href="{$article_url}" class="com_tmore">MORE&gt;</a>
            <div class="com_tit">
-           	   <a href="#" target="_blank">旅游攻略</a>
+           		<!--{foreach from=$article_cat_nav item=cat} -->
+       			<a href="{$article_url}?id={$cat.cat_id}" target="_blank">{$cat.cat_name}</a>
+           		<!--{/foreach}-->
+           	   <!--<a href="#" target="_blank">旅游攻略</a>
            	   <a href="#" target="_blank">平台动态 </a>
-           	   <a href="#" target="_blank">热门新闻</a>
+           	   <a href="#" target="_blank">热门新闻</a>-->
            </div>§
        </div>
        <div class="zxmain clearfix">
        	  <div class="zxnewL">
        	  	 <div class="zf_tit01 clearfix">
-	            <p>平台动态</p>
-	            <a href="#" target="_blank">MORE&gt;</a>
+	            <p>{$article_cat_nav.0.cat_name}</p>
+	            <a href="{$article_url}?id={$article_cat_nav.0.cat_id}" target="_blank">MORE&gt;</a>
 	         </div>
 	         <div class="zxnew_det">
-	         	 <a href="#" target="_blank" class="zf_tit02">	
+	         	<!-- {foreach from=$article_left item=article} -->
+	         	<a href="$article.url" target="_blank" class="zf_tit02">	
+		                <p>·<span>{$article.title}</span></p>
+		                <i>{$article.add_time}</i>
+		        </a>
+	         	<!--{/foreach} -->
+	         	 <!--<a href="#" target="_blank" class="zf_tit02">	
 		                <p>·<span>台湾旅行小指南！必体验的TOP6！超出我会自动隐藏，超出我会自动隐藏</span></p>
 		                <i>01-05</i>
 		         </a>
@@ -463,12 +512,17 @@
 		         <a href="#" target="_blank" class="zf_tit02">	
 		                <p>·<span>哪些地方适合一个人旅行？</span></p>
 		                <i>01-05</i>
-		         </a>
+		         </a>-->
 	         </div>
 	         <div class="zxnew_play"> 
 	         	<div class="front-banner02">
 		            <ul>
-		                <li><a href="#" target="_blank">
+		            		<!--{foreach from=$left_lunbo_photo item=photo} -->
+		            		<li><a href="{$photo.url}" target="_blank">
+		                    <img src="{$photo.file_url}" alt="banner"/>
+		                </a></li>
+		            		<!-- {/foreach} -->
+		                <!--<li><a href="#" target="_blank">
 		                    <img src="themes/platform/images/newsplay01.jpg" alt="banner"/>
 		                </a></li>
 		                <li><a href="#" target="_blank">
@@ -476,13 +530,35 @@
 		                </a></li>
 		                <li><a href="#" target="_blank">
 		                    <img src="themes/platform/images/newsplay01.jpg" alt="banner"/>
-		                </a></li>
+		                </a></li>-->
 		            </ul>
 		            <div class="front-banner-nav02"  style="z-index:7;"></div>
 		        </div>
 	        </div>
        	  </div>
        	  <div class="zxnewR">
+       	  	<!--{foreach from=$article_top item=article} -->
+       	  	<div class="zxnewbox clearfix">
+       	  	 	 <a href="article.php?id={$article.article_id}" target="_blank" class="zxnb_a1">
+       	  	 	 	<img src="{$article.file_url}" alt="">
+       	  	 	 </a>
+                 <div class="zxnb_det">
+                 	 <h2><a href="article.php?id={$article.article_id}" title="{$article.title}">{$article.title}</a></h2>
+                 	 <p><a href="article.php?id={$article.article_id}" title="{$article.title}">{$article.content}</a></p>
+                 	 <div class="zxnb_ul"><a href="article_cat.php?id={$article.cat_id}">{$article.cat_name}</a>&nbsp;&nbsp;|&nbsp;&nbsp;{$article.add_time}</div>
+                     <!--<div class="zxnb_ul02">
+                     	 <p><img src="themes/platform/images/love_no.png" alt="收藏" class="zxnb_img01">
+                     	    <img src="themes/platform/images/love_ok.png" alt="收藏" class="zxnb_img02">
+                     	    <span>2542</span>
+                     	 </p>
+                     	 <a href="#" title="赶紧去查看更多留言吧！"><img src="themes/platform/images/msg.png" alt="留言">
+                     	    <span>125</span>
+                     	 </a>
+                     </div>-->
+                 </div>
+       	  	 </div>
+       	  	<!--{/foreach} -->
+       	  	<!--
        	  	 <div class="zxnewbox clearfix">
        	  	 	 <a href="#" target="_blank" class="zxnb_a1"><img src="themes/platform/images/news01.jpg" alt="旅游攻略"></a>
                  <div class="zxnb_det">
@@ -534,7 +610,7 @@
                      </div>
                  </div>
        	  	 </div>
-       	  </div>
+       	  </div>-->
        </div>
        <!--资讯信息 end-->
         

@@ -172,6 +172,20 @@ elseif ($_REQUEST['act']== 'supplier_base_info')
 
 
 
+    //获取是否推荐和首页
+    $is_index = $is_groom = 0;
+    $sql = "SELECT * FROM" . $GLOBALS['ecs']->table('hotels_tag') . " WHERE supplier_id='$id'";
+    $data = $GLOBALS['db']->getAll($sql);
+    if($data)
+    {
+        foreach($data as $val)
+        {
+            $is_index = $val['is_index'];
+            $is_groom = $val['is_groom'];
+        }
+    }
+    $smarty->assign('is_index', $is_index);
+    $smarty->assign('is_groom', $is_groom);
 
 
     assign_query_info();
@@ -350,6 +364,23 @@ elseif ($_REQUEST['act']=='update')
     {
         $sql="update ". $ecs->table('goods') ." set is_on_sale=0 where supplier_id='$supplier_id' ";
         $db->query($sql);
+    }
+
+
+    //更新酒店推荐状态,add by ry
+    $is_index = isset($_POST['is_index']) ? $_POST['is_index'] : 0; // 首页推荐
+    $is_groom = isset($_POST['is_groom']) ? $_POST['is_groom'] : 0; // 热门推荐
+    $sql = "SELECT COUNT(1) AS num FROM " . $ecs->table('hotels_tag') . " WHERE supplier_id='$supplier_id'";
+    $num = $db->getOne($sql);
+    if($num > 0)
+    {
+        $sql = "UPDATE " . $ecs->table('hotels_tag')  . " SET is_index='$is_index',is_groom='$is_groom' WHERE supplier_id='$supplier_id'" ;
+        $db->query($sql); 
+    }
+    else
+    {
+        $sql = "INSERT INTO  " . $ecs->table('hotels_tag')  . " (is_index,is_groom,supplier_id) VALUES ('$is_index','$is_groom','$supplier_id')" ;
+        $db->query($sql); 
     }
 
     /* 清除缓存 */

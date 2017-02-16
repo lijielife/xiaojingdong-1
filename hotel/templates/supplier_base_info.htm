@@ -583,6 +583,23 @@
 
             </tr>
             <tr>
+               <td class="label">酒店推荐: </td>
+               <td>
+               	<!--{if $is_index }-->
+									<input type="checkbox" name="is_index" value="1" checked="checked">首页推荐
+								<!--{else}-->
+									<input type="checkbox" name="is_index" value="1" >首页推荐
+								<!-- {/if} -->
+								
+								<!--{if $is_groom }-->
+									<input type="checkbox" name="is_groom" value="1" checked="checked">热门推荐
+								<!--{else}-->
+									<input type="checkbox" name="is_groom" value="1" >热门推荐
+								<!-- {/if} -->
+							</td>
+
+            </tr>
+            <tr>
 
                 <!--
                 <tr>

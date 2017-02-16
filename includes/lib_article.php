@@ -42,7 +42,7 @@ function get_cat_articles($cat_id, $page = 1, $size = 20 ,$requirement='')
     //增加搜索条件，如果有搜索内容就进行搜索    
     if ($requirement != '')
     {
-        $sql = 'SELECT article_id, title, author, add_time, file_url, open_type' .
+        $sql = 'SELECT article_id, title, content,author, add_time, file_url, open_type' .
                ' FROM ' .$GLOBALS['ecs']->table('article') .
                ' WHERE is_open = 1 AND title like \'%' . $requirement . '%\' ' .
                ' ORDER BY article_type DESC, article_id DESC';
@@ -50,7 +50,7 @@ function get_cat_articles($cat_id, $page = 1, $size = 20 ,$requirement='')
     else 
     {
         
-        $sql = 'SELECT article_id, title, author, add_time, file_url, open_type' .
+        $sql = 'SELECT article_id, title, content,author, add_time, file_url, open_type' .
                ' FROM ' .$GLOBALS['ecs']->table('article') .
                ' WHERE is_open = 1 AND ' . $cat_str .
                ' ORDER BY article_type DESC, article_id DESC';
@@ -67,6 +67,7 @@ function get_cat_articles($cat_id, $page = 1, $size = 20 ,$requirement='')
 
             $arr[$article_id]['id']          = $article_id;
             $arr[$article_id]['title']       = $row['title'];
+            $arr[$article_id]['content']     = strip_tags($row['content']);
             $arr[$article_id]['short_title'] = $GLOBALS['_CFG']['article_title_length'] > 0 ? sub_str($row['title'], $GLOBALS['_CFG']['article_title_length']) : $row['title'];
             $arr[$article_id]['author']      = empty($row['author']) || $row['author'] == '_SHOPHELP' ? $GLOBALS['_CFG']['shop_name'] : $row['author'];
             $arr[$article_id]['url']         = $row['open_type'] != 1 ? build_uri('article', array('aid'=>$article_id), $row['title']) : trim($row['file_url']);
@@ -97,5 +98,42 @@ function get_article_count($cat_id ,$requirement='')
     }
     return $count;
 }
+
+
+/**
+ * 获得显示在导航栏的文章分类，用于平台首页展示
+ *
+ * @access  public
+ * @param   integer     $cat_id
+ * @param   integer     $page，获取几个
+ * @param   integer     $size
+ *
+ * @return  array
+ */
+function get_cats_nav($size = 3 ,$requirement='')
+{
+    $sql = "SELECT * FROM " . $GLOBALS['ecs']->table('article_cat') . " WHERE show_in_nav = 1 ORDER BY sort_order DESC LIMIT $size";
+    $data = $GLOBALS['db']->getAll($sql);
+    return $data;
+}
+
+
+/**
+ * 获得置顶文章，用于平台首页展示
+ *
+ * @access  public
+ * @param   integer     $cat_id
+ * @param   integer     $page，获取几个
+ * @param   integer     $size
+ *
+ * @return  array
+ */
+function get_article_top($size = 3 ,$requirement='')
+{
+    $sql = "SELECT * FROM " . $GLOBALS['ecs']->table('article') . " WHERE article_type = 1  AND is_open=1 ORDER BY add_time DESC LIMIT $size";
+    $data = $GLOBALS['db']->getAll($sql);
+    return $data;
+}
+
 
 ?>

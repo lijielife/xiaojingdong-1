@@ -49,14 +49,70 @@ if(!(preg_match($smartuachar, $ua)) && ($ua == '' || preg_match($uachar, $ua))&&
 $smarty->template_dir   = ROOT_PATH . 'themes/platform';
 
 
-//热门推荐
-$recommend_goods = get_recommend_goods('best'));
+
+//首页热门酒店推荐
+$recommend_hotels = get_recommend_hotels('index');
+$smarty->assign('recommend_hotels',    $recommend_hotels);    // 推荐酒店
+
+
+//热门商品推荐
+$recommend_goods = get_recommend_goods('best');
 foreach($recommend_goods as $key => $val)
 {
-    //获取
+    //获取商品所需的金币
+    $goods_id = $val['id'];
+    $sql = "SELECT exchange_integral FROM " . $GLOBALS['ecs']->table('exchange_goods') . " WHERE goods_id='$goods_id'";
+    $exchange_integral = $GLOBALS['db']->getOne($sql);
+    if($exchange_integral)
+    {
+       
+        $recommend_goods[$key]['exchange_integral'] = $exchange_integral;
+    }
+    else
+    {
+        //unset($recommend_goods[$key]);
+        $recommend_goods[$key]['exchange_integral'] = 999;
+    }
 }
+$smarty->assign('recommend_goods',    $recommend_goods);    // 推荐商品
 
-$smarty->assign('best_goods',    get_recommend_goods('best'));    // 推荐商品
+
+//资讯信息
+$article_url = 'article_list.php'; //文章中心地址
+$article_cat_nav = get_cats_nav(); //导航栏文章分类
+// print_r($article_cat_nav);
+$cat_left = $article_cat_nav[0]; //文章资讯左边系列
+$article_left = get_cat_articles($cat_left['cat_id'],1,6);
+foreach($article_left as $key => $val)
+{
+    $add_time = $val['add_time'];
+    $new_add_time = explode('-',$add_time,2);
+    $article_left[$key]['add_time'] = $new_add_time[1];
+}
+$left_lunbo_photo = get_article_new(array(25),'art_cat',0,false,true);//左边栏轮播广告图片
+$article_top = get_article_top(); //右侧置顶文章
+foreach($article_top as $key=>$val)
+{
+    $content = strip_tags($val['content']);
+    $trim_str = 'p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 30.0px Consolas; color: #a5b2b9}';
+    $article_top[$key]['content'] = trim($content,$trim_str);
+    $sql = "SELECT cat_name FROM " . $GLOBALS['ecs']->table('article_cat') . "WHERE cat_id='$val[cat_id]'";
+    $cat_name = $GLOBALS['db']->getOne($sql);
+    $article_top[$key]['cat_name'] = $cat_name;
+    $add_time = $article_top[$key]['add_time'];
+    $article_top[$key]['add_time'] = date('Y-m-d',$add_time);
+}
+print_r($article_top);
+
+$smarty->assign('article_url',$article_url);
+$smarty->assign('article_cat_nav',$article_cat_nav);
+$smarty->assign('article_left',$article_left);
+$smarty->assign('left_lunbo_photo',$left_lunbo_photo);
+$smarty->assign('article_top',$article_top);
+
+
+
+
 
 
 $smarty->display('index.html');exit;
