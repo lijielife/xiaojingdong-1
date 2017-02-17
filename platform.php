@@ -102,7 +102,6 @@ foreach($article_top as $key=>$val)
     $add_time = $article_top[$key]['add_time'];
     $article_top[$key]['add_time'] = date('Y-m-d',$add_time);
 }
-print_r($article_top);
 
 $smarty->assign('article_url',$article_url);
 $smarty->assign('article_cat_nav',$article_cat_nav);
