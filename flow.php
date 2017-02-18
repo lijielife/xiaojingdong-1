@@ -3818,11 +3818,18 @@ function flow_update_cart($arr)
                " WHERE rec_id='$key' AND session_id='" . SESS_ID . "'";
         $goods = $GLOBALS['db']->getRow($sql);
 
-        $sql = "SELECT g.goods_name, g.goods_number ".
+        $sql = "SELECT g.goods_name, g.goods_number ,g.min_buynum".
                 "FROM " .$GLOBALS['ecs']->table('goods'). " AS g, ".
                     $GLOBALS['ecs']->table('cart'). " AS c ".
                 "WHERE g.goods_id = c.goods_id AND c.rec_id = '$key'";
         $row = $GLOBALS['db']->getRow($sql);
+         /* 比较购买数量与最小起定数*/
+		if($row['min_buynum']>$val)
+		{
+			show_message(sprintf('对不起，您选择的商品%s,最小起订数%d件。',
+			$row['goods_name'],$row[' min_buynum']),'返回购物车','?step=cart');
+			exit;
+		}
 
         //查询：系统启用了库存，检查输入的商品数量是否有效
         if (intval($GLOBALS['_CFG']['use_storage']) > 0 && $goods['extension_code'] != 'package_buy')
@@ -3965,11 +3972,19 @@ function flow_cart_stock($arr)
         $goods = $GLOBALS['db']->getRow($sql);
 /* 代码修改_end  By  www.68ecshop.com  */
 
-        $sql = "SELECT g.goods_name, g.goods_number, c.product_id ".
+
+        $sql = "SELECT g.goods_name, g.goods_number,g.min_buynum, c.product_id ".
                 "FROM " .$GLOBALS['ecs']->table('goods'). " AS g, ".
                     $GLOBALS['ecs']->table('cart'). " AS c ".
                 "WHERE g.goods_id = c.goods_id AND c.rec_id = '$key'";
         $row = $GLOBALS['db']->getRow($sql);
+         /* 比较购买数量与最小起定数*/
+		if($row['min_buynum']>$val)
+		{
+			show_message(sprintf('对不起，您选择的商品%s,最小起订数%d件。',
+			$row['goods_name'],$row[' min_buynum']),'返回购物车','?step=cart');
+			exit;
+		}
 
         //系统启用了库存，检查输入的商品数量是否有效
         if (intval($GLOBALS['_CFG']['use_storage']) > 0 && $goods['extension_code'] != 'package_buy')

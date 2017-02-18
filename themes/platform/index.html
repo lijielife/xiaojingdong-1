@@ -129,7 +129,12 @@
       	  <div class="idx_play">
       	  	 <div class="front-banner">
 		            <ul>
-		                <li><a href="#" target="_blank">
+		            	<!--{foreach from=$flashs item=flash} -->
+		            	<li><a href="{$flash.url}" target="_blank">
+	                    <img src="{$flash.src}" alt="banner"/>
+	                </a></li>
+		            	<!--{/foreach}-->
+		                <!--<li><a href="#" target="_blank">
 		                    <img src="themes/platform/images/banner.jpg" alt="banner"/>
 		                </a></li>
 		                <li><a href="#" target="_blank">
@@ -137,7 +142,7 @@
 		                </a></li>
 		                <li><a href="#" target="_blank">
 		                    <img src="themes/platform/images/banner3.jpg" alt="banner"/>
-		                </a></li>
+		                </a></li>-->
 		            </ul>
 		    </div>
       	  </div>
@@ -147,10 +152,14 @@
       
       <!--广告 start-->
       <div class="idx_gg clearfix">
-      	 <a href="#" target="_blank"><img src="themes/platform/images/gg01.jpg" alt="广告1"></a>
+      	 <!--{foreach from=$ad_1 item=ad} -->
+      	 <a href="{$ad.url}" target="_blank"><img src="{$ad.image}" alt="{$ad.name}"></a>
+      	 <!--{/foreach}-->
+
+      	 <!--<a href="#" target="_blank"><img src="themes/platform/images/gg01.jpg" alt="广告1"></a>
       	 <a href="#" target="_blank"><img src="themes/platform/images/gg02.jpg" alt="广告2"></a>
       	 <a href="#" target="_blank"><img src="themes/platform/images/gg03.jpg" alt="广告3"></a>
-      	 <a href="#" target="_blank"><img src="themes/platform/images/gg04.jpg" alt="广告4"></a>
+      	 <a href="#" target="_blank"><img src="themes/platform/images/gg04.jpg" alt="广告4"></a>-->
       </div>
       <!--广告 end-->
       
@@ -158,16 +167,19 @@
       <div class="zf_tit09">
            <p><img src="themes/platform/images/icon01.png" alt="热门酒店">热门酒店</p>
            <span>覆盖全国上万家酒店，你想住的，我们都有</span>
-           <a href="#" class="com_tmore">MORE&gt;</a>
+           <a href="hotel.php" class="com_tmore">MORE&gt;</a>
            <div class="com_tit">
-           	   <a href="#" target="_blank">云南</a>
-           	   <a href="#" target="_blank">北京</a>
-           	   <a href="#" target="_blank">上海</a>
-           	   <a href="#" target="_blank">天津</a>
-           	   <a href="#" target="_blank">重庆</a>
-           	   <a href="#" target="_blank">哈尔滨</a>
-           	   <a href="#" target="_blank">大连</a>
-           	   <a href="#" target="_blank">青岛</a>
+           	   <!--{foreach from=$hotels_city item=city} -->
+           	   <a href="hotel.php?city={$city.cat_name}" target="_blank">{$city.cat_name}</a>
+           	   <!--{/foreach} -->
+           	   <!--<a href="hotel.php?city_en=kunming" target="_blank">昆明</a>
+           	   <a href="hotel.php?city_en=beijing" target="_blank">北京</a>
+           	   <a href="hotel.php?city_en=shanghai" target="_blank">上海</a>
+           	   <a href="hotel.php?city_en=tianjin" target="_blank">天津</a>
+           	   <a href="hotel.php?city_en=chongqing" target="_blank">重庆</a>
+           	   <a href="hotel.php?city_en=harbin" target="_blank">哈尔滨</a>
+           	   <a href="hotel.php?city_en=dalian" target="_blank">大连</a>
+           	   <a href="hotel.php?city_en=qingdao" target="_blank">青岛</a>-->
            </div>
        </div>
        <div class="jdmain clearfix">
@@ -297,13 +309,16 @@
        <div class="zf_tit09 zf_tit093">
            <p><img src="themes/platform/images/icon03.png" alt="热卖商品">热卖商品</p>
            <span>金币商城种类繁多，你想要的，我们应有尽有</span>
-           <a href="#" class="com_tmore">MORE&gt;</a>
+           <a href="index.php" class="com_tmore">MORE&gt;</a>
            <div class="com_tit">
-           	   <a href="#" target="_blank">旅游必备</a>
+           		<!--{foreach from=$good_categories item=categorie}-->
+           		<a href="{$categorie.url}" target="_blank">{$categorie.name}</a>
+           		<!--{/foreach}-->
+           	   <!--<a href="#" target="_blank">旅游必备</a>
            	   <a href="#" target="_blank">数码电器</a>
            	   <a href="#" target="_blank">潮流服饰</a>
            	   <a href="#" target="_blank">食品保健</a>
-           	   <a href="#" target="_blank">护肤化妆</a>
+           	   <a href="#" target="_blank">护肤化妆</a>-->
            </div>
        </div>
        <div class="htmain clearfix">

@@ -48,11 +48,43 @@ if(!(preg_match($smartuachar, $ua)) && ($ua == '' || preg_match($uachar, $ua))&&
 }
 $smarty->template_dir   = ROOT_PATH . 'themes/platform';
 
+//幻灯片广告
+$smarty->assign("flashs",get_flash_xml());
 
+//幻灯片下方广告
+$ad_1 = get_advlist('平台首页幻灯片正下方广告',4);
+foreach($ad_1 as $key=>$val)
+{
+    $url = explode('uri=', $val['url']);
+    $ad_1[$key]['url'] = $url[1];
+}
+$smarty->assign("ad_1",$ad_1);
+// print_r($ad_1);
+
+
+//酒店城市分类
+$sql = "SELECT cat_name FROM " . $GLOBALS['ecs']->table('hotels_type') . " WHERE type='search' LIMIT 8";
+$hotels_city = $GLOBALS['db']->getAll($sql);
+$smarty->assign('hotels_city',$hotels_city);
 
 //首页热门酒店推荐
 $recommend_hotels = get_recommend_hotels('index');
 $smarty->assign('recommend_hotels',    $recommend_hotels);    // 推荐酒店
+
+
+
+//商品分类
+$good_categories = get_categories_tree();
+$good_categories = array_values($good_categories);
+foreach($good_categories as $key => $val)
+{
+    if($key > 5)
+    {
+        unset($good_categories[$key]);
+    }
+}
+$smarty->assign('good_categories',$good_categories);
+
 
 
 //热门商品推荐
@@ -476,13 +508,13 @@ function index_get_links()
 function get_flash_xml()
 {
     $flashdb = array();
-    if (file_exists(ROOT_PATH . DATA_DIR . '/flash_data.xml'))
+    if (file_exists(ROOT_PATH . DATA_DIR . '/flash_data_p.xml'))
     {
 
         // 兼容v2.7.0及以前版本
-        if (!preg_match_all('/item_url="([^"]+)"\slink="([^"]+)"\stext="([^"]*)"\ssort="([^"]*)"/', file_get_contents(ROOT_PATH . DATA_DIR . '/flash_data.xml'), $t, PREG_SET_ORDER))
+        if (!preg_match_all('/item_url="([^"]+)"\slink="([^"]+)"\stext="([^"]*)"\ssort="([^"]*)"/', file_get_contents(ROOT_PATH . DATA_DIR . '/flash_data_p.xml'), $t, PREG_SET_ORDER))
         {
-            preg_match_all('/item_url="([^"]+)"\slink="([^"]+)"\stext="([^"]*)"/', file_get_contents(ROOT_PATH . DATA_DIR . '/flash_data.xml'), $t, PREG_SET_ORDER);
+            preg_match_all('/item_url="([^"]+)"\slink="([^"]+)"\stext="([^"]*)"/', file_get_contents(ROOT_PATH . DATA_DIR . '/flash_data_p.xml'), $t, PREG_SET_ORDER);
         }
 
         if (!empty($t))
@@ -752,4 +784,25 @@ function get_article_new( $id = array(0), $getwhat = 'art_id', $num = 0, $isrand
 /* 代码增加_start  By  www.68ecshop.com   */
 make_html();
 /* 代码增加_end  By  www.68ecshop.com   */
+
+
+
+
+
+//获取广告列表
+// function get_advlist( $position, $num )
+// {
+//     $arr = array( );
+//     $sql = "select ap.ad_width,ap.ad_height,ad.ad_id,ad.ad_name,ad.ad_code,ad.ad_link,ad.ad_id from ".$GLOBALS['ecs']->table( "ad_position" )." as ap left join ".$GLOBALS['ecs']->table( "ad" )." as ad on ad.position_id = ap.position_id where ap.position_name='".$position.( "' and UNIX_TIMESTAMP()>ad.start_time and UNIX_TIMESTAMP()<ad.end_time and ad.enabled=1 limit ".$num );
+//     $res = $GLOBALS['db']->getAll( $sql );
+//     foreach ( $res as $idx => $row )
+//     {
+//     $arr[$row['ad_id']]['name'] = $row['ad_name'];
+//     $arr[$row['ad_id']]['url'] = "affiche.php?ad_id=".$row['ad_id']."&uri=".$row['ad_link'];
+//     $arr[$row['ad_id']]['image'] = "data/afficheimg/".$row['ad_code'];
+//     $arr[$row['ad_id']]['content'] = "<a href='".$arr[$row['ad_id']]['url']."' target='_blank'><img src='data/afficheimg/".$row['ad_code']."' width='".$row['ad_width']."' height='".$row['ad_height']."' /></a>";
+//     $arr[$row['ad_id']]['ad_code'] = $row['ad_code'];
+//     }
+//     return $arr;
+// }
 ?>

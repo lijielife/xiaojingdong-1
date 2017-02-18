@@ -392,7 +392,7 @@
                       <div class="wrap-input"> 
                         <script language="javascript" type="text/javascript">  function goods_cut(){  var num_val=document.getElementById('number');  var new_num=num_val.value;  var Num = parseInt(new_num);  if(Num>1)Num=Num-1;  num_val.value=Num;  }  function goods_add(){  var num_val=document.getElementById('number');  var new_num=num_val.value;  var Num = parseInt(new_num);  Num=Num+1;  num_val.value=Num;  } </script> 
                         <a class="btn-reduce" href="javascript:;" onclick="goods_cut();changePrice();">减少数量</a>
-                        <input name="number" type="text" class="text"  id="number" value="1" onblur="changePrice();"/>
+                        <input name="number" type="text" class="text"  id="number" value="{$goods.min_buynum|default:"1"}" onblur="changePrice();"/>
                         <a class="btn-add" href="javascript:;" onclick="goods_add();changePrice();">增加数量</a> 
                         <!--
                         <!-- {if $cfg.show_goodsnumber} -->
@@ -629,6 +629,13 @@ catch (e) {}
 function changePrice(){
   var attr = getSelectedAttributes(document.forms['ECS_FORMBUY']);
   var qty = document.forms['ECS_FORMBUY'].elements['number'].value;
+  <!--{if $goods.min_buynum}-->
+    if(qty<{$goods.min_buynum})
+    {
+     alert('对不起，本商品最小起订数为：{$goods.min_buynum}');
+     qty={$goods.min_buynum}
+    }
+  <!--{/if}-->
   Ajax.call('goods.php', 'act=price&id=' + goodsId + '&attr=' + attr + '&number=' + qty, changePriceResponse, 'GET', 'JSON');
 }
 

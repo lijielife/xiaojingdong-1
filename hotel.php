@@ -47,6 +47,82 @@ if($is_c == 1)
     /* 修改 by www.68ecshop.com end */
 }
 
+//城市拼音
+$city_en = isset($_GET['city_en']) ? $_GET['city_en'] : ''; //城市拼音名
+if($city_en)
+{
+    $file = ROOT_PATH . 'data/hotel/city.json';
+    if(file_exists($file))
+    {
+        $data = file_get_contents($file);
+        $data = json_decode($data,true);
+        $cityId = '';
+        $cityCn = '';
+        foreach($data as $val)
+        {
+            foreach($val['cityList'] as $v)
+            {
+
+                if(strtolower($v['cityNameEn']) == strtolower($city_en))
+                {
+
+                    $cityId = $v['cityId'];
+                    $cityCn = $v['cityNameCn'];
+                    break;
+                }
+            }
+            if($cityId)
+            {
+                break;
+            }
+        }
+        $checkIn = date('Y-m-d',time());
+        $checkout = date('Y-m-d',strtotime('+1 day'));
+        $url = 'hotel_search.php?act=list&city='.$cityCn.'&cityid='.$cityId.'&checkin='.$checkIn.'&checkout='.$checkout.'&keywords=&kwtype=';
+        ecs_header("Location: $url\n");
+        exit;
+    }
+    
+}
+
+//城市中文
+$city = isset($_GET['city']) ? $_GET['city'] : ''; //城市中文名
+if($city)
+{
+    $file = ROOT_PATH . 'data/hotel/city.json';
+    if(file_exists($file))
+    {
+        $data = file_get_contents($file);
+        $data = json_decode($data,true);
+        $cityId = '';
+        //$cityCn = '';
+        foreach($data as $val)
+        {
+            foreach($val['cityList'] as $v)
+            {
+
+                if(stripos($v['cityNameCn'],$city) !== false)
+                {
+
+                    $cityId = $v['cityId'];
+                    //$cityCn = $v['cityNameCn'];
+                    break;
+                }
+            }
+            if($cityId)
+            {
+                break;
+            }
+        }
+        $checkIn = date('Y-m-d',time());
+        $checkout = date('Y-m-d',strtotime('+1 day'));
+        $url = 'hotel_search.php?act=list&city='.$city.'&cityid='.$cityId.'&checkin='.$checkIn.'&checkout='.$checkout.'&keywords=&kwtype=';
+        ecs_header("Location: $url\n");
+        exit;
+    }
+    
+}
+
 /*------------------------------------------------------ */
 //-- Shopex系统地址转换
 /*------------------------------------------------------ */
