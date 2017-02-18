@@ -3826,7 +3826,7 @@ function flow_update_cart($arr)
          /* 比较购买数量与最小起定数*/
 		if($row['min_buynum']>$val)
 		{
-			show_message(sprintf('对不起，您选择的商品%s,最小起订数%d件。',
+			show_message(sprintf("对不起，您选择的商品%s,最小起订数$row[min_buynum]件。",
 			$row['goods_name'],$row[' min_buynum']),'返回购物车','?step=cart');
 			exit;
 		}
@@ -3981,7 +3981,7 @@ function flow_cart_stock($arr)
          /* 比较购买数量与最小起定数*/
 		if($row['min_buynum']>$val)
 		{
-			show_message(sprintf('对不起，您选择的商品%s,最小起订数%d件。',
+			show_message(sprintf("对不起，您选择的商品%s,最小起订数$row[min_buynum]件。",
 			$row['goods_name'],$row[' min_buynum']),'返回购物车','?step=cart');
 			exit;
 		}

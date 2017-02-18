@@ -97,9 +97,9 @@
                <div id="goods-price">
                  <div class="mar-l">
                       <!--{if $goods.is_promote and $goods.gmt_end_time } 促销--> 
-                      <span class="price">促销价</span><strong class="p-price" id="ECS_GOODS_AMOUNT"></strong> 
+                      <span class="price">促销价</span><strong class="p-price" id="ECS_GOODS_AMOUNT">￥{$goods.promote_price_org}</strong> 
                       <!--{else}--> 
-                      <span class="price">售价</span><strong class="p-price" id="ECS_GOODS_AMOUNT"></strong> 
+                      <span class="price">售价</span><strong class="p-price" id="ECS_GOODS_AMOUNT">{$goods.shop_price_formated}</strong> 
                       <!--{/if}--> 
 
                       <span class="depreciate"><a href="javascript:showDiv({$goods.goods_id});">降价通知</a></span> 
@@ -113,9 +113,15 @@
                     <!-- {/if} --> 
                     <!--{if $goods.is_promote and $goods.gmt_end_time } 促销-->
                     <div class="market-prices-spe">
-                    	{insert_scripts files='lefttime.js'}<i></i>
+                    		{insert_scripts files='lefttime.js'}<i></i>
                         <font class="f4" id="leftTime">{$lang.please_waiting}</font> 
                     </div>
+                    <script type="application/javascript">
+	                    $(function(){
+							var now_time = {$now_time};
+							onload_leftTime(now_time);
+						})
+                    </script>
                     <!--{/if}--> 
                     <!-- {if $rank_prices} 会员等级价格-->
                     <div class="rank-prices" style="display: none;">
@@ -390,10 +396,39 @@
                     <div class="dt">数量</div>
                     <div class="dd">
                       <div class="wrap-input"> 
-                        <script language="javascript" type="text/javascript">  function goods_cut(){  var num_val=document.getElementById('number');  var new_num=num_val.value;  var Num = parseInt(new_num);  if(Num>1)Num=Num-1;  num_val.value=Num;  }  function goods_add(){  var num_val=document.getElementById('number');  var new_num=num_val.value;  var Num = parseInt(new_num);  Num=Num+1;  num_val.value=Num;  } </script> 
+                        <script language="javascript" type="text/javascript">  
+                        		function goods_cut(){  
+                        			var num_val=document.getElementById('number'); 
+                        			<!--{if $goods.min_buynum}-->
+                        				var qty = document.forms['ECS_FORMBUY'].elements['number'].value;
+	                        			if(qty<={$goods.min_buynum}){
+								     	alert('对不起，本商品最小起订数为：{$goods.min_buynum}');
+								     	return false;
+								    }
+	                        			else{
+	                        				var new_num=num_val.value;  
+		                        			var Num = parseInt(new_num);  
+		                        			if(Num>1)Num=Num-1;  num_val.value=Num; 
+	                        			}
+	                        		<!--{else} -->
+	                        			var new_num=num_val.value;  
+	                        			var Num = parseInt(new_num);  
+	                        			if(Num>1)Num=Num-1;  num_val.value=Num; 
+                        			<!--{/if}-->
+                        			
+                        			 
+                        		}  
+                        		function goods_add(){  
+                        			var num_val=document.getElementById('number');  
+                        			var new_num=num_val.value;  
+                        			var Num = parseInt(new_num);  
+                        			Num=Num+1;  
+                        			num_val.value=Num;  
+                        		} 
+                        </script>
                         <a class="btn-reduce" href="javascript:;" onclick="goods_cut();changePrice();">减少数量</a>
-                        <input name="number" type="text" class="text"  id="number" value="{$goods.min_buynum|default:"1"}" onblur="changePrice();"/>
-                        <a class="btn-add" href="javascript:;" onclick="goods_add();changePrice();">增加数量</a> 
+                        	<input name="number" type="text" class="text"  id="number" 	value="1" onblur="changePrice();"/>
+                        <a class="btn-add" id="btn-add" href="javascript:;" onclick="goods_add();changePrice();">增加数量</a> 
                         <!--
                         <!-- {if $cfg.show_goodsnumber} -->
                           （库存<font id="shows_number">{$goods.goods_number} </font>）
@@ -427,6 +462,14 @@
                     </div>
                   </li>
                   <!--{/if}-->
+                   <!--{if $goods.min_buynum}-->
+                  <li class="padd">
+                    <div>
+                      <div class="dt">最低购买数量</div>
+                      <div class="dd">{$goods.min_buynum}</div>
+                    </div>
+                  </li>
+                  <!--{/if}-->
                 </ul>
                <div class="buyNub-buy-wrap">
                 	<div id="choose-btns1" class="buyNub-buy" style="display:none"> 
@@ -434,7 +477,7 @@
                   	</div>
                   	<div id="choose-btns" class="buyNub-buy"> 
                         <!--{if $goods_n>0}--> 
-                        <a href="javascript:addToCart({$goods.goods_id},0,1)" name="bi_addToCart" class="u-buy1">立即购买</a> 
+                        <a href="javascript:buy_now({$goods.goods_id})" name="bi_addToCart" class="u-buy1">立即购买</a> 
                         <br>
                         <a href="javascript:addToexchange({$goods.goods_id})" name="bi_addToCart" class="u-buy1">金币兑换</a> 
                         <a href="javascript:addToCart({$goods.goods_id})" name="bi_addToCart" class="u-buy2">加入购物车</a> 
@@ -620,8 +663,12 @@ var select_spe = "{$lang.select_spe}";
 changePriceAll();
 fixpng();
 ShowMyComments({$goods.goods_id},0,1);
-try { onload_leftTime(now_time); }
-catch (e) {}
+
+//onload_leftTime(onload_leftTime);
+//try { onload_leftTime(now_time); }
+//catch (e) {
+////	console.log('e);
+//}
 
 /**
  * 点选可选属性或改变数量时修改商品价格的函数
@@ -633,10 +680,17 @@ function changePrice(){
     if(qty<{$goods.min_buynum})
     {
      alert('对不起，本商品最小起订数为：{$goods.min_buynum}');
-     qty={$goods.min_buynum}
+     //var min_buynum = {$goods.min_buynum};
+     //$('#number').val(min_buynum);
     }
+    else
+    {
+    		Ajax.call('goods.php', 'act=price&id=' + goodsId + '&attr=' + attr + '&number=' + qty, changePriceResponse, 'GET', 'JSON');
+    }
+  <!--{else} -->
+  		Ajax.call('goods.php', 'act=price&id=' + goodsId + '&attr=' + attr + '&number=' + qty, changePriceResponse, 'GET', 'JSON');
   <!--{/if}-->
-  Ajax.call('goods.php', 'act=price&id=' + goodsId + '&attr=' + attr + '&number=' + qty, changePriceResponse, 'GET', 'JSON');
+  
 }
 
 /**
@@ -846,5 +900,25 @@ $(function(){
 		$('.pop-login,.pop-mask').show();	
 	})
 }){/if}
+
+
+function buy_now(good_id){
+	var num = $('#number').val();
+	console.log(num);
+	//最小购买次数判断,add by ry
+	<!--{if $goods.min_buynum}-->
+	
+    if(num<{$goods.min_buynum}){
+    		alert('对不起，本商品最小起订数为：{$goods.min_buynum}');
+    		return ;
+    }
+    else{
+    		addToCart(good_id,0,1);
+    }
+    <!-- {else} -->
+    		addToCart(good_id,0,1);
+  	<!--{/if}-->
+	
+} 
 </script>
 </html>

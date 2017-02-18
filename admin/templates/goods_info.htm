@@ -427,7 +427,7 @@
 				</tr>
 
 				
-				<tr>
+				<!--<tr>
 					<td class="label">
 						<a href="javascript:showNotice('rankIntegral');" title="{$lang.form_notice}">
 							<img src="images/notice.gif" width="16" height="16" border="0" alt="{$lang.form_notice}">
@@ -440,7 +440,7 @@
 						<span class="notice-span" {if $help_open}style="display:block" {else} style="display:none" {/if} id="rankIntegral">{$lang.notice_rank_integral}</span>
 					</td>
 				</tr>
-				<!-- <tr>
+				<tr>
 					<td class="label">
 						<a href="javascript:showNotice('noticPoints');" title="{$lang.form_notice}">
 							<img src="images/notice.gif" width="16" height="16" border="0" alt="{$lang.form_notice}">
@@ -453,7 +453,7 @@
 						<span class="notice-span" {if $help_open}style="display:block" {else} style="display:none" {/if} id="noticPoints">{$lang.notice_integral}</span>
 					</td>
 				</tr> -->
-				<tr>
+				<!--<tr>
 					<td class="label">
 						<label for="is_promote">
 							<input type="checkbox" id="is_promote" name="is_promote" value="1" {if $goods.is_promote}checked="checked" {/if} onclick="handlePromote(this.checked);" />
@@ -463,10 +463,10 @@
 					<td id="promote_3">
 						<input type="text" id="promote_1" name="promote_price" value="{$goods.promote_price}" size="20" />
 					</td>
-				</tr>
+				</tr>-->
 
-				<tr id="promote_4">
-					<td class="label" id="promote_5">{$lang.lab_promote_date}</td>
+				<!--<tr id="promote_4">
+					<td class="label" id="promote_5">{$lang.lab_promote_date}</td>-->
                     <!-- 代码修改 By  www.68ecshop.com 促销商品时间精确到时分 Start -->
                     <!--
                              <td id="promote_6">
@@ -478,15 +478,15 @@
                              </td>
                          </tr>
                     -->
-                    <td id="promote_6">
+                    <!--<td id="promote_6">
                         <input name="promote_start_date" type="text" id="promote_start_date" size="12" value='{$goods.promote_start_date}' readonly="readonly" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})" />
                         -
                         <input name="promote_end_date" type="text" id="promote_end_date" size="12" value='{$goods.promote_end_date}' readonly="readonly" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})" />
-                    </td>
+                    </td>-->
                     <!-- 代码修改 By  www.68ecshop.com 促销商品时间精确到时分 End -->
 
 
-				<tr>
+				<!--<tr>
 					<td class="label">
 						<label for="is_buy">
 							<input type="checkbox" id="is_buy" name="is_buy" value="1" {if $goods.is_buy}checked="checked" {/if} onclick="handleBuy(this.checked);" />
@@ -508,7 +508,7 @@
 						<input name="buymax_end_date" type="text" id="buymax_end_date" size="12" value='{$goods.buymax_end_date}' readonly="readonly" />
 						<input name="selbtn4" type="button" id="selbtn4" onclick="return showCalendar('buymax_end_date', '%Y-%m-%d', false, false, 'selbtn4');" value="{$lang.btn_select}" class="button" {if $goods.is_buy eq 0} disabled="disabled" {/if}/>
 					</td>
-				</tr>
+				</tr>-->
 
 				<!-- <tr>
 					<td class="label" id="promote_5">{$lang.lab_cost_price}</td>
