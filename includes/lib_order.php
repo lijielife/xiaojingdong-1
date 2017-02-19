@@ -1337,7 +1337,7 @@ function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0)
 
     /* 取得商品信息 */
     $sql = "SELECT g.goods_name, g.goods_sn, g.is_on_sale, g.is_real, ".
-                "g.market_price, g.cost_price, g.shop_price AS org_price, g.promote_price, g.promote_start_date, ".
+                "g.market_price, g.cost_price, g.cb_price,g.shop_price AS org_price, g.promote_price, g.promote_start_date, ".
                 "g.promote_end_date, g.goods_weight, g.integral, g.extension_code, ".
                 "g.goods_number, g.is_alone_sale,g.exclusive, g.is_shipping,".
                 "IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price ".
@@ -1442,13 +1442,14 @@ function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0)
         'market_price'  => $goods['market_price'],
         'goods_attr'    => addslashes($goods_attr),
         'goods_attr_id' => $goods_attr_id,
-	'cost_price'	=> $goods['cost_price'],//代码增加--cb--推荐分成
+        'cost_price'	=> $goods['cost_price'],//代码增加--cb--推荐分成
+        'cb_price'      => $goods['cb_price'], // 成本价格
         'is_real'       => $goods['is_real'],
         'extension_code'=> $goods['extension_code'],
         'is_gift'       => 0,
 		'exclusive'     => $goods['exclusive'],//手机专享价格  app  jx
         'is_shipping'   => $goods['is_shipping'],
-	'add_time'   => gmtime(),   //代码增加   By  www.68ecshop.com
+        'add_time'   => gmtime(),   //代码增加   By  www.68ecshop.com
         'rec_type'      => CART_GENERAL_GOODS
     );
     //初始化为普通商品

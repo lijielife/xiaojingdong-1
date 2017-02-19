@@ -118,6 +118,9 @@ $_LANG['order_amount_sort'] = '按订单数量排序';
 $_LANG['buy_sum_sort'] = '按购物金额排序';
 $_LANG['download_amount_sort'] = '下载购物金额报表';
 
+/* 成本统计 */
+$_LANG['down_cost'] = '下载成本统计';
+
 /* 销售名细 */
 $_LANG['goods_name'] = '商品名称';
 $_LANG['goods_sn'] = '货号';

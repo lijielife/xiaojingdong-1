@@ -590,9 +590,11 @@ if ($_REQUEST['step'] == 'add_to_cart')
 	$time1 = gmtime();
 	if ($time1 >= $rows['promote_start_date'] && $time1 <= $rows['promote_end_date'] && $rows['promote_price'] > 0)
 	{
-	$result['shop_price'] = price_format($rows['promote_price']);
-	}else{
-	$result['shop_price'] = price_format($rows['shop_price']);
+		$result['shop_price'] = price_format($rows['promote_price']);
+	}
+	else
+	{
+		$result['shop_price'] = price_format($rows['shop_price']);
 	}
 	$result['goods_name'] = $rows['goods_name'];
 	$result['goods_thumb'] = $rows['goods_thumb'];
@@ -2423,16 +2425,16 @@ elseif ($_REQUEST['step'] == 'done')
 		/*检查配送方式是否选择*/
             // 如果是虚拟商品不需要选择配送方式
         if( $_SESSION['extension_code'] != 'virtual_good'){
-	    if(!isset($_POST['pay_ship'][$ckey])){
-	    	show_message('请选择各个商家的配送方式！');
-	    }else{
-	    	$shipid = $db->getOne("select shipping_id from ".$ecs->table('shipping')." where shipping_id=".$_POST['pay_ship'][$ckey]." and supplier_id=".$ckey);
-	    	if($shipid){
-	    		$order['shipping_id'] = intval($shipid);
-	    	}else{
-	    		show_message('配送方式存在不可用，请重新选择！');
-	    	}
-	    }
+		    if(!isset($_POST['pay_ship'][$ckey])){
+		    	show_message('请选择各个商家的配送方式！');
+		    }else{
+		    	$shipid = $db->getOne("select shipping_id from ".$ecs->table('shipping')." where shipping_id=".$_POST['pay_ship'][$ckey]." and supplier_id=".$ckey);
+		    	if($shipid){
+		    		$order['shipping_id'] = intval($shipid);
+		    	}else{
+		    		show_message('配送方式存在不可用，请重新选择！');
+		    	}
+		    }
         }
 	
 	    /* 检查积分余额是否合法 */
@@ -2777,9 +2779,9 @@ elseif ($_REQUEST['step'] == 'done')
 	    /* 插入订单商品 下面这个SQL有修改 by www.ecshop68.com 注意末尾那个字段 */
 	    /* 代码增加_start  By www.68ecshop.com */
 	    $sql = "INSERT INTO " . $ecs->table('order_goods') . "( " .
-	                "order_id, goods_id, goods_name, goods_sn, product_id, goods_number, market_price, cost_price, ".
+	                "order_id, goods_id, goods_name, goods_sn, product_id, goods_number, market_price, cost_price, cb_price,".
 	                "goods_price, goods_attr, is_real, extension_code, parent_id, is_gift, goods_attr_id, package_attr_id) ".
-	            " SELECT '$new_order_id', goods_id, goods_name, goods_sn, product_id, goods_number, market_price, cost_price, ".
+	            " SELECT '$new_order_id', goods_id, goods_name, goods_sn, product_id, goods_number, market_price, cost_price,cb_price, ".
 	                "goods_price, goods_attr, is_real, extension_code, parent_id, is_gift, goods_attr_id, package_attr_id ".
 	            " FROM " .$ecs->table('cart') .
 	            " WHERE $sql_where AND rec_type = '$flow_type' $id_ext_new ";

@@ -279,6 +279,7 @@ $_LANG['10_back_order'] = '退款/退货及维修';
 $_LANG['11_supplier_back_order'] = '入驻商退换货列表';
 // ecshop add start 2013-08-06
 $_LANG['12_order_excel'] = '订单导出';
+$_LANG['13_cost_stats'] = '成本统计';
 // ecshop add end 2013-08-06
 /* 增值税发票_添加_START_www.68ecshop.com */
 $_LANG['12_invoice_list'] = '发票列表';
@@ -299,6 +300,7 @@ $_LANG['searchengine_stats'] = '搜索引擎';
 $_LANG['report_order'] = '订单统计';
 $_LANG['report_sell'] = '销售概况';
 $_LANG['sell_stats'] = '销售排行';
+$_LANG['cost_stats'] = '成本统计';
 $_LANG['sale_list'] = '销售明细';
 $_LANG['report_guest'] = '客户统计';
 $_LANG['report_users'] = '会员排行';

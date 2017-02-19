@@ -109,6 +109,7 @@ $modules['06_stats']['report_guest'] = 'guest_stats.php?act=list'; // 客户统�
 //$modules['06_stats']['report_order'] = 'order_stats.php?act=list';
 //$modules['06_stats']['report_sell'] = 'sale_general.php?act=list';
 $modules['06_stats']['sale_list'] = 'sale_list.php?act=list';
+$modules['06_stats']['cost_stats'] = 'cost_stats.php?act=list';
 //$modules['06_stats']['sell_stats'] = 'sale_order.php?act=goods_num';
 //$modules['06_stats']['report_users'] = 'users_order.php?act=order_num';
 //$modules['06_stats']['visit_buy_per'] = 'visit_sold.php?act=list';

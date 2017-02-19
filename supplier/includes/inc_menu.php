@@ -37,6 +37,7 @@ $modules['04_order']['09_delivery_order']           = 'order.php?act=delivery_li
 //$modules['04_order']['10_back_order']               = 'order.php?act=back_list';
 $modules['04_order']['10_back_order']               = 'back.php?act=back_list';  //代码修改 By www.68ecshop.com
 $modules['04_order']['12_order_excel']              = 'excel.php?act=order_excel';
+$modules['04_order']['13_cost_stats']               = 'cost_stats.php?act=list';
 /* 代码增加 by www.68ecshop.com start */
 // $modules['04_order']['12_invoice_list']                 = 'order.php?act=invoice_list';
 
