@@ -207,8 +207,21 @@ function action_signin ()
 		
 		// 清除购物车中过期的数据
 		clear_cart();
+
+		//查询供应商性质，商城还是酒店
+		$sql = "SELECT supplier_type FROM " . $ecs->table('supplier') . " WHERE supplier_id='$_SESSION[supplier_id]'";
+		$supplier_type = $db->getOne($sql);
+		if($supplier_type == 2)
+		{
+			ecs_header("Location: ../supplier_hotel/index.php\n");
+		}
+		else
+		{
+			ecs_header("Location: ./index.php\n");
+		}
+
 		
-		ecs_header("Location: ./index.php\n");
+		
 		
 		exit();
 	}

@@ -48,25 +48,38 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+	        	<tr>
+	            <th><i>*</i>店铺类型：</th>
+	            <td>
+				    <select name="supplier_type" size=1 id="supplier_type">
+		                <option value="0">请选择</option>
+		                <option value="1">商城</option>
+		                <option value="2">酒店</option>
+	              </select>
+	              <span></span>
+	              
+	            </td>
+	          </tr>
+	          <tr>
             <th class="w150"><i>*</i>店铺名称：</th>
             <td><input name="supplier_name" type="text" class="w200" value="{$supplier.supplier_name}">
               <span></span>
               <p class="emphasis">店铺名称注册后不可修改，请认真填写。</p></td>
           </tr>
-          <tr>
+          <tr id="rank">
             <th><i>*</i>店铺等级：</th>
             <td>
-	    <select name="rank_id" size=1>
-                <option value="0">请选择</option>
-		 {foreach from=$supplier_rank item=rank}
-                <option value="{$rank.rank_id}" {if $supplier.rank_id eq $rank.rank_id}selected{/if}>{$rank.rank_name}</option>
-		  {/foreach}
+			    <select name="rank_id" size=1>
+	                <option value="0">请选择</option>
+					{foreach from=$supplier_rank item=rank}
+		                <option value="{$rank.rank_id}" {if $supplier.rank_id eq $rank.rank_id}selected{/if}>{$rank.rank_name}</option>
+					{/foreach}
               </select>
               <span></span>
-              <div id="grade_explain" class="grade_explain"></div></td>
+              <div id="grade_explain" class="grade_explain"></div>
+            </td>
           </tr>
-          <tr>
+          <tr id="cat">
             <th><i>*</i>店铺分类：</th>
             <td> <select name="type_id" size=1>
                 <option value="0">请选择</option>
@@ -120,4 +133,17 @@ function supplier_Reg()
 		return true;
 	}
 }
+
+$('#supplier_type').change(function(){
+	var stype = $(this).find('option:selected').val();
+	console.log(stype);
+	if(stype == 2){
+		$('#rank').hide();
+		$('#cat').hide();
+	}
+	else{
+		$('#rank').show();
+		$('#cat').show();
+	}
+})
 </script>

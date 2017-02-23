@@ -284,9 +284,14 @@ if(isset($_POST['do']) && $_POST['do']){
 		 }
 		
 	}elseif($shownum == 3){
+		$save['supplier_type'] = isset($_POST['supplier_type']) ? trim(addslashes(htmlspecialchars($_POST['supplier_type']))) : ''; 
 		$save['supplier_name'] = isset($_POST['supplier_name']) ? trim(addslashes(htmlspecialchars($_POST['supplier_name']))) : ''; 
-		$save['rank_id'] = isset($_POST['rank_id']) ? intval($_POST['rank_id']) : 0; 
-		$save['type_id'] = isset($_POST['type_id']) ? intval($_POST['type_id']) : 0; 
+		if($save['supplier_type'] != 2)
+		{
+			$save['rank_id'] = isset($_POST['rank_id']) ? intval($_POST['rank_id']) : 0; 
+			$save['type_id'] = isset($_POST['type_id']) ? intval($_POST['type_id']) : 0;
+		}
+		 
 		
 		$save['applynum'] = 3;//店铺信息设置
 		

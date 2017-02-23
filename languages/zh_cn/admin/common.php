@@ -509,6 +509,7 @@ $_LANG['01_goods_list_pass1'] = '审核通过商品';
 $_LANG['01_goods_list_pass2'] = '未审核商品';
 $_LANG['01_goods_list_pass3'] = '审核未通过商品';
 
+
 $_LANG['02_rebate_manage'] = '佣金管理';
 $_LANG['03_rebate_nopay'] = '平台交易统计';//本期待结';
 $_LANG['03_1_rebate_nopay'] = '平台交易统计';//本期待结';
@@ -523,6 +524,21 @@ $_LANG['05_header'] = '店铺头部自定义';
 $_LANG['06_templates'] = '店铺模板选择';
 $_LANG['07_street'] = '店铺街信息设置';
 $_LANG['08_shipping_list'] = '配送方式';
+
+$_LANG['06_hotel_manage'] = '酒店系统设置';
+$_LANG['09_base'] = '酒店基本设置';
+$_LANG['10_pic'] = '酒店图片';
+$_LANG['11_attr'] = '酒店周边';
+
+// $_LANG['02_menu'] = '店铺导航栏';
+// $_LANG['03_guanggao'] = '店铺主广告';
+// $_LANG['04_article'] = '店铺文章';
+// $_LANG['05_header'] = '店铺头部自定义';
+// $_LANG['06_templates'] = '店铺模板选择';
+// $_LANG['07_street'] = '店铺街信息设置';
+// $_LANG['08_shipping_list'] = '配送方式';
+
+
 
 $_LANG['06_pickup_point_manage'] = '自提点管理';
 

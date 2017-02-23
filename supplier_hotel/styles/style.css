@@ -1,0 +1,178 @@
+﻿	@charset "utf-8";
+/* CSS Document */
+
+/* =========================全局样式.开始========================= */
+a{ color:#686f7f; text-decoration:none; }
+/*a:link, a:visited{ color:#2A72C5; text-decoration:none; }
+a:active, a:hover{ color:#0065D9; text-decoration:underline; }*/
+/* =========================全局样式.结束========================= */
+	/* CSS Document */
+	*{ padding:0; margin:0; font-family:"Microsoft YaHei"; }
+	html, body, div, span, applet, object, iframe,
+	h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+	a, abbr, acronym, address, big, cite, code,
+	del, dfn, em, img, ins, kbd, q, s, samp,
+	small, strike, strong, sub, sup, tt, var,
+	b, u, i, center,
+	dl, dt, dd, ol, ul, li,
+	fieldset, form, label, legend,
+	time, mark, audio, video{ margin:0; padding:0; border:0; font-size:100%; text-decoration:none; }
+	html { line-height:1; min-height: 100%;position: relative;}
+	body{height: 100%;}
+	q, blockquote { quotes:none; }
+	q:before, q:after, blockquote:before, blockquote:after { content:""; content:none; }
+	a img { border:none; }
+	input:focus{outline:none;}
+	ol, ul { list-style:none; }
+	table { border-collapse:collapse; border-spacing:0; }
+	.table-container{ margin:0; padding:0; width:100%; overflow-x:auto; overflow-y:hidden; }
+	.ime-disabled{ ime-mode:disabled; }
+	.clear{ clear:both; font-size:0px; height:0px; overflow:hidden; }
+	.line5{ clear:both; font-size:0px; height:5px; overflow:hidden; }
+	.line10{ clear:both; font-size:0px; height:10px; overflow:hidden; }
+	.line15{ clear:both ;font-size:0px; height:15px; overflow:hidden; }
+	.line20{ clear:both; font-size:0px; height:20px; overflow:hidden; }
+	.line30{ clear:both; font-size:0px; height:30px; overflow:hidden; }
+	.left{ float:left; }
+	.right{ float:right; }
+	.loginbody{ background:url(../img/pc-bj.jpg) no-repeat ;background-position: center center; background-size:cover; text-align:center; }
+	.indexbody{ width:100%; min-height:100%; overflow:hidden; }
+	.mainbody{ padding:10px 30px 40px;/* margin:10px 15px;*/ position: absolute;box-sizing: border-box;width: 100%;   min-height: 100%; min-width:285px;}
+	.admin_foot{margin-top:60px;width: 100%;text-align: center;line-height: 36px;border-top: 1px solid #e0dfdf;font-size: 12px;color: #999;}
+	.admin_foot span{display: inline-block; margin: 0 20px;}
+
+
+	/* =========================登录页样式.开始======================= */
+.top_logo{position: absolute;font-family: simhei; left: 30px;top: 20px; background: url(../img/top_logo.png) no-repeat;width: 135px;height: 36px;}
+.top_phone{background: url(../img/phone.png) no-repeat;padding-left: 30px; width: 150px;line-height: 20px; height: 20px;font-family: Arial;color: #fff;font-size: 24px; position: absolute;right: 30px;top: 20px;}
+.login-wrap{ position:absolute; top:50%; left:50%; margin:-177px auto auto -163px; width:326px; text-align:center; }
+	.login-logo{ margin:0 auto 10px; text-indent:-9999em;position: relative; width:630px; height:90px; background:url(../img/bt_03.png) no-repeat; }
+	.gy_logo{background:url(../img/bt_032.png) no-repeat;}
+	.login-form .col{ position:relative; padding:10px 0; }
+	.login-form label{position: absolute;left: 20px;top: 20px; width: 22px;padding-right: 18px;border-right: 1px solid #fff;}
+	.login-form label img{width: 22px;}
+	.login-form label img.psd_icon{width: 20px;}
+	.login-form .col .icon{ position:absolute; display:block; top:24px; left:10px; width:14px; height:14px;  cursor:pointer; }
+	.login-form .col .icon.user{ background-position:0 -140px; }
+	.login-form .col .icon.pwd{ background-position:-28px -140px; }
+	.login-form .col .login-input{text-indent: 70px; display:block; padding:7px 10px 7px 74px; background-color: rgba(255,255,255,0.2); border:0; border-radius:3px; font-size:14px;  line-height:30px; height:32px; width:242px; color:#fff; }
+	.login-form .col .login-btn{ display:block; padding:5px 0; font-size:14px; color:#fff; width:100%; line-height:28px; height:48px; letter-spacing:.5em; cursor:pointer;background-color: #ea5404;  border: 1px solid #ea5404; border-radius: 25px; }
+	.login-form .col .login-btn:hover {
+		background: #e05004;
+		border:1px solid #e05004;
+	}
+	::-webkit-input-placeholder{color: #fff;
+		text-overflow: ellipsis;}
+	.login-form p{color: #fff;font-size: 12px;}
+	.login-form p i{
+	display: inline-block;
+    margin-right: 5px;
+    margin-top: -1px;
+    width: 14px;
+    height: 14px;
+    text-indent: -9999px;
+    vertical-align: middle;
+    zoom: 1;}
+.login-tips{ display:block;width: 350px;position: relative;left: -15px; margin:40px auto 0; height:14px; vertical-align:middle;}
+	.login-tips p{ display:inline-block;height:14px; line-height:14px; font-size:12px; font-weight:normal; color:#83b7ce; vertical-align:middle; zoom:1; *display:inline; }
+.copy-right{ display:block; position:absolute; right:0; bottom:10px; left:0; text-align:center; border-top: 1px solid #ddd;}
+	.copy-right p{ font-size:12px; color:#fff; line-height:1.8em; }
+.copy-right p.copy_border{height: 1px;margin-bottom: 5px; }
+.innerBox {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	z-index: 10;
+	font-size: 12px;
+}
+
+.innerBox .news {
+	margin: 0 auto;
+	width: 350px;
+}
+
+.innerBox .news span {
+	float: left;
+	margin: 1px 15px 0px 0px;
+	color: #ea5504;
+	font-weight: bold;
+}
+.innerBox .news ul {
+	float: left;
+	text-align: left;
+}
+.innerBox .news ul li{width: 200px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;color: #fff;}
+.innerBox .news ul li a {
+	color: #fff;
+	overflow: hidden;text-overflow: ellipsis;white-space: nowrap;
+}
+.innerBox .news ul li a:hover{text-decoration:underline}
+.nlist-1 .innerBox .news ul li a {
+	color: #3497db;
+}
+.nlist-1 .innerBox{}
+.nlist-1 .innerBox .news{width: 100%;}
+.nlist-1 label{float: left;font-family: simsun; line-height: 22px; width: 70px;margin-left: 20px;margin-top: 7px;margin-right: 10px; padding-left: 18px; height: 22px;border-right: 1px solid #dddada;font-weight: bold;}
+.nlist-1 .innerBox .news ul li{float: left;width: 900px;}
+.nlist-1 .innerBox .news ul{margin-left: 10px;}
+.innerBox .news a.more {
+	float: right;
+	color: #ea5504;
+	text-decoration: none;
+	-webkit-transition: color .3s ease-in-out 0s;
+	-moz-transition: color .3s ease-in-out 0s;
+	-ms-transition: color .3s ease-in-out 0s;
+	-o-transition: color .3s ease-in-out 0s;
+	transition: color .3s ease-in-out 0s;
+}
+.innerBox .news a.more:hover {
+	text-decoration:underline;
+	-webkit-transition: color .3s ease-in-out 0s;
+	-moz-transition: color .3s ease-in-out 0s;
+	-ms-transition: color .3s ease-in-out 0s;
+	-o-transition: color .3s ease-in-out 0s;
+	transition: color .3s ease-in-out 0s;
+}
+
+/* ==========================登录页样式.结束======================== */
+
+/* =========================管理首页样式.开始======================= */
+
+/*订单状态样式*/
+.order-flow{ margin:0 auto; padding:0; font-size:12px; font-weight:normal; padding-bottom:4px; }
+    .order-flow-left, .order-flow-arrive, .order-flow-wait, .order-flow-right-arrive, .order-flow-right-wait{ margin:0; padding:0; background: url(order_speed.gif) no-repeat scroll 0 0; float:left; font-family:Arial; line-height:16px; text-align:center; width:140px; }
+    .order-flow div span{ margin:0; padding:0; background:none repeat scroll 0 0 #fff; display:block;}
+    .order-flow div span p{ margin:0; padding:0; }
+    .order-flow .name { margin:0; padding:0 0 4px 0; }
+    .order-flow-arrive { background-position: 0 -40px; }
+    .order-flow-wait{ background-position:0 -20px; color:#878787; }
+    .order-flow-right-arrive{ background-position: 0 -80px; }
+    .order-flow-right-wait{ background-position:0 -60px; color:#878787; }
+    .order-flow-input{ display:block; margin:2px auto; padding:0; width:18px; height:18px; text-indent:-999px; cursor:inherit; overflow:hidden;}
+
+/*按钮样式*/
+.td-input{ display:inline-block; padding:0 3px; border:1px solid #d7d7d7; width:92%; height:20px; line-height:18px; color:#666; font-size:12px; background:#fff; vertical-align:middle; }
+.btn{ background:#16a0d3; border:none; color:#fff; cursor:pointer; display:inline-block; font-family:"Microsoft Yahei"; font-size:12px; height:32px; line-height:32px; margin:0 1px 0 0; padding:0 20px; }
+	.btn:hover{ background:#117ea6; }
+	.btn.green{ background:#52A152; }
+	.btn.green:hover{ background:#328032; }
+	.btn.yellow{ background:#FF9C30;}
+	.btn.yellow:hover{ background:#c87316; }
+	.btn.violet{ background:#993333 ; }
+	.btn.violet:hover{ background:#990033; }
+.icon-btn{ display:inline-block; margin:0; padding:4px 10px 4px 8px; line-height:20px; height:20px; border:solid 1px #e1e1e1; color:#333; font-size:12px; text-decoration:none; cursor:pointer; white-space:nowrap; text-overflow:ellipsis; }
+	.icon-btn:hover{ color:#2A72C5; }
+	.icon-btn span{ display:inline-block; vertical-align:middle; }
+	.icon-btn i{ display:inline-block; margin-right:3px; width:14px; height:14px; text-indent:-9999em; background:url(skin_icons.png) no-repeat; vertical-align:middle; *text-indent:0; }
+	.icon-btn.add i{ background-position:0 -28px; }
+.img-btn{ display:inline-block; margin:0px 2px; width:14px; height:14px; background:url(skin_icons.png) no-repeat; vertical-align:middle; white-space:nowrap; word-break:break-all; cursor:pointer; overflow:hidden; text-indent:-9999px; *text-indent:0; *font-size:0; }
+	.img-btn.edit{ background-position:-140px -84px; }
+	.img-btn.del{ background-position:-84px -28px; }
+	
+	.gl_forget{color:#fff;display:block;width:100%;font-size:12px;text-align:right;line-height:30px;}
+	.gl_forget:hover{text-decoration:underline}
+	.txtScroll-top li{height:30px;}
+
+
+
+
