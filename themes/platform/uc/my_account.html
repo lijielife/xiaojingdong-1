@@ -1,0 +1,100 @@
+{include file="uc/header.html"}
+<body style="background:#fafafa;">
+	 <!--第一种头部 start-->
+      <div id="head"></div>
+      <!--第一种头部 end-->   
+      
+      <!--个人信息 start-->
+     {include file="uc/user_info.html"}
+      <!--个人信息 end-->
+      
+      <!--个人中心 start-->
+      <div class="myAll clearfix">
+         {include file="uc/uc_left.html"}
+         <div class="myhy_det">
+             <div class="zf_tit0220">
+                   <p>账户余额</p>
+                   <div class="zf_tit04">
+                          
+                          <i>
+                            <a href="index.html">首页</a><span>&gt;</span>
+                            <a href="#">会员中心</a><span>&gt;</span>
+                            <a href="#">账户管理</a><span>&gt;</span>
+                            <em>账户余额</em>
+                          </i>
+                   </div>
+             </div>
+             <div class="rz_member_box clearfix">
+             	<div class="rz_member_left">
+                   <p><span>￥{$surplus_yue}</span>我的余额</p>
+                </div>
+                <div  class="rz_member_right rz_member_right03">
+                    <a class="a1" href="user.php?act=account_deposit">充值</a>
+                </div>
+            </div> 
+            <p class="my_cartit my_cartit0222">收支记录</p>
+            <div class="my_countsz">
+            		<!--{foreach from=$account_log item=log}  -->
+                <ul class="clearfix">
+                    <li class="my_csz01">{$log.create_time}</li>
+                    <li class="my_csz02">{$log.user_note}</li>
+                    <!--{if $log.type =='充值'} -->
+                    		<li class="my_csz03">+{$log.amount}</li>
+                    	<!-- {else} -->
+                    		<li class="my_csz03">-{$log.amount}</li>
+                    	<!-- {/if}-->
+                </ul>
+                <!-- {/foreach}-->
+                
+            </div>
+            
+            <!--<div class="my_cpage">
+                <ul class="zf_page0222_ul clearfix">
+                    <li class="zf_page0222_prev"><a href="#">&lt;</a></li>
+                    <li><a href="#">1</a></li>
+                    <li class="zf_page0222_on"><a href="#">2</a></li>
+                    <li class="zf_page0222_none"><a href="#">...</a></li>
+                    <li><a href="#">8</a></li>
+                    <li class="zf_page0222_next"><a href="#">&gt;</a></li>
+                </ul>
+            </div>-->
+            <div class="my_countcz">
+               <div class="zf_tit091">
+                   <p>热门推荐</p>
+                   <a href="index.php">查看更多&gt;&gt;</a>
+               </div>
+               
+               <div class="htmain htmain02 clearfix">
+               	  <!--{foreach from=$recommend_goods item=good} -->
+                  <div class="htbox">
+                      <a href="{$good.url}" target="_blank" class="htbox_a1"><img src="{$good.thumb}" alt="{$good.name}"></a>
+                      <div class="htdiv">
+                          <p><img src="images/s.png" alt="价格"><span>{$good.exchange_integral}</span><em>{$good.shop_price}</em></p>
+                          <a href="{$good.url}" target="_blank">{$good.name}</a>
+                      </div>
+                      <span class="main02_s1" style="width: 0px;"></span>
+                      <span class="main02_s2" style="width: 0px;"></span>
+                      <span class="main02_s3" style="height: 0px;"></span>
+                      <span class="main02_s4" style="height: 0px;"></span>
+                      <span class="main02_s5" style="width: 0px;"></span>
+                      <span class="main02_s6" style="width: 0px;"></span>
+                  </div>
+                  <!--{/foreach} -->
+                  
+               </div>
+            </div>
+         </div>
+      </div>
+      <!--个人中心 end-->
+      
+       <!--底部 start-->
+       <div id="foot"></div>
+       <!--底部 end-->
+       
+       <!--右侧悬浮 start-->
+       <div id="myR"></div>
+       <!--右侧悬浮 end-->
+        
+      <script type="text/javascript" src="js/trip.js"></script>
+</body>
+</html>

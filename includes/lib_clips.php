@@ -537,6 +537,7 @@ function get_account_log($user_id, $num, $start)
     {
         while ($rows = $GLOBALS['db']->fetchRow($res))
         {
+            $rows['create_time']      = local_date('Y-m-d H:i:s',$rows['add_time']);
             $rows['add_time']         = local_date($GLOBALS['_CFG']['date_format'], $rows['add_time']);
             $rows['admin_note']       = nl2br(htmlspecialchars($rows['admin_note']));
             $rows['short_admin_note'] = ($rows['admin_note'] > '') ? sub_str($rows['admin_note'], 30) : 'N/A';

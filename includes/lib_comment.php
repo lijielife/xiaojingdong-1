@@ -18,7 +18,7 @@ if (!defined('IN_ECS'))
     die('Hacking attempt');
 }
 
-function get_my_comments($goods_id, $type = 0, $page = 1, $c_tag)
+function get_my_comments($goods_id, $type = 0, $page = 1, $c_tag,$user_id='')
 {
 	$res = $GLOBALS['db']->getAll("SELECT * FROM ".$GLOBALS['ecs']->table('goods_tag')." WHERE goods_id = '$goods_id' AND state = 1");	
 	foreach ($res as $v)
@@ -49,6 +49,11 @@ function get_my_comments($goods_id, $type = 0, $page = 1, $c_tag)
 		if ($tag_name_c)
 		{
 			$where .= " AND FIND_IN_SET('$tag_name_c',comment_tag)";			
+		}
+
+		if($user_id)
+		{
+			$where .= " AND c.user_id='$user_id' ";
 		}
 
 		$count = $GLOBALS['db']->getOne("SELECT COUNT(*) FROM ".$GLOBALS['ecs']->table('comment')." AS c 

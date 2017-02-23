@@ -1,0 +1,87 @@
+<div class="myhy">
+            <h1 class="zf_tit05">会员中心<span>VIP</span></h1>
+            <div class="myhy_list">
+               <div class="myhy_div">
+                  <a>我的订单
+                     <img src="themes/platform/images/set_sjr.png" alt="展开" class="myhy_img01">
+                     <img src="themes/platform/images/set_sjd.png" alt="收缩" class="myhy_img02">
+                  </a>
+                  <ul>
+                     <li class="myhy_li"><a href="uc.php?act=order_list&composite_status={$status.unconfirmed}">待确认({$order_count.unconfirmed})<img src="themes/platform/images/sj.png" alt="展开"></a></li>
+                     <li><a href="#">待付款({$order_count.await_pay})<img src="themes/platform/images/sj.png" alt="展开"></a></li>
+                     <li><a href="#">待发货({$order_count.await_ship})<img src="themes/platform/images/sj.png" alt="展开"></a></li>
+                     <li><a href="#">已成交订单({$order_count.finished})<img src="themes/platform/images/sj.png" alt="展开"></a></li>
+                  </ul>
+               </div>
+               <div class="myhy_div">
+                  <a>我的记录
+                     <img src="themes/platform/images/set_sjr.png" alt="展开" class="myhy_img01">
+                     <img src="themes/platform/images/set_sjd.png" alt="收缩" class="myhy_img02">
+                  </a>
+                  <ul>
+                     <li><a href="uc.php?act=my_comment">我的点评<img src="themes/platform/images/sj.png" alt="展开"></a></li>
+                     <li><a href="#">我的收藏<img src="themes/platform/images/sj.png" alt="展开"></a></li>
+                  </ul>
+               </div>
+               <div class="myhy_div">
+                  <a>账户管理
+                     <img src="themes/platform/images/set_sjr.png" alt="展开" class="myhy_img01">
+                     <img src="themes/platform/images/set_sjd.png" alt="收缩" class="myhy_img02">
+                  </a>
+                  <ul>
+                     <li><a href="uc.php?act=coin_log">我的金币<img src="themes/platform/images/sj.png" alt="展开"></a></li>
+                     <li><a href="uc.php?act=account_log">账户余额<img src="themes/platform/images/sj.png" alt="展开"></a></li>
+                     <li><a href="#">会员升级<img src="themes/platform/images/sj.png" alt="展开"></a></li>
+                  </ul>
+               </div>
+               <div class="myhy_div">
+                  <a>个人设置
+                     <img src="themes/platform/images/set_sjr.png" alt="展开" class="myhy_img01">
+                     <img src="themes/platform/images/set_sjd.png" alt="收缩" class="myhy_img02">
+                  </a>
+                  <ul>
+                     <li><a href="#">个人资料<img src="themes/platform/images/sj.png" alt="展开"></a></li>
+                     <li><a href="#">密码修改<img src="themes/platform/images/sj.png" alt="展开"></a></li>
+                     <li><a href="#">账户安全<img src="themes/platform/images/sj.png" alt="展开"></a></li>
+                     <li><a href="#">收货地址<img src="themes/platform/images/sj.png" alt="展开"></a></li>
+                  </ul>
+               </div>
+               <div class="myhy_div ">
+                  <a>推广中心
+                     <img src="themes/platform/images/set_sjr.png" alt="展开" class="myhy_img01">
+                     <img src="themes/platform/images/set_sjd.png" alt="收缩" class="myhy_img02">
+                  </a>
+                  <ul>
+                     <li><a href="#">我的推广<img src="themes/platform/images/sj.png" alt="展开"></a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+         
+
+<script type="application/javascript">
+	$(function(){
+		/*个人中心 start*/
+		$(document).ready(function(e) {
+		    $('.myhy_div').each(function(index, element) {
+		    if($(this).hasClass('myhy_divon')){
+				$(this).find('ul').show();
+			}
+		});
+		});
+		
+		$(".myhy_list .myhy_div").click(function(){
+			var _this = $(this);
+			if(!_this.hasClass('myhy_divon')){
+				_this.addClass("myhy_divon");
+				_this.find("ul").slideDown();
+				_this.siblings(".myhy_div").find("ul").slideUp();
+				_this.siblings(".myhy_div").removeClass("myhy_divon");
+			}else{
+				_this.removeClass("myhy_divon");
+				_this.find("ul").slideUp();
+			}	
+		})
+		/*个人中心 end*/
+	})
+</script>

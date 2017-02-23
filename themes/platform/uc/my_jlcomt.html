@@ -1,0 +1,107 @@
+{include file="uc/header.html"}
+<body style="background:#fafafa;">
+	 <!--第一种头部 start-->
+      <div id="head"></div>
+      <!--第一种头部 end-->   
+      
+      <!--个人信息 start-->
+      {include file="uc/user_info.html"}
+      <!--个人信息 end-->
+      
+      <!--个人中心 start-->
+      <div class="myAll clearfix">
+         {include file="uc/uc_left.html"}
+         <div class="myhy_det">
+             <div class="zf_tit0220">
+                   <p>我的点评</p>
+                   <div class="zf_tit04">
+                          <!--<img src="images/map.png" alt="地图导航">-->
+                          <i>
+                            <a href="index.html">首页</a><span>&gt;</span>
+                            <a href="#">会员中心</a><span>&gt;</span>
+                            <!--<a href="#">我的点评</a><span>&gt;</span>-->
+                            <em>我的点评</em>
+                          </i>
+                   </div>
+             </div>
+             <div class="zx_cont">
+             	  <!--{foreach from=$item_list item=comment} -->
+                  <div class="zx_cdiv clearfix">
+                      <div class="zx_cdL">
+                         <img src="{if $smarty.session.headimg}{$smarty.session.headimg}{else}themes/68ecshopcom_360buy/images/people.gif{/if}" alt="张小凡">
+                         <p>{$smarty.session.user_name}<span>消费会员</span></p>
+                      </div>
+                      <div class="zx_cdR zx_cdRdiv">
+                         <div class="zx_cdR01">
+                            <ul class="clearfix">
+                            		<!--{foreach from=array(1,2,3,4,5,6,7,8) item=k name=i}-->  
+                            			{if $smarty.foreach.i.index < $comment.rank}
+								       <li><img src="images/start.png"></li>
+								  	{/if}
+									  
+								<!--{/foreach}-->
+                               <!--<li><img src="images/start.png"></li>
+                               <li><img src="images/start.png"></li>
+                               <li><img src="images/start.png"></li>
+                               <li><img src="images/start.png"></li>
+                               <li><img src="images/start.png"></li>-->
+                            </ul>
+                            <p>发布于：{$comment.add_time_str}</p>
+                         </div>
+                         <div class="zx_cdR02">
+                             <p class="clearfix"><span>产&nbsp;&nbsp;品：</span><i><a href='{$comment.url}'>{$comment.goods_name}</a></i></p>
+                          </div>
+                         <div class="zx_cdR02">
+                             <p class="clearfix"><span>心&nbsp;&nbsp;得：</span><i>{$comment.content}</i></p>
+                          </div>
+                          <!--{if $comment.shaidan_imgs_num > 0} -->
+                          <div class="zx_cdR03">
+                             <span>用户晒单：</span>
+                                <ul class="clearfix">
+                                	    <!-- {foreach from=$comment.shaidan_imgs item=img}-->
+                                	   	<li><img src="{$img.thumb}" alt="晒单01"></li>
+                                	    <!--{/foreach} -->
+                                   <!--<li><img src="images/pj01.jpg" alt="晒单01"></li>
+                                   <li><img src="images/pj02.jpg" alt="晒单02"></li>
+                                   <li><img src="images/pj03.jpg" alt="晒单03"></li>
+                                   <li><img src="images/pj04.jpg" alt="晒单04"></li>-->
+                                </ul>
+                          </div>
+                          <!--{/if} -->
+                          
+                          <!--{if $comment.comment_reps} -->
+                          <div class="zx_cdR02 zx_cdR04">
+                             <p class="clearfix"><span>客服回复：</span><i>{$comment.comment_reps.0.content}</i></p>
+                          </div>
+                          <!--{/if} -->
+                         <img src="themes/platform/images/zx_contsj.png" alt="评价">
+                      </div>
+                  </div>
+                  <!--{/foreach} -->
+             
+                      
+             <!--<div class="zf_page0222">
+                <ul class="zf_page0222_ul clearfix">
+                    <li class="zf_page0222_prev"><a href="#">&lt;</a></li>
+                    <li class="zf_page0222_on"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li class="zf_page0222_none"><a href="#">...</a></li>
+                    <li><a href="#">8</a></li>
+                    <li class="zf_page0222_next"><a href="#">&gt;</a></li>
+                </ul>
+            </div>  -->
+         </div>
+      </div>
+      <!--个人中心 end-->
+      
+       <!--底部 start-->
+       <div id="foot"></div>
+       <!--底部 end-->
+       
+       <!--右侧悬浮 start-->
+       <div id="myR"></div>
+       <!--右侧悬浮 end-->
+        
+      <script type="text/javascript" src="js/trip.js"></script>
+</body>
+</html>

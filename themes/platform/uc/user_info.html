@@ -1,0 +1,32 @@
+<div class="mymsg">
+          <div class="myCenter clearfix">
+              <div class="myCl">
+                 <img src="{if $smarty.session.headimg}{$smarty.session.headimg}{else}themes/68ecshopcom_360buy/images/people.gif{/if}" alt="张小凡">
+              </div>
+              <div class="myCr">
+                  <dl>
+                     <dt><img src="themes/platform/images/my_icon01.png" alt="用户名"></dt>
+                     <dd>{$smarty.session.user_name}</dd>
+                  </dl>
+                  <dl>
+                     <dt><img src="themes/platform/images/my_icon02.png" alt="用户类型"></dt>
+                     <dd>普通会员</dd>
+                  </dl>
+                  <dl>
+                     <dt><img src="themes/platform/images/my_icon03.png" alt="持有金币"></dt>
+                     <dd>{$pay_points}<a href="index.php" target="_blank">金币兑换</a></dd>
+                  </dl>
+                  <dl>
+                     <dt><img src="themes/platform/images/my_icon04.png" alt="信誉值"></dt>
+                     <dd><i><span></span></i><em>较高</em></dd>
+                  </dl>
+              </div>
+          </div>
+          <ul class="order_list">
+          	 <li class="order_li"><a href="user.php?act=order_list&composite_status={$status.unconfirmed}"><i>{$order_count.unconfirmed}</i>待确认</a></li>
+             <li class="order_li"><a href="user.php?act=order_list&composite_status={$status.await_pay}"><i>{$order_count.await_pay}</i>待付款</a></li>
+             <li><a href="user.php?act=order_list&composite_status={$status.await_ship}"><i>{$order_count.await_ship}</i>待发货</a></li>
+             <!--<li><a href="#"><i>8</i>待评价</a></li>-->
+             <li><a href="user.php?act=order_list&composite_status={$status.finished}"><i>{$order_count.finished}</i>已成交订单数</a></li>
+          </ul>
+      </div>
