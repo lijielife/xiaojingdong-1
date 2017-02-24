@@ -78,6 +78,7 @@ if(empty($_SESSION['user_id']) && $action != 're_validate_email' && $action != '
 	{
 		if(in_array($action, $ui_arr))
 		{
+
 			/*
 			 * 如果需要登录,并是显示页面的操作，记录当前操作，用于登录后跳转到相应操作
 			 * if ($action == 'login')
@@ -97,7 +98,7 @@ if(empty($_SESSION['user_id']) && $action != 're_validate_email' && $action != '
 				{
 					$query_string = 'index.php';
 				}
-				$back_act = 'user.php?' . strip_tags($query_string);
+				$back_act = 'uc.php?' . strip_tags($query_string);
 			}
 			$action = 'login';
 		}
@@ -164,28 +165,32 @@ if(! function_exists($function_name))
 
 /*  新的页面全部都需要头部信息 start */
 $user_id = $_SESSION['user_id'];
-$ex_where = " and user_id=$user_id";
-$order_count = array();
-/* 已完成的订单 */
-$order_count['finished'] = $db->GetOne('SELECT COUNT(*) FROM ' . $ecs->table('order_info') . " WHERE 1 $ex_where " . order_query_sql('finished'));
-$status['finished'] = CS_FINISHED;
+if($user_id)
+{
+	$ex_where = " and user_id=$user_id";
+	$order_count = array();
+	/* 已完成的订单 */
+	$order_count['finished'] = $db->GetOne('SELECT COUNT(*) FROM ' . $ecs->table('order_info') . " WHERE 1 $ex_where " . order_query_sql('finished'));
+	$status['finished'] = CS_FINISHED;
 
-/* 待发货的订单： */
-$order_count['await_ship'] = $db->GetOne('SELECT COUNT(*)' . ' FROM ' . $ecs->table('order_info') . " WHERE 1 $ex_where " . order_query_sql('await_ship'));
-$status['await_ship'] = CS_AWAIT_SHIP;
+	/* 待发货的订单： */
+	$order_count['await_ship'] = $db->GetOne('SELECT COUNT(*)' . ' FROM ' . $ecs->table('order_info') . " WHERE 1 $ex_where " . order_query_sql('await_ship'));
+	$status['await_ship'] = CS_AWAIT_SHIP;
 
-/* 待付款的订单： */
-$order_count['await_pay'] = $db->GetOne('SELECT COUNT(*)' . ' FROM ' . $ecs->table('order_info') . " WHERE 1 $ex_where " . order_query_sql('await_pay'));
-$status['await_pay'] = CS_AWAIT_PAY;
+	/* 待付款的订单： */
+	$order_count['await_pay'] = $db->GetOne('SELECT COUNT(*)' . ' FROM ' . $ecs->table('order_info') . " WHERE 1 $ex_where " . order_query_sql('await_pay'));
+	$status['await_pay'] = CS_AWAIT_PAY;
 
-/* “未确认”的订单 */
-$order_count['unconfirmed'] = $db->GetOne('SELECT COUNT(*) FROM ' . $ecs->table('order_info') . " WHERE 1 $ex_where " . order_query_sql('unconfirmed'));
-$status['unconfirmed'] = OS_UNCONFIRMED;
+	/* “未确认”的订单 */
+	$order_count['unconfirmed'] = $db->GetOne('SELECT COUNT(*) FROM ' . $ecs->table('order_info') . " WHERE 1 $ex_where " . order_query_sql('unconfirmed'));
+	$status['unconfirmed'] = OS_UNCONFIRMED;
 
-// $today_start = mktime(0,0,0,date('m'),date('d'),date('Y'));
-$order_count['stats'] = $db->getRow('SELECT COUNT(*) AS oCount, IFNULL(SUM(order_amount), 0) AS oAmount' . ' FROM ' . $ecs->table('order_info'));
-$smarty->assign('order_count', $order_count);
-$smarty->assign('status', $status);
+	// $today_start = mktime(0,0,0,date('m'),date('d'),date('Y'));
+	$order_count['stats'] = $db->getRow('SELECT COUNT(*) AS oCount, IFNULL(SUM(order_amount), 0) AS oAmount' . ' FROM ' . $ecs->table('order_info'));
+	$smarty->assign('order_count', $order_count);
+	$smarty->assign('status', $status);
+}
+
 
 /*  新的页面全部都需要头部信息 end */  
 
@@ -424,7 +429,8 @@ function action_default ()
     /* 代码修改 By  www.68ecshop.com End */
 
     $smarty->assign('prompt', get_user_prompt($user_id)); // 获取用户参与活动信息
-	$smarty->display('user_clips.dwt');
+    $smarty->display('uc/index.html');
+	// $smarty->display('user_clips.dwt');
 }
 
 function action_getverifycode ()
@@ -889,6 +895,14 @@ function action_login ()
 	$ecs = $GLOBALS['ecs'];
 	$user_id = $_SESSION['user_id'];
 	$back_act = $GLOBALS['back_act'];
+	include_once(dirname(__FILE__) . '/includes/lib_base.php');
+	if(!$back_act)
+	{
+		$back_act = 'uc.php';
+	}
+	$url = 'user.php?action=login&back_act=' . $back_act;
+	ecs_header("Location:$url");
+	exit;
 	
 	if(empty($back_act))
 	{
@@ -917,8 +931,9 @@ function action_login ()
 		$GLOBALS['smarty']->assign('rand', mt_rand());
 	}
 	
+	// $smarty->template_dir   = ROOT_PATH . 'themes/68ecshop_360buy';
 	$smarty->assign('back_act', $back_act);
-	$smarty->display('user_passport.dwt');
+	//$smarty->display('themes/68ecshop_360buy/user_passport.dwt');
 }
 
 // 代码增加--68ecshop--侧边栏登录 判断登录是否开启验证码
