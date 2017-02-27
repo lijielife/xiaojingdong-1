@@ -1529,6 +1529,7 @@ function upload_file($upload, $type)
  */
 function show_message($content, $links = '', $hrefs = '', $type = 'info', $auto_redirect = true)
 {
+    $GLOBALS['smarty']->template_dir   = ROOT_PATH . 'themes/68ecshopcom_360buy';
     assign_template();
 
     $msg['content'] = $content;

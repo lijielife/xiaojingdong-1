@@ -1,0 +1,188 @@
+{include file="uc/header.html"}
+
+<body style="background:#fafafa;">
+	 <!--第一种头部 start-->
+      <div id="head"></div>
+      <!--第一种头部 end-->   
+      
+      <!--个人信息 start-->
+      {include file="uc/user_info.html"}
+      <!--个人信息 end-->
+      
+      <!--个人中心 start-->
+      <div class="myAll clearfix">
+         {include file="uc/uc_left.html"}
+         <div class="myhy_det">
+            <div class="zf_tit0220">
+                   <p>个人设置</p>
+                   <div class="zf_tit04">
+                          <!--<img src="images/map.png" alt="地图导航">-->
+                          <i>
+                            <a href="index.html">首页</a><span>&gt;</span>
+                            <a href="#">会员中心</a><span>&gt;</span>
+                            <a href="#">个人设置</a><span>&gt;</span>
+                            <em>个人资料</em>
+                          </i>
+                   </div>
+             </div>
+             
+             <form name="formIdentity" id="form" action="uc.php" method="post" enctype="multipart/form-data">
+             <div class="my_base">
+                  <div class="my_tx">
+                      <p>
+                         <img src="{if $smarty.session.headimg}{$smarty.session.headimg}{else}themes/68ecshopcom_360buy/images/people.gif{/if}" alt="张小凡">
+                      </p>
+                      <span>上传头像<input type="file" name="headimg"></span>
+                  </div>
+                  <div class="my_bform clearfix">
+                      <i><span>*</span>用户名：</i>
+                      <input type="text" name="username" class="my_bform_ipt" value="{$profile.user_name}"  onblur="check_username(this.value)">
+                      <p id="username_message" style="color: #E31939"></p>
+                  </div>
+                  <div class="my_bform clearfix">
+                      <i><span>*</span>姓名：</i>
+                      <input type="text" name="real_name" class="my_bform_ipt" value="{$profile.real_name}" onfocus="if (value =='{$profile.real_name}'){value =''}"onblur="if (value ==''){value='{$profile.real_name}'}">
+                      <!--<p>姓名要求为2-40位英文或2-20位中文，支持空格，“·”，不能中英混搭</p>-->
+                      <div class="required-notice"><i class="notice-icon"></i><span class="notice-text people-name-notice"></span></div>
+                  </div>
+                  <div class="my_bform clearfix">
+                      <i><span>*</span>手机号：</i>
+                      <em>{$profile.mobile_phone}</em>
+                      <!--<p>&nbsp;<a href="#">修改手机号</a></p>-->
+                  </div>
+                  <div class="my_bform clearfix">
+                      <i>生日：</i>
+                      {html_select_date field_order=YMD prefix=birthday start_year=-60 end_year=+1 display_days=true month_format=%m day_value_format=%02d time=$profile.birthday} 
+
+                      <!--<ul class="my_bformul">
+                          <li><select>
+                                 <option>--</option>
+                                 <option>1995</option>
+                                 <option>1996</option>
+                              </select>&nbsp;&nbsp;年&nbsp;&nbsp;
+                          </li>
+                          <li><select>
+                                 <option>--</option>
+                                 <option>1995</option>
+                                 <option>1996</option>
+                              </select>&nbsp;&nbsp;月&nbsp;&nbsp;
+                          </li>
+                          <li><select>
+                                 <option>--</option>
+                                 <option>1995</option>
+                                 <option>1996</option>
+                              </select>&nbsp;&nbsp;日&nbsp;&nbsp;
+                          </li>
+                      </ul>-->
+                  </div>
+                  <div class="my_bform clearfix">
+                      <i><span>*</span>性别：</i>
+                      <div class="my_bfbox">
+                      	 <label><b><span {if $profile.sex!=0} style="display:none;"{/if}></span><input type="radio" name="sex" value="0" {if $profile.sex==0}checked="checked" {/if}></b>&nbsp;&nbsp;保密</label>
+                         <label><b><span {if $profile.sex!=1} style="display:none;"{/if}></span><input type="radio" name="sex" value="1" {if $profile.sex==1}checked="checked" {/if}></b>&nbsp;&nbsp;男</label>
+                         <label><b><span {if $profile.sex!=2} style="display:none;"{/if}></span><input type="radio" name="sex" value="2" {if $profile.sex==2}checked="checked" {/if}></b>&nbsp;&nbsp;女</label>
+                      </div>
+                  </div>
+                  <div class="my_bform clearfix">
+                      <i>邮箱：</i>
+                      <em>{$profile.email}</em>
+                      <!--<p>&nbsp;<a href="#">修改邮箱</a></p>-->
+                  </div>
+                  <div class="my_bform clearfix">
+                      <i><span>*</span>常住地：</i>
+                      <!--<ul class="my_bformul">
+                          <li><select>
+                                 <option>--</option>
+                                 <option>1995</option>
+                                 <option>1996</option>
+                              </select>&nbsp;&nbsp;省&nbsp;&nbsp;
+                          </li>
+                          <li><select>
+                                 <option>--</option>
+                                 <option>1995</option>
+                                 <option>1996</option>
+                              </select>&nbsp;&nbsp;市&nbsp;&nbsp;
+                          </li>
+                          <li><select>
+                                 <option>--</option>
+                                 <option>1995</option>
+                                 <option>1996</option>
+                              </select>&nbsp;&nbsp;区&nbsp;&nbsp;
+                          </li>
+                      </ul>-->
+                      <select name="country" id="selCountries" onchange="region.changed(this, 1, 'selProvinces')">
+                        <option value="0">{$lang.please_select}{$name_of_region[0]}</option>
+                        <!-- {foreach from=$country_list item=country} -->
+                        <option value="{$country.region_id}" {if $profile.country eq $country.region_id}selected{/if}>{$country.region_name}</option>
+                        <!-- {/foreach} -->
+                      </select>
+                      <select name="province" id="selProvinces" onchange="region.changed(this, 2, 'selCities')">
+                        <option value="0">{$lang.please_select}{$name_of_region[1]}</option>
+                        <!-- {foreach from=$province_list item=province} -->
+                        <option value="{$province.region_id}" {if $profile.province eq $province.region_id}selected{/if}>{$province.region_name}</option>
+                        <!-- {/foreach} -->
+                      </select>
+                      <select name="city" id="selCities" onchange="region.changed(this, 3, 'selDistricts')">
+                        <option value="0">{$lang.please_select}{$name_of_region[2]}</option>
+                        <!-- {foreach from=$city_list item=city} -->
+                        <option value="{$city.region_id}" {if $profile.city eq $city.region_id}selected{/if}>{$city.region_name}</option>
+                        <!-- {/foreach} -->
+                      </select>
+                      <select name="district" id="selDistricts" {if !$district_list}style="display:none"{/if}>
+                        <option value="0">{$lang.please_select}{$name_of_region[3]}</option>
+                        <!-- {foreach from=$district_list item=district} -->
+                        <option value="{$district.region_id}" {if $profile.district eq $district.region_id}selected{/if}>{$district.region_name}</option>
+                        <!-- {/foreach} -->
+					</select>
+						<div class="required-notice fl"><i class="notice-icon"></i><span class="notice-text address-notice"></span></div>
+                  </div>
+                  <div class="my_bform clearfix">
+                    <input type="text" class="my_bform_ipt my_bform_ipt02" name="address" value="详细地址" onfocus="if (value =='详细地址'){value =''}"onblur="if (value ==''){value='详细地址'}">
+                  	<div class="required-notice"><i class="notice-icon"></i><span class="notice-text address-detail-notice"></span></div>
+                  </div>
+                  <!--<div class="my_bform clearfix">
+                      <i>婚姻：</i>
+                      <ul class="my_bformul">
+                          <li><select>
+                                 <option>--</option>
+                                 <option>未婚</option>
+                                 <option>已婚</option>
+                              </select>
+                          </li>
+                      </ul>
+                  </div>-->
+                  <div class="fbtn_02 clearfix">
+                       <a href="#" id="submit" class="fbtn_021a">保存</a>
+                       <a href="#" class="fbtn_022a">取消</a>
+                   </div>
+             </div>
+             <input type="hidden" name="act" value="user_info_edit" >
+            </form>
+         </div>
+      </div>
+      <!--个人中心 end-->
+      
+       <!--底部 start-->
+       <div id="foot"></div>
+       <!--底部 end-->
+       
+       <!--右侧悬浮 start-->
+       <div id="myR"></div>
+       <!--右侧悬浮 end-->
+        
+      <script type="text/javascript" src="js/trip.js"></script>
+      <script type="text/javascript" src="js/region.js"></script>
+      <script type="text/javascript" src="js/transport.js"></script>
+      <script type="text/javascript" src="js/user.js"></script>
+      <script type="text/javascript">
+      	$(".my_bfbox label").click(function(){
+			$(this).find("span").show();
+			$(this).siblings("label").find("span").hide();
+		})
+      	
+      	$("#submit").click(function(){
+      		$('#form').submit();
+      	})
+      </script>
+</body>
+</html>

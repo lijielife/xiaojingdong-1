@@ -32,14 +32,14 @@ $back_act = '';
 $not_login_arr = array(
 	'login', 'act_login', 'act_edit_password', 'get_password', 'send_pwd_email', 'password', 'signin', 'add_tag', 'collect', 're_collect', 'return_to_cart', 'book_goods','add_book_goods', 'logout', 'user_bonus', 'email_list', 'validate_email', 'send_hash_mail', 'order_query', 'is_registered', 'check_email', 'check_mobile_phone', 'clear_history', 'qpassword_name', 'get_passwd_question', 'check_answer', 'check_register', 'oath', 'oath_login', 'other_login', 'ch_email', 'ck_email', 'check_username', 'forget_password', 'getverifycode', 'step_1',
 /*余额额支付密码_更改_START_www.68ecshop.com*/
-'act_forget_pass', 're_pass', 'open_surplus_password', 'close_surplus_password'
+'act_forget_pass', 're_pass', 'open_surplus_password', 'close_surplus_password','user_info_edit'
 );
 /* 余额额支付密码_更改_END_www.68ecshop.com */
 
 /* 显示页面的action列表 */
 $ui_arr = array(
 	'login', 'profile', 'order_list', 'order_detail', 'address_list', 'collection_list', 'follow_shop', 'message_list', 'tag_list', 'get_password', 'reset_password', 'booking_list', 'add_booking', 'account_raply', 'account_deposit', 'account_log', 'account_detail', 'act_account', 'pay', 'default', 'bonus', 'group_buy', 'group_buy_detail', 'affiliate', 'comment_list', 'validate_email', 'track_packages', 'transform_points', 'qpassword_name', 'get_passwd_question', 'check_answer', 'check_register', 'back_order', 'back_list', 'back_order_detail', 'back_order_act', 'back_replay', 'my_comment', 'my_comment_send', 'shaidan_send', 'shaidan_sale', 'account_security', 'act_identity', 'check_phone', 'update_password', 're_binding', 'update_phone', 'update_email', 'act_update_email', 
-	're_binding_email', 'ch_email', 'ck_email', 'step_1', 'forget_password', 'back_order_detail', 'del_back_order', 'back_order_detail_edit', 'add_huan_goods',
+	're_binding_email', 'ch_email', 'ck_email', 'step_1', 'forget_password', 'back_order_detail', 'del_back_order', 'back_order_detail_edit', 'add_huan_goods','change_password','mobile_binding',
 /*余额额支付密码_更改_START_www.68ecshop.com*/
 'act_forget_pass', 're_pass', 'auction_list', 'forget_surplus_password', 'act_forget_surplus_password', 'update_surplus_password', 'act_update_surplus_password', 'verify_reset_surplus_email', 'get_verify_code'
 ); // 代码修改
@@ -155,6 +155,7 @@ if($rank = get_rank_info())
 /* 路由 */
 
 $function_name = 'action_' . $action;
+
 
 if(! function_exists($function_name))
 {
@@ -1366,16 +1367,28 @@ function action_profile ()
 	$smarty->assign('extend_info_list', $extend_info_list);
 	
 	/* 密码提示问题 */
-	$smarty->assign('passwd_questions', $_LANG['passwd_questions']);
-	
+	$smarty->assign('passwd_questions', $_LANG['passwd_questions']);	
 	$smarty->assign('profile', $user_info);
-	$smarty->display('user_transaction.dwt');
+	$smarty->display('uc/my_msg.html');
+	// $smarty->display('user_transaction.dwt');
 }
+
+
+//用户资料修改
+function action_user_info_edit()
+{
+	action_act_edit_profile();
+	action_act_edit_img();
+	action_act_identity();
+	show_message('用户信息编辑成功', $_LANG['profile_lnk'], 'uc.php?act=profile', 'info');
+	//echo 'success';
+}
+
 
 /* 修改个人资料的处理 */
 function action_act_edit_profile ()
 {
-	
+
 	// 获取全局变量
 	$user = $GLOBALS['user'];
 	$_CFG = $GLOBALS['_CFG'];
@@ -1424,6 +1437,8 @@ function action_act_edit_profile ()
 		}
 	}
 	
+	
+	
 	/* 写入密码提示问题和答案 */
 	if(! empty($passwd_answer) && ! empty($sel_question))
 	{
@@ -1443,7 +1458,6 @@ function action_act_edit_profile ()
 		}
 		if(! empty($username) && preg_match("/[\x7f-\xff]/", $username))
 		{
-			
 			show_message("用户名存在中文");
 		}
         /* 代码增加 By  www.68ecshop.com Start */
@@ -1497,7 +1511,8 @@ function action_act_edit_profile ()
 	
 	if(edit_profile($profile))
 	{
-		show_message($_LANG['edit_profile_success'], $_LANG['profile_lnk'], 'user.php?act=profile', 'info');
+		//show_message($_LANG['edit_profile_success'], $_LANG['profile_lnk'], 'user.php?act=profile', 'info');
+		return true;
 	}
 	else
 	{
@@ -1516,7 +1531,6 @@ function action_act_edit_profile ()
 /* 修改头像 */
 function action_act_edit_img ()
 {
-	
 	// 获取全局变量
 	$user = $GLOBALS['user'];
 	$_CFG = $GLOBALS['_CFG'];
@@ -1528,7 +1542,8 @@ function action_act_edit_img ()
 	
 	if($_FILES['headimg']['size'] == 0)
 	{
-		show_message("您没有选择要修改的头像图片！", $_LANG['profile_lnk'], 'user.php?act=profile', 'info');
+		return;
+		show_message("您没有选择要修改的头像图片！", $_LANG['profile_lnk'], 'uc.php?act=profile', 'info');
 	}
 	
 	/* 代码增加_start By www.68ecshop.com */
@@ -1542,8 +1557,9 @@ function action_act_edit_img ()
 	$sql = 'UPDATE ' . $ecs->table('users') . " SET `headimg`='$headimg_thumb'  WHERE `user_id`='" . $_SESSION['user_id'] . "'";
 	$db->query($sql);
 	$_SESSION['headimg'] = $headimg_thumb;
+	return true;
 	/* 代码增加_end By www.68ecshop.com */
-	show_message($_LANG['edit_profile_success'], $_LANG['profile_lnk'], 'user.php?act=profile', 'info');
+	//show_message($_LANG['edit_profile_success'], $_LANG['profile_lnk'], 'user.php?act=profile', 'info');
 }
 
 /* 代码增加2014-12-23 by www.68ecshop.com _star */
@@ -1569,7 +1585,6 @@ function action_account_security ()
 
 function action_act_identity ()
 {
-	
 	// 获取全局变量
 	$user = $GLOBALS['user'];
 	$_CFG = $GLOBALS['_CFG'];
@@ -1582,12 +1597,20 @@ function action_act_identity ()
 	include_once (ROOT_PATH . '/includes/cls_image.php');
 	$image = new cls_image($_CFG['bgcolor']);
 	$real_name = $_POST['real_name'];
+	if(!$real_name)
+	{
+		show_message('真实姓名不能为空！','返回上一页', 'uc.php?act=profile');
+	}
 	$card = $_POST['card'];
 	$country = $_POST['country'];
 	$province = $_POST['province'];
 	$city = $_POST['city'];
 	$district = $_POST['district'];
 	$address = $_POST['address'];
+	if(!$country || !$province || !$city || !$district )
+	{
+		show_message('地址不能为空','返回上一页', 'uc.php?act=profile');
+	}
 	if(isset($_FILES['face_card']) && $_FILES['face_card']['tmp_name'] != '')
 	{
 		if($_FILES['face_card']['width'] > 800)
@@ -1621,23 +1644,23 @@ function action_act_identity ()
 		}
 	}
 	
-	$sql = "select face_card,back_card from " . $GLOBALS['ecs']->table('users') . " where user_id = '" . $_SESSION['user_id'] . "'";
-	$rows = $GLOBALS['db']->getRow($sql);
-	if($rows['face_card'] == '')
-	{
-		if($face_card == '')
-		{
-			show_message('请上传身份证正面照！');
-		}
-	}
+	// $sql = "select face_card,back_card from " . $GLOBALS['ecs']->table('users') . " where user_id = '" . $_SESSION['user_id'] . "'";
+	// $rows = $GLOBALS['db']->getRow($sql);
+	// if($rows['face_card'] == '')
+	// {
+	// 	if($face_card == '')
+	// 	{
+	// 		show_message('请上传身份证正面照！');
+	// 	}
+	// }
 	
-	if($rows['back_card'] == '')
-	{
-		if($back_card == '')
-		{
-			show_message('请上传身份证背面照！');
-		}
-	}
+	// if($rows['back_card'] == '')
+	// {
+	// 	if($back_card == '')
+	// 	{
+	// 		show_message('请上传身份证背面照！');
+	// 	}
+	// }
 	
 	$sql = 'update ' . $GLOBALS['ecs']->table('users') . " set real_name = '$real_name',card='$card',country='$country',province='$province',city='$city',district='$district',address='$address',status = '2'";
 	if($face_card != '')
@@ -1652,11 +1675,12 @@ function action_act_identity ()
 	$num = $GLOBALS['db']->query($sql);
 	if($num > 0)
 	{
-		show_message('您已申请实名认证，请等待管理员的审核！', '返回上一页', 'user.php?act=profile');
+		return true;
+		//show_message('您已申请实名认证，请等待管理员的审核！', '返回上一页', 'user.php?act=profile');
 	}
 	else
 	{
-		show_message('实名认证失败！', '返回上一页', 'user.php?act=profile');
+		show_message('实名认证失败！', '返回上一页', 'uc.php?act=profile');
 	}
 }
 
@@ -1960,6 +1984,23 @@ function action_send_pwd_email ()
 	}
 }
 
+/* 修改密码新界面 */
+function action_change_password ()
+{
+	
+	// 获取全局变量
+	$user = $GLOBALS['user'];
+	$_CFG = $GLOBALS['_CFG'];
+	$_LANG = $GLOBALS['_LANG'];
+	$smarty = $GLOBALS['smarty'];
+	$db = $GLOBALS['db'];
+	$ecs = $GLOBALS['ecs'];
+	$user_id = $_SESSION['user_id'];
+	
+	// 显示输入要找回密码的账号表单
+	$smarty->display('uc/change_password.html');
+}
+
 /* 修改会员密码 */
 function action_act_edit_password ()
 {
@@ -2029,6 +2070,90 @@ function action_act_edit_password ()
 		show_message($_LANG['edit_password_failure'], $_LANG['back_page_up'], '', 'info');
 	}
 }
+
+
+/**
+ * 绑定手机号
+ */
+function action_mobile_binding ()
+{
+	// 获取全局变量
+	$_LANG = $GLOBALS['_LANG'];
+	$smarty = $GLOBALS['smarty'];
+	$db = $GLOBALS['db'];
+	$ecs = $GLOBALS['ecs'];
+	$user_id = $GLOBALS['user_id'];
+	$sql = "SELECT mobile_phone FROM " . $ecs->table('users') . " WHERE user_id='$user_id'";
+	$mobile = $db->getOne($sql);
+	if($mobile)
+	{
+		$mobile = substr($mobile, 0, 3) . '*****' . substr($mobile, - 3);
+	}
+	$smarty->assign('mobile', $mobile);
+
+	
+	$smarty->assign('step', 'step_1');
+	
+	$smarty->display('uc/my_setel.html');
+}
+
+
+/**
+ * 绑定手机第二步，填写新手机
+ */
+function action_to_mobile_binding ()
+{
+	// 获取全局变量
+	$_LANG = $GLOBALS['_LANG'];
+	$smarty = $GLOBALS['smarty'];
+	$db = $GLOBALS['db'];
+	$ecs = $GLOBALS['ecs'];
+	$user_id = $GLOBALS['user_id'];
+	
+	if($_SESSION['security_validate'] != true)
+	{
+		show_message('您还未绑定手机号码！', array(
+			'去绑定手机号', "返回账户安全中心"
+		), array(
+			'uc.php?act=mobile_binding', 'uc.php'
+		), 'info');
+	}
+	
+	// 获取验证方式
+	$smarty->assign('step', 'step_2');
+	$smarty->assign('action', 'mobile_binding');
+	
+	$smarty->display('uc/my_setnew.html');
+}
+
+/**
+ * 绑定手机最后一步，绑定成功
+ */
+function action_mobile_binding_success ()
+{
+	// 获取全局变量
+	$_LANG = $GLOBALS['_LANG'];
+	$smarty = $GLOBALS['smarty'];
+	$db = $GLOBALS['db'];
+	$ecs = $GLOBALS['ecs'];
+	$user_id = $GLOBALS['user_id'];
+	
+	// 检查是否通过安全验证
+	if($_SESSION['security_validate'] != true)
+	{
+		header('Location: security.php');
+	}
+	
+	$smarty->assign('action', 'mobile_binding');
+	$smarty->assign('step', 'step_3');
+	
+	// 释放变量
+	$_SESSION['security_validate'] = false;
+	
+	$smarty->display('uc/my_setelok.html');
+}
+
+
 
 /* 添加一个红包 */
 function action_act_add_bonus ()
@@ -6479,6 +6604,105 @@ function get_inv_complete_region ($order_id, $inv_type)
 	{
 		return ' ';
 	}
+}
+
+
+/**
+ * 获取身份验证方式
+ *
+ * @param unknown $user_id        	
+ * @return array
+ */
+function get_validate_types ($user_id)
+{
+	$smarty = $GLOBALS['smarty'];
+	$action = isset($_REQUEST['act']) ? trim($_REQUEST['act']) : '';
+	
+	// 获取用户信息，判断用户是否验证了手机、邮箱
+	// $sql = "select user_id, user_name, email, mobile_phone from " .
+	// $GLOBALS['ecs']->table('users') . " where user_id = '" . $user_id . "'";
+	// $row = $GLOBALS['db']->getRow($sql);
+	$user = $GLOBALS['user'];
+	
+	$user_info = $user->get_profile_by_id($user_id);
+	
+	if($user_info == false)
+	{
+		show_message('您输入的账户名不存在，请核对后重新输入。', $_LANG['relogin_lnk'], 'findPwd.php', 'error');
+	}
+	
+	$email = $user_info['email'];
+	$mobile_phone = $user_info['mobile_phone'];
+	$email_validate = $user_info['email_validated'];
+	$mobile_validate = $user_info['mobile_validated'];
+	
+	$validate_types = array();
+	
+	if(isset($mobile_phone) && ! empty($mobile_phone) && $mobile_validate == 1)
+	{
+		
+		$_SESSION[VT_MOBILE_VALIDATE] = $mobile_phone;
+		
+		// 处理手机号，不让前台显示
+		$mobile_phone = encrypt_mobile($mobile_phone);
+		
+		$validate_types[] = array(
+			'type' => 'mobile_phone', 'name' => '已验证的手机号码', 'value' => $mobile_phone
+		);
+	}
+	if(isset($email) && ! empty($email) && $email_validate == 1)
+	{
+		
+		$_SESSION[VT_EMAIL_VALIDATE] = $email;
+		
+		$email = encrypt_email($email);
+		
+		$validate_types[] = array(
+			'type' => 'email', 'name' => '邮箱', 'value' => $email
+		);
+	}
+	if(count($validate_types) == 0)
+	{
+		if($action == 'password_reset')
+		{
+			if(empty($mobile_phone) && empty($email) ){
+				show_message('系统检测发现您还绑定任何手机号码或者邮箱，账户安装存在风险，建议您先绑定手机号码或者邮箱以提高您的账户安全级别！', array('绑定手机号码', '绑定邮箱'), array('security.php?act=mobile_binding', 'security.php?act=email_binding'), 'error');
+			}else{
+				if($mobile_validate == 0 && $email_validate == 0){
+					if(!empty($mobile_phone) && empty($email)){
+						show_message('系统检测发现您的账户安装存在风险，建议您先验证手机号码或者绑定邮箱以提高您的账户安全级别！', array('验证手机号码', '绑定邮箱'), array('security.php?act=mobile_validate', 'security.php?act=email_binding'), 'error');
+					}else if(empty($mobile_phone) && !empty($email)){
+						show_message('系统检测发现您的账户安装存在风险，建议您先绑定手机号码或者验证邮箱以提高您的账户安全级别！', array('绑定手机号码', '验证邮箱'), array('security.php?act=mobile_binding', 'security.php?act=email_validate'), 'error');
+					}else{
+						show_message('系统检测发现您的账户安装存在风险，建议您先验证手机号码或者邮箱以提高您的账户安全级别！', array('验证手机号码', '验证邮箱'), array('security.php?act=mobile_validate', 'security.php?act=email_validate'), 'error');
+					}
+				}
+			}
+		}
+		else if($action == 'mobile_binding' && empty($mobile_phone))
+		{
+			$smarty->assign('first_binding', '1');
+			$_SESSION['security_validate'] = true;
+			action_to_mobile_binding();
+			exit;
+		}
+		else if($action == 'email_binding' && empty($email))
+		{
+			$smarty->assign('first_binding', '1');
+			$_SESSION['security_validate'] = true;
+			action_to_email_binding();
+			exit;
+		}
+	}
+	
+	if(count($validate_types) == 0)
+	{
+		$validate_types[] = array(
+			'type' => 'password', 'name' => '登录密码验证', 'value' => $_SESSION['user_name']
+		);
+	}
+	
+	return $validate_types;
 }
 
 ?>

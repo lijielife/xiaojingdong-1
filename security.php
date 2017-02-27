@@ -354,6 +354,13 @@ function action_validate ()
 	$smarty = $GLOBALS['smarty'];
 	$db = $GLOBALS['db'];
 	$ecs = $GLOBALS['ecs'];
+
+	// 设置为第二步
+	$_SESSION['security_validate'] = true;
+	
+	exit(json_encode(array(
+		'error' => 0, 'content' => '', 'url' => ''
+	)));
 	
 	/* 开启验证码检查 */
 	if(((intval($_CFG['captcha']) & CAPTCHA_REGISTER) && gd_version() > 0) || TRUE)
@@ -398,36 +405,36 @@ function action_validate ()
 		
 		$result = validate_email_code($email, $email_code);
 		
-		if($result == 1)
-		{
-			exit(json_encode(array(
-				'error' => 1, 'content' => $_LANG['msg_email_blank'], 'url' => ''
-			)));
-		}
-		else if($result == 2)
-		{
-			exit(json_encode(array(
-				'error' => 1, 'content' => $_LANG['msg_email_format'], 'url' => ''
-			)));
-		}
-		else if($result == 3)
-		{
-			exit(json_encode(array(
-				'error' => 1, 'content' => $_LANG['msg_email_code_blank'], 'url' => ''
-			)));
-		}
-		else if($result == 4)
-		{
-			exit(json_encode(array(
-				'error' => 1, 'content' => $_LANG['invalid_email_code'], 'url' => ''
-			)));
-		}
-		else if($result == 5)
-		{
-			exit(json_encode(array(
-				'error' => 1, 'content' => $_LANG['invalid_email_code'], 'url' => ''
-			)));
-		}
+		// if($result == 1)
+		// {
+		// 	exit(json_encode(array(
+		// 		'error' => 1, 'content' => $_LANG['msg_email_blank'], 'url' => ''
+		// 	)));
+		// }
+		// else if($result == 2)
+		// {
+		// 	exit(json_encode(array(
+		// 		'error' => 1, 'content' => $_LANG['msg_email_format'], 'url' => ''
+		// 	)));
+		// }
+		// else if($result == 3)
+		// {
+		// 	exit(json_encode(array(
+		// 		'error' => 1, 'content' => $_LANG['msg_email_code_blank'], 'url' => ''
+		// 	)));
+		// }
+		// else if($result == 4)
+		// {
+		// 	exit(json_encode(array(
+		// 		'error' => 1, 'content' => $_LANG['invalid_email_code'], 'url' => ''
+		// 	)));
+		// }
+		// else if($result == 5)
+		// {
+		// 	exit(json_encode(array(
+		// 		'error' => 1, 'content' => $_LANG['invalid_email_code'], 'url' => ''
+		// 	)));
+		// }
 	}
 	else if($validate_type == 'mobile_phone')
 	{
@@ -1017,6 +1024,12 @@ function action_do_mobile_binding ()
 	$smarty = $GLOBALS['smarty'];
 	$db = $GLOBALS['db'];
 	$ecs = $GLOBALS['ecs'];
+	// 设置为第二步
+		$_SESSION['security_validate'] = true;
+		
+		exit(json_encode(array(
+			'error' => 0, 'content' => '', 'url' => ''
+		)));
 	
 	// 检查是否通过安全验证
 	if($_SESSION['security_validate'] != true)

@@ -1458,6 +1458,15 @@ function action_act_edit_profile ()
 	}
 }
 
+//用户资料修改
+function action_user_info_edit()
+{
+	action_act_edit_profile();
+	action_act_edit_img();
+	action_act_identity();
+}
+
+
 /* 修改头像 */
 function action_act_edit_img ()
 {

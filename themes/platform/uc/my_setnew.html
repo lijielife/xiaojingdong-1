@@ -1,0 +1,167 @@
+{include file="uc/header.html"}
+<body style="background:#fafafa;">
+	 <!--第一种头部 start-->
+      <div id="head"></div>
+      <!--第一种头部 end-->   
+      
+      <!--个人信息 start-->
+      {include file="uc/user_info.html"}
+      <!--个人信息 end-->
+      
+      <!--个人中心 start-->
+      <div class="myAll clearfix">
+         {include file="uc/uc_left.html"}
+         <div class="myhy_det">
+            <div class="zf_tit0220">
+                   <p>账户安全</p>
+                   <div class="zf_tit04">
+                          <!--<img src="images/map.png" alt="地图导航">-->
+                          <i>
+                            <a href="index.html">首页</a><span>&gt;</span>
+                            <a href="uc.php">会员中心</a><span>&gt;</span>
+                            <a href="#">个人设置</a><span>&gt;</span>
+                            <em>账户安全</em>
+                          </i>
+                   </div>
+             </div>
+            <ul class="myhy_tit clearfix">
+               <li class="myhy_ulink"><a href="#">修改手机号</a></li>
+               <!--<li><a href="#">修改邮箱</a></li>-->
+            </ul>
+            <div class="setel">
+            	  <form action="uc.php" method="post" id="fpForm" name="fpForm" novalidate="novalidate">
+              <div class="setel_box">
+                   <img src="themes/platform/images/setel02.png" alt="输入新手机">
+                   <div class="setel_form setel_form02 clearfix">
+                      <i>新手机号：</i>
+                      <input type="text" name="mobile" id="mobile" value="" placeholder="请输入手机号码" class="setel_ipt">
+                   </div>
+                   <div class="setel_form clearfix">
+                      <i>验证码：</i>
+                      <input type="text" id="captcha" name="captcha"  value="" placeholder="不区分大小写" class="setel_ipt">
+                      <img src="captcha.php?" alt="验证码" onclick="this.src='captcha.php?'+Math.random();$('#captcha').focus();">
+                      <!--<em>看不清？<span>换一张</span></em>-->
+                   </div>
+                   <div class="setel_form clearfix">
+                      <i>手机验证码：</i>
+                      <input type="text" name="mobile_code" id="mobile_code" value="" placeholder="请输入6位验证码" class="setel_ipt">
+                      <a id="zphone">获取手机验证码</a>
+                   </div>
+                   <input type="hidden" name="act" value="mobile_binding_success">
+                   <input type="submit" id="btn_submit" name="btn_submit" value="下一步" class="setel_sub">
+               </div>
+               </form>
+               <p class="setel_p"><span>为什么要验证手机？</span>1.验证手机可加强账户安全，您可以使用已验证手机快速找回密码；<br/>
+2.已验证手机可用于订单信息、账户资产变动提醒。</p>
+            </div>
+         </div>
+      </div>
+      <!--个人中心 end-->
+      
+       <!--底部 start-->
+       <div id="foot"></div>
+       <!--底部 end-->
+       
+       <!--右侧悬浮 start-->
+       <div id="myR"></div>
+       <!--右侧悬浮 end-->
+        
+      <script type="text/javascript" src="js/trip.js"></script>
+      <script type="text/javascript" src="js/transport.js"></script>
+      <script type="text/javascript" src="js/utils.js"></script>
+      <script type="text/javascript" src="themes/68ecshopcom_360buy/js/jquery.validate.js"></script>
+      <script type="text/javascript">
+
+      	function send_mobile_code(mobileCodeObj, sendButton){
+            // 发送邮件
+            var url = 'security.php?XDEBUG_SESSION_START=ECLIPSE_DBGP';
+            $.post(url, {
+                act: 'send_mobile_code', 
+                mobile: $("#mobile").val()
+            }, function(result) {
+                if (result == 'ok') {
+                    //倒计时
+                    countdown(sendButton);
+                } else {
+                    alert(result);
+                }
+            }, 'text');
+        }
+        
+        $().ready(function(){
+            $.validator.addMethod("mobile", function(value, element){
+                return Utils.isMobile(value);
+            });
+            var validator = $("#fpForm").validate({
+                debug: false,
+                rules: {
+                    mobile: {
+                        required: true,
+                        mobile: true,
+                        remote: {  
+                            url: "security.php",     //后台处理程序  
+                            type: "post",               //数据发送方式  
+                            dataType: "json",           //接受数据格式     
+                            data: {                     //要传递的数据  
+                                act: 'check_mobile_exist',
+                                mobile: function() {  
+                                    return $("#mobile").val();  
+                                }
+                            }
+                        }
+                    },
+                    mobile_code: {
+                        required: true
+                    }
+                },
+                messages: {
+                    mobile: {
+                        required: "请输入手机号码",
+                        mobile: "手机号码格式不正确",
+                        remote: "手机号码已存在"
+                    },
+                    mobile_code: {
+                        required: "请输入手机验证码"
+                    }
+                },
+                errorPlacement: function(error, element) {
+                    error.appendTo(element.parent());  
+                }
+            });
+            
+            $("#mobile").blur(function(){
+                $(this).valid();
+            });
+            
+            $("#zphone").click(function(){
+                if(!$("#mobile").valid()){
+                    return;
+                }
+                send_mobile_code($("#mobile_code"), $(this));
+            });
+            
+            $("#btn_submit").click(function(){
+                
+                if(!validator.form()){
+                    return;
+                }
+                
+                var type = 'mobile_phone';
+                var url = "security.php";
+                $.post(url, {act: "do_mobile_binding", mobile: $("#mobile").val(), mobile_code: $("#mobile_code").val()}, function(data){
+                    if(data.error == 1){
+                        alert(data.content);
+                        if(data.url != undefined && data.url.length > 0){
+                            window.location.href = data.url;
+                        }
+                    }else{
+                        $("#fpForm").submit();
+                    }
+                }, "json");
+            });
+            
+        });
+
+      </script>
+</body>
+</html>
